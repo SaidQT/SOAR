@@ -123,7 +123,7 @@ public class Shop {
 	}
 
 	public Shop() {
-
+		
 	}
 
 	// ******************* For create and update *******************

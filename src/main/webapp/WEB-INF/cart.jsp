@@ -397,7 +397,9 @@
 	<section id="cartt" class="my-5 py-5">
 		<c:forEach var="pet" items="${pets}">
 			<div id="app" class="container">
-				<h1 class="titlee"><c:out value="${pet.name}"></c:out></h1>
+				<h1 class="titlee">
+					<c:out value="${pet.name}"></c:out>
+				</h1>
 				<p slot="content">
 					<c:out value="${pet.type}"></c:out>
 				</p>
@@ -405,17 +407,17 @@
 					<c:out value="${pet.description}"></c:out>
 				</p>
 
-				<c:if test="${currentUser != null}">
-					<form action="/public/cart/add" method="post">
+				<form action="/public/cart" method="post">
+					<c:if test="${currentUser != null}">
 						<input type="hidden" name="petId" value="${pet.id}">
 						<button type="submit">Add to Favorites</button>
-					</form>
-				</c:if> <c:if test="${currentUser == null}">
-					<form action="/public/cart/add" method="post">
-						<input type="hidden" name="petId" value="${pet.id}">
+					</c:if>
+					<c:if test="${currentUser == null}">
 						<button type="submit" disabled>Add to Favorites</button>
-					</form>
-				</c:if> </card>
+					</c:if>
+				</form>
+				</card>
+
 			</div>
 		</c:forEach>
 	</section>
