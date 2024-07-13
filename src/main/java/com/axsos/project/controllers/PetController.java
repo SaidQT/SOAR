@@ -1,10 +1,8 @@
 package com.axsos.project.controllers;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,11 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.axsos.project.models.Pet;
-import com.axsos.project.models.Role;
-import com.axsos.project.models.User;
 import com.axsos.project.services.PetService;
 import com.axsos.project.services.UserService;
 
@@ -77,10 +72,10 @@ public class PetController {
 		return "redirect:/pet/home";
 	}
 
-	@GetMapping("/")
-	public String UserPage() {
-		return "UserPage.jsp";
-	}
+	//	@GetMapping("/")
+	//	public String UserPage() {
+	//		return "UserPage.jsp";
+	//	}
 
 	@GetMapping("/contactus")
 	public String ContactUs() {
@@ -98,7 +93,7 @@ public class PetController {
 		return "categoryName.jsp";
 	}
 
-	
+
 
 
 }
