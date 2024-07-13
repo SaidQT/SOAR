@@ -133,6 +133,10 @@ public class User {
 		this.roles = roles;
 	}
 
+	public void addRole(Role role) {
+		this.roles.add(role);
+	}
+
 	// ******************* For create and update *******************
 	@PrePersist
 	protected void onCreate() {
