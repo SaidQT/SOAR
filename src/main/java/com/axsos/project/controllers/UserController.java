@@ -124,19 +124,19 @@ public class UserController {
 	@GetMapping("/contact")
 	public String showContactForm(Model model) {
 		model.addAttribute("contact", new Contact());
-		return "ContactUs.jsp";
+		return "contact.jsp";
 	}
 
 	@PostMapping("/contact")
 	public String submitContactForm(@Valid @ModelAttribute("contact") Contact contact, BindingResult result,
 			Model model) {
 		if (result.hasErrors()) {
-			return "ContactUs.jsp";
+			return "contact.jsp";
 		}
 		contactService.saveContact(contact);
 		emailService.sendContactMessage(contact);
 		model.addAttribute("successMessage", "Your message has been sent successfully!");
-		return "ContactUs.jsp";
+		return "redirect:/contact";
 	}
 
 	@GetMapping("/user")
@@ -169,8 +169,8 @@ public class UserController {
 		return "cart.jsp";
 	}
 
-	@PostMapping("/public/cart")
-	public String addPetToUserCart(@RequestParam Long petId, Principal principal) {
+	@PostMapping("/public/cart/add")
+	public String addPetToUserCart(@RequestParam(name="petId") Long petId, Principal principal) {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		Pet pet = petService.findPet(petId);

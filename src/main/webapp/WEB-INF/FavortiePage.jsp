@@ -128,36 +128,23 @@ nav img {
 	</nav>
 	<div class="container pet-category">
 		<div class="row">
-			<div class="col-md-4">
-				<div class="pet-card">
-					<img src="https://via.placeholder.com/300x300" alt="Image 1">
-					</a> <i class="favorite-icon far fa-heart" data-pet-id="1"></i>
-					<div class="dummy-data">
-						<p>Pet Category 1</p>
-						<p>Description for pet category 1.</p>
+			<c:forEach var="pet" items="${favorite}">
+				<div class="col-md-4">
+					<div class="pet-card">
+						<img src="${pet.imageUrl}" alt="${pet.name}"> </a> <i
+							class="favorite-icon far fa-heart" data-pet-id="1"></i>
+						<div class="dummy-data">
+							<p>
+								<c:out value="${pet.type}"></c:out>
+							</p>
+							<p>
+								<c:out value="${pet.name}"></c:out>
+							</p>
+
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="pet-card">
-					<img src="https://via.placeholder.com/300x300" alt="Image 2">
-					</a> <i class="favorite-icon far fa-heart" data-pet-id="2"></i>
-					<div class="dummy-data">
-						<p>Pet Category 2</p>
-						<p>Description for pet category 2.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="pet-card">
-					<img src="https://via.placeholder.com/300x300" alt="Image 3">
-					</a> <i class="favorite-icon far fa-heart" data-pet-id="3"></i>
-					<div class="dummy-data">
-						<p>Pet Category 3</p>
-						<p>Description for pet category 3.</p>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 	</div>
 	<footer class="footer bg-dark text-light">

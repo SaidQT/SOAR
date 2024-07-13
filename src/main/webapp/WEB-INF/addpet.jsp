@@ -37,7 +37,7 @@
 	<div class="form-container">
 		<h1>Add a new Pet</h1>
 
-		<form:form action="/pets/new" method="post" modelAttribute="pet">
+		<form:form action="/shop/new" method="post" modelAttribute="pet">
 			<p>
 
 				<form:input path="name" placeholder="Name" required="true" />
