@@ -156,32 +156,51 @@ public class UserController {
 	}
 
 	@GetMapping("/public/cart")
-	public String showPets(Model model, Principal principal) {
+	public String showPets(Model model, Principal principal, HttpSession session) {
 		List<Pet> pets = petService.allPets();
 		model.addAttribute("pets", pets);
+
 		if (principal != null) {
 			String username = principal.getName();
 			model.addAttribute("currentUser", userService.findByUsername(username));
 		}
-		String username = principal.getName();
-		User user = userService.findByUsername(username);
-		System.out.println(user.getRoles().get(0).getName());
+		if (session.getAttribute("flag") != null) {
+			boolean flag = (boolean) session.getAttribute("flag");
+			model.addAttribute("flag", flag);
+		}
+
 		return "cart.jsp";
 	}
 
 	@PostMapping("/public/cart/add")
-	public String addPetToUserCart(@RequestParam(name="petId") Long petId, Principal principal) {
+	public String addPetToUserCart(@RequestParam(name = "petId") Long petId, @RequestParam("location") String location,
+			Principal principal, HttpSession session) {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		Pet pet = petService.findPet(petId);
 		System.out.print(user.getRoles().get(0).getName());
-		if (user != null && pet != null) {
+		boolean flag = user.getPets().contains(pet);
+		session.setAttribute("flag", flag);
+		if (user != null && pet != null && !user.getPets().contains(pet)) { // checks if there is a principal, and if
+																			// the user has favorited this pet
 			pet.getUsers().add(user);
 			petService.createPet(pet);
+
 			return "redirect:/public/cart";
-		} else {
-			return "redirect:/public/cart";
+
+		} else if (user != null && pet != null && user.getPets().contains(pet)) {
+			pet.getUsers().remove(user);
+			petService.createPet(pet);
+			if (location.equals("cart") ) { // checks if the current user is on the favorites page or the public page
+				return "redirect:/public/cart";
+			}
+			if (location.equals("favorite")) {
+				return "redirect:/user/favorites";
+			}
 		}
+
+		return "redirect:/public/cart";
+
 	}
 
 	// @GetMapping("/login")

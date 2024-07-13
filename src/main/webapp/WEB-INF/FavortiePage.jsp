@@ -140,7 +140,14 @@ nav img {
 							<p>
 								<c:out value="${pet.name}"></c:out>
 							</p>
+							<form action="/public/cart/add" method="post">
+								<input type="hidden" name="petId" value="${pet.id}"> <input
+									type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" />
+									<input type="hidden" name="location" value="favorite">
+								<button type="submit">Remove from Favorites</button>
 
+							</form>
 						</div>
 					</div>
 				</div>
