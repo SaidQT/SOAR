@@ -198,11 +198,10 @@ public class UserController {
 				return "redirect:/user/favorites";
 			}
 		}
-
 		return "redirect:/public/cart";
-
 	}
-
+	
+	
 	// @GetMapping("/login")
 	// public String index(Model model) {
 	// model.addAttribute("newUser", new User());

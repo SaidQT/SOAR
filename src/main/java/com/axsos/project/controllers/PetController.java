@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.axsos.project.models.Pet;
 import com.axsos.project.models.Shop;
 import com.axsos.project.models.User;
 import com.axsos.project.services.PetService;
+import com.axsos.project.services.ShopService;
 import com.axsos.project.services.UserService;
 
 import jakarta.validation.Valid;
@@ -28,6 +28,8 @@ public class PetController {
 	PetService petService;
 	@Autowired
 	UserService userService;
+	@Autowired
+	ShopService shopService;
 
 	@GetMapping("/shop/add")
 	public String addShop(@ModelAttribute("pet") Pet pet) {
@@ -96,16 +98,59 @@ public class PetController {
 	public String FavoritePage(Principal principal, Model model) {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
-		List<Pet> pets= user.getPets();
+		List<Pet> pets = user.getPets();
 		model.addAttribute("favorite", pets);
 		return "FavortiePage.jsp";
 	}
-	
-	
+
+	@GetMapping("/public/{id}/details")
+	public String showDetails(@PathVariable("id") Long id, Model model) {
+		Pet pet = petService.findPet(id);
+		model.addAttribute("pet", pet);
+		return "petprofile.jsp";
+	}
+
+	@PatchMapping("/user/{id}/details")
+	public String requestAdoption(@PathVariable("id") Long id, Principal principal) {
+		Pet pet = petService.findPet(id);
+		pet.setStatus("Pending");
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		pet.setUser(user);
+		petService.createPet(pet);
+		return "redirect:/user/besties";
+	}
 
 	@GetMapping("/categoriesname")
 	public String CategoriesName() {
 		return "categoryName.jsp";
+	}
+
+	@GetMapping("/shop/{id}/requests")
+	public String showRequests(@PathVariable("id") Long id, Model model) {
+		Shop shop= shopService.findShop(id);
+		List<Pet> pets= shop.getPets();
+		model.addAttribute("pets", pets);
+		return "requests.jsp";
+	}
+
+	@GetMapping("/shop/{id}/{shopId}/accept")
+	public String accept(@PathVariable("id") Long id, @PathVariable("shopId") Long shopId) {
+		Pet pet = petService.findPet(id);
+		pet.setStatus("Adopted");
+
+		petService.createPet(pet);
+		return "redirect:/shop/" + shopId + "/requests";
+	}
+	
+	
+	@GetMapping("/shop/{id}/{shopId}/destroy")
+	public String destroy(@PathVariable("id") Long id, @PathVariable("shopId") Long shopId) {
+		Pet pet = petService.findPet(id);
+		pet.setStatus("Unadopted");
+		pet.setUser(null);
+		petService.createPet(pet);
+		return "redirect:/shop/" + shopId + "/requests";
 	}
 
 }
