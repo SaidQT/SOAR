@@ -65,6 +65,22 @@ public class User {
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Shop shop;
 
+	public List<Pet> getAdoptedPets() {
+		return adoptedPets;
+	}
+
+	public void setAdoptedPets(List<Pet> adoptedPets) {
+		this.adoptedPets = adoptedPets;
+	}
+
+	public Shop getShop() {
+		return shop;
+	}
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+
 	public List<Pet> getPets() {
 		return pets;
 	}
