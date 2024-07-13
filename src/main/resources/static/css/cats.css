@@ -1,0 +1,10 @@
+.pointer {
+  cursor: pointer;
+}
+
+.card {
+  min-height: 550px;
+}
+.d-none {
+  display: none;
+}
