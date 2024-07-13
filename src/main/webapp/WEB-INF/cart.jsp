@@ -413,7 +413,13 @@
 							<input type="hidden" name="petId" value="${pet.id}">
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
-							<button type="submit">Add to Favorites</button>
+							<input type="hidden" name="location" value="cart">
+							<c:if test="${flag}">
+								<button type="submit">Add to Favorites</button>
+							</c:if>
+							<c:if test="${!flag}">
+								<button type="submit">Remove from Favorites</button>
+							</c:if>
 						</c:if>
 						<c:if test="${currentUser == null}">
 							<button type="submit" disabled>Add to Favorites</button>

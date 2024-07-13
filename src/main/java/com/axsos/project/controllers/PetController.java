@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.axsos.project.models.Pet;
 import com.axsos.project.models.Shop;
@@ -91,7 +92,7 @@ public class PetController {
 		return "ContactUs.jsp";
 	}
 
-	@GetMapping("/favoritepage")
+	@GetMapping("/user/favorites")
 	public String FavoritePage(Principal principal, Model model) {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
@@ -99,6 +100,8 @@ public class PetController {
 		model.addAttribute("favorite", pets);
 		return "FavortiePage.jsp";
 	}
+	
+	
 
 	@GetMapping("/categoriesname")
 	public String CategoriesName() {
