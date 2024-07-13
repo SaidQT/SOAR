@@ -1,9 +1,9 @@
 package com.axsos.project.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -62,7 +62,8 @@ public class User {
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<Pet> adoptedPets;
 
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "shop_id")
 	private Shop shop;
 
 	public List<Pet> getAdoptedPets() {
@@ -91,6 +92,7 @@ public class User {
 
 	// ******************* Constructor *******************
 	public User() {
+		this.roles = new ArrayList<Role>();
 	}
 	// ******************* Setters and Getters *******************
 
@@ -159,6 +161,7 @@ public class User {
 	}
 
 	public void addRole(Role role) {
+
 		this.roles.add(role);
 	}
 

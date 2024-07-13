@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.axsos.project.models.Role;
 import com.axsos.project.models.Shop;
 import com.axsos.project.models.User;
 import com.axsos.project.repositories.RoleRepository;
@@ -60,15 +59,15 @@ public class UserService {
 		return null;
 	}
 
-	public User createShopOwner(String username,String email,String password,Shop shop) {
+	public User createShopOwner(String username, String email, String password, Shop shop) {
 		User shopOwner = new User();
 		shopOwner.setUsername(username);
 		shopOwner.setEmail(email);
 		shopOwner.setPassword(bCryptPasswordEncoder.encode(password));
-		Role role = new Role();
-		role.setName("ROLE_OWNER");
-		shopOwner.addRole(role);
-
+		shopOwner.setPasswordConfirmation(bCryptPasswordEncoder.encode(password));
+		userRepository.save(shopOwner);
+		shopOwner.setRoles(roleRepository.findByName("ROLE_OWNER"));
+		shopOwner.setShop(shop);
 		userRepository.save(shopOwner);
 		return shopOwner;
 	}

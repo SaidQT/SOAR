@@ -36,14 +36,19 @@
 	</nav>
 	<div class="form-container">
 		<h1>Add a new Shop</h1>
-		<form:form action="/shops/new" method="post" modelAttribute="shop">
+		<form:form action="/admin/shops/new" method="post" modelAttribute="shopForm">
 			<p>
-
-				<form:input path="name" required="true" placeholder="Name" />
+				<form:input path="shopName" required="true" placeholder="shop Name" />
+			</p>
+			<p>
+				<form:errors path="shopName" />
 			</p>
 			<p>
 
-				<form:input path="city" placeholder="City" required="true" />
+				<form:input path="city" placeholder="Shop City" required="true" />
+			</p>
+			<p>
+				<form:errors path="city" />
 			</p>
 			<p>
 
@@ -51,30 +56,44 @@
 					placeholder="Maximum Capacity" />
 			</p>
 			<p>
-
+				<form:errors path="maxCapacity" />
+			</p>
+			<p>
 				<form:input type="number" path="currentSize" required="true"
 					placeholder="Total pet count" />
-			</p>
-			<p>
-
-				<form:input path="phoneNumber" required="true"
-					placeholder="Phone number" />
-			</p>
-			<p>
-				<form:errors path="name" />
-			</p>
-			<p>
-				<form:errors path="city" />
-			</p>
-			<p>
-				<form:errors path="maxCapacity" />
 			</p>
 			<p>
 				<form:errors path="currentSize" />
 			</p>
 			<p>
+				<form:input path="phoneNumber" required="true"
+					placeholder="Phone number" />
+			</p>
+			<p>
 				<form:errors path="phoneNumber" />
 			</p>
+			<p>
+				<form:input path="username" required="true" placeholder="User Name" />
+			</p>
+			<p>
+				<form:errors path="username" />
+			</p>
+			<p>
+
+				<form:input path="email" placeholder="User email" required="true" />
+			</p>
+			<p>
+				<form:errors path="email" />
+			</p>
+			<p>
+
+				<form:input path="password" required="true"
+					placeholder="password" />
+			</p>
+			<p>
+				<form:errors path="password" />
+			</p>
+			
 			<input type="submit" value="Add Shop" />
 		</form:form>
 	</div>
