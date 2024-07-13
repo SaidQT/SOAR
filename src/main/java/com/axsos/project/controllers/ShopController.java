@@ -33,20 +33,24 @@ public class ShopController {
 		return "addshop.jsp";
 	}
 
-	@PostMapping("/shops/new")
+	@PostMapping("/admin/shops/new")
 	public String createShop(@Valid @ModelAttribute("shopForm") ShopForm shopForm, BindingResult result) {
+
 		if (result.hasErrors()) {
+			System.out.println(shopForm.toString());
 			return "addshop.jsp";
 		} else {
+
 			Shop shop =new Shop();
 			shop.setName(shopForm.getShopName());
 			shop.setCity(shopForm.getCity());
 			shop.setPhoneNumber(shopForm.getPhoneNumber());
 			shop.setMaxCapacity(shopForm.getMaxCapacity());
 			shop.setCurrentSize(shopForm.getCurrentSize());
-			shop.setPhoneNumber(shopForm.getPhoneNumber());
 			shopService.createShop(shop);
 			User shopOwner = userService.createShopOwner(shopForm.getUsername(),shopForm.getEmail(),shopForm.getPassword(),shop);
+			//			shop.setUser(shopOwner);
+			//			shopService.createShop(shop);
 			return "redirect:/admin/home";
 		}
 	}
