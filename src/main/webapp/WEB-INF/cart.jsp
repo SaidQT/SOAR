@@ -396,29 +396,33 @@
 
 	<section id="cartt" class="my-5 py-5">
 		<c:forEach var="pet" items="${pets}">
-			<div id="app" class="container">
-				<h1 class="titlee">
-					<c:out value="${pet.name}"></c:out>
-				</h1>
-				<p slot="content">
-					<c:out value="${pet.type}"></c:out>
-				</p>
-				<p slot="content">
-					<c:out value="${pet.description}"></c:out>
-				</p>
+			<c:if test="${pet.status.equals('Unadopted')}">
+				<div id="app" class="container">
+					<h1 class="titlee">
+						<c:out value="${pet.name}"></c:out>
+					</h1>
+					<p slot="content">
+						<c:out value="${pet.type}"></c:out>
+					</p>
+					<p slot="content">
+						<c:out value="${pet.description}"></c:out>
+					</p>
 
-				<form action="/public/cart" method="post">
-					<c:if test="${currentUser != null}">
-						<input type="hidden" name="petId" value="${pet.id}">
-						<button type="submit">Add to Favorites</button>
-					</c:if>
-					<c:if test="${currentUser == null}">
-						<button type="submit" disabled>Add to Favorites</button>
-					</c:if>
-				</form>
-				</card>
+					<form action="/public/cart/add" method="post">
+						<c:if test="${currentUser != null}">
+							<input type="hidden" name="petId" value="${pet.id}">
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+							<button type="submit">Add to Favorites</button>
+						</c:if>
+						<c:if test="${currentUser == null}">
+							<button type="submit" disabled>Add to Favorites</button>
+						</c:if>
+					</form>
+					</card>
 
-			</div>
+				</div>
+			</c:if>
 		</c:forEach>
 	</section>
 
