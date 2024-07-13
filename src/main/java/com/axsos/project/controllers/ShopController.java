@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import com.axsos.project.models.Shop;
+import com.axsos.project.models.ShopForm;
+import com.axsos.project.models.User;
 import com.axsos.project.services.ShopService;
+import com.axsos.project.services.UserService;
 
 import jakarta.validation.Valid;
 
@@ -22,17 +25,28 @@ public class ShopController {
 	@Autowired
 	ShopService shopService;
 
+	@Autowired
+	UserService userService;
+
 	@GetMapping("/admin/add")
-	public String addShop(@ModelAttribute("shop") Shop shop) {
+	public String addShop(@ModelAttribute("shopForm") ShopForm shopForm) {
 		return "addshop.jsp";
 	}
 
 	@PostMapping("/shops/new")
-	public String createShop(@Valid @ModelAttribute("shop") Shop shop, BindingResult result) {
+	public String createShop(@Valid @ModelAttribute("shopForm") ShopForm shopForm, BindingResult result) {
 		if (result.hasErrors()) {
 			return "addshop.jsp";
 		} else {
+			Shop shop =new Shop();
+			shop.setName(shopForm.getShopName());
+			shop.setCity(shopForm.getCity());
+			shop.setPhoneNumber(shopForm.getPhoneNumber());
+			shop.setMaxCapacity(shopForm.getMaxCapacity());
+			shop.setCurrentSize(shopForm.getCurrentSize());
+			shop.setPhoneNumber(shopForm.getPhoneNumber());
 			shopService.createShop(shop);
+			User shopOwner = userService.createShopOwner(shopForm.getUsername(),shopForm.getEmail(),shopForm.getPassword(),shop);
 			return "redirect:/admin/home";
 		}
 	}
@@ -67,7 +81,6 @@ public class ShopController {
 		shopService.deleteShop(id);
 		return "redirect:/admin/home";
 	}
-	
 
 
 
@@ -297,9 +310,10 @@ public class ShopController {
 
 
 
-@GetMapping("/aboutus")
-public String AboutUs(Model model) {
-    model.addAttribute("allPartners", shopService.findAll());
-    return "AboutUs.jsp";
-}
+
+	@GetMapping("/aboutus")
+	public String AboutUs(Model model) {
+		model.addAttribute("allPartners", shopService.findAll());
+		return "AboutUs.jsp";
+	}
 }

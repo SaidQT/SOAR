@@ -18,7 +18,7 @@ public class ShopService {
 		return shopRepository.save(b);
 	}
 
-	
+
 	public Shop findShop(Long id) {
 		Optional<Shop> optionalShop = shopRepository.findById(id);
 		if (optionalShop.isPresent()) {
@@ -37,3 +37,5 @@ public class ShopService {
 		shopRepository.deleteById(id);
 	}
 }
+
+
