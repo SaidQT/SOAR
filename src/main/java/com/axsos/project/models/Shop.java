@@ -11,7 +11,9 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -41,8 +43,14 @@ public class Shop {
 	@Size(min = 10, max = 15, message = "Phone number must be between 10 and 15 digits")
 	@Pattern(regexp = "^[0-9]*$", message = "Phone number must contain only digits")
 	private String phoneNumber;
-//	@OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
-//	private List<Pet> pets;
+
+	@OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
+	private List<Pet> pets;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	private User user;
+	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
