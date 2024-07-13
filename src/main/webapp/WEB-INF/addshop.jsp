@@ -52,14 +52,14 @@
 			</p>
 			<p>
 
-				<form:input type="number" path="maxCapacity" required="true"
+				<form:input type="number" path="maxCapacity" required="true" min="0"
 					placeholder="Maximum Capacity" />
 			</p>
 			<p>
 				<form:errors path="maxCapacity" />
 			</p>
 			<p>
-				<form:input type="number" path="currentSize" required="true"
+				<form:input type="number" path="currentSize" required="true" min="0"
 					placeholder="Total pet count" />
 			</p>
 			<p>

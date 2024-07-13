@@ -61,7 +61,10 @@ public class UserService {
 
 	public User createShopOwner(String username, String email, String password, Shop shop) {
 		User shopOwner = new User();
-		shopOwner.setUsername(username);
+		boolean potentialUser = userRepository.existsByUsername(username);
+		if (potentialUser == true) {
+			return null;
+		}
 		shopOwner.setEmail(email);
 		shopOwner.setPassword(bCryptPasswordEncoder.encode(password));
 		shopOwner.setPasswordConfirmation(bCryptPasswordEncoder.encode(password));

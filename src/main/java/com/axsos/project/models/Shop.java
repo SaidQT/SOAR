@@ -38,6 +38,7 @@ public class Shop {
 	@Min(value = 5, message = "Maximum capacity should be at least 5")
 	private Integer maxCapacity;
 	@NotNull
+	@Min(value = 0, message = "Maximum current capacity should be at least 0")
 	private Integer currentSize;
 	@NotNull(message = "Phone number cannot be null")
 	@Size(min = 10, max = 15, message = "Phone number must be between 10 and 15 digits")
@@ -124,6 +125,7 @@ public class Shop {
 	public Shop() {
 
 	}
+
 	// ******************* For create and update *******************
 	@PrePersist
 	protected void onCreate() {

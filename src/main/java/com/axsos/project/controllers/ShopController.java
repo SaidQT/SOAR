@@ -8,9 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import com.axsos.project.models.Shop;
 import com.axsos.project.models.ShopForm;
@@ -49,11 +49,14 @@ public class ShopController {
 			shop.setCurrentSize(shopForm.getCurrentSize());
 			shopService.createShop(shop);
 			User shopOwner = userService.createShopOwner(shopForm.getUsername(),shopForm.getEmail(),shopForm.getPassword(),shop);
-			//			shop.setUser(shopOwner);
-			//			shopService.createShop(shop);
+			if (shopOwner == null) {
+				result.rejectValue("username", "Matches", "This username is already used!");
+				return "addshop.jsp";
+			}
 			return "redirect:/admin/home";
 		}
 	}
+
 
 	@GetMapping("/admin/home")
 	public String showShops(Model model) {
@@ -69,7 +72,7 @@ public class ShopController {
 		return "editshop.jsp";
 	}
 
-	@PutMapping("/admin/{id}")
+	@PatchMapping("/admin/{id}")
 	public String editInfo(@Valid @ModelAttribute("shop") Shop shop, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute("shop", shop);

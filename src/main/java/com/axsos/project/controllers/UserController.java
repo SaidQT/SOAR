@@ -4,11 +4,6 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -49,7 +44,7 @@ public class UserController {
 	private PetService petService;
 
 	private final UserValidator userValidator;
-	
+
 
 	// ******************* Constructor *******************
 	UserController(UserValidator userValidator) {
@@ -73,50 +68,8 @@ public class UserController {
 
 		return "login.jsp";
 	}
-//
-//	@PostMapping("/login")
-//	public String login(@RequestParam String username, @RequestParam String password, HttpSession session) {
-//		try {
-//			Authentication authentication = authenticationManager
-//					.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-//			SecurityContextHolder.getContext().setAuthentication(authentication);
-//			return "redirect:/home"; // Redirect to home on successful login
-//		} catch (BadCredentialsException e) {
-//			// Handle bad credentials
-//			return "login"; // Return to login page with error
-//		}
-//	}
 
 	// Function to submit the Register form
-	/*
-	 * @PostMapping("/register") public String
-	 * registration(@Valid @ModelAttribute("user") User user, BindingResult result,
-	 * Model model, HttpSession session, HttpServletRequest request) {
-	 * userValidator.validate(user, result);
-	 * 
-	 * if (result.hasErrors()) {
-	 * 
-	 * model.addAttribute("newLogin",new LoginUser());
-	 * model.addAttribute("activeTab", "register"); return "login.jsp"; // Stay on
-	 * the registration page if there are errors }
-	 * 
-	 * // Determine user role based on existing users String role =
-	 * userService.allUsers().isEmpty() ? "ROLE_ADMIN" : "ROLE_USER";
-	 * userService.newUser(user, role); // System.out.print(role); // Log in new
-	 * user with the password we stored before encrypting it
-	 * authWithHttpServletRequest(request, user.getUsername(), user.getPassword());
-	 * 
-	 * return "redirect:/login"; // Redirect to home page after successful
-	 * registration }
-	 */
-	// We will call this method to automatically log in newly registered users
-//	public void authWithHttpServletRequest(HttpServletRequest request, String username, String password) {
-//		try {
-//			request.login(username, password);
-//		} catch (ServletException e) {
-//			System.out.println("Error while login: " + e);
-//		}
-//	}
 	@PostMapping("/register")
 	public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model,
 			HttpSession session, HttpServletRequest request) {
@@ -133,7 +86,7 @@ public class UserController {
 		userService.newUser(user, role);
 
 		// Log in new user with the password we stored before encrypting it
-//		authenticateUserAndSetSession(user, request);
+		//		authenticateUserAndSetSession(user, request);
 
 		authWithHttpServletRequest(request, user.getUsername(), user.getPassword());
 
@@ -147,29 +100,6 @@ public class UserController {
 		} catch (ServletException e) {
 			System.out.println("Error while login: " + e);
 		}
-	}
-
-//	private void authenticateUserAndSetSession(User user, HttpServletRequest request) {
-//		try {
-////			UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user.getUsername(),
-////					user.getPassword());
-////			Authentication authentication = authenticationManager.authenticate(authToken);
-////			SecurityContextHolder.getContext().setAuthentication(authentication);
-//			Authentication authentication = authenticationManager
-//					.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-//			SecurityContextHolder.getContext().setAuthentication(authentication);
-//			request.getSession().setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
-//					SecurityContextHolder.getContext());
-//		} catch (Exception e) {
-//			e.printStackTrace(); // Log the error or handle it appropriately
-//		}
-//	}
-
-	@RequestMapping("/admin/add")
-	public String adminPage(Principal principal, Model model) {
-		String username = principal.getName();
-		model.addAttribute("currentUser", userService.findByUsername(username));
-		return "adminPage.jsp";
 	}
 
 	@RequestMapping("/user")
@@ -190,13 +120,6 @@ public class UserController {
 
 		model.addAttribute("currentUser", userService.findByUsername(username));
 		return "home.jsp";
-	}
-
-	@RequestMapping("/admin/home")
-	public String adminHome(Principal principal, Model model) {
-		String username = principal.getName();
-		model.addAttribute("currentUser", userService.findByUsername(username));
-		return "homeAdminPage.jsp";
 	}
 
 	@GetMapping("/contact")
@@ -267,10 +190,10 @@ public class UserController {
 	// return "login.jsp";
 	// }
 
-//	@GetMapping("/x")
-//	public String contactUs(Model model) {
-//		return "newPet.jsp";
-//	}
+	//	@GetMapping("/x")
+	//	public String contactUs(Model model) {
+	//		return "newPet.jsp";
+	//	}
 
 	// @PostMapping("/register")
 	// public String register(@Valid @ModelAttribute("newUser") User newUser,
