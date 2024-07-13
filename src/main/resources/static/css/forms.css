@@ -24,7 +24,7 @@ body {
 }
 
 .form-container input[type="text"], .form-container input[type="url"],
-	.form-container textarea, .form-container select, .form-container input[type="number"]
+	.form-container textarea, .form-container select, .form-container input[type="number"], .form-container input[type="password"]
 	{
 	width: calc(100% - 16px);
 	padding: 12px;
@@ -45,7 +45,7 @@ img {
 }
 
 .form-container input[type="text"]:focus, .form-container input[type="url"]:focus,
-	.form-container textarea:focus, .form-container select:focus,
+	.form-container textarea:focus, .form-container select:focus,.form-container input[type="password"]:focus
 	.form-container input[type="number"]:focus {
 	border-color: #FF7F50;
 }

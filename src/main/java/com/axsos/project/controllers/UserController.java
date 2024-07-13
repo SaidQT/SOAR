@@ -45,7 +45,6 @@ public class UserController {
 
 	private final UserValidator userValidator;
 
-
 	// ******************* Constructor *******************
 	UserController(UserValidator userValidator) {
 		this.userValidator = userValidator;
@@ -86,7 +85,7 @@ public class UserController {
 		userService.newUser(user, role);
 
 		// Log in new user with the password we stored before encrypting it
-		//		authenticateUserAndSetSession(user, request);
+		// authenticateUserAndSetSession(user, request);
 
 		authWithHttpServletRequest(request, user.getUsername(), user.getPassword());
 
@@ -109,12 +108,12 @@ public class UserController {
 		return "userPage.jsp";
 	}
 
-	@RequestMapping("/public")
+	@GetMapping("/public")
 	public String publicPage(Principal principal, Model model) {
 		return "publicPage.jsp";
 	}
 
-	@RequestMapping(value = { "/", "/home", "/user/home" })
+	@GetMapping({ "/", "/home", "/user/home" })
 	public String home(Principal principal, Model model) {
 		String username = principal.getName();
 
@@ -164,10 +163,13 @@ public class UserController {
 			String username = principal.getName();
 			model.addAttribute("currentUser", userService.findByUsername(username));
 		}
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		System.out.println(user.getRoles().get(0).getName());
 		return "cart.jsp";
 	}
 
-	@PostMapping("/public/cart/add")
+	@PostMapping("/public/cart")
 	public String addPetToUserCart(@RequestParam Long petId, Principal principal) {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
@@ -176,10 +178,9 @@ public class UserController {
 		if (user != null && pet != null) {
 			pet.getUsers().add(user);
 			petService.createPet(pet);
-
-			return "cart.jsp";
+			return "redirect:/public/cart";
 		} else {
-			return "redirect:/user/cart";
+			return "redirect:/public/cart";
 		}
 	}
 
@@ -190,10 +191,10 @@ public class UserController {
 	// return "login.jsp";
 	// }
 
-	//	@GetMapping("/x")
-	//	public String contactUs(Model model) {
-	//		return "newPet.jsp";
-	//	}
+	// @GetMapping("/x")
+	// public String contactUs(Model model) {
+	// return "newPet.jsp";
+	// }
 
 	// @PostMapping("/register")
 	// public String register(@Valid @ModelAttribute("newUser") User newUser,
