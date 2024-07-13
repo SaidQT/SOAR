@@ -38,7 +38,7 @@
 		<h1>Edit Shop Information</h1>
 		<form:form action="/admin/${shop.id}" method="post"
 			modelAttribute="shop">
-			<input type="hidden" name="_method" value="put">
+			<input type="hidden" name="_method" value="patch">
 			<p>
 				<form:label path="name">Name</form:label>
 				<form:input path="name" required="true" />
