@@ -22,34 +22,35 @@ import jakarta.validation.Valid;
 
 @Controller
 public class ShopController {
+	// ****************************** Attributes ******************************
 	@Autowired
 	ShopService shopService;
-
 	@Autowired
 	UserService userService;
 
+	// ****************************** C from {CRUD} ******************************
+	// Functions allow the admin to add new shop to their partners
 	@GetMapping("/admin/add")
 	public String addShop(@ModelAttribute("shopForm") ShopForm shopForm) {
 		return "addshop.jsp";
 	}
 
+	// To Do: add confirm password in shop Form
 	@PostMapping("/admin/shops/new")
 	public String createShop(@Valid @ModelAttribute("shopForm") ShopForm shopForm, BindingResult result) {
-
 		if (result.hasErrors()) {
-			System.out.println(shopForm.toString());
 			return "addshop.jsp";
 		} else {
-
-			Shop shop = new Shop();
-			shop.setName(shopForm.getShopName());
-			shop.setCity(shopForm.getCity());
-			shop.setPhoneNumber(shopForm.getPhoneNumber());
-			shop.setMaxCapacity(shopForm.getMaxCapacity());
-			shop.setCurrentSize(shopForm.getCurrentSize());
-			shopService.createShop(shop);
+			// In this form we will:
+			// *) Add new shop
+			// *) Add new shop owner {user with owner role}
+			// *) Connect this shop with shop owner in one to one relationship (1 shop owner --own-- 1 shop)
+			Shop shop = shopService.createShop(shopForm.getShopName(), shopForm.getCity(), shopForm.getPhoneNumber(),
+					shopForm.getMaxCapacity(), shopForm.getCurrentSize());
 			User shopOwner = userService.createShopOwner(shopForm.getUsername(), shopForm.getEmail(),
 					shopForm.getPassword(), shop);
+			// To Do: Need to change we need to add a custom validation for shopForm class
+			// inside validator  for{password and confirm password, unique username, max capacity > current capacity}
 			if (shopOwner == null) {
 				result.rejectValue("username", "Matches", "This username is already used!");
 				return "addshop.jsp";
@@ -58,6 +59,8 @@ public class ShopController {
 		}
 	}
 
+	// ****************************** R from {CRUD} ******************************
+	// Functions allow the admin to see all partners
 	@GetMapping("/admin/home")
 	public String showShops(Model model) {
 		List<Shop> shops = shopService.findAll();
@@ -65,6 +68,10 @@ public class ShopController {
 		return "shop.jsp";
 	}
 
+	// ****************************** U from {CRUD} ******************************
+	// Functions allow the admin to update shop information
+	// To Do:allow admin to modify shop owner information
+	// ID here is for shop
 	@GetMapping("/admin/{id}/edit")
 	public String showInfo(@PathVariable("id") Long id, Model model) {
 		Shop shop = shopService.findShop(id);
@@ -72,6 +79,7 @@ public class ShopController {
 		return "editshop.jsp";
 	}
 
+	// ID here is for shop
 	@PatchMapping("/admin/{id}")
 	public String editInfo(@Valid @ModelAttribute("shop") Shop shop, BindingResult result, Model model) {
 		if (result.hasErrors()) {
@@ -83,15 +91,12 @@ public class ShopController {
 		}
 	}
 
+	// ****************************** D from {CRUD} ******************************
+	// Functions allow the admin to delete a shop
+	// ID here is for shop
 	@GetMapping("/admin/{id}/delete")
 	public String destroy(@PathVariable("id") Long id) {
 		shopService.deleteShop(id);
 		return "redirect:/admin/home";
-	}
-	
-	@GetMapping("/aboutus")
-	public String AboutUs(Model model) {
-		model.addAttribute("allPartners", shopService.findAll());
-		return "AboutUs.jsp";
 	}
 }
