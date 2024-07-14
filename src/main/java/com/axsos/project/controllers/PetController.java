@@ -152,5 +152,14 @@ public class PetController {
 		petService.createPet(pet);
 		return "redirect:/shop/" + shopId + "/requests";
 	}
+	
+	@GetMapping("/pet/dashboard")
+	public String AdminDashboard(Model model) {
+		List<Pet> pets = petService.allPets();
+		model.addAttribute("pets", pets);
+        long totalShops = shopService.getTotalShops();
+        model.addAttribute("totalShops", totalShops);
+		return "petDashboard.jsp";
+	}
 
 }

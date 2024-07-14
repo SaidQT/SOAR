@@ -1,0 +1,112 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+    background-color: #DEAD6F; /* Light background color */
+}
+
+.navbar {
+    width: 100%;
+    background-color: #343a40; /* Dark navbar background */
+    padding: 10px;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2; /* Ensure navbar is above other content */
+}
+	
+.navbar .navbar-toggler {
+    border: none;
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #F7EEE4
+    ; /* Sidebar background color */
+    padding-top: 20px;
+    transition: transform 0.3s ease;
+    z-index: 1; /* Ensure sidebar is below navbar */
+}
+
+.sidebar a {
+    color:#440000;
+    margin-top: 25px;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+.sidebar a:hover {
+    background-color: #DEAD6F; /* Darker hover color */
+    color: #440000;
+        text-decoration: none;
+    
+}
+
+.main-content {
+    margin-left: 250px; /* Sidebar width */
+    margin-top: 50px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    background-color: white; /* Main content background color */
+}
+
+.sidebar-hidden {
+    transform: translateX(-250px); /* Sidebar width */
+}
+
+.content-expanded {
+    margin-left: 0;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-250px); /* Sidebar width */
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .main-content.expanded {
+        margin-left: 250px; /* Sidebar width */
+    }
+}
+
+#hamburger-btn {
+    position: fixed;
+    margin-bottom: 50px;
+    top: 10px;
+    left: 10px;
+    font-size: 1.5rem;
+    color: black; /* Hamburger button color */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2; /* Ensure it's above the sidebar content */
+}
+
+#hamburger-btn:focus {
+    outline: none; /* Remove focus outline */
+}
+
+#hamburger-btn:hover {
+    color: #DEAD6F; /* Change color on hover */
+}
