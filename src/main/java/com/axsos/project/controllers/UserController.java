@@ -146,4 +146,13 @@ public class UserController {
 		}
 		return "redirect:/public/cart";
 	}
+
+	@GetMapping("/user/favorites")
+	public String FavoritePage(Principal principal, Model model) {
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		List<Pet> pets = user.getPets();
+		model.addAttribute("favorite", pets);
+		return "FavortiePage.jsp";
+	}
 }
