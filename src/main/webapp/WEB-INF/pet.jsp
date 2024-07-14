@@ -31,8 +31,6 @@
 			</button>
 			<div class="collapse navbar-collapse show" id="navbarBasic">
 				<ul class="navbar-nav me-auto mb-2 mb-xl-0">
-				<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/admin/dashboard">Dashboard</a></li>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/shop/home">Pets</a></li>
 					<li class="nav-item"><a class="nav-link" href="/shop/add">Add
@@ -62,8 +60,8 @@
 					<td><c:out value="${pet.type}"></c:out></td>
 					<td><c:out value="${pet.city}"></c:out></td>
 					<td><c:out value="${pet.status}"></c:out></td>
-					<td id="buttons"><a href="/shop/${pet.id}/edit">Edit</a> | <a
-						href="/shop/${pet.id}/delete">Delete</a></td>
+					<td id="buttons"><a href="/pet/${pet.id}/edit">Edit</a> | <a
+						href="/pet/${pet.id}/delete">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

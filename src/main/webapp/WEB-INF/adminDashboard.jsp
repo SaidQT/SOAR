@@ -26,7 +26,8 @@
 			<button id="hamburger-btn">☰</button>
 
 	<div class="sidebar" id="sidebar">
-	<img src="<spring:url value='/images/cat.png' />" alt="Cat"> 
+ <img src="/images/logo.png" alt="logo"
+class="img-fluid">
         <span class="soar">S.O.A.R</span>
 		<a href="/admin/dashboard"><i class="fas fa-tachometer-alt"></i>
 			Dashboard</a> <a href="/admin/home"><i class="fas fa-store"></i>
