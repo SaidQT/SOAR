@@ -44,4 +44,10 @@ public class MainController {
 		return "FavortiePage.jsp";
 	}
 
+	@GetMapping("/aboutus")
+	public String AboutUs(Model model) {
+		model.addAttribute("allPartners", shopService.findAll());
+		return "AboutUs.jsp";
+	}
+
 }

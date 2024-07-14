@@ -18,6 +18,16 @@ public class ShopService {
 		return shopRepository.save(b);
 	}
 
+	public Shop createShop(String shopName, String city, String phoneNumber, Integer maxCapacity, Integer currentSize) {
+		Shop shop = new Shop();
+		shop.setName(shopName);
+		shop.setCity(city);
+		shop.setPhoneNumber(phoneNumber);
+		shop.setMaxCapacity(maxCapacity);
+		shop.setCurrentSize(currentSize);
+		return shopRepository.save(shop);
+	}
+
 
 	public Shop findShop(Long id) {
 		Optional<Shop> optionalShop = shopRepository.findById(id);

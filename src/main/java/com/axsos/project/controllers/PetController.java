@@ -141,8 +141,7 @@ public class PetController {
 		return "requests.jsp";
 	}
 
-	// Accept request --> The shop owner can accept the adoption request {update the
-	// pet status to
+	// Accept request --> The shop owner can accept the adoption request {update the pet status to
 	// adopted}
 	// ID here is for pet and shopid for shop
 	@GetMapping("/shop/{id}/{shopId}/accept")
@@ -154,8 +153,7 @@ public class PetController {
 		return "redirect:/shop/" + shopId + "/requests";
 	}
 
-	// Refuse request -->The shop owner can refuse the adoption request {update the
-	// pet status to
+	// Refuse request -->The shop owner can refuse the adoption request {update the pet status to
 	// unadopted}
 	// ID here is for pet and shopid for shop
 	@GetMapping("/shop/{id}/{shopId}/destroy")
