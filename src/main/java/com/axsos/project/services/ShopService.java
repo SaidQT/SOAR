@@ -46,6 +46,10 @@ public class ShopService {
 	public void deleteShop(Long id) {
 		shopRepository.deleteById(id);
 	}
+	
+	public long getTotalShops() {
+        return shopRepository.count();
+    }
 }
 
 
