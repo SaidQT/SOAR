@@ -34,31 +34,35 @@ public class WebSecurityConfig {
 				.requestMatchers(new MvcRequestMatcher(introspector, "/public/**")).permitAll()
 				.requestMatchers(new MvcRequestMatcher(introspector, "/"), new MvcRequestMatcher(introspector, "/home"))
 				.authenticated().anyRequest().permitAll())
-				// .formLogin(
-				// form -> form.loginPage("/login")
-				// .defaultSuccessUrl("/home")
-				// .permitAll()
-				// )
-				// .formLogin(form -> form
-				// .loginPage("/login")
-				// .successHandler((request, response, authentication) -> {
-				// // Redirect based on role
-				// if (request.isUserInRole("ADMIN")) {
-				// response.sendRedirect("/admin/home");
-				// } else if (request.isUserInRole("USER")) {
-				// response.sendRedirect("/user/home");
-				// } else {
-				// response.sendRedirect("/home");
-				// }
-				// })
-				// .permitAll()
-				// )
-				.formLogin(form -> form.loginPage("/login").successHandler(customSuccessHandler()).permitAll())
-				// .successHandler(customSuccessHandler())
-				// .permitAll()
-				// )
-				.logout(logout -> logout.permitAll());
 
+
+		// .formLogin(
+		// form -> form.loginPage("/login")
+		// .defaultSuccessUrl("/home")
+		// .permitAll()
+		// )
+		// .formLogin(form -> form
+		// .loginPage("/login")
+		// .successHandler((request, response, authentication) -> {
+		// // Redirect based on role
+		// if (request.isUserInRole("ADMIN")) {
+		// response.sendRedirect("/admin/home");
+		// } else if (request.isUserInRole("USER")) {
+		// response.sendRedirect("/user/home");
+		// } else {
+		// response.sendRedirect("/home");
+		// }
+		// })
+		// .permitAll()
+		// )
+		.formLogin(form -> form.loginPage("/login").successHandler(customSuccessHandler()).permitAll())
+		// .successHandler(customSuccessHandler())
+		// .permitAll()
+		// )
+		.logout(logout -> logout.permitAll())
+		.exceptionHandling(exceptionHandling -> exceptionHandling
+				.accessDeniedPage("/WEB-INF/accessDenied.jsp")
+				);
 		return http.build();
 	}
 

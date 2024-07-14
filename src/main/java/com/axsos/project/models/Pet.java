@@ -1,6 +1,7 @@
 
 package com.axsos.project.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +26,8 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "pets")
 public class Pet {
+
+	// ******************* Attributes *******************
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -41,26 +44,37 @@ public class Pet {
 	@Size(min = 2, message = "Image URL must be at least 2 characters")
 	@Column(columnDefinition = "TEXT")
 	private String imageUrl;
-	
+	@Column(updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date createdAt;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date updatedAt;
+
 	@NotNull
 	@Size(min = 5, message = "Description must be at least 5 characters")
 	@Column(columnDefinition = "TEXT")
 	private String description;
-	
+
 	@Size(min = 3)
 	private String status;
 	@ManyToMany // this relationship is for favorites
 	@JoinTable(name = "user_pet", joinColumns = @JoinColumn(name = "pet_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> users;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY) // this relationship is for adopting pets
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY) // this relationship is for shops and pets
 	@JoinColumn(name = "shop_id")
 	private Shop shop;
 
+	// ******************* Constructor *******************
+	public Pet() {
+		this.users = new ArrayList<User>();
+	}
+
+	// ******************* Setters and Getters *******************
 	public User getUser() {
 		return user;
 	}
@@ -76,12 +90,6 @@ public class Pet {
 	public void setShop(Shop shop) {
 		this.shop = shop;
 	}
-
-	@Column(updatable = false)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date createdAt;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date updatedAt;
 
 	@PrePersist
 	protected void onCreate() {
@@ -156,9 +164,4 @@ public class Pet {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
-
-	public Pet() {
-
-	}
-
 }

@@ -122,8 +122,15 @@ public class PetController {
 		User user = userService.findByUsername(username);
 		// Add relationship between pet and user (1 user --adapt-- M pets) + update
 		// status before save
+		// We should also add pet to the user adoptedPet list
 		pet.setUser(user);
+		// ?
 		pet.setStatus("Pending");
+		//		user.addAdoptedPet(pet);
+		//		for (Pet x : user.getAdoptedPets()) {
+		//			System.out.println(x.getName());
+		//		}
+		//		userService.updateUser(user);
 		petService.createPet(pet);
 		return "redirect:/user/besties";
 	}
@@ -132,7 +139,13 @@ public class PetController {
 	// their status
 	// ID here is for shop
 	@GetMapping("/shop/{id}/requests")
-	public String showRequests(@PathVariable("id") Long id, Model model) {
+	public String showRequests(@PathVariable("id") Long id, Model model, Principal principal) {
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		System.out.println("Id = "+id+"session id= "+user.getShop().getId());
+		if (id != user.getShop().getId() ) {
+			return "notallowed.jsp";
+		}
 		Shop shop = shopService.findShop(id);
 		// We will get all the shops' pets and separate them according to their status
 		// in the JSP file
@@ -145,11 +158,20 @@ public class PetController {
 	// adopted}
 	// ID here is for pet and shopid for shop
 	@GetMapping("/shop/{id}/{shopId}/accept")
-	public String accept(@PathVariable("id") Long id, @PathVariable("shopId") Long shopId) {
+	public String accept(@PathVariable("id") Long id, @PathVariable("shopId") Long shopId, Principal principal) {
+		String username = principal.getName();
+		User x = userService.findByUsername(username);
+		if (id != x.getShop().getId() ) {
+			return "notallowed.jsp";
+		}
 		Pet pet = petService.findPet(id);
 		// Just update the status before save pet
 		pet.setStatus("Adopted");
+		User user = pet.getUser();
+		user.addAdoptedPet(pet);
+		userService.updateUser(user);
 		petService.createPet(pet);
+		// Send email here
 		return "redirect:/shop/" + shopId + "/requests";
 	}
 
@@ -157,13 +179,20 @@ public class PetController {
 	// unadopted}
 	// ID here is for pet and shopid for shop
 	@GetMapping("/shop/{id}/{shopId}/destroy")
-	public String destroy(@PathVariable("id") Long id, @PathVariable("shopId") Long shopId) {
+	public String destroy(@PathVariable("id") Long id, @PathVariable("shopId") Long shopId, Principal principal) {
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		System.out.println("Id = "+id+"session id= "+user.getShop().getId());
+		if (id != user.getShop().getId() ) {
+			return "notallowed.jsp";
+		}
 		Pet pet = petService.findPet(id);
 		pet.setStatus("Unadopted");
 		// If there is relationship between pet and user we need to set it to null(the
 		// pet is no longer adopted for this user)
 		pet.setUser(null);
 		petService.createPet(pet);
+		// Send email here
 		return "redirect:/shop/" + shopId + "/requests";
 	}
 }

@@ -17,6 +17,7 @@ import com.axsos.project.models.ShopForm;
 import com.axsos.project.models.User;
 import com.axsos.project.services.ShopService;
 import com.axsos.project.services.UserService;
+import com.axsos.project.validator.ShopValidator;
 
 import jakarta.validation.Valid;
 
@@ -27,6 +28,13 @@ public class ShopController {
 	ShopService shopService;
 	@Autowired
 	UserService userService;
+	private final ShopValidator shopValidator;
+
+	// ****************************** Constructor ******************************
+	ShopController(ShopValidator shopValidator) {
+		this.shopValidator = shopValidator;
+	}
+
 
 	// ****************************** C from {CRUD} ******************************
 	// Functions allow the admin to add new shop to their partners
@@ -38,6 +46,7 @@ public class ShopController {
 	// To Do: add confirm password in shop Form
 	@PostMapping("/admin/shops/new")
 	public String createShop(@Valid @ModelAttribute("shopForm") ShopForm shopForm, BindingResult result) {
+		shopValidator.validate(shopForm, result);
 		if (result.hasErrors()) {
 			return "addshop.jsp";
 		} else {

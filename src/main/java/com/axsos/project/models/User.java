@@ -66,33 +66,11 @@ public class User {
 	@JoinColumn(name = "shop_id")
 	private Shop shop;
 
-	public List<Pet> getAdoptedPets() {
-		return adoptedPets;
-	}
-
-	public void setAdoptedPets(List<Pet> adoptedPets) {
-		this.adoptedPets = adoptedPets;
-	}
-
-	public Shop getShop() {
-		return shop;
-	}
-
-	public void setShop(Shop shop) {
-		this.shop = shop;
-	}
-
-	public List<Pet> getPets() {
-		return pets;
-	}
-
-	public void setPets(List<Pet> pets) {
-		this.pets = pets;
-	}
-
 	// ******************* Constructor *******************
 	public User() {
 		this.roles = new ArrayList<Role>();
+		this.adoptedPets = new ArrayList<Pet>();
+		this.pets = new ArrayList<Pet>();
 	}
 	// ******************* Setters and Getters *******************
 
@@ -163,6 +141,40 @@ public class User {
 	public void addRole(Role role) {
 
 		this.roles.add(role);
+	}
+
+	public List<Pet> getAdoptedPets() {
+		return adoptedPets;
+	}
+
+	public void setAdoptedPets(List<Pet> adoptedPets) {
+		this.adoptedPets = adoptedPets;
+	}
+
+	public Shop getShop() {
+		return shop;
+	}
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+
+	public List<Pet> getPets() {
+		return pets;
+	}
+
+	public void setPets(List<Pet> pets) {
+		this.pets = pets;
+	}
+
+	// Function to add a new adopted pet
+	public void addAdoptedPet(Pet pet) {
+		this.adoptedPets.add(pet);
+	}
+
+	// Function to remove a pet from adopted pet
+	public void removeAdoptedPet(Pet pet) {
+		this.adoptedPets.remove(pet);
 	}
 
 	// ******************* For create and update *******************
