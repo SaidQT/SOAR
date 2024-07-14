@@ -77,7 +77,7 @@
 	position: relative;
 	overflow: hidden;
 	background: #F9F3EC;
-	min-height: 80vh; /* Adjust this value as needed for larger height */
+	min-height: 60vh; /* Adjust this value as needed for larger height */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -141,13 +141,25 @@ padding
 
 
 
+
+
+
+
 :
+
+
 
 
  
 
 
+
+
 20px
+
+
+
+
 
 
 
@@ -158,13 +170,25 @@ background
 
 
 
+
+
+
+
 :
+
+
 
 
  
 
 
+
+
 rgba
+
+
+
+
 
 
 
@@ -174,6 +198,10 @@ rgba
 
 
 
+
+
+
+
 0
 ,
 0
@@ -181,6 +209,10 @@ rgba
 0
 ,
 0
+
+
+
+
 
 
 
@@ -190,7 +222,15 @@ rgba
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -201,13 +241,25 @@ border-radius
 
 
 
+
+
+
+
 :
+
+
 
 
  
 
 
+
+
 10px
+
+
+
+
 
 
 
@@ -225,9 +277,17 @@ border-radius
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -237,10 +297,22 @@ transform
 
 
 
+
+
+
+
 translateX
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -250,12 +322,24 @@ translateX
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 ;
 }
 100
+
+
+
+
 
 
 
@@ -267,7 +351,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -275,7 +367,15 @@ transform
 translateX
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -285,7 +385,15 @@ translateX
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 ;
@@ -410,7 +518,7 @@ translateX
 											icon="mdi:heart" class="fs-4"></iconify-icon>
 								</a></li>
 
-							
+
 
 								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasSearch"
@@ -496,11 +604,10 @@ translateX
 
 										<li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
-											aria-controls="offcanvasCart"> 
-											<iconify-icon icon="mdi:logout" class="logout-icon fs-4 position-relative">
-											</iconify-icon>
-
-												<!-- <span
+											aria-controls="offcanvasCart"> <iconify-icon
+													icon="mdi:logout"
+													class="logout-icon fs-4 position-relative">
+												</iconify-icon> <!-- <span
 												class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
 													04 </span> -->
 										</a></li>
@@ -521,108 +628,131 @@ translateX
 				</div>
 	</header>
 
-  <section id="banner" class="py-3" style="background: #F9F3EC;">
-    <div class="container">
-      <div class="hero-content py-5 my-3">
-        <h2 class="display-1 mt-3 mb-0">About <span class="text-primary">Us</span> </h2>
-        <nav class="breadcrumb">
-          <a class="breadcrumb-item nav-link" href="#">Home</a>
-          <a class="breadcrumb-item nav-link" href="#">Pages</a>
-          <span class="breadcrumb-item active" aria-current="page">About Us</span>
-        </nav>
-      </div>
-    </div>
-  </section>
+	<section id="banner" class="py-0" style="background: #F9F3EC;">
+		<div class="container p-0">
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<div class="hero-content py-0 my-0">
+						<h2 class="display-1 mt-3 mb-0">
+							About <span class="text-primary">Us</span>
+						</h2>
+						
+					</div>
+				</div>
+				<div class="col-md-6">
+					<img src="images/soar.png" class="img-fluid soarIm mt-3" alt="About Us Image"
+						style="max-width: 100%;">
+				</div>
+			</div>
+		</div>
+	</section>
 
-<div class="my-5 py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 my-4 pe-5">
-                <h2>How SOAR Started Helping Pets Find Homes</h2>
-                <p>At SOAR, our mission began with a passion for helping pets in need find loving homes. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
-                <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 py-2 px-4">
-                    Read Our Story
-                    <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
+
+	<div class="my-5 py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 my-4 pe-5">
+					<h2>How SOAR Started Helping Pets Find Homes</h2>
+					<p>At SOAR, our mission began with a passion for helping pets
+						in need find loving homes. Lorem ipsum dolor sit amet, consectetur
+						adipiscing elit. Integer nec odio. Praesent libero. Sed cursus
+						ante dapibus diam. Sed nisi.</p>
+					<a href="#"
+						class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 py-2 px-4">
+						Read Our Story <svg width="24" height="24" viewBox="0 0 24 24"
+							class="mb-1">
                         <use xlink:href="#arrow-right"></use>
                     </svg>
-                </a>
-            </div>
-            <div class="col-md-6 my-4">
-                <h2>Discover Our Adoption Process</h2>
-                <p>Interested in adopting a pet through SOAR? Learn about our straightforward adoption process and how we make it easy for you to find your new furry companion.</p>
-                <ul>
-                    <li><span class="text-primary"></span> Explore available pets</li>
-                    <li><span class="text-primary"></span> Submit an adoption application</li>
-                    <li><span class="text-primary"></span> Meet your potential pet</li>
-                    <li><span class="text-primary"></span> Finalize the adoption</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+					</a>
+				</div>
+				<div class="col-md-6 my-4">
+					<h2>Discover Our Adoption Process</h2>
+					<p>Interested in adopting a pet through SOAR? Learn about our
+						straightforward adoption process and how we make it easy for you
+						to find your new furry companion.</p>
+					<ul>
+						<li><span class="text-primary"></span> Explore available pets</li>
+						<li><span class="text-primary"></span> Submit an adoption
+							application</li>
+						<li><span class="text-primary"></span> Meet your potential
+							pet</li>
+						<li><span class="text-primary"></span> Finalize the adoption</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<section class="ftco-counter" id="section-counter" style="background: #F9F3EC; padding: 2rem">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                <div class="block-18 text-center">
-                    <div class="text">
-                        <strong class="number" data-number="150">0</strong>
-                    </div>
-                    <div class="text">
-                        <span>Pets Saved</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                <div class="block-18 text-center">
-                    <div class="text">
-                        <strong class="number" data-number="500">0</strong>
-                    </div>
-                    <div class="text">
-                        <span>Successful Adoptions</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                <div class="block-18 text-center">
-                    <div class="text">
-                        <strong class="number" data-number="30">0</strong>
-                    </div>
-                    <div class="text">
-                        <span>Dedicated Volunteers</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                <div class="block-18 text-center">
-                    <div class="text">
-                        <strong class="number" data-number="200">0</strong>
-                    </div>
-                    <div class="text">
-                        <span>Community Events Hosted</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+	<section class="ftco-counter" id="section-counter"
+		style="background: #F9F3EC; padding: 2rem">
+		<div class="container">
+			<div class="row">
+				<div
+					class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+					<div class="block-18 text-center">
+						<div class="text">
+							<strong class="number" data-number="150">0</strong>
+						</div>
+						<div class="text">
+							<span>Pets Saved</span>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+					<div class="block-18 text-center">
+						<div class="text">
+							<strong class="number" data-number="500">0</strong>
+						</div>
+						<div class="text">
+							<span>Successful Adoptions</span>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+					<div class="block-18 text-center">
+						<div class="text">
+							<strong class="number" data-number="30">0</strong>
+						</div>
+						<div class="text">
+							<span>Dedicated Volunteers</span>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+					<div class="block-18 text-center">
+						<div class="text">
+							<strong class="number" data-number="200">0</strong>
+						</div>
+						<div class="text">
+							<span>Community Events Hosted</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-<div class="my-5 pb-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class="display-4">Meet Your New Best Friend with SOAR.</h2>
-            </div>
-            <div class="col-md-6">
-                <p>Discover the joy of adopting a pet from SOAR. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam euismod nunc vitae interdum mauris. Vivamus pretium lectus mauris, vitae ornare quam diam felis.</p>
-                <p>Join us in making a difference in a pet's life today.</p>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="my-5 pb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h2 class="display-4">Meet Your New Best Friend with SOAR.</h2>
+				</div>
+				<div class="col-md-6">
+					<p>Discover the joy of adopting a pet from SOAR. Lorem ipsum
+						dolor sit amet, consectetur adipiscing elit. Aliquam euismod nunc
+						vitae interdum mauris. Vivamus pretium lectus mauris, vitae ornare
+						quam diam felis.</p>
+					<p>Join us in making a difference in a pet's life today.</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<section id="register"
+	<section id="register"
 		style="background: url('images/background-img.png');">
 		<div class="container ">
 			<div class="row my-5 py-5">
@@ -631,7 +761,8 @@ translateX
 						<div class="row banner-content align-items-center">
 							<div class="content-wrapper text-background">
 								<h2 class="display-3 fw-normal text-center">
-									Donate for Love <span class="text-primary">Spread love with giving</span>
+									Donate for Love <span class="text-primary">Spread love
+										with giving</span>
 								</h2>
 								<form>
 
@@ -751,6 +882,22 @@ translateX
 	<script src="js/plugins.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/iconify.js"></script>
+	<script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
 
