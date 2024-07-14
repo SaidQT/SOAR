@@ -108,4 +108,14 @@ public class ShopController {
 		shopService.deleteShop(id);
 		return "redirect:/admin/home";
 	}
+	
+	
+	@GetMapping("/admin/dashboard")
+	public String AdminDashboard(Model model) {
+		List<Shop> shops = shopService.findAll();
+        model.addAttribute("shops", shops);
+        long totalShops = shopService.getTotalShops();
+        model.addAttribute("totalShops", totalShops);
+		return "adminDashboard.jsp";
+	}
 }

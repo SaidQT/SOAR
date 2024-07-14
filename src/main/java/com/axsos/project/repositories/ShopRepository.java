@@ -10,4 +10,5 @@ import com.axsos.project.models.Shop;
 @Repository
 public interface ShopRepository extends CrudRepository<Shop, Long>{
 	 List<Shop> findAll();
+	 long count();
 }
