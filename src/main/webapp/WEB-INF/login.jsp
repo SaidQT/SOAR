@@ -14,17 +14,623 @@
 <html lang="en">
 
 <head>
-  <title>SOAR</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="author" content="">
-  <meta name="keywords" content="">
-  <meta name="description" content="">
-</head>
+<title>SOAR</title>
+<!-- <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="author" content="">
+<meta name="keywords" content="">
+<meta name="description" content=""> -->
 
+
+<style>
+
+/* Adjust image size and spacing */
+.swiper-slide .col-md-2 {
+	text-align: center;
+	padding-top: 20px; /* Adjust spacing between image and text */
+}
+
+.swiper-slide .col-md-2 img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 50%; /* Creates a circular shape for the image */
+}
+
+/* Adjust text alignment and spacing */
+.swiper-slide .col-md-10 {
+	padding: 20px; /* Adjust padding as needed */
+}
+
+#testimonial p {
+	font-size: 1.2rem; /* Adjust font size as needed */
+	line-height: 1.6; /* Adjust line height for readability */
+	margin-bottom: 20px; /* Add some bottom margin between paragraphs */
+}
+
+#testimonial .swiper-slide {
+	display: flex; /* Ensure each slide takes full width */
+	justify-content: center; /* Center content horizontally */
+}
+
+#testimonial .swiper-slide .col-md-10 {
+	width: 200%; /* Limit the maximum width of the text block */
+}
+
+@media ( min-width : 992px) {
+	#testimonial .swiper-slide .col-md-10 {
+		padding: 30px;
+		/* Add padding inside the text block for better spacing */
+	}
+}
+
+.category-image {
+	width: 100px; /* Adjust width as needed */
+	height: 100px; /* Adjust height as needed */
+	/*  border-radius: 50%; /* Makes the image circular */ */
+	object-fit: cover; /* Ensures the image covers the entire circle */
+}
+
+#banner {
+	position: relative;
+	overflow: hidden;
+	background: #F9F3EC;
+	min-height: 60vh; /* Adjust this value as needed for larger height */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	/* 
+    
+    position: relative;
+    overflow: hidden;
+    background: #F9F3EC;
+    min-height: 80vh; */
+	/* Adjust this value as needed for larger height */
+}
+
+#bestselling .swiper-slide img {
+	width: 100%; /* Make images take the full width of the container */
+	height: 200px; /* Set the desired height */
+	object-fit: cover;
+}
+
+#bestselling .swiper-slide .card-body {
+	text-align: center; /* Center-align text */
+}
+
+.text-background {
+	background: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+	backdrop-filter: blur(10px); /* Blur effect */
+	padding: 20px;
+	border-radius: 10px;
+	align-items: center;
+	justify-content: center;
+}
+
+.video-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	/* z-index: -1; */
+}
+
+.banner-content-wrapper {
+	position: relative;
+	z-index: 1;
+	align-items: center;
+	/*  justify-content: center; */
+	height: 100%;
+	/* Ensures the content wrapper takes full height of the container */
+	text-align: center;
+	color: white; /* Set text color for better visibility on images */
+}
+
+/* .banner-content-wrapper {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white; /* Set text color for better visibility on videos */
+padding
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+20px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;
+background
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+rgba
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
+,
+0
+,
+0
+,
+0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+; /* Semi-transparent background color for contrast */
+border-radius
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+10px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;
+}
+* /
+
+ @keyframes moveText { 0% {
+	transform: translateX(0);
+}
+
+50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
+{
+transform
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+translateX
+
+
+
+
+
+
+
+
+
+
+
+
+(
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+20px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+
+
+
+
+
+
+
+
+
+
+
+
+;
+}
+100
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
+{
+transform
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+translateX
+
+
+
+
+
+
+
+
+
+
+
+
+(
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+
+
+
+
+
+
+
+
+
+
+
+
+;
+}
+}
+.animate-text {
+	display: inline-block;
+	animation: moveText 3s infinite;
+}
+
+.preloader-wrapper, .offcanvas-header, .offcanvas-body, .order-md-last,
+	.main-menu, .banner-content, .categories-item, .content-wrapper {
+	text-align: center;
+}
+
+.content-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.banner-title {
+	width: 100%;
+	text-align: center;
+}
+
+.banner-title a span:hover {
+	text-decoration: underline;
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.secondary-font {
+	display: block;
+}
+
+.search-bar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.swiper-slide {
+	text-align: center;
+}
+
+.navbar-nav {
+	justify-content: center;
+}
+
+.list-group-item {
+	justify-content: center;
+}
+
+.list-group-item h6, .list-group-item small, .list-group-item span {
+	text-align: center;
+	display: block;
+}
+</style>
+
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous">
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="/css/style1.css">
 
 <link rel="stylesheet" href="css/swiper.css" />
 <link rel="stylesheet" href="css/bootstrap.css" />
@@ -35,11 +641,7 @@
 
 
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Chilanka&family=Montserrat:wght@300;400;500&display=swap"
-	rel="stylesheet">
+
 
 </head>
 
@@ -47,158 +649,13 @@
 
 <body>
 
-  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <defs>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="link"
-			viewBox="0 0 24 24">
-        <path fill="currentColor"
-			d="M12 19a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0-4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm-5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm7-12h-1V2a1 1 0 0 0-2 0v1H8V2a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9h16Zm0-11H4V6a1 1 0 0 1 1-1h1v1a1 1 0 0 0 2 0V5h8v1a1 1 0 0 0 2 0V5h1a1 1 0 0 1 1 1ZM7 15a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0 4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-right"
-			viewBox="0 0 24 24">
-        <path fill="currentColor"
-			d="M17.92 11.62a1 1 0 0 0-.21-.33l-5-5a1 1 0 0 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l5-5a1 1 0 0 0 .21-.33a1 1 0 0 0 0-.76Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="category"
-			viewBox="0 0 24 24">
-        <path fill="currentColor"
-			d="M19 5.5h-6.28l-.32-1a3 3 0 0 0-2.84-2H5a3 3 0 0 0-3 3v13a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-10a3 3 0 0 0-3-3Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1h4.56a1 1 0 0 1 .95.68l.54 1.64a1 1 0 0 0 .95.68h7a1 1 0 0 1 1 1Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="calendar"
-			viewBox="0 0 24 24">
-        <path fill="currentColor"
-			d="M19 4h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm1 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7h16Zm0-9H4V7a1 1 0 0 1 1-1h2v1a1 1 0 0 0 2 0V6h6v1a1 1 0 0 0 2 0V6h2a1 1 0 0 1 1 1Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="heart"
-			viewBox="0 0 24 24">
-        <path fill="currentColor"
-			d="M20.16 4.61A6.27 6.27 0 0 0 12 4a6.27 6.27 0 0 0-8.16 9.48l7.45 7.45a1 1 0 0 0 1.42 0l7.45-7.45a6.27 6.27 0 0 0 0-8.87Zm-1.41 7.46L12 18.81l-6.75-6.74a4.28 4.28 0 0 1 3-7.3a4.25 4.25 0 0 1 3 1.25a1 1 0 0 0 1.42 0a4.27 4.27 0 0 1 6 6.05Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="plus"
-			viewBox="0 0 24 24">
-        <path fill="currentColor"
-			d="M19 11h-6V5a1 1 0 0 0-2 0v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="minus"
-			viewBox="0 0 24 24">
-        <path fill="currentColor"
-			d="M19 11H5a1 1 0 0 0 0 2h14a1 1 0 0 0 0-2Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="cart"
-			viewBox="0 0 24 24">
-        <path fill="currentColor"
-			d="M8.5 19a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 8.5 19ZM19 16H7a1 1 0 0 1 0-2h8.491a3.013 3.013 0 0 0 2.885-2.176l1.585-5.55A1 1 0 0 0 19 5H6.74a3.007 3.007 0 0 0-2.82-2H3a1 1 0 0 0 0 2h.921a1.005 1.005 0 0 1 .962.725l.155.545v.005l1.641 5.742A3 3 0 0 0 7 18h12a1 1 0 0 0 0-2Zm-1.326-9l-1.22 4.274a1.005 1.005 0 0 1-.963.726H8.754l-.255-.892L7.326 7ZM16.5 19a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="check"
-			viewBox="0 0 24 24">
-        <path fill="currentColor"
-			d="M18.71 7.21a1 1 0 0 0-1.42 0l-7.45 7.46l-3.13-3.14A1 1 0 1 0 5.29 13l3.84 3.84a1 1 0 0 0 1.42 0l8.16-8.16a1 1 0 0 0 0-1.47Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="trash"
-			viewBox="0 0 24 24">
-        <path fill="currentColor"
-			d="M10 18a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1ZM20 6h-4V5a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v1H4a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2ZM10 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h-4Zm7 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8h10Zm-3-1a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="star-outline"
-			viewBox="0 0 15 15">
-        <path fill="none" stroke="currentColor" stroke-linecap="round"
-			stroke-linejoin="round"
-			d="M7.5 9.804L5.337 11l.413-2.533L4 6.674l2.418-.37L7.5 4l1.082 2.304l2.418.37l-1.75 1.793L9.663 11L7.5 9.804Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="star-solid"
-			viewBox="0 0 15 15">
-        <path fill="currentColor"
-			d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="search"
-			viewBox="0 0 24 24">
-        <path fill="currentColor"
-			d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="user"
-			viewBox="0 0 24 24">
-        <path fill="currentColor"
-			d="M15.71 12.71a6 6 0 1 0-7.42 0a10 10 0 0 0-6.22 8.18a1 1 0 0 0 2 .22a8 8 0 0 1 15.9 0a1 1 0 0 0 1 .89h.11a1 1 0 0 0 .88-1.1a10 10 0 0 0-6.25-8.19ZM12 12a4 4 0 1 1 4-4a4 4 0 0 1-4 4Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="close"
-			viewBox="0 0 15 15">
-        <path fill="currentColor"
-			d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
-      </symbol>
 
-    </defs>
-  </svg>
+	<div class="preloader-wrapper">
+		<div class="preloader"></div>
+	</div>
 
-  <div class="preloader-wrapper">
-    <div class="preloader">
-    </div>
-  </div>
 
-  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
-    <div class="offcanvas-header justify-content-center">
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <div class="order-md-last">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-primary">Your cart</span>
-          <span class="badge bg-primary rounded-circle pt-2">3</span>
-        </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Grey Hoodie</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Dog Food</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Soft Toy</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span class="fw-bold">Total (USD)</span>
-            <strong>$20</strong>
-          </li>
-        </ul>
-
-        <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-      </div>
-    </div>
-  </div>
-
-<%--   <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasSearch"
-    aria-labelledby="Search">
-    <div class="offcanvas-header justify-content-center">
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-
-      <div class="order-md-last">
-        <h4 class="text-primary text-uppercase mb-3">
-          Search
-        </h4>
-        <div class="search-bar border rounded-2 border-dark-subtle">
-          <form id="search-form" class="text-center d-flex align-items-center" action="" method="">
-            <input type="text" class="form-control border-0 bg-transparent" placeholder="Search Here" />
-            <iconify-icon icon="tabler:search" class="fs-4 me-3"></iconify-icon>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div> --%>
-
- <header
+	<header
 		style="position: sticky; top: 0; z-index: 1000; background-color: white;">
 		<div class="container py-2">
 			<div class="row py-4 pb-0 pb-sm-4 align-items-center ">
@@ -214,7 +671,7 @@
 
 						<div class="col-sm-4 col-lg-3 text-center text-sm-start">
 							<div class="main-logo">
-								<a href=""> <img src="images/logo.png" alt="logo"
+								<a href="/home"> <img src="images/logo.png" alt="logo"
 									class="img-fluid1">
 								</a>
 							</div>
@@ -229,13 +686,7 @@
 											icon="mdi:heart" class="fs-4"></iconify-icon>
 								</a></li>
 
-								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
-									data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-										<iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
-										<span
-										class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-											03 </span>
-								</a></li>
+
 
 								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasSearch"
@@ -246,10 +697,7 @@
 
 						</div>
 
-						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button> -->
+
 
 						<div class="offcanvas offcanvas-end" tabindex="-1"
 							id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -273,7 +721,7 @@
             </li> -->
 
 
-									<li class="nav-item"><a href="index.html" class="nav-link">Home</a>
+									<li class="nav-item"><a href="/home" class="nav-link">Home</a>
 									</li>
 
 
@@ -282,30 +730,31 @@
               </li> -->
 
 
-									<li class="nav-item"><a href="about.html" class="nav-link">About
+									<li class="nav-item"><a href="/aboutus" class="nav-link">About
 											Us</a></li>
 
 									<li class="nav-item dropdown"><a
 										class="nav-link dropdown-toggle" role="button" id="pages"
 										data-bs-toggle="dropdown" aria-expanded="false">Adoption</a>
 										<ul class="dropdown-menu" aria-labelledby="pages">
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart/cat"
 												class="dropdown-item">Cats</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart/dog"
 												class="dropdown-item">Dogs</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Other</a></li>
 
 										</ul></li>
 
-									<li><a href="faqs.html" class="nav-link">FAQs</a></li>
+									<li><a href="/faqs" class="nav-link">FAQs</a></li>
+									<li><a href="/contact" class="nav-link">Contact Us</a></li>
 									<li><a href="single-post.html" class="nav-link">My
 											Besties</a></li>
-									<li><a href="single-post.html" class="nav-link">Single
-											Post</a></li>
-									<li><a href="" class="nav-link">Partners</a></li>
+									<!-- <li><a href="single-post.html" class="nav-link">Single
+											Post</a></li> -->
+									<li><a href="/partner" class="nav-link">Partners</a></li>
 
 
 
@@ -314,21 +763,24 @@
 
 								<div class="d-none d-lg-flex align-items-end">
 									<ul class="d-flex justify-content-end list-unstyled m-0">
-										<li><a href="account.html" class="mx-3"> <iconify-icon
+										<li><a href="/login" class="mx-3"> <iconify-icon
 													icon="healthicons:person" class="fs-4"></iconify-icon>
 										</a></li>
-										<li><a href="wishlist.html" class="mx-3"> <iconify-icon
+										<li><a href="/wishlist" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
 
 										<li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
 											aria-controls="offcanvasCart"> <iconify-icon
-													icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
-												<span
+													icon="mdi:logout"
+													class="logout-icon fs-4 position-relative">
+												</iconify-icon> <!-- <span
 												class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-													03 </span>
+													04 </span> -->
 										</a></li>
+
+
 									</ul>
 
 								</div>
@@ -339,25 +791,91 @@
 
 					</nav>
 
-
-
 				</div>
 	</header>
+	<section id="banner" class="py-0" style="background: #F9F3EC;">
+		<div class="container p-0">
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<div class="hero-content py-0 my-0">
+						<h2 class="display-1 mt-3 mb-0">Account</h2>
 
-	<section id="banner" class="py-3" style="background: #F9F3EC;">
-		<div class="container">
-			<div class="hero-content py-5 my-3">
-				<h2 class="display-1 mt-3 mb-0">Account</h2>
-				<nav class="breadcrumb">
-					<a class="breadcrumb-item nav-link" href="#">Home</a> <a
-						class="breadcrumb-item nav-link" href="#">Pages</a> <span
-						class="breadcrumb-item active" aria-current="page">Account</span>
-				</nav>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<img src="images/soar.png" class="img-fluid soarIm mt-3"
+						alt="About Us Image" style="max-width: 100%;">
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="login-tabs padding-large">
+		<div class="container my-5 py-5">
+			<div class="row">
+				<div class="cont">
+					<div class="form sign-in">
+						<h2>Welcome back,</h2>
+						<form:form action="login" method="POST" modelAttribute="newLogin">
+							<label> <span>Username</span> <form:input path="username"
+									type="text" /> <form:errors path="username"
+									class="text-warning" />
+							</label>
+							<label> <span>Password</span> <form:password path="password" />
+								<form:errors path="password" class="text-warning" />
+							</label>
+							<p class="forgot-pass">Forgot password?</p>
+							<button class="submit">Sign In</button>
+							<button class="fb-btn">
+								Connect with <span>gmail</span>
+							</button>
+						</form:form>
+					</div>
+					<div class="sub-cont">
+						<div class="img">
+							<div class="img__text m--up">
+								<h2>New here?</h2>
+								<p>Sign up and discover great amount of new opportunities!</p>
+							</div>
+							<div class="img__text m--in">
+								<h2>One of us?</h2>
+								<p>If you already have an account, just sign in. We've
+									missed you!</p>
+							</div>
+							<div class="img__btn">
+								<span class="m--up">Sign Up</span> <span class="m--in">Sign
+									In</span>
+							</div>
+						</div>
+						<div class="form sign-up">
+							<h2>Adopt pets, save lives,</h2>
+							<form:form action="register" method="POST"
+								modelAttribute="user">
+								<label> <span>Name</span> <form:input path="username" />
+									<form:errors path="username" class="text-warning" />
+								</label>
+								<label> <span>Email</span> <form:input path="email"
+										type="email" /> <form:errors path="email"
+										class="text-warning" />
+								</label>
+								<label> <span>Password</span> <form:password
+										path="password" /> <form:errors path="password"
+										class="text-warning" />
+								</label>
+								<label> <span>Confirm Password</span> <form:password
+										path="passwordConfirmation" /> <form:errors path="passwordConfirmation"
+										class="text-warning" />
+								</label>
+								<button class="submit">Sign Up</button>
+								<!-- <button  class="fb-btn">Join with <span>gmail</span></button> -->
+							</form:form>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="login-tabs padding-large">
+	<%-- <section class="login-tabs padding-large">
 		<div class="container my-5 py-5">
 			<div class="row">
 				<div class="tabs-listing">
@@ -397,7 +915,8 @@
 										<form:input path="username" placeholder="Your full name"
 											class="form-control mb-3 p-4" />
 										<form:errors path="username" class="text-warning" />
-										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+										<input type="hidden" name="${_csrf.parameterName}"
+											value="${_csrf.token}" />
 										<form:input type="password" path="password"
 											placeholder="Set your password" class="form-control mb-3 p-4" />
 										<form:errors path="password" class="text-warning" />
@@ -434,7 +953,7 @@
 										<form:input type="password" path="password"
 											placeholder="Set your password" class="form-control mb-3 p-4" />
 										<form:errors path="password" class="text-warning" />
-										
+
 										<form:input type="password" path="passwordConfirmation"
 											placeholder="Retype your password"
 											class="form-control mb-3 p-4" />
@@ -453,7 +972,7 @@
 			</div>
 		</div>
 	</section>
-
+ --%>
 	<section id="insta" class="my-5">
 		<div class="row g-0 py-5">
 			<div class="col instagram-item  text-center position-relative">
@@ -513,7 +1032,7 @@
 		</div>
 	</section>
 
-	<footer id="footer" class="my-5" style="border-top: 1px solid #ccc" >
+	<footer id="footer" class="my-5" style="border-top: 1px solid #ccc">
 		<div class="container py-5 my-5">
 			<div class="row"
 				style="align-items: center; justify-content: space-between;">
@@ -585,7 +1104,16 @@
 			</div>
 		</div>
 	</footer>
-
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			document.querySelector('.img__btn').addEventListener(
+					'click',
+					function() {
+						document.querySelector('.cont').classList
+								.toggle('s--signup');
+					});
+		});
+	</script>
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/swiper.js"></script>
 	<script src="js/bootstrap.bundle.js"></script>

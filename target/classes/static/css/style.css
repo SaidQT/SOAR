@@ -94,6 +94,9 @@ CSS STRUCTURE:
   --header-height-min: 80px;
 }
 
+.soarIm {
+	width:70%;
+}
 /* on mobile devices below 600px
  */
 @media screen and (max-width: 600px) {
