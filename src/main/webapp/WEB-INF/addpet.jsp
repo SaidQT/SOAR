@@ -25,8 +25,6 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse show" id="navbarBasic">
-			<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/admin/dashboard">Dashboard</a></li>
 				<ul class="navbar-nav me-auto mb-2 mb-xl-0">
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/shop/home">Pets</a></li>
@@ -58,6 +56,9 @@
 				<form:input path="city" required="true" placeholder="City" />
 			</p>
 			<p>
+				<form:input path="breed" required="true" placeholder="Breed" />
+			</p>
+			<p>
 
 				<form:textarea path="imageUrl" placeholder="Image URL"
 					required="true" />
@@ -75,6 +76,9 @@
 			</p>
 			<p>
 				<form:errors path="city" />
+			</p>
+			<p>
+				<form:errors path="breed" />
 			</p>
 			<p>
 				<form:errors path="imageUrl" />

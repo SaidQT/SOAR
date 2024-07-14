@@ -157,6 +157,7 @@ public class UserController {
 		model.addAttribute("favorite", pets);
 		return "FavortiePage.jsp";
 	}
+
 	// ****************************** R from {CRUD} ******************************
 	// Function to render the page that contains user adoption request and their
 	// status
@@ -165,10 +166,10 @@ public class UserController {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		List<Pet> requestPets = user.getAdoptedPets();
-		//		List<Pet> resfuedPets = user.getRefusedPets();
-		//		List<Pet> pets = user.getAdoptedPets();
-		//		List<Pet> userPets = new ArrayList<>();
-		//		Pet tempPet = new Pet();
+		// List<Pet> resfuedPets = user.getRefusedPets();
+		// List<Pet> pets = user.getAdoptedPets();
+		// List<Pet> userPets = new ArrayList<>();
+		// Pet tempPet = new Pet();
 		if (requestPets != null) {
 			Iterator<Pet> iterator = requestPets.iterator();
 			while (iterator.hasNext()) {
@@ -180,18 +181,18 @@ public class UserController {
 			model.addAttribute("requestPets", requestPets);
 		}
 
-
-		//		System.out.println("Requ pets");
-		//		for (Pet x : requestPets) {
-		//			System.out.println("Requ pets"+x.getStatus()+ "   "+x.getName());
-		//		}
-		//		System.out.println("refused pets");
-		//		for (Pet x : resfuedPets) {
-		//			System.out.println(x.getStatus()+ "   "+x.getName());
-		//		}
-		//		model.addAttribute("refusedPets", resfuedPets);
+		// System.out.println("Requ pets");
+		// for (Pet x : requestPets) {
+		// System.out.println("Requ pets"+x.getStatus()+ " "+x.getName());
+		// }
+		// System.out.println("refused pets");
+		// for (Pet x : resfuedPets) {
+		// System.out.println(x.getStatus()+ " "+x.getName());
+		// }
+		// model.addAttribute("refusedPets", resfuedPets);
 		return "besties.jsp";
 	}
+
 	// ****************************** U from {CRUD} ******************************
 	// Function to canaling adoption request while request still pending
 	@PatchMapping("/user/cancel")
@@ -200,10 +201,12 @@ public class UserController {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		// Step for remove relationship {adoption} between user and pet:
-		// *) Remove relationship between pet and user (1 user --adapt-- M pets) from pet side
-		//    --> By make the user null in the pet
-		// *) Remove relationship between pet and user (1 user --adapt-- M pets) from user side
-		//    --> By remove the pet from adoptedPet list for user
+		// *) Remove relationship between pet and user (1 user --adapt-- M pets) from
+		// pet side
+		// --> By make the user null in the pet
+		// *) Remove relationship between pet and user (1 user --adapt-- M pets) from
+		// user side
+		// --> By remove the pet from adoptedPet list for user
 		// *) Update the pet status to be Unadopted
 		// *) Add the pet in the cancel request in the refusedPets list for the user
 		// *) Save the changes in both pet and user
@@ -211,8 +214,19 @@ public class UserController {
 		pet.setStatus("Unadopted");
 		petService.createPet(pet);
 		user.removeAdoptedPet(pet);
-		//		user.addRefusedPets(pet);
+		// user.addRefusedPets(pet);
 		userService.updateUser(user);
 		return "redirect:/user/besties";
+	}
+
+	@GetMapping("/wishlist") // user/wishlist
+	public String showWishlist(Model model, Principal principal) {
+		if (principal != null) {
+			String username = principal.getName();
+			User user = userService.findByUsername(username); // Fetch the current user
+			model.addAttribute("currentUser", user); // Add the current user to the model
+			model.addAttribute("favorites", user.getPets()); // Add the user's favorite pets to the model
+		}
+		return "wishlist.jsp"; // Return the name of the wishlist JSP view
 	}
 }

@@ -26,8 +26,6 @@
 			</button>
 			<div class="collapse navbar-collapse show" id="navbarBasic">
 				<ul class="navbar-nav me-auto mb-2 mb-xl-0">
-				<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/admin/dashboard">Dashboard</a></li>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/shop/home">Pets</a></li>
 					<li class="nav-item"><a class="nav-link" href="/shop/add">Add
@@ -38,8 +36,8 @@
 	</nav>
 	<div class="form-container">
 		<h1>Edit Pet Information</h1>
-		<form:form action="/shop/${pet.id}" method="post" modelAttribute="pet">
-			<input type="hidden" name="_method" value="patch">
+		<form:form action="/pet/${pet.id}" method="post" modelAttribute="pet">
+			<input type="hidden" name="_method" value="put">
 			<p>
 				<form:label path="name">Name</form:label>
 				<form:input path="name" required="true" />
