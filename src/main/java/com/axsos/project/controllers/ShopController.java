@@ -89,9 +89,19 @@ public class ShopController {
 		return "redirect:/admin/home";
 	}
 	
+	@GetMapping("/admin/dashboard")
+	public String AdminDashboard(Model model) {
+		List<Shop> shops = shopService.findAll();
+        model.addAttribute("shops", shops);
+        long totalShops = shopService.getTotalShops();
+        model.addAttribute("totalShops", totalShops);
+		return "adminDashboard.jsp";
+	}
+	
 	@GetMapping("/aboutus")
 	public String AboutUs(Model model) {
 		model.addAttribute("allPartners", shopService.findAll());
 		return "AboutUs.jsp";
 	}
+	
 }
