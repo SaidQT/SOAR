@@ -1,5 +1,6 @@
 package com.axsos.project.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +26,7 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "shops")
 public class Shop {
+	// ******************* Attributes *******************
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -44,13 +46,22 @@ public class Shop {
 	@Size(min = 10, max = 15, message = "Phone number must be between 10 and 15 digits")
 	@Pattern(regexp = "^[0-9]*$", message = "Phone number must contain only digits")
 	private String phoneNumber;
-
+	@Column(updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date createdAt;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date updatedAt;
 	@OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
 	private List<Pet> pets;
-
 	@OneToOne(mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private User user;
 
+	// ******************* Constructor *******************
+	public Shop() {
+		this.pets = new ArrayList<Pet>();
+	}
+
+	// ******************* Setters and Getters *******************
 	public List<Pet> getPets() {
 		return pets;
 	}
@@ -66,13 +77,6 @@ public class Shop {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	@Column(updatable = false)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date createdAt;
-
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date updatedAt;
 
 	public Integer getMaxCapacity() {
 		return maxCapacity;
@@ -122,10 +126,6 @@ public class Shop {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Shop() {
-		
-	}
-
 	// ******************* For create and update *******************
 	@PrePersist
 	protected void onCreate() {
@@ -136,5 +136,4 @@ public class Shop {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-
 }

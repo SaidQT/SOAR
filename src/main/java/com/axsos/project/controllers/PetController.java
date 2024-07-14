@@ -122,8 +122,15 @@ public class PetController {
 		User user = userService.findByUsername(username);
 		// Add relationship between pet and user (1 user --adapt-- M pets) + update
 		// status before save
+		// We should also add pet to the user adoptedPet list
 		pet.setUser(user);
+		// ?
 		pet.setStatus("Pending");
+		//		user.addAdoptedPet(pet);
+		//		for (Pet x : user.getAdoptedPets()) {
+		//			System.out.println(x.getName());
+		//		}
+		//		userService.updateUser(user);
 		petService.createPet(pet);
 		return "redirect:/user/besties";
 	}
@@ -149,7 +156,11 @@ public class PetController {
 		Pet pet = petService.findPet(id);
 		// Just update the status before save pet
 		pet.setStatus("Adopted");
+		User user = pet.getUser();
+		user.addAdoptedPet(pet);
+		userService.updateUser(user);
 		petService.createPet(pet);
+		// Send email here
 		return "redirect:/shop/" + shopId + "/requests";
 	}
 
@@ -164,6 +175,7 @@ public class PetController {
 		// pet is no longer adopted for this user)
 		pet.setUser(null);
 		petService.createPet(pet);
+		// Send email here
 		return "redirect:/shop/" + shopId + "/requests";
 	}
 }
