@@ -117,5 +117,5 @@ public class ShopController {
         long totalShops = shopService.getTotalShops();
         model.addAttribute("totalShops", totalShops);
 		return "adminDashboard.jsp";
-	}
+	}  
 }

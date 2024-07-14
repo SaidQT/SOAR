@@ -32,6 +32,8 @@ public class WebSecurityConfig {
 				.hasRole("ADMIN").requestMatchers(new MvcRequestMatcher(introspector, "/user/**")).hasRole("USER")
 				.requestMatchers(new MvcRequestMatcher(introspector, "/shop/**")).hasRole("OWNER")
 				.requestMatchers(new MvcRequestMatcher(introspector, "/public/**")).permitAll()
+				.requestMatchers(new MvcRequestMatcher(introspector, "/home")).permitAll()
+
 				.requestMatchers(new MvcRequestMatcher(introspector, "/"), new MvcRequestMatcher(introspector, "/home"))
 				.authenticated().anyRequest().permitAll())
 
