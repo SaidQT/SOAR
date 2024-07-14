@@ -114,11 +114,13 @@ public class ShopForm {
 				+ ", password=" + password + ", passwordConfirmation=" + passwordConfirmation + "]";
 	}
 
-	//	public String getPasswordConfirmation() {
-	//		return passwordConfirmation;
-	//	}
-	//
-	//	public void setPasswordConfirmation(String passwordConfirmation) {
-	//		this.passwordConfirmation = passwordConfirmation;
-	//	}
+	public String getPasswordConfirmation() {
+		return passwordConfirmation;
+	}
+
+	public void setPasswordConfirmation(String passwordConfirmation) {
+		this.passwordConfirmation = passwordConfirmation;
+	}
+
+
 }

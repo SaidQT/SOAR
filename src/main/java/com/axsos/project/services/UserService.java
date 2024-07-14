@@ -61,20 +61,20 @@ public class UserService {
 
 	public User createShopOwner(String username, String email, String password, Shop shop) {
 
-		boolean potentialUser = userRepository.existsByUsername(username);
-		if (potentialUser == true) {
-			return null;
-		} else {
-			User shopOwner = new User();
-			shopOwner.setUsername(username);
-			shopOwner.setEmail(email);
-			shopOwner.setPassword(bCryptPasswordEncoder.encode(password));
-			shopOwner.setPasswordConfirmation(bCryptPasswordEncoder.encode(password));
-			userRepository.save(shopOwner);
-			shopOwner.setRoles(roleRepository.findByName("ROLE_OWNER"));
-			shopOwner.setShop(shop);
-			userRepository.save(shopOwner);
-			return shopOwner;
-		}
+		//		boolean potentialUser = userRepository.existsByUsername(username);
+		//		if (potentialUser == true) {
+		//			return null;
+		//		} else {
+		User shopOwner = new User();
+		shopOwner.setUsername(username);
+		shopOwner.setEmail(email);
+		shopOwner.setPassword(bCryptPasswordEncoder.encode(password));
+		shopOwner.setPasswordConfirmation(bCryptPasswordEncoder.encode(password));
+		userRepository.save(shopOwner);
+		shopOwner.setRoles(roleRepository.findByName("ROLE_OWNER"));
+		shopOwner.setShop(shop);
+		userRepository.save(shopOwner);
+		return shopOwner;
+		//	}
 	}
 }
