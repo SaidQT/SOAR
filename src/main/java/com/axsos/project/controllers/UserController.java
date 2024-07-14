@@ -90,18 +90,16 @@ public class UserController {
 
 	// ****************************** R from {CRUD} ******************************
 	// Function to render the home page
-	@GetMapping({ "/", "/home", "/user/home" })
-	public String home(Principal principal, Model model) {
-		String username = principal.getName();
+	@GetMapping({ "/", "/home" })
+	public String home() {
 
-		model.addAttribute("currentUser", userService.findByUsername(username));
 		return "home.jsp";
 	}
 
 	// ****************************** R from {CRUD} ******************************
 	// Function to render a page that show all pets
 	// To Do: Add filtering to pets according to type
-	@GetMapping("/public/cart")
+	@GetMapping("/cart")
 	public String showPets(Model model, Principal principal, HttpSession session) {
 		List<Pet> pets = petService.allPets();
 		model.addAttribute("pets", pets);
@@ -118,8 +116,6 @@ public class UserController {
 		return "cart.jsp";
 	}
 
-	// ****************************** R from {CRUD} ******************************
-	// To Do:Changed
 	@PostMapping("/public/cart/add")
 	public String addPetToUserCart(@RequestParam(name = "petId") Long petId, @RequestParam("location") String location,
 			Principal principal, HttpSession session) {
