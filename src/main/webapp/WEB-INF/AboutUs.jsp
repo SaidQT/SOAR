@@ -77,7 +77,7 @@
 	position: relative;
 	overflow: hidden;
 	background: #F9F3EC;
-	min-height: 80vh; /* Adjust this value as needed for larger height */
+	min-height: 60vh; /* Adjust this value as needed for larger height */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -143,7 +143,8 @@ padding
 
 
 
-:
+
+
 
 
 
@@ -151,7 +152,26 @@ padding
 
 
 
+
+
+
+:
+
+
+
+
+ 
+
+
+
+
+
 20px
+
+
+
+
+
 
 
 
@@ -166,7 +186,8 @@ background
 
 
 
-:
+
+
 
 
 
@@ -174,7 +195,23 @@ background
 
 
 
+
+
+
+:
+
+
+
+
+ 
+
+
+
+
 rgba
+
+
+
 
 
 
@@ -188,6 +225,8 @@ rgba
 
 
 
+
+
 0
 ,
 0
@@ -195,6 +234,10 @@ rgba
 0
 ,
 0
+
+
+
+
 
 
 
@@ -208,7 +251,10 @@ rgba
 
 
 
+
+
 )
+
 
 
 
@@ -223,7 +269,10 @@ border-radius
 
 
 
+
+
 :
+
 
 
 
@@ -231,7 +280,10 @@ border-radius
 
 
 
+
 10px
+
+
 
 
 
@@ -253,9 +305,15 @@ border-radius
 
 
 
+
+
+
+
 %
 {
 transform
+
+
 
 
 
@@ -269,12 +327,20 @@ transform
 
 
 
+
+
+
 translateX
 
 
 
 
+
+
+
 (
+
+
 
 
 
@@ -288,7 +354,12 @@ translateX
 
 
 
+
+
+
 )
+
+
 
 
 
@@ -311,7 +382,12 @@ transform
 
 
 
+
+
+
 :
+
+
 
 
 
@@ -323,7 +399,12 @@ translateX
 
 
 
+
+
+
 (
+
+
 
 
 
@@ -337,7 +418,12 @@ translateX
 
 
 
+
+
+
 )
+
+
 
 
 
@@ -463,6 +549,7 @@ translateX
 											icon="mdi:heart" class="fs-4"></iconify-icon>
 								</a></li>
 
+
 								<!-- <li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
 										<iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
@@ -470,6 +557,7 @@ translateX
 										class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
 											04 </span>
 								</a></li>
+
 
 								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasSearch"
@@ -568,8 +656,10 @@ f
 										<!-- <li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
 											aria-controls="offcanvasCart"> <iconify-icon
+
 													icon="mdi:bell" class="fs-4 position-relative"></iconify-icon>
 												<span
+
 												class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
 													04 </span>
 										</a></li> -->
@@ -601,6 +691,7 @@ f
 			</div>
 		</div>
 	</section>
+
 
 	<div class="my-5 py-5">
 		<div class="container">
@@ -836,6 +927,22 @@ f
 	<script src="js/plugins.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/iconify.js"></script>
+	<script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
 
