@@ -43,8 +43,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Chilanka&family=Montserrat:wght@300;400;500&display=swap"
 	rel="stylesheet">
-	
-	<style>
+
+<style>
 .fixed-size-img {
 	width: 250px; /* Set desired width percentage */
 	height: 300px; /* Maintain aspect ratio */
@@ -183,7 +183,8 @@
 					</li>
 				</ul>
 
-				<button class="w-100 btn btn-primary btn-lg" type="submit">Show More</button>
+				<button class="w-100 btn btn-primary btn-lg" type="submit">Show
+					More</button>
 			</div>
 		</div>
 	</div>
@@ -209,7 +210,6 @@
 			</div>
 		</div>
 	</div>
-
 	<header
 		style="position: sticky; top: 0; z-index: 1000; background-color: white;">
 		<div class="container py-2">
@@ -234,14 +234,14 @@
 
 						<div class="d-flex d-lg-none align-items-end mt-3">
 							<ul class="d-flex justify-content-end list-unstyled m-0">
-								<li><a href="account.html" class="mx-3"> <iconify-icon
+								<li><a href="/login" class="mx-3"> <iconify-icon
 											icon="healthicons:person" class="fs-4"></iconify-icon>
 								</a></li>
-								<li><a href="wishlist.html" class="mx-3"> <iconify-icon
+								<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 											icon="mdi:heart" class="fs-4"></iconify-icon>
 								</a></li>
 
-								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
+								<!-- <li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
 										<iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
 										<span
@@ -253,9 +253,9 @@
 									data-bs-target="#offcanvasSearch"
 									aria-controls="offcanvasSearch"> <iconify-icon
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
-								</a></li>
+								</a></li> -->
 							</ul>
-
+f
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -301,11 +301,11 @@
 										class="nav-link dropdown-toggle" role="button" id="pages"
 										data-bs-toggle="dropdown" aria-expanded="false">Adoption</a>
 										<ul class="dropdown-menu" aria-labelledby="pages">
-											<li class="nav-item"><a href="/cart/cat"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Cats</a></li>
-											<li class="nav-item"><a href="/cart/dog"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Dogs</a></li>
-											<li class="nav-item"><a href="/cart/bird"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Birds</a></li>
 											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Other</a></li>
@@ -314,11 +314,10 @@
 
 									<li><a href="/faqs" class="nav-link">FAQs</a></li>
 									<li><a href="/contact" class="nav-link">Contact Us</a></li>
-									<li><a href="single-post.html" class="nav-link">My
+									<li><a href="/user/besties" class="nav-link">My
 											Besties</a></li>
-									<li><a href="single-post.html" class="nav-link">Single
-											Post</a></li>
-									<li><a href="/partner" class="nav-link">Partners</a></li>
+
+									<li><a href="/partners" class="nav-link">Partners</a></li>
 
 
 
@@ -330,20 +329,28 @@
 										<li><a href="/login" class="mx-3"> <iconify-icon
 													icon="healthicons:person" class="fs-4"></iconify-icon>
 										</a></li>
-										<li><a href="/wishlist" class="mx-3"> <iconify-icon
+										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
+										<li>
+											<form id="logoutForm" method="POST" action="/logout">
+												<input type="hidden" name="${_csrf.parameterName}"
+													value="${_csrf.token}" />
+												<button type="submit"
+													style="border: none; background: none;">
+													<iconify-icon icon="mdi:logout" class="fs-4"></iconify-icon>
+												</button>
+											</form>
 
-										<li class=""><a href="#" class="mx-3"
+										</li>
+										<!-- <li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
 											aria-controls="offcanvasCart"> <iconify-icon
 													icon="mdi:bell" class="fs-4 position-relative"></iconify-icon>
 												<span
 												class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
 													04 </span>
-										</a></li>
-
-
+										</a></li> -->
 									</ul>
 
 								</div>
@@ -370,58 +377,60 @@
 			</div>
 		</div>
 	</section>
-	
-	
-	
 
-<section id="foodies" class="my-5">
-    <div class="container my-5 py-5">
-        <div class="section-header d-md-flex justify-content-between align-items-center">
-            <h2 class="display-3 fw-normal">Favorite Pets</h2>
-        </div>
 
-        <div class="row">
-            <c:if test="${empty favorites}">
-                <p>Your wishlist is empty.</p>
-            </c:if>
-            <c:if test="${not empty favorites}">
-                <c:forEach var="pet" items="${favorites}">
-                    <div class="col-md-4 col-lg-3 my-4">
-                        <div class="card position-relative">
-                            <img src="${pet.imageUrl}" class="rounded-4 fixed-size-img" alt="image">
-                            <div class="card-body p-0">
-                                <a href="single-product.html">
-                                    <h3 class="card-title pt-4 m-0">
-                                        <c:out value="${pet.name}"></c:out>
-                                    </h3>
-                                </a>
-                                <div class="card-text">
-                                    <h3 class="secondary-font text-primary">
-                                        <c:out value="${pet.breed}"></c:out>
-                                    </h3>
-                                    <div class="d-flex flex-wrap mt-3">
-                                        <a href="#" class="btn-cart me-3 px-4 pt-3 pb-3">
-                                            <h5 class="text-uppercase m-0">lets cuddle</h5>
-                                        </a>
-                                        <form action="/public/cart/add" method="post">
-                                            <input type="hidden" name="petId" value="${pet.id}">
-                                            <input type="hidden" name="${_csrf.parameterName}"
-                                                value="${_csrf.token}" />
-                                            <input type="hidden" name="location" value="wishlist">
-                                            <button class="btn-wishlist px-4 pt-3 " type="submit">
-                                                <iconify-icon icon="emojione-v1:broken-heart" class="fs-5"></iconify-icon>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </c:if>
-        </div>
-    </div>
-</section>
+
+
+	<section id="foodies" class="my-5">
+		<div class="container my-5 py-5">
+			<div
+				class="section-header d-md-flex justify-content-between align-items-center">
+				<h2 class="display-3 fw-normal">Favorite Pets</h2>
+			</div>
+
+			<div class="row">
+				<c:if test="${empty favorites}">
+					<p>Your wishlist is empty.</p>
+				</c:if>
+				<c:if test="${not empty favorites}">
+					<c:forEach var="pet" items="${favorites}">
+						<div class="col-md-4 col-lg-3 my-4">
+							<div class="card position-relative">
+								<img src="${pet.imageUrl}" class="rounded-4 fixed-size-img"
+									alt="image">
+								<div class="card-body p-0">
+									<a href="single-product.html">
+										<h3 class="card-title pt-4 m-0">
+											<c:out value="${pet.name}"></c:out>
+										</h3>
+									</a>
+									<div class="card-text">
+										<h3 class="secondary-font text-primary">
+											<c:out value="${pet.breed}"></c:out>
+										</h3>
+										<div class="d-flex flex-wrap mt-3">
+											<a href="#" class="btn-cart me-3 px-4 pt-3 pb-3">
+												<h5 class="text-uppercase m-0">lets cuddle</h5>
+											</a>
+											<form action="/public/cart/add" method="post">
+												<input type="hidden" name="petId" value="${pet.id}">
+												<input type="hidden" name="${_csrf.parameterName}"
+													value="${_csrf.token}" /> <input type="hidden"
+													name="location" value="wishlist">
+												<button class="btn-wishlist px-4 pt-3 " type="submit">
+													<iconify-icon icon="emojione-v1:broken-heart" class="fs-5"></iconify-icon>
+												</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</c:if>
+			</div>
+		</div>
+	</section>
 
 
 

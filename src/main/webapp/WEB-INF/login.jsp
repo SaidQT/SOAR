@@ -14,15 +14,15 @@
 <html lang="en">
 
 <head>
-  <title>SOAR</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="author" content="">
-  <meta name="keywords" content="">
-  <meta name="description" content="">
+<title>SOAR</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="author" content="">
+<meta name="keywords" content="">
+<meta name="description" content="">
 </head>
 
 
@@ -47,7 +47,7 @@
 
 <body>
 
-  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <defs>
       <symbol xmlns="http://www.w3.org/2000/svg" id="link"
 			viewBox="0 0 24 24">
@@ -129,55 +129,52 @@
     </defs>
   </svg>
 
-  <div class="preloader-wrapper">
-    <div class="preloader">
-    </div>
-  </div>
+	<div class="preloader-wrapper">
+		<div class="preloader"></div>
+	</div>
 
-  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
-    <div class="offcanvas-header justify-content-center">
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <div class="order-md-last">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-primary">Your cart</span>
-          <span class="badge bg-primary rounded-circle pt-2">3</span>
-        </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Grey Hoodie</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Dog Food</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Soft Toy</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span class="fw-bold">Total (USD)</span>
-            <strong>$20</strong>
-          </li>
-        </ul>
+	<div class="offcanvas offcanvas-end" data-bs-scroll="true"
+		tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
+		<div class="offcanvas-header justify-content-center">
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+				aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="order-md-last">
+				<h4 class="d-flex justify-content-between align-items-center mb-3">
+					<span class="text-primary">Your cart</span> <span
+						class="badge bg-primary rounded-circle pt-2">3</span>
+				</h4>
+				<ul class="list-group mb-3">
+					<li class="list-group-item d-flex justify-content-between lh-sm">
+						<div>
+							<h6 class="my-0">Grey Hoodie</h6>
+							<small class="text-body-secondary">Brief description</small>
+						</div> <span class="text-body-secondary">$12</span>
+					</li>
+					<li class="list-group-item d-flex justify-content-between lh-sm">
+						<div>
+							<h6 class="my-0">Dog Food</h6>
+							<small class="text-body-secondary">Brief description</small>
+						</div> <span class="text-body-secondary">$8</span>
+					</li>
+					<li class="list-group-item d-flex justify-content-between lh-sm">
+						<div>
+							<h6 class="my-0">Soft Toy</h6>
+							<small class="text-body-secondary">Brief description</small>
+						</div> <span class="text-body-secondary">$5</span>
+					</li>
+					<li class="list-group-item d-flex justify-content-between"><span
+						class="fw-bold">Total (USD)</span> <strong>$20</strong></li>
+				</ul>
 
-        <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-      </div>
-    </div>
-  </div>
+				<button class="w-100 btn btn-primary btn-lg" type="submit">Continue
+					to checkout</button>
+			</div>
+		</div>
+	</div>
 
-<%--   <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasSearch"
+	<%--   <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasSearch"
     aria-labelledby="Search">
     <div class="offcanvas-header justify-content-center">
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -197,8 +194,7 @@
       </div>
     </div>
   </div> --%>
-
- <header
+	<header
 		style="position: sticky; top: 0; z-index: 1000; background-color: white;">
 		<div class="container py-2">
 			<div class="row py-4 pb-0 pb-sm-4 align-items-center ">
@@ -214,7 +210,7 @@
 
 						<div class="col-sm-4 col-lg-3 text-center text-sm-start">
 							<div class="main-logo">
-								<a href=""> <img src="images/logo.png" alt="logo"
+								<a href="/home"> <img src="images/logo.png" alt="logo"
 									class="img-fluid1">
 								</a>
 							</div>
@@ -222,28 +218,28 @@
 
 						<div class="d-flex d-lg-none align-items-end mt-3">
 							<ul class="d-flex justify-content-end list-unstyled m-0">
-								<li><a href="account.html" class="mx-3"> <iconify-icon
+								<li><a href="/login" class="mx-3"> <iconify-icon
 											icon="healthicons:person" class="fs-4"></iconify-icon>
 								</a></li>
-								<li><a href="wishlist.html" class="mx-3"> <iconify-icon
+								<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 											icon="mdi:heart" class="fs-4"></iconify-icon>
 								</a></li>
 
-								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
+								<!-- <li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
 										<iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
 										<span
 										class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-											03 </span>
+											04 </span>
 								</a></li>
 
 								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasSearch"
 									aria-controls="offcanvasSearch"> <iconify-icon
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
-								</a></li>
+								</a></li> -->
 							</ul>
-
+f
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -273,7 +269,7 @@
             </li> -->
 
 
-									<li class="nav-item"><a href="index.html" class="nav-link">Home</a>
+									<li class="nav-item"><a href="/home" class="nav-link">Home</a>
 									</li>
 
 
@@ -282,30 +278,30 @@
               </li> -->
 
 
-									<li class="nav-item"><a href="about.html" class="nav-link">About
+									<li class="nav-item"><a href="/aboutus" class="nav-link">About
 											Us</a></li>
 
 									<li class="nav-item dropdown"><a
 										class="nav-link dropdown-toggle" role="button" id="pages"
 										data-bs-toggle="dropdown" aria-expanded="false">Adoption</a>
 										<ul class="dropdown-menu" aria-labelledby="pages">
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Cats</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Dogs</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Birds</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Other</a></li>
 
 										</ul></li>
 
-									<li><a href="faqs.html" class="nav-link">FAQs</a></li>
-									<li><a href="single-post.html" class="nav-link">My
+									<li><a href="/faqs" class="nav-link">FAQs</a></li>
+									<li><a href="/contact" class="nav-link">Contact Us</a></li>
+									<li><a href="/user/besties" class="nav-link">My
 											Besties</a></li>
-									<li><a href="single-post.html" class="nav-link">Single
-											Post</a></li>
-									<li><a href="" class="nav-link">Partners</a></li>
+
+									<li><a href="/partners" class="nav-link">Partners</a></li>
 
 
 
@@ -314,21 +310,31 @@
 
 								<div class="d-none d-lg-flex align-items-end">
 									<ul class="d-flex justify-content-end list-unstyled m-0">
-										<li><a href="account.html" class="mx-3"> <iconify-icon
+										<li><a href="/login" class="mx-3"> <iconify-icon
 													icon="healthicons:person" class="fs-4"></iconify-icon>
 										</a></li>
-										<li><a href="wishlist.html" class="mx-3"> <iconify-icon
+										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
+										<li>
+											<form id="logoutForm" method="POST" action="/logout">
+												<input type="hidden" name="${_csrf.parameterName}"
+													value="${_csrf.token}" />
+												<button type="submit"
+													style="border: none; background: none;">
+													<iconify-icon icon="mdi:logout" class="fs-4"></iconify-icon>
+												</button>
+											</form>
 
-										<li class=""><a href="#" class="mx-3"
+										</li>
+										<!-- <li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
 											aria-controls="offcanvasCart"> <iconify-icon
-													icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
+													icon="mdi:bell" class="fs-4 position-relative"></iconify-icon>
 												<span
 												class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-													03 </span>
-										</a></li>
+													04 </span>
+										</a></li> -->
 									</ul>
 
 								</div>
@@ -397,7 +403,8 @@
 										<form:input path="username" placeholder="Your full name"
 											class="form-control mb-3 p-4" />
 										<form:errors path="username" class="text-warning" />
-										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+										<input type="hidden" name="${_csrf.parameterName}"
+											value="${_csrf.token}" />
 										<form:input type="password" path="password"
 											placeholder="Set your password" class="form-control mb-3 p-4" />
 										<form:errors path="password" class="text-warning" />
@@ -434,7 +441,7 @@
 										<form:input type="password" path="password"
 											placeholder="Set your password" class="form-control mb-3 p-4" />
 										<form:errors path="password" class="text-warning" />
-										
+
 										<form:input type="password" path="passwordConfirmation"
 											placeholder="Retype your password"
 											class="form-control mb-3 p-4" />
@@ -513,7 +520,7 @@
 		</div>
 	</section>
 
-	<footer id="footer" class="my-5" style="border-top: 1px solid #ccc" >
+	<footer id="footer" class="my-5" style="border-top: 1px solid #ccc">
 		<div class="container py-5 my-5">
 			<div class="row"
 				style="align-items: center; justify-content: space-between;">

@@ -14,36 +14,32 @@ import com.axsos.project.repositories.UserRepository;
 @Component
 public class ShopValidator implements Validator {
 
-	private final UserRepository userRepository;
-	private final ShopRepository shopRepository;
+    private final UserRepository userRepository;
+    private final ShopRepository shopRepository;
 
-	@Autowired
-	public ShopValidator(UserRepository userRepository,ShopRepository shopRepository) {
-		this.userRepository = userRepository;
-		this.shopRepository = shopRepository;
-	}
+    
+    public ShopValidator(UserRepository userRepository,ShopRepository shopRepository) {
+        this.userRepository = userRepository;
+        this.shopRepository = shopRepository;
+    }
 
-	@Override
-	public boolean supports(Class<?> clazz) {
-		return User.class.equals(clazz);
-	}
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return User.class.equals(clazz);
+    }
 
-	@Override
-	public void validate(Object target, Errors errors) {
-		ShopForm user = (ShopForm) target;
+    @Override
+    public void validate(Object target, Errors errors) {
+        ShopForm user = (ShopForm) target;
 
-		if (user.getPasswordConfirmation() == null) {
-			errors.rejectValue("passwordConfirmation", "Null.user.passwordConfirmation", "Password confirmation cannot be null");
-		} else if (!user.getPassword().equals(user.getPasswordConfirmation())) {
-			errors.rejectValue("passwordConfirmation", "Match.user.passwordConfirmation", "Passwords do not match");
-		}
 
-		if (userRepository.existsByUsername(user.getUsername())) {
-			errors.rejectValue("username", "Duplicate.user.username", "Username is already in use");
-		}
 
-		if (user.getCurrentSize() > user.getMaxCapacity()) {
-			errors.rejectValue("currentSize", "Logical.user.maxCapacity", "current capacity should less than maximim capacity");
-		}
-	}
+        if (userRepository.existsByUsername(user.getUsername())) {
+            errors.rejectValue("username", "Duplicate.user.username", "Username is already in use");
+        }
+
+        if (user.getCurrentSize() > user.getMaxCapacity()) {
+            errors.rejectValue("currentSize", "Logical.user.maxCapacity", "current capacity should less than maximim capacity");
+        }
+    }
 }

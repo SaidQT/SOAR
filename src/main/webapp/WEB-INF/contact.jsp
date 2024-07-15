@@ -168,6 +168,14 @@
 
 				<button class="w-100 btn btn-primary btn-lg" type="submit">Continue
 					to checkout</button>
+				<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+				<!-- Other HTML and JSP code -->
+
+				<c:if test="${not empty successMessage}">
+					<div class="">${successMessage}</div>
+				</c:if>
+
 			</div>
 		</div>
 	</div>
@@ -193,7 +201,6 @@
 			</div>
 		</div>
 	</div>
-
 	<header
 		style="position: sticky; top: 0; z-index: 1000; background-color: white;">
 		<div class="container py-2">
@@ -218,28 +225,28 @@
 
 						<div class="d-flex d-lg-none align-items-end mt-3">
 							<ul class="d-flex justify-content-end list-unstyled m-0">
-								<li><a href="account.html" class="mx-3"> <iconify-icon
+								<li><a href="/login" class="mx-3"> <iconify-icon
 											icon="healthicons:person" class="fs-4"></iconify-icon>
 								</a></li>
-								<li><a href="wishlist.html" class="mx-3"> <iconify-icon
+								<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 											icon="mdi:heart" class="fs-4"></iconify-icon>
 								</a></li>
 
-								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
+								<!-- <li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
 										<iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
 										<span
 										class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-											03 </span>
+											04 </span>
 								</a></li>
 
 								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasSearch"
 									aria-controls="offcanvasSearch"> <iconify-icon
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
-								</a></li>
+								</a></li> -->
 							</ul>
-
+f
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -269,7 +276,7 @@
             </li> -->
 
 
-									<li class="nav-item"><a href="index.html" class="nav-link">Home</a>
+									<li class="nav-item"><a href="/home" class="nav-link">Home</a>
 									</li>
 
 
@@ -278,30 +285,30 @@
               </li> -->
 
 
-									<li class="nav-item"><a href="about.html" class="nav-link">About
+									<li class="nav-item"><a href="/aboutus" class="nav-link">About
 											Us</a></li>
 
 									<li class="nav-item dropdown"><a
 										class="nav-link dropdown-toggle" role="button" id="pages"
 										data-bs-toggle="dropdown" aria-expanded="false">Adoption</a>
 										<ul class="dropdown-menu" aria-labelledby="pages">
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Cats</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Dogs</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Birds</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Other</a></li>
 
 										</ul></li>
 
-									<li><a href="faqs.html" class="nav-link">FAQs</a></li>
-									<li><a href="single-post.html" class="nav-link">My
+									<li><a href="/faqs" class="nav-link">FAQs</a></li>
+									<li><a href="/contact" class="nav-link">Contact Us</a></li>
+									<li><a href="/user/besties" class="nav-link">My
 											Besties</a></li>
-									<li><a href="single-post.html" class="nav-link">Single
-											Post</a></li>
-									<li><a href="" class="nav-link">Partners</a></li>
+
+									<li><a href="/partners" class="nav-link">Partners</a></li>
 
 
 
@@ -310,21 +317,31 @@
 
 								<div class="d-none d-lg-flex align-items-end">
 									<ul class="d-flex justify-content-end list-unstyled m-0">
-										<li><a href="account.html" class="mx-3"> <iconify-icon
+										<li><a href="/login" class="mx-3"> <iconify-icon
 													icon="healthicons:person" class="fs-4"></iconify-icon>
 										</a></li>
-										<li><a href="wishlist.html" class="mx-3"> <iconify-icon
+										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
+										<li>
+											<form id="logoutForm" method="POST" action="/logout">
+												<input type="hidden" name="${_csrf.parameterName}"
+													value="${_csrf.token}" />
+												<button type="submit"
+													style="border: none; background: none;">
+													<iconify-icon icon="mdi:logout" class="fs-4"></iconify-icon>
+												</button>
+											</form>
 
-										<li class=""><a href="#" class="mx-3"
+										</li>
+										<!-- <li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
 											aria-controls="offcanvasCart"> <iconify-icon
-													icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
+													icon="mdi:bell" class="fs-4 position-relative"></iconify-icon>
 												<span
 												class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-													03 </span>
-										</a></li>
+													04 </span>
+										</a></li> -->
 									</ul>
 
 								</div>
@@ -339,9 +356,6 @@
 
 				</div>
 	</header>
-
-
-
 
 
 	<section id="banner" class="py-3" style="background: #F9F3EC;">
@@ -424,7 +438,7 @@
 							</div>
 
 							<c:if test="${not empty successMessage}">
-								<p>${successMessage}</p>
+								<p class="p-3 mb-2 bg-danger text-black mt-2">${successMessage}</p>
 							</c:if>
 						</form:form>
 					</div>

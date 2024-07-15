@@ -38,7 +38,7 @@ public class ShopForm {
 	@Size(min = 5, message = "Password must be greater than 5 characters")
 	private String password;
 
-	private String passwordConfirmation;
+	// private String passwordConfirmation;
 
 	public ShopForm() {
 	}
@@ -111,16 +111,14 @@ public class ShopForm {
 	public String toString() {
 		return "ShopForm [shopName=" + shopName + ", city=" + city + ", maxCapacity=" + maxCapacity + ", currentSize="
 				+ currentSize + ", phoneNumber=" + phoneNumber + ", username=" + username + ", email=" + email
-				+ ", password=" + password + ", passwordConfirmation=" + passwordConfirmation + "]";
+				+ ", password=" + password + ", passwordConfirmation=" + "]";
 	}
 
-	public String getPasswordConfirmation() {
-		return passwordConfirmation;
-	}
-
-	public void setPasswordConfirmation(String passwordConfirmation) {
-		this.passwordConfirmation = passwordConfirmation;
-	}
-
-
+	// public String getPasswordConfirmation() {
+	// return passwordConfirmation;
+	// }
+	//
+	// public void setPasswordConfirmation(String passwordConfirmation) {
+	// this.passwordConfirmation = passwordConfirmation;
+	// }
 }

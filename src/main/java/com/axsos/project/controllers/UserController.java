@@ -130,28 +130,32 @@ public class UserController {
 			pet.getUsers().add(user);
 			petService.createPet(pet);
 
-			return "redirect:/public/cart";
+			return "redirect:/cart";
 
 		} else if (user != null && pet != null && user.getPets().contains(pet)) {
 			pet.getUsers().remove(user);
 			petService.createPet(pet);
 			if (location.equals("cart")) { // checks if the current user is on the favorites page or the public page
-				return "redirect:/public/cart";
+				return "redirect:/cart";
 			}
 			if (location.equals("favorite")) {
 				return "redirect:/user/favorites";
 			}
 		}
-		return "redirect:/public/cart";
+		return "redirect:/cart";
 	}
 
-	@GetMapping("/user/favorites")
+	@GetMapping("/wish")
 	public String FavoritePage(Principal principal, Model model) {
-		String username = principal.getName();
-		User user = userService.findByUsername(username);
-		List<Pet> pets = user.getPets();
-		model.addAttribute("favorite", pets);
-		return "FavortiePage.jsp";
+	String username = principal.getName();
+	User user = userService.findByUsername(username);
+	List<Pet> pets = user.getPets();
+	model.addAttribute("favorite", pets);
+	return "wishlist.jsp";
+	}
+	@GetMapping("/user/favorites")
+	public String Favorite(Principal principal, Model model) {
+		return "redirect:/wish";
 	}
 
 	// ****************************** R from {CRUD} ******************************
@@ -215,14 +219,4 @@ public class UserController {
 		return "redirect:/user/besties";
 	}
 
-	@GetMapping("/wishlist") // user/wishlist
-	public String showWishlist(Model model, Principal principal) {
-		if (principal != null) {
-			String username = principal.getName();
-			User user = userService.findByUsername(username); // Fetch the current user
-			model.addAttribute("currentUser", user); // Add the current user to the model
-			model.addAttribute("favorites", user.getPets()); // Add the user's favorite pets to the model
-		}
-		return "wishlist.jsp"; // Return the name of the wishlist JSP view
-	}
 }

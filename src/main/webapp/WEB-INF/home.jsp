@@ -143,7 +143,13 @@ padding
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -151,7 +157,13 @@ padding
 
 
 
+
+
 20px
+
+
+
+
 
 
 
@@ -166,7 +178,13 @@ background
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -174,7 +192,13 @@ background
 
 
 
+
+
 rgba
+
+
+
+
 
 
 
@@ -188,6 +212,10 @@ rgba
 
 
 
+
+
+
+
 0
 ,
 0
@@ -195,6 +223,10 @@ rgba
 0
 ,
 0
+
+
+
+
 
 
 
@@ -208,7 +240,15 @@ rgba
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -223,7 +263,13 @@ border-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -231,7 +277,13 @@ border-radius
 
 
 
+
+
 10px
+
+
+
+
 
 
 
@@ -253,9 +305,17 @@ border-radius
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -269,12 +329,24 @@ transform
 
 
 
+
+
+
+
 translateX
 
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -288,7 +360,15 @@ translateX
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -296,6 +376,10 @@ translateX
 ;
 }
 100
+
+
+
+
 
 
 
@@ -311,7 +395,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -323,7 +415,15 @@ translateX
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -337,7 +437,15 @@ translateX
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -432,7 +540,6 @@ translateX
 		<div class="preloader"></div>
 	</div>
 
-
 	<header
 		style="position: sticky; top: 0; z-index: 1000; background-color: white;">
 		<div class="container py-2">
@@ -457,25 +564,34 @@ translateX
 
 						<div class="d-flex d-lg-none align-items-end mt-3">
 							<ul class="d-flex justify-content-end list-unstyled m-0">
-								<li><a href="account.html" class="mx-3"> <iconify-icon
+								<li><a href="/login" class="mx-3"> <iconify-icon
 											icon="healthicons:person" class="fs-4"></iconify-icon>
 								</a></li>
-								<li><a href="wishlist.html" class="mx-3"> <iconify-icon
+								<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 											icon="mdi:heart" class="fs-4"></iconify-icon>
 								</a></li>
 
-
+								<!-- <li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
+									data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+										<iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
+										<span
+										class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
+											04 </span>
+								</a></li>
 
 								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasSearch"
 									aria-controls="offcanvasSearch"> <iconify-icon
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
-								</a></li>
+								</a></li> -->
 							</ul>
-
+f
 						</div>
 
-
+						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
 
 						<div class="offcanvas offcanvas-end" tabindex="-1"
 							id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -515,11 +631,11 @@ translateX
 										class="nav-link dropdown-toggle" role="button" id="pages"
 										data-bs-toggle="dropdown" aria-expanded="false">Adoption</a>
 										<ul class="dropdown-menu" aria-labelledby="pages">
-											<li class="nav-item"><a href="/cat"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Cats</a></li>
-											<li class="nav-item"><a href="/dog"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Dogs</a></li>
-											<li class="nav-item"><a href="/bird"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Birds</a></li>
 											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Other</a></li>
@@ -528,11 +644,10 @@ translateX
 
 									<li><a href="/faqs" class="nav-link">FAQs</a></li>
 									<li><a href="/contact" class="nav-link">Contact Us</a></li>
-									<li><a href="single-post.html" class="nav-link">My
+									<li><a href="/user/besties" class="nav-link">My
 											Besties</a></li>
-									<!-- <li><a href="single-post.html" class="nav-link">Single
-											Post</a></li> -->
-									<li><a href="/partner" class="nav-link">Partners</a></li>
+
+									<li><a href="/partners" class="nav-link">Partners</a></li>
 
 
 
@@ -544,21 +659,28 @@ translateX
 										<li><a href="/login" class="mx-3"> <iconify-icon
 													icon="healthicons:person" class="fs-4"></iconify-icon>
 										</a></li>
-										<li><a href="/wishlist" class="mx-3"> <iconify-icon
+										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
+										<li>
+											<form id="logoutForm" method="POST" action="/logout">
+												<input type="hidden" name="${_csrf.parameterName}"
+													value="${_csrf.token}" />
+												<button type="submit"
+													style="border: none; background: none;">
+													<iconify-icon icon="mdi:logout" class="fs-4"></iconify-icon>
+												</button>
+											</form>
 
-										<li class=""><a href="#" class="mx-3"
+										</li>
+										<!-- <li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
 											aria-controls="offcanvasCart"> <iconify-icon
-													icon="mdi:logout"
-													class="logout-icon fs-4 position-relative">
-												</iconify-icon> <!-- <span
+													icon="mdi:bell" class="fs-4 position-relative"></iconify-icon>
+												<span
 												class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-													04 </span> -->
-										</a></li>
-
-
+													04 </span>
+										</a></li> -->
 									</ul>
 
 								</div>
@@ -573,8 +695,6 @@ translateX
 
 				</div>
 	</header>
-
-
 	<section id="banner"
 		style="position: relative; overflow: hidden; background: #F9F3EC;">
 		<video autoplay loop muted playsinline class="video-background">
@@ -603,19 +723,19 @@ translateX
 		<div class="container my-3 py-5">
 			<div class="row my-5">
 				<div class="col text-center">
-					<a href="/dog" class="categories-item"> <img
+					<a href="/cart" class="categories-item"> <img
 						class="category-image" src="images/moningDog5.jpg" alt="Dog">
 						<h5>Dog</h5>
 					</a>
 				</div>
 				<div class="col text-center">
-					<a href="/cat" class="categories-item"> <img
+					<a href="/cart" class="categories-item"> <img
 						class="category-image" src="images/moningcat4.jpg" alt="Cat">
 						<h5>Cat</h5>
 					</a>
 				</div>
 				<div class="col text-center">
-					<a href="/bird" class="categories-item"> <img
+					<a href="/cart" class="categories-item"> <img
 						class="category-image" src="images/moningbird4.jpg" alt="Bird">
 						<h5>Bird</h5>
 					</a>
