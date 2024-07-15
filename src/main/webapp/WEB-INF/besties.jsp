@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!-- c:out ; c:forEach etc. -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Formatting (dates) -->
@@ -9,91 +9,56 @@
 <!-- for rendering errors on PUT routes -->
 <%@ page isErrorPage="true"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Pet Categories</title>
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/main.css">
-<!-- change to match your file/naming structure -->
-<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/app.js"></script>
+<title>SOAR</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="author" content="">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+
+
+
+
+<link rel="stylesheet" href="css/swiper.css" />
+<link rel="stylesheet" href="css/bootstrap.css" />
+
+
+<link rel="stylesheet" type="text/css" href="css/vendor.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	href="https://fonts.googleapis.com/css2?family=Chilanka&family=Montserrat:wght@300;400;500&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 <style>
-.carousel-item img {
-	border-radius: 50%;
-	max-width: 100%;
-	height: auto;
-}
-
-.carousel-caption {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-.carousel-control-prev-icon, .carousel-control-next-icon {
-	display: none;
-}
-
-.carousel-control-prev::after {
-	content: '<';
-	font-size: 2rem;
-	color: black;
-}
-
-.carousel-control-next::after {
-	content: '>';
-	font-size: 2rem;
-	color: black;
-}
-
-.pet-category {
-	margin-top: 20px;
-}
-
-.pet-card img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 10px;
-	cursor: pointer;
-	transition: transform 0.3s ease;
-	position: relative;
-}
-
-.pet-card .favorite-icon {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	color: red;
-	font-size: 24px;
-	cursor: pointer;
-}
-
-.pet-card .favorite-icon.favorited {
-	color: red;
-}
-
-.pet-card .dummy-data {
-	text-align: center;
-	margin-top: 10px;
-}
-
-nav img {
-	width: 60px;
-	height: auto;
-	display: block;
-	margin: 0 auto;
-	margin-right: 20px;
+.fixed-size-img {
+	width: 250px; /* Set desired width percentage */
+	height: 300px; /* Maintain aspect ratio */
+	object-fit: cover;
+	/* Ensure the image fits within the specified dimensions */
 }
 </style>
+
 </head>
+
+
+
 <body>
+
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <defs>
       <symbol xmlns="http://www.w3.org/2000/svg" id="link"
@@ -245,7 +210,6 @@ nav img {
 			</div>
 		</div>
 	</div>
-
 	<header
 		style="position: sticky; top: 0; z-index: 1000; background-color: white;">
 		<div class="container py-2">
@@ -291,7 +255,7 @@ nav img {
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
 								</a></li> -->
 							</ul>
-f
+							f
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -401,39 +365,171 @@ f
 
 				</div>
 	</header>
-	<h1>Welcome to your besties pets</h1>
-	<div class="row">
-		<c:if test="${requestPets != null}">
-			<c:forEach var="pet" items="${requestPets}">
-				<div class="col-md-4">
-					<div class="pet-card">
-						<img src="${pet.imageUrl}" alt="${pet.name}"> </a> <i
-							class="favorite-icon far fa-heart" data-pet-id="1"></i>
-						<div class="dummy-data">
-							<p>
-								<c:out value="${pet.type}"></c:out>
-							</p>
-							<p>
-								<c:out value="${pet.name}"></c:out>
-							</p>
-							<p>
-								<c:out value="${pet.status}"></c:out>
-							</p>
-							<c:if test="${pet.status == 'Pending'}">
-								<form action="/user/cancel" method="post">
-									<input type="hidden" name="petId" value="${pet.id}"> <input
-										type="hidden" name="${_csrf.parameterName}"
-										value="${_csrf.token}" /> <input type="hidden" name="_method"
-										value="patch">
-									<button type="submit">Cancel adoption</button>
-								</form>
-							</c:if>
-						</div>
+	<section id="banner" class="py-0" style="background: #F9F3EC;">
+		<div class="container p-0">
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<div class="hero-content py-0 my-0">
+						<h2 class="display-1 mt-3 mb-0">Account</h2>
+
 					</div>
 				</div>
-			</c:forEach>
-		</c:if>
-	</div>
+				<div class="col-md-6">
+					<img src="images/soar.png" class="img-fluid soarIm mt-3"
+						alt="About Us Image" style="max-width: 100%;">
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+	<section id="foodies" class="my-5">
+		<div class="container my-5 py-5">
+			<div
+				class="section-header d-md-flex justify-content-between align-items-center">
+				<h2 class="display-3 fw-normal">My Besties</h2>
+			</div>
+
+			<div class="row">
+
+
+				<c:forEach var="pet" items="${requestPets}">
+					<div class="col-md-4 col-lg-3 my-4">
+						<div class="card position-relative">
+							<img src="${pet.imageUrl}" class="rounded-4 fixed-size-img"
+								alt="image">
+							<div class="card-body p-0">
+								<a href="single-product.html">
+									<h3 class="card-title pt-4 m-0">
+										<c:out value="${pet.name}"></c:out>
+									</h3>
+								</a>
+								<div class="card-text">
+									<h3 class="secondary-font text-primary">
+										<c:out value="${pet.breed}"></c:out>
+									</h3>
+									<div class="d-flex flex-wrap mt-3"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<section id="register"
+		style="background: url('images/background-img.png') no-repeat;">
+		<div class="container ">
+			<div class="row my-5 py-5">
+				<div class="offset-md-3 col-md-6 my-5 ">
+					<h2 class="display-3 fw-normal text-center">
+						Donate for Love <span class="text-primary">Spread love with
+							giving</span>
+					</h2>
+					<form>
+						<div class="mb-3">
+							<input type="email" class="form-control form-control-lg"
+								name="email" id="email" placeholder="Enter Your Email Address">
+						</div>
+						<div class="mb-3">
+							<input type="number" class="form-control form-control-lg"
+								name="email" id="password1" placeholder="Donation Amount">
+						</div>
+						<div class="mb-3">
+							<input type="number" class="form-control form-control-lg"
+								name="email" id="password2" placeholder="Visa">
+						</div>
+
+						<div class="d-grid gap-2">
+							<button type="submit" class="btn btn-dark btn-lg rounded-1">Donate
+								Now</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+	<section id="insta" class="my-5">
+		<div class="row g-0 py-5">
+			<div class="col instagram-item  text-center position-relative">
+				<div
+					class="icon-overlay d-flex justify-content-center position-absolute">
+					<iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
+				</div>
+				<a href="#"> <img src="images/insta1.jpg" alt="insta-img"
+					class="img-fluid rounded-3">
+				</a>
+			</div>
+			<div class="col instagram-item  text-center position-relative">
+				<div
+					class="icon-overlay d-flex justify-content-center position-absolute">
+					<iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
+				</div>
+				<a href="#"> <img src="images/insta2.jpg" alt="insta-img"
+					class="img-fluid rounded-3">
+				</a>
+			</div>
+			<div class="col instagram-item  text-center position-relative">
+				<div
+					class="icon-overlay d-flex justify-content-center position-absolute">
+					<iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
+				</div>
+				<a href="#"> <img src="images/insta3.jpg" alt="insta-img"
+					class="img-fluid rounded-3">
+				</a>
+			</div>
+			<div class="col instagram-item  text-center position-relative">
+				<div
+					class="icon-overlay d-flex justify-content-center position-absolute">
+					<iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
+				</div>
+				<a href="#"> <img src="images/insta4.jpg" alt="insta-img"
+					class="img-fluid rounded-3">
+				</a>
+			</div>
+			<div class="col instagram-item  text-center position-relative">
+				<div
+					class="icon-overlay d-flex justify-content-center position-absolute">
+					<iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
+				</div>
+				<a href="#"> <img src="images/insta5.jpg" alt="insta-img"
+					class="img-fluid rounded-3">
+				</a>
+			</div>
+			<div class="col instagram-item  text-center position-relative">
+				<div
+					class="icon-overlay d-flex justify-content-center position-absolute">
+					<iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
+				</div>
+				<a href="#"> <img src="images/insta6.jpg" alt="insta-img"
+					class="img-fluid rounded-3">
+				</a>
+			</div>
+		</div>
+	</section>
 
 	<footer id="footer" class="my-5" style="border-top: 1px solid #ccc">
 		<div class="container py-5 my-5">
@@ -481,8 +577,6 @@ f
 							</li>
 							<li class="menu-item"><a href="/aboutus" class="nav-link">About
 									us</a></li>
-							<li class="menu-item"><a href="/contact" class="nav-link">Conatct
-									Us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -496,9 +590,6 @@ f
 								</li>
 								<li class="menu-item"><a href="/contact" class="nav-link">Contact
 										Us</a></li>
-								<li class="menu-item"><a class="nav-link">Phone:
-										0560000000</a></li>
-
 							</ul>
 					</div>
 				</div>
@@ -511,12 +602,13 @@ f
 
 
 
-
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/swiper.js"></script>
 	<script src="js/bootstrap.bundle.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/iconify.js"></script>
+
 </body>
+
 </html>

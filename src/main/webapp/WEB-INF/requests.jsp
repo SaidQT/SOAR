@@ -14,17 +14,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>All Shops</title>
+<title>Pet request</title>
 <link rel="stylesheet" type="text/css" href="/css/table.css">
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
 	<nav class="navbar navbar-expand-xl navbar-light bg-light">
 		<div class="container-fluid">
-			 <a
-				class="navbar-brand" href="/">Home</a>
-				<a
-				class="navbar-brand" href="/shop/${shop.id}/requests">Requests</a>
+			<a class="navbar-brand" href="/">Home</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarBasic"
 				aria-controls="navbarBasic" aria-expanded="false"
@@ -41,16 +38,17 @@
 			</div>
 		</div>
 	</nav>
-	<h2>Our Pets</h2>
+	<h2>Our Requests</h2>
 	<br>
 	<br>
 	<table>
 		<thead>
 			<tr>
-				<th>Name</th>
-				<th>Type</th>
-				<th>City</th>
-				<th>Status</th>
+				<th>Pet name</th>
+				<th>Pet type</th>
+				<!-- th>Pet breed</th> -->
+				<th>User</th>
+				<th>Email</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
@@ -58,12 +56,17 @@
 
 			<c:forEach var="pet" items="${pets}">
 				<tr>
-					<td><c:out value="${pet.name}"></c:out></td>
-					<td><c:out value="${pet.type}"></c:out></td>
-					<td><c:out value="${pet.city}"></c:out></td>
-					<td><c:out value="${pet.status}"></c:out></td>
-					<td id="buttons"><a href="/shop/${pet.id}/edit">Edit</a> | <a
-						href="/shop/${pet.id}/delete">Delete</a></td>
+					<c:if test="${pet.status.equals('Pending')}">
+						<td><c:out value="${pet.name}"></c:out></td>
+						<td><c:out value="${pet.type}"></c:out></td>
+						<%-- 	<td><c:out value="${pet.breed}"></c:out></td> --%>
+						<td><c:out value="${pet.user.username}"></c:out></td>
+						<td><c:out value="${pet.user.email}"></c:out></td>
+						<td id="buttons"><a
+							href="/shop/${pet.shop.id}/${pet.id}/accept">Accept</a> | <a
+							href="/shop/${pet.shop.id}/${pet.id}/destroy">Refuse</a></td>
+					</c:if>
+
 				</tr>
 			</c:forEach>
 		</tbody>

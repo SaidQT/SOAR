@@ -255,7 +255,7 @@
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
 								</a></li> -->
 							</ul>
-f
+							f
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -365,15 +365,19 @@ f
 
 				</div>
 	</header>
-	<section id="banner" class="py-3" style="background: #F9F3EC;">
-		<div class="container">
-			<div class="hero-content py-5 my-3">
-				<h2 class="display-1 mt-3 mb-0">Favorites</h2>
-				<nav class="breadcrumb">
-					<a class="breadcrumb-item nav-link" href="#">Home</a> <a
-						class="breadcrumb-item nav-link" href="#">Pages</a> <span
-						class="breadcrumb-item active" aria-current="page">Favorites</span>
-				</nav>
+	<section id="banner" class="py-0" style="background: #F9F3EC;">
+		<div class="container p-0">
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<div class="hero-content py-0 my-0">
+						<h2 class="display-1 mt-3 mb-0">Account</h2>
+
+					</div>
+				</div>
+				<div class="col-md-6">
+					<img src="images/soar.png" class="img-fluid soarIm mt-3"
+						alt="About Us Image" style="max-width: 100%;">
+				</div>
 			</div>
 		</div>
 	</section>
@@ -389,11 +393,11 @@ f
 			</div>
 
 			<div class="row">
-				<c:if test="${empty favorites}">
+				<c:if test="${empty favorite}">
 					<p>Your wishlist is empty.</p>
 				</c:if>
-				<c:if test="${not empty favorites}">
-					<c:forEach var="pet" items="${favorites}">
+				<c:if test="${not empty favorite}">
+					<c:forEach var="pet" items="${favorite}">
 						<div class="col-md-4 col-lg-3 my-4">
 							<div class="card position-relative">
 								<img src="${pet.imageUrl}" class="rounded-4 fixed-size-img"
@@ -588,8 +592,6 @@ f
 							</li>
 							<li class="menu-item"><a href="/aboutus" class="nav-link">About
 									us</a></li>
-							<li class="menu-item"><a href="/contact" class="nav-link">Conatct
-									Us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -603,9 +605,6 @@ f
 								</li>
 								<li class="menu-item"><a href="/contact" class="nav-link">Contact
 										Us</a></li>
-								<li class="menu-item"><a class="nav-link">Phone:
-										0560000000</a></li>
-
 							</ul>
 					</div>
 				</div>
@@ -614,7 +613,6 @@ f
 			</div>
 		</div>
 	</footer>
-
 
 
 

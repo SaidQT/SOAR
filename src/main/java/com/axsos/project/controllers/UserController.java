@@ -1,6 +1,7 @@
 package com.axsos.project.controllers;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -103,16 +104,12 @@ public class UserController {
 	public String showPets(Model model, Principal principal, HttpSession session) {
 		List<Pet> pets = petService.allPets();
 		model.addAttribute("pets", pets);
-
 		if (principal != null) {
 			String username = principal.getName();
-			model.addAttribute("currentUser", userService.findByUsername(username));
+			User user = userService.findByUsername(username);
+			model.addAttribute("currentUser", user);
 		}
-		// We use flag variable in order to check if this
-		if (session.getAttribute("flag") != null) {
-			boolean flag = (boolean) session.getAttribute("flag");
-			model.addAttribute("flag", flag);
-		}
+
 		return "cart.jsp";
 	}
 
@@ -123,13 +120,11 @@ public class UserController {
 		User user = userService.findByUsername(username);
 		Pet pet = petService.findPet(petId);
 		System.out.print(user.getRoles().get(0).getName());
-		boolean flag = user.getPets().contains(pet);
-		session.setAttribute("flag", flag);
+
 		if (user != null && pet != null && !user.getPets().contains(pet)) { // checks if there is a principal, and if
 			// the user has favorited this pet
 			pet.getUsers().add(user);
 			petService.createPet(pet);
-
 			return "redirect:/cart";
 
 		} else if (user != null && pet != null && user.getPets().contains(pet)) {
@@ -138,7 +133,7 @@ public class UserController {
 			if (location.equals("cart")) { // checks if the current user is on the favorites page or the public page
 				return "redirect:/cart";
 			}
-			if (location.equals("favorite")) {
+			if (location.equals("wishlist")) {
 				return "redirect:/user/favorites";
 			}
 		}
@@ -146,13 +141,14 @@ public class UserController {
 	}
 
 	@GetMapping("/wish")
-	public String FavoritePage(Principal principal, Model model) {
-	String username = principal.getName();
-	User user = userService.findByUsername(username);
-	List<Pet> pets = user.getPets();
-	model.addAttribute("favorite", pets);
-	return "wishlist.jsp";
+	public String favoritePage(Principal principal, Model model) {
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		List<Pet> pets = user.getPets();
+		model.addAttribute("favorite", pets);
+		return "wishlist.jsp";
 	}
+
 	@GetMapping("/user/favorites")
 	public String Favorite(Principal principal, Model model) {
 		return "redirect:/wish";
@@ -161,6 +157,27 @@ public class UserController {
 	// ****************************** R from {CRUD} ******************************
 	// Function to render the page that contains user adoption request and their
 	// status
+	@GetMapping("/besties")
+	public String besties(Principal principal, Model model) {
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		List<Pet> requestPets = user.getAdoptedPets();
+		// List<Pet> resfuedPets = user.getRefusedPets();
+		// List<Pet> pets = user.getAdoptedPets();
+		// List<Pet> userPets = new ArrayList<>();
+		// Pet tempPet = new Pet();
+		if (requestPets != null) {
+			Iterator<Pet> iterator = requestPets.iterator();
+			while (iterator.hasNext()) {
+				Pet pet = iterator.next();
+				if (pet.getStatus().equals("Pending")) {
+					iterator.remove();
+				}
+			}
+			model.addAttribute("requestPets", requestPets);
+		}
+		return "besties.jsp";
+	}
 	@GetMapping("/user/besties")
 	public String userBesties(Principal principal, Model model) {
 		String username = principal.getName();
@@ -180,17 +197,7 @@ public class UserController {
 			}
 			model.addAttribute("requestPets", requestPets);
 		}
-
-		// System.out.println("Requ pets");
-		// for (Pet x : requestPets) {
-		// System.out.println("Requ pets"+x.getStatus()+ " "+x.getName());
-		// }
-		// System.out.println("refused pets");
-		// for (Pet x : resfuedPets) {
-		// System.out.println(x.getStatus()+ " "+x.getName());
-		// }
-		// model.addAttribute("refusedPets", resfuedPets);
-		return "besties.jsp";
+		return "redirect:/besties";
 	}
 
 	// ****************************** U from {CRUD} ******************************
@@ -200,16 +207,6 @@ public class UserController {
 		Pet pet = petService.findPet(petId);
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
-		// Step for remove relationship {adoption} between user and pet:
-		// *) Remove relationship between pet and user (1 user --adapt-- M pets) from
-		// pet side
-		// --> By make the user null in the pet
-		// *) Remove relationship between pet and user (1 user --adapt-- M pets) from
-		// user side
-		// --> By remove the pet from adoptedPet list for user
-		// *) Update the pet status to be Unadopted
-		// *) Add the pet in the cancel request in the refusedPets list for the user
-		// *) Save the changes in both pet and user
 		pet.setUser(null);
 		pet.setStatus("Unadopted");
 		petService.createPet(pet);

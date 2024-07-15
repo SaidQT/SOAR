@@ -2,8 +2,6 @@ package com.axsos.project.controllers;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,7 +64,11 @@ public class PetController {
 	// ****************************** R from {CRUD} ******************************
 	// Functions allow the shop owner to show all pets they have
 	@GetMapping("/shop/home")
-	public String showShops(Model model) {
+	public String showShops(Model model, Principal principal) {
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		Shop shop = user.getShop();
+		model.addAttribute("shop", shop);
 		List<Pet> pets = petService.allPets();
 		model.addAttribute("pets", pets);
 		return "pet.jsp";
@@ -107,162 +109,76 @@ public class PetController {
 	// Read the pet information --> any user can go to the pet profile so it is
 	// public
 	// ID here is for the pet
-	@GetMapping("/public/{id}/details")
-	public String showDetails(@PathVariable("id") Long id, Model model) {
-		Pet pet = petService.findPet(id);
-		model.addAttribute("pet", pet);
-		return "petprofile.jsp";
+	@GetMapping("/details")
+	public String showDetails(Model model, HttpSession session) {
+		if (session.getAttribute("id") != null) {
+			Pet pet = petService.findPet((Long) session.getAttribute("id"));
+			model.addAttribute("pet", pet);
+		}
+		return "details.jsp";
 	}
 
-	// If user click on adoption button we need to change the pet status to pending
-	// and add it to their besties
-	// ID here is for the pet
-	// Principal here is the adaptor(user)
-	@PatchMapping("/user/{id}/details")
-	public String requestAdoption(@PathVariable("id") Long id, Principal principal) {
+	@GetMapping("/public/{id}/details")
+	public String show(@PathVariable("id") Long id, Model model, HttpSession session) {
+		session.setAttribute("id", id);
+
+		return "redirect:/details";
+	}
+
+	@PatchMapping("/user/details")
+	public String requestAdoption(HttpSession session, Principal principal) {
+		Long id = (Long) session.getAttribute("id");
 		Pet pet = petService.findPet(id);
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
-		// Add relationship between pet and user (1 user --adapt-- M pets) + update
-		// status before save
-		// We should also add pet to the user adoptedPet list
 		pet.setUser(user);
-		// ?
 		pet.setStatus("Pending");
-		// user.addAdoptedPet(pet);
-		// for (Pet x : user.getAdoptedPets()) {
-		// System.out.println(x.getName());
-		// }
-		// userService.updateUser(user);
 		petService.createPet(pet);
 		return "redirect:/user/besties";
 	}
 
-	// Read the requests information for shop owner --> show the pets according to
-	// their status
-	// ID here is for shop
 	@GetMapping("/shop/{id}/requests")
 	public String showRequests(@PathVariable("id") Long id, Model model, Principal principal) {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		System.out.println("Id = " + id + "session id= " + user.getShop().getId());
 		if (id != user.getShop().getId()) {
-			return "notallowed.jsp";
+			return "accessDenied.jsp";
 		}
 		Shop shop = shopService.findShop(id);
-		// We will get all the shops' pets and separate them according to their status
-		// in the JSP file
 		List<Pet> pets = shop.getPets();
 		model.addAttribute("pets", pets);
 		return "requests.jsp";
 	}
 
-	// Accept request --> The shop owner can accept the adoption request {update the
-	// pet status to
-	// adopted}
-	// ID here is for pet and shopid for shop
 	@GetMapping("/shop/{id}/{shopId}/accept")
 	public String accept(@PathVariable("id") Long id, @PathVariable("shopId") Long shopId, Principal principal) {
 		String username = principal.getName();
 		User x = userService.findByUsername(username);
 		if (id != x.getShop().getId()) {
-			return "notallowed.jsp";
+			return "accessDenied.jsp";
 		}
-		Pet pet = petService.findPet(id);
-		// Just update the status before save pet
+		Pet pet = petService.findPet(shopId);
 		pet.setStatus("Adopted");
 		User user = pet.getUser();
 		user.addAdoptedPet(pet);
 		userService.updateUser(user);
 		petService.createPet(pet);
-		// Send email here
-		return "redirect:/shop/" + shopId + "/requests";
+		return "redirect:/shop/" + id + "/requests";
 	}
 
-	// Refuse request -->The shop owner can refuse the adoption request {update the
-	// pet status to
-	// unadopted}
-	// ID here is for pet and shopid for shop
 	@GetMapping("/shop/{id}/{shopId}/destroy")
 	public String destroy(@PathVariable("id") Long id, @PathVariable("shopId") Long shopId, Principal principal) {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
-		System.out.println("Id = " + id + "session id= " + user.getShop().getId());
 		if (id != user.getShop().getId()) {
-			return "notallowed.jsp";
+			return "accessDenied.jsp";
 		}
-		Pet pet = petService.findPet(id);
+		Pet pet = petService.findPet(shopId);
 		pet.setStatus("Unadopted");
-		// If there is relationship between pet and user we need to set it to null(the
-		// pet is no longer adopted for this user)
 		pet.setUser(null);
 		petService.createPet(pet);
-		// Send email here
 		return "redirect:/shop/" + shopId + "/requests";
 	}
-
-//	@GetMapping("/cat")
-//	public String showCats(HttpSession session, Model model, Principal principal) {
-//		List<Pet> pets = petService.allPets();
-//		model.addAttribute("pets", pets);
-//		String activeFilter = (String) session.getAttribute("activeFilter");
-//		if (activeFilter == null) {
-//			activeFilter = "all"; // Default filter
-//		}
-//		model.addAttribute("activeFilter", activeFilter);
-//		if (principal != null) {
-//			String username = principal.getName();
-//			User currentUser = userService.findByUsername(username);
-//			model.addAttribute("currentUser", currentUser);
-//
-//			// Check if each pet is favorited by the current user
-//			Set<Long> favoritePetIds = currentUser.getPets().stream().map(Pet::getId).collect(Collectors.toSet());
-//			model.addAttribute("favoritePetIds", favoritePetIds);
-//		}
-//
-//		return "cat.jsp";
-//	}
-//
-//	@GetMapping("/dog")
-//	public String showDogs(HttpSession session, Model model, Principal principal) {
-//		List<Pet> pets = petService.allPets();
-//		model.addAttribute("pets", pets);
-//		String activeFilter = (String) session.getAttribute("activeFilter");
-//		if (activeFilter == null) {
-//			activeFilter = "all"; // Default filter
-//		}
-//		model.addAttribute("activeFilter", activeFilter);
-//		if (principal != null) {
-//			String username = principal.getName();
-//			User currentUser = userService.findByUsername(username);
-//			model.addAttribute("currentUser", currentUser);
-//
-//			// Check if each pet is favorited by the current user
-//			Set<Long> favoritePetIds = currentUser.getPets().stream().map(Pet::getId).collect(Collectors.toSet());
-//			model.addAttribute("favoritePetIds", favoritePetIds);
-//		}
-//		return "dog.jsp";
-//	}
-//
-//	@GetMapping("/bird")
-//	public String showBirds(HttpSession session, Model model, Principal principal) {
-//		List<Pet> pets = petService.allPets();
-//		model.addAttribute("pets", pets);
-//		String activeFilter = (String) session.getAttribute("activeFilter");
-//		if (activeFilter == null) {
-//			activeFilter = "all"; // Default filter
-//		}
-//		model.addAttribute("activeFilter", activeFilter);
-//		if (principal != null) {
-//			String username = principal.getName();
-//			User currentUser = userService.findByUsername(username);
-//			model.addAttribute("currentUser", currentUser);
-//
-//			// Check if each pet is favorited by the current user
-//			Set<Long> favoritePetIds = currentUser.getPets().stream().map(Pet::getId).collect(Collectors.toSet());
-//			model.addAttribute("favoritePetIds", favoritePetIds);
-//		}
-//		return "bird.jsp";
-//	}
 
 }

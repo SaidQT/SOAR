@@ -15,626 +15,16 @@
 
 <head>
 <title>SOAR</title>
-
 <meta charset="utf-8">
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="author" content="">
 <meta name="keywords" content="">
+<meta name="description" content="">
+</head>
 
-<meta name="description" content=""> -->
-
-
-<style>
-
-/* Adjust image size and spacing */
-.swiper-slide .col-md-2 {
-	text-align: center;
-	padding-top: 20px; /* Adjust spacing between image and text */
-}
-
-.swiper-slide .col-md-2 img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 50%; /* Creates a circular shape for the image */
-}
-
-/* Adjust text alignment and spacing */
-.swiper-slide .col-md-10 {
-	padding: 20px; /* Adjust padding as needed */
-}
-
-#testimonial p {
-	font-size: 1.2rem; /* Adjust font size as needed */
-	line-height: 1.6; /* Adjust line height for readability */
-	margin-bottom: 20px; /* Add some bottom margin between paragraphs */
-}
-
-#testimonial .swiper-slide {
-	display: flex; /* Ensure each slide takes full width */
-	justify-content: center; /* Center content horizontally */
-}
-
-#testimonial .swiper-slide .col-md-10 {
-	width: 200%; /* Limit the maximum width of the text block */
-}
-
-@media ( min-width : 992px) {
-	#testimonial .swiper-slide .col-md-10 {
-		padding: 30px;
-		/* Add padding inside the text block for better spacing */
-	}
-}
-
-.category-image {
-	width: 100px; /* Adjust width as needed */
-	height: 100px; /* Adjust height as needed */
-	/*  border-radius: 50%; /* Makes the image circular */ */
-	object-fit: cover; /* Ensures the image covers the entire circle */
-}
-
-#banner {
-	position: relative;
-	overflow: hidden;
-	background: #F9F3EC;
-	min-height: 60vh; /* Adjust this value as needed for larger height */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	/* 
-    
-    position: relative;
-    overflow: hidden;
-    background: #F9F3EC;
-    min-height: 80vh; */
-	/* Adjust this value as needed for larger height */
-}
-
-#bestselling .swiper-slide img {
-	width: 100%; /* Make images take the full width of the container */
-	height: 200px; /* Set the desired height */
-	object-fit: cover;
-}
-
-#bestselling .swiper-slide .card-body {
-	text-align: center; /* Center-align text */
-}
-
-.text-background {
-	background: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
-	backdrop-filter: blur(10px); /* Blur effect */
-	padding: 20px;
-	border-radius: 10px;
-	align-items: center;
-	justify-content: center;
-}
-
-.video-background {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	/* z-index: -1; */
-}
-
-.banner-content-wrapper {
-	position: relative;
-	z-index: 1;
-	align-items: center;
-	/*  justify-content: center; */
-	height: 100%;
-	/* Ensures the content wrapper takes full height of the container */
-	text-align: center;
-	color: white; /* Set text color for better visibility on images */
-}
-
-/* .banner-content-wrapper {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    color: white; /* Set text color for better visibility on videos */
-padding
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-20px
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-background
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-rgba
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-0
-,
-0
-,
-0
-,
-0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.5
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-; /* Semi-transparent background color for contrast */
-border-radius
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-10px
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-}
-* /
-
- @keyframes moveText { 0% {
-	transform: translateX(0);
-}
-
-50
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%
-{
-transform
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-translateX
-
-
-
-
-
-
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-20px
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-
-
-
-
-;
-}
-100
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%
-{
-transform
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-translateX
-
-
-
-
-
-
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-
-
-
-
-;
-}
-}
-.animate-text {
-	display: inline-block;
-	animation: moveText 3s infinite;
-}
-
-.preloader-wrapper, .offcanvas-header, .offcanvas-body, .order-md-last,
-	.main-menu, .banner-content, .categories-item, .content-wrapper {
-	text-align: center;
-}
-
-.content-wrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-.banner-title {
-	width: 100%;
-	text-align: center;
-}
-
-.banner-title a span:hover {
-	text-decoration: underline;
-}
-
-.btn {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.secondary-font {
-	display: block;
-}
-
-.search-bar {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.swiper-slide {
-	text-align: center;
-}
-
-.navbar-nav {
-	justify-content: center;
-}
-
-.list-group-item {
-	justify-content: center;
-}
-
-.list-group-item h6, .list-group-item small, .list-group-item span {
-	text-align: center;
-	display: block;
-}
-</style>
-
-<link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-    crossorigin="anonymous">
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="/css/style1.css">
 
 <link rel="stylesheet" href="css/swiper.css" />
 <link rel="stylesheet" href="css/bootstrap.css" />
@@ -645,14 +35,17 @@ translateX
 
 
 
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Chilanka&family=Montserrat:wght@300;400;500&display=swap"
+	rel="stylesheet">
 
 </head>
 
 
 
 <body>
-
 
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <defs>
@@ -851,7 +244,7 @@ translateX
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
 								</a></li> -->
 							</ul>
-f
+
 						</div>
 
 
@@ -900,7 +293,6 @@ f
 											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Dogs</a></li>
 											<li class="nav-item"><a href="/cart"
-
 												class="dropdown-item">Birds</a></li>
 											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Other</a></li>
@@ -928,7 +320,6 @@ f
 										</a></li>
 
 										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
-
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
 										<li>
@@ -981,72 +372,6 @@ f
 		</div>
 	</section>
 	<section class="login-tabs padding-large">
-		<div class="container my-5 py-5">
-			<div class="row">
-				<div class="cont">
-					<div class="form sign-in">
-						<h2>Welcome back,</h2>
-						<form:form action="login" method="POST" modelAttribute="newLogin">
-							<label> <span>Username</span> <form:input path="username"
-									type="text" /> <form:errors path="username"
-									class="text-warning" />
-							</label>
-							<label> <span>Password</span> <form:password path="password" />
-								<form:errors path="password" class="text-warning" />
-							</label>
-							<p class="forgot-pass">Forgot password?</p>
-							<button class="submit">Sign In</button>
-							<button class="fb-btn">
-								Connect with <span>gmail</span>
-							</button>
-						</form:form>
-					</div>
-					<div class="sub-cont">
-						<div class="img">
-							<div class="img__text m--up">
-								<h2>New here?</h2>
-								<p>Sign up and discover great amount of new opportunities!</p>
-							</div>
-							<div class="img__text m--in">
-								<h2>One of us?</h2>
-								<p>If you already have an account, just sign in. We've
-									missed you!</p>
-							</div>
-							<div class="img__btn">
-								<span class="m--up">Sign Up</span> <span class="m--in">Sign
-									In</span>
-							</div>
-						</div>
-						<div class="form sign-up">
-							<h2>Adopt pets, save lives,</h2>
-							<form:form action="register" method="POST"
-								modelAttribute="user">
-								<label> <span>Name</span> <form:input path="username" />
-									<form:errors path="username" class="text-warning" />
-								</label>
-								<label> <span>Email</span> <form:input path="email"
-										type="email" /> <form:errors path="email"
-										class="text-warning" />
-								</label>
-								<label> <span>Password</span> <form:password
-										path="password" /> <form:errors path="password"
-										class="text-warning" />
-								</label>
-								<label> <span>Confirm Password</span> <form:password
-										path="passwordConfirmation" /> <form:errors path="passwordConfirmation"
-										class="text-warning" />
-								</label>
-								<button class="submit">Sign Up</button>
-								<!-- <button  class="fb-btn">Join with <span>gmail</span></button> -->
-							</form:form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<%-- <section class="login-tabs padding-large">
 		<div class="container my-5 py-5">
 			<div class="row">
 				<div class="tabs-listing">
@@ -1143,7 +468,7 @@ f
 			</div>
 		</div>
 	</section>
- --%>
+
 	<section id="insta" class="my-5">
 		<div class="row g-0 py-5">
 			<div class="col instagram-item  text-center position-relative">
@@ -1210,8 +535,8 @@ f
 
 				<div class="col-md-3">
 					<div class="footer-menu">
-						<img src="images/logo.png" alt="logo"
-							style="height: 50%; width: 50%">
+						<a href="/home"><img src="images/logo.png" alt="logo"
+							style="height: 50%; width: 50%"></a>
 
 					</div>
 				</div>
@@ -1245,12 +570,10 @@ f
 					<div class="footer-menu">
 						<h3>Quick Links</h3>
 						<ul class="menu-list list-unstyled">
-							<li class="menu-item"><a href="#" class="nav-link">Home</a>
+							<li class="menu-item"><a href="/home" class="nav-link">Home</a>
 							</li>
-							<li class="menu-item"><a href="#" class="nav-link">About
+							<li class="menu-item"><a href="/aboutus" class="nav-link">About
 									us</a></li>
-							<li class="menu-item"><a href="#" class="nav-link">Conatct
-									Us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -1260,13 +583,10 @@ f
 							Help Center
 							</h5>
 							<ul class="menu-list list-unstyled">
-								<li class="menu-item"><a href="#" class="nav-link">FAQs</a>
+								<li class="menu-item"><a href="/faqs" class="nav-link">FAQs</a>
 								</li>
-								<li class="menu-item"><a href="#" class="nav-link">Contact
+								<li class="menu-item"><a href="/contact" class="nav-link">Contact
 										Us</a></li>
-								<li class="menu-item"><a href="#" class="nav-link">Phone:
-										0560000000</a></li>
-
 							</ul>
 					</div>
 				</div>
@@ -1275,16 +595,7 @@ f
 			</div>
 		</div>
 	</footer>
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			document.querySelector('.img__btn').addEventListener(
-					'click',
-					function() {
-						document.querySelector('.cont').classList
-								.toggle('s--signup');
-					});
-		});
-	</script>
+
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/swiper.js"></script>
 	<script src="js/bootstrap.bundle.js"></script>

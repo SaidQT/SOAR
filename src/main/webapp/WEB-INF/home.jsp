@@ -147,7 +147,10 @@ padding
 
 
 
+
+
 :
+
 
 
 
@@ -159,7 +162,10 @@ padding
 
 
 
+
 20px
+
+
 
 
 
@@ -182,7 +188,10 @@ background
 
 
 
+
+
 :
+
 
 
 
@@ -194,7 +203,10 @@ background
 
 
 
+
 rgba
+
+
 
 
 
@@ -216,6 +228,8 @@ rgba
 
 
 
+
+
 0
 ,
 0
@@ -223,6 +237,8 @@ rgba
 0
 ,
 0
+
+
 
 
 
@@ -244,7 +260,11 @@ rgba
 
 
 
+
+
 )
+
+
 
 
 
@@ -267,7 +287,10 @@ border-radius
 
 
 
+
+
 :
+
 
 
 
@@ -279,7 +302,10 @@ border-radius
 
 
 
+
 10px
+
+
 
 
 
@@ -309,9 +335,13 @@ border-radius
 
 
 
+
+
 %
 {
 transform
+
+
 
 
 
@@ -333,6 +363,8 @@ transform
 
 
 
+
+
 translateX
 
 
@@ -342,7 +374,11 @@ translateX
 
 
 
+
+
 (
+
+
 
 
 
@@ -364,7 +400,11 @@ translateX
 
 
 
+
+
 )
+
+
 
 
 
@@ -376,6 +416,8 @@ translateX
 ;
 }
 100
+
+
 
 
 
@@ -399,7 +441,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -419,7 +465,11 @@ translateX
 
 
 
+
+
 (
+
+
 
 
 
@@ -441,7 +491,11 @@ translateX
 
 
 
+
+
 )
+
+
 
 
 
@@ -585,7 +639,7 @@ translateX
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
 								</a></li> -->
 							</ul>
-f
+							f
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -880,114 +934,6 @@ f
 
 
 
-
-
-	<section id="bestselling" class="my-5 overflow-hidden">
-		<div class="container py-5 mb-5">
-
-			<div
-				class="section-header d-md-flex justify-content-between align-items-center mb-3">
-				<h2 class="display-3 fw-normal" style="font-size: 3rem">
-					<a href="">Changing Lives: Stories of Pet Adoption</a>
-				</h2>
-
-			</div>
-
-			<div class=" swiper bestselling-swiper">
-				<div class="swiper-wrapper">
-
-					<!-- 	<div class="swiper-slide">
-						<div class="z-1 position-absolute rounded-3 m-3 px-3 border border-dark-subtle">
-              New
-            </div>
-						<div class="card position-relative" style="height: 100%;object-fit: cover; ">
-							<a href=""><img src="images/pricing-2.jpg"
-								class="img-fluid rounded-4" alt="image" ></a>
-							<div class="card-body p-0">
-								<a href="">
-									<h3 class="card-title pt-4 m-0">Said QT</h3>
-								</a>
-
-
-
-							</div>
-						</div>
-					</div> -->
-
-
-					<div class="swiper-slide">
-						<div class="card position-relative"
-							style="height: 100%; object-fit: cover;">
-							<a href=""><img src="images/pricing-2.jpg"
-								class="img-fluid rounded-4" alt="image"></a>
-							<div class="card-body p-0">
-								<a href="">
-									<h3 class="card-title pt-4 m-0">Said QT</h3>
-								</a>
-							</div>
-						</div>
-					</div>
-
-
-
-					<div class="swiper-slide">
-						<!-- <div class="z-1 position-absolute rounded-3 m-3 px-3 border border-dark-subtle">
-              New
-            </div> -->
-						<div class="card position-relative">
-							<a href=""><img src="images/about-2.jpg"
-								class="img-fluid rounded-4" alt="image   style="height: 100%; object-fit:cover;"></a>
-							<div class="card-body p-0">
-								<a href="">
-									<h3 class="card-title pt-4 m-0">Ola Jaafreh</h3>
-								</a>
-
-
-
-							</div>
-						</div>
-					</div>
-
-
-
-					<div class="swiper-slide">
-
-						<div class="card position-relative">
-							<a href=""><img src="images/team-1.jpg"
-								class="img-fluid rounded-4" alt="image"></a>
-							<div class="card-body p-0">
-								<a href="">
-									<h3 class="card-title pt-4 m-0">Rand Farhod</h3>
-								</a>
-
-
-
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide">
-
-						<div class="card position-relative">
-							<a href=""><img src="images/pricing-2.jpg"
-								class="img-fluid rounded-4" alt="image"></a>
-							<div class="card-body p-0">
-								<a href="">
-									<h3 class="card-title pt-4 m-0">Andree Ayad</h3>
-								</a>
-
-
-
-							</div>
-						</div>
-
-					</div>
-				</div>
-				<!-- / category-carousel -->
-
-
-			</div>
-	</section>
-
 	<section id="register"
 		style="background: url('images/background-img.png');">
 		<div class="container ">
@@ -1081,8 +1027,6 @@ f
 							</li>
 							<li class="menu-item"><a href="/aboutus" class="nav-link">About
 									us</a></li>
-							<li class="menu-item"><a href="/contact" class="nav-link">Conatct
-									Us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -1096,9 +1040,6 @@ f
 								</li>
 								<li class="menu-item"><a href="/contact" class="nav-link">Contact
 										Us</a></li>
-								<li class="menu-item"><a class="nav-link">Phone:
-										0560000000</a></li>
-
 							</ul>
 					</div>
 				</div>
