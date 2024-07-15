@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.axsos.project.models.Contact;
 import com.axsos.project.models.Shop;
@@ -39,12 +40,6 @@ public class MainController {
 		return "categoryName.jsp";
 	}
 
-	@GetMapping("/contactus")
-	public String ContactUs() {
-
-		return "ContactUs.jsp";
-	}
-
 	@GetMapping("/aboutus")
 	public String AboutUs(Model model) {
 		model.addAttribute("allPartners", shopService.findAll());
@@ -53,22 +48,22 @@ public class MainController {
 
 	@GetMapping("/contact")
 	public String showContactForm(Model model) {
-		model.addAttribute("contact", new Contact());
-		return "contact.jsp";
+	    model.addAttribute("contact", new Contact());
+	    return "contact.jsp";
 	}
 
 	@PostMapping("/contact")
-	public String submitContactForm(@Valid @ModelAttribute("contact") Contact contact, BindingResult result,
-			Model model) {
-		if (result.hasErrors()) {
-			return "contact.jsp";
-		}
-		contactService.saveContact(contact);
-		emailService.sendContactMessage(contact);
-		model.addAttribute("successMessage", "Your message has been sent successfully!");
-		return "redirect:/contact";
+	public String submitContactForm(@Valid @ModelAttribute("contact") Contact contact, 
+	                                BindingResult result, 
+	                                RedirectAttributes redirectAttributes) {
+	    if (result.hasErrors()) {
+	        return "contact.jsp";
+	    }
+	    contactService.saveContact(contact);
+	    emailService.sendContactMessage(contact);
+	    redirectAttributes.addFlashAttribute("successMessage", "Your message has been sent successfully!");
+	    return "redirect:/contact";
 	}
-
 	@GetMapping("/faqs")
 	public String showFaqsForm(Model model) {
 		model.addAttribute("contact", new Contact());

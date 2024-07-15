@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!-- c:out ; c:forEach etc. -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Formatting (dates) -->
@@ -9,44 +9,91 @@
 <!-- for rendering errors on PUT routes -->
 <%@ page isErrorPage="true"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-<title>SOAR</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="author" content="">
-<meta name="keywords" content="">
-<meta name="description" content="">
-</head>
-
-
-<link rel="stylesheet" href="css/swiper.css" />
-<link rel="stylesheet" href="css/bootstrap.css" />
-
-
-<link rel="stylesheet" type="text/css" href="css/vendor.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8">
+<title>Pet Categories</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/main.css">
+<!-- change to match your file/naming structure -->
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/app.js"></script>
 <link
-	href="https://fonts.googleapis.com/css2?family=Chilanka&family=Montserrat:wght@300;400;500&display=swap"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+.carousel-item img {
+	border-radius: 50%;
+	max-width: 100%;
+	height: auto;
+}
 
+.carousel-caption {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+	display: none;
+}
+
+.carousel-control-prev::after {
+	content: '<';
+	font-size: 2rem;
+	color: black;
+}
+
+.carousel-control-next::after {
+	content: '>';
+	font-size: 2rem;
+	color: black;
+}
+
+.pet-category {
+	margin-top: 20px;
+}
+
+.pet-card img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+	position: relative;
+}
+
+.pet-card .favorite-icon {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: red;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.pet-card .favorite-icon.favorited {
+	color: red;
+}
+
+.pet-card .dummy-data {
+	text-align: center;
+	margin-top: 10px;
+}
+
+nav img {
+	width: 60px;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+	margin-right: 20px;
+}
+</style>
 </head>
-
-
-
 <body>
-
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <defs>
       <symbol xmlns="http://www.w3.org/2000/svg" id="link"
@@ -141,34 +188,38 @@
 		<div class="offcanvas-body">
 			<div class="order-md-last">
 				<h4 class="d-flex justify-content-between align-items-center mb-3">
-					<span class="text-primary">Your cart</span> <span
+					<span class="text-primary">New Blogs</span> <span
 						class="badge bg-primary rounded-circle pt-2">3</span>
 				</h4>
 				<ul class="list-group mb-3">
 					<li class="list-group-item d-flex justify-content-between lh-sm">
 						<div>
-							<h6 class="my-0">Grey Hoodie</h6>
+							<h6 class="my-0">Ola Jaafreh</h6>
 							<small class="text-body-secondary">Brief description</small>
-						</div> <span class="text-body-secondary">$12</span>
+						</div> <span class="text-body-secondary">12:00 am</span>
 					</li>
 					<li class="list-group-item d-flex justify-content-between lh-sm">
 						<div>
-							<h6 class="my-0">Dog Food</h6>
+							<h6 class="my-0">Rand Farhood</h6>
 							<small class="text-body-secondary">Brief description</small>
-						</div> <span class="text-body-secondary">$8</span>
+						</div> <span class="text-body-secondary">03:00 pm</span>
 					</li>
 					<li class="list-group-item d-flex justify-content-between lh-sm">
 						<div>
-							<h6 class="my-0">Soft Toy</h6>
+							<h6 class="my-0">Andree Ayad</h6>
 							<small class="text-body-secondary">Brief description</small>
-						</div> <span class="text-body-secondary">$5</span>
+						</div> <span class="text-body-secondary">02:00 pm</span>
 					</li>
-					<li class="list-group-item d-flex justify-content-between"><span
-						class="fw-bold">Total (USD)</span> <strong>$20</strong></li>
+					<li class="list-group-item d-flex justify-content-between lh-sm">
+						<div>
+							<h6 class="my-0">Said QT</h6>
+							<small class="text-body-secondary">Brief description</small>
+						</div> <span class="text-body-secondary">12:00 pm</span>
+					</li>
 				</ul>
 
-				<button class="w-100 btn btn-primary btn-lg" type="submit">Continue
-					to checkout</button>
+				<button class="w-100 btn btn-primary btn-lg" type="submit">Show
+					More</button>
 			</div>
 		</div>
 	</div>
@@ -350,215 +401,39 @@ f
 
 				</div>
 	</header>
-
-	<section id="banner" class="py-3" style="background: #F9F3EC;">
-		<div class="container">
-			<div class="hero-content py-5 my-3">
-				<h2 class="display-1 mt-3 mb-0">
-					Pet Adoption<span class="text-primary"> FAQs</span>
-				</h2>
-				<nav class="breadcrumb">
-					<a class="breadcrumb-item nav-link" href="#">Home</a> <a
-						class="breadcrumb-item nav-link" href="#">Pages</a> <span
-						class="breadcrumb-item active" aria-current="page">Pet
-						Adoption FAQs</span>
-				</nav>
-			</div>
-		</div>
-	</section>
-
-	<section class="faqs-wrap">
-		<div class="container py-5 my-5">
-			<div class="row my-4">
-				<main class="col-md-8 pe-5">
-					<h2 class="mb-3">Frequently Asked Questions about Pet Adoption</h2>
-					<p>If you're considering adopting a pet, here are some common
-						questions and answers to help you understand the process better.</p>
-					<div class="page-content my-5">
-
-						<div class="accordion mb-5" id="accordionExample">
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingOne">
-									<button class="accordion-button collapsed" type="button"
-										data-bs-toggle="collapse" data-bs-target="#collapseOne"
-										aria-expanded="false" aria-controls="collapseOne">
-										<h5>How can I adopt a pet?</h5>
-									</button>
-								</h2>
-								<div id="collapseOne" class="accordion-collapse collapse"
-									aria-labelledby="headingOne">
-									<div class="accordion-body secondary-font">Adopting a pet
-										typically involves visiting a shelter, filling out an
-										application, meeting with potential pets, and completing an
-										adoption fee.</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingTwo">
-									<button class="accordion-button collapsed" type="button"
-										data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-										aria-expanded="false" aria-controls="collapseTwo">
-										<h5>What are the requirements for pet adoption?</h5>
-									</button>
-								</h2>
-								<div id="collapseTwo" class="accordion-collapse collapse"
-									aria-labelledby="headingTwo">
-									<div class="accordion-body secondary-font">Requirements
-										often include proof of identity, proof of residence, and
-										sometimes references from a veterinarian or landlord.</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingThree">
-									<button class="accordion-button collapsed" type="button"
-										data-bs-toggle="collapse" data-bs-target="#collapseThree"
-										aria-expanded="false" aria-controls="collapseThree">
-										<h5>Are the pets vaccinated and spayed/neutered before
-											adoption?</h5>
-									</button>
-								</h2>
-								<div id="collapseThree" class="accordion-collapse collapse"
-									aria-labelledby="headingThree">
-									<div class="accordion-body secondary-font">Yes, most pets
-										available for adoption are vaccinated and spayed/neutered.
-										This ensures their health and prevents overpopulation.</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingFour">
-									<button class="accordion-button collapsed" type="button"
-										data-bs-toggle="collapse" data-bs-target="#collapseFour"
-										aria-expanded="false" aria-controls="collapseFour">
-										<h5>How much does it cost to adopt a pet?</h5>
-									</button>
-								</h2>
-								<div id="collapseFour" class="accordion-collapse collapse"
-									aria-labelledby="headingFour">
-									<div class="accordion-body secondary-font">Adoption fees
-										vary but typically range from $50 to $200. These fees help
-										cover the costs of caring for the pet before adoption.</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingFive">
-									<button class="accordion-button collapsed" type="button"
-										data-bs-toggle="collapse" data-bs-target="#collapseFive"
-										aria-expanded="false" aria-controls="collapseFive">
-										<h5>What should I consider before adopting a pet?</h5>
-									</button>
-								</h2>
-								<div id="collapseFive" class="accordion-collapse collapse"
-									aria-labelledby="headingFive">
-									<div class="accordion-body secondary-font">Consider your
-										lifestyle, time commitment, and financial ability to care for
-										a pet. Ensure your home is pet-friendly and you have enough
-										space.</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingSix">
-									<button class="accordion-button collapsed" type="button"
-										data-bs-toggle="collapse" data-bs-target="#collapseSix"
-										aria-expanded="false" aria-controls="collapseSix">
-										<h5>Can I adopt if I live in an apartment?</h5>
-									</button>
-								</h2>
-								<div id="collapseSix" class="accordion-collapse collapse"
-									aria-labelledby="headingSix">
-									<div class="accordion-body secondary-font">Yes, many
-										shelters allow pet adoption for apartment dwellers. However,
-										some may have specific guidelines regarding pet size or breed.
-									</div>
-								</div>
-							</div>
+	<h1>Welcome to your besties pets</h1>
+	<div class="row">
+		<c:if test="${requestPets != null}">
+			<c:forEach var="pet" items="${requestPets}">
+				<div class="col-md-4">
+					<div class="pet-card">
+						<img src="${pet.imageUrl}" alt="${pet.name}"> </a> <i
+							class="favorite-icon far fa-heart" data-pet-id="1"></i>
+						<div class="dummy-data">
+							<p>
+								<c:out value="${pet.type}"></c:out>
+							</p>
+							<p>
+								<c:out value="${pet.name}"></c:out>
+							</p>
+							<p>
+								<c:out value="${pet.status}"></c:out>
+							</p>
+							<c:if test="${pet.status == 'Pending'}">
+								<form action="/user/cancel" method="post">
+									<input type="hidden" name="petId" value="${pet.id}"> <input
+										type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="hidden" name="_method"
+										value="patch">
+									<button type="submit">Cancel adoption</button>
+								</form>
+							</c:if>
 						</div>
-
 					</div>
-				</main>
-
-
-
-
-
-
-
-
-
-
-				<div class="inquiry-item col-md-4">
-					<h3 class="section-title mb-3">Contact Us</h3>
-					<p>Have more questions? Contact us for more information about
-						pet adoption.</p>
-					<%--          <form id="form" class="form-group flex-wrap">
-            <div class="form-input col-lg-12 d-flex mb-3">
-              <input type="text" name="name" placeholder="Your Name" class="form-control ps-3 me-3">
-              <input type="email" name="email" placeholder="Your Email" class="form-control ps-3">
-            </div>
-            <div class="col-lg-12 mb-3">
-              <input type="tel" name="phone" placeholder="Phone Number" class="form-control ps-3">
-            </div>
-            <div class="col-lg-12 mb-3">
-              <input type="text" name="subject" placeholder="Subject" class="form-control ps-3">
-            </div>
-            <div class="col-lg-12 mb-3">
-              <textarea placeholder="Your Message" class="form-control ps-3" rows="8"></textarea>
-            </div>
-            <div class="d-grid">
-              <button class="btn btn-primary btn-lg btn-block">Submit</button>
-            </div>
-          </form> --%>
-
-
-
-
-					<form:form method="post"
-						action="${pageContext.request.contextPath}/faqs"
-						modelAttribute="contact" id="form" class="form-group flex-wrap">
-
-						<div class="form-input col-lg-12 d-flex mb-3">
-							<form:input path="name" type="text" name="email"
-								placeholder="Write Your Name Here"
-								class="form-control ps-3 me-3" />
-							<form:errors path="name" cssClass="error" />
-
-							<form:input path="email" type="text" name="email"
-								placeholder="Write Your Email Here" class="form-control ps-3" />
-							<form:errors path="email" cssClass="error" />
-
-						</div>
-						<div class="col-lg-12 mb-3">
-							<form:input path="phone" type="text" name="email"
-								placeholder="Phone Number" class="form-control ps-3" />
-							<form:errors path="phone" cssClass="error" />
-						</div>
-
-						<div class="col-lg-12 mb-3">
-							<form:input path="subject" type="text" name="email"
-								placeholder="Write Your Subject Here" class="form-control ps-3" />
-							<form:errors path="subject" cssClass="error" />
-						</div>
-						<div class="col-lg-12 mb-3">
-							<form:textarea path="message"
-								placeholder="Write Your Message Here" class="form-control ps-3"
-								style="height:150px;" />
-							<form:errors path="message" cssClass="error" />
-						</div>
-						<div class="d-grid">
-							<button class="btn btn-primary btn-lg btn-block">Submit</button>
-						</div>
-
-						<c:if test="${not empty successMessage}">
-							<p>${successMessage}</p>
-						</c:if>
-					</form:form>
-
-
-
-
 				</div>
-			</div>
-		</div>
-	</section>
+			</c:forEach>
+		</c:if>
+	</div>
 
 	<footer id="footer" class="my-5" style="border-top: 1px solid #ccc">
 		<div class="container py-5 my-5">
@@ -602,11 +477,11 @@ f
 					<div class="footer-menu">
 						<h3>Quick Links</h3>
 						<ul class="menu-list list-unstyled">
-							<li class="menu-item"><a href="#" class="nav-link">Home</a>
+							<li class="menu-item"><a href="/home" class="nav-link">Home</a>
 							</li>
-							<li class="menu-item"><a href="#" class="nav-link">About
+							<li class="menu-item"><a href="/aboutus" class="nav-link">About
 									us</a></li>
-							<li class="menu-item"><a href="#" class="nav-link">Conatct
+							<li class="menu-item"><a href="/contact" class="nav-link">Conatct
 									Us</a></li>
 						</ul>
 					</div>
@@ -617,11 +492,11 @@ f
 							Help Center
 							</h5>
 							<ul class="menu-list list-unstyled">
-								<li class="menu-item"><a href="#" class="nav-link">FAQs</a>
+								<li class="menu-item"><a href="/faqs" class="nav-link">FAQs</a>
 								</li>
-								<li class="menu-item"><a href="#" class="nav-link">Contact
+								<li class="menu-item"><a href="/contact" class="nav-link">Contact
 										Us</a></li>
-								<li class="menu-item"><a href="#" class="nav-link">Phone:
+								<li class="menu-item"><a class="nav-link">Phone:
 										0560000000</a></li>
 
 							</ul>
@@ -633,6 +508,10 @@ f
 		</div>
 	</footer>
 
+
+
+
+
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/swiper.js"></script>
 	<script src="js/bootstrap.bundle.js"></script>
@@ -640,5 +519,4 @@ f
 	<script src="js/script.js"></script>
 	<script src="js/iconify.js"></script>
 </body>
-
 </html>
