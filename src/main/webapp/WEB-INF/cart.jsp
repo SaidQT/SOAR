@@ -50,22 +50,46 @@
 height
 
 
+
+
+
+
 :
+
+
 
  
 
+
+
 300px
+
+
+
+
 
 
 ; /* Maintain aspect ratio */
 object-fit
 
 
+
+
+
+
 :
+
+
 
  
 
+
+
 cover
+
+
+
+
 
 
 ;
@@ -318,7 +342,7 @@ cover
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
 								</a></li> -->
 							</ul>
-f
+							f
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -428,15 +452,19 @@ f
 
 				</div>
 	</header>
-	<section id="banner" class="py-3" style="background: #F9F3EC;">
-		<div class="container">
-			<div class="hero-content py-5 my-3">
-				<h2 class="display-1 mt-3 mb-0">Cart</h2>
-				<nav class="breadcrumb">
-					<a class="breadcrumb-item nav-link" href="#">Home</a> <a
-						class="breadcrumb-item nav-link" href="#">Pages</a> <span
-						class="breadcrumb-item active" aria-current="page">Cart</span>
-				</nav>
+	<section id="banner" class="py-0" style="background: #F9F3EC;">
+		<div class="container p-0">
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<div class="hero-content py-0 my-0">
+						<h2 class="display-1 mt-3 mb-0">Account</h2>
+
+					</div>
+				</div>
+				<div class="col-md-6">
+					<img src="images/soar.png" class="img-fluid soarIm mt-3"
+						alt="About Us Image" style="max-width: 100%;">
+				</div>
 			</div>
 		</div>
 	</section>
@@ -560,9 +588,9 @@ f
 					</p>
 				</div>
 				<div>
-				
-              <use xlink:href="#arrow-right"></use>
-            </svg>
+
+					<use xlink:href="#arrow-right"></use>
+					</svg>
 					</a>
 				</div>
 			</div>
@@ -573,65 +601,66 @@ f
 
 				<c:forEach var="pet" items="${pets}">
 					<c:if test="${pet.status.equals('Unadopted')}">
-						<c:if test="${pet.type.equals('cat')}">
-							<div class="item cat col-md-4 col-lg-3 my-4">
-								<div
-									class="card position-relative border-0 rounded-4 overflow-hidden">
-									<div class="position-relative">
-										<img src="${pet.imageUrl}" class="card-img-top fixed-size-img"
-											alt="image">
-										<form action="/public/cart/add" method="post"
-											class="position-absolute top-0 end-0 m-2">
-											<input type="hidden" name="petId" value="${pet.id}">
-											<input type="hidden" name="${_csrf.parameterName}"
-												value="${_csrf.token}"> <input type="hidden"
-												name="location" value="cart">
-											<c:if test="${currentUser != null}">
-												<c:if test="${favoritePetIds.contains(pet.id)}">
-													<button class="btn btn-outline-danger p-2" type="submit">
-														<iconify-icon icon="emojione-v1:broken-heart" class="fs-5"></iconify-icon>
-													</button>
-												</c:if>
-												<c:if test="${!favoritePetIds.contains(pet.id)}">
-													<button class="btn btn-outline-primary p-2" type="submit">
-														<iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
-													</button>
-												</c:if>
+						<%-- 	<c:if test="${pet.type.equals('cat')}"> --%>
+						<div class="item cat col-md-4 col-lg-3 my-4">
+							<div
+								class="card position-relative border-0 rounded-4 overflow-hidden">
+								<div class="position-relative">
+									<img src="${pet.imageUrl}" class="card-img-top fixed-size-img"
+										alt="image">
+									<form action="/public/cart/add" method="post"
+										class="position-absolute top-0 end-0 m-2">
+										<input type="hidden" name="petId" value="${pet.id}"> <input
+											type="hidden" name="${_csrf.parameterName}"
+											value="${_csrf.token}"> <input type="hidden"
+											name="location" value="cart">
+										<c:if test="${currentUser != null}">
+											<c:if test="${currentUser.pets.contains(pet)}">
+												<button class="btn btn-outline-danger p-2" type="submit">
+													<iconify-icon icon="emojione-v1:broken-heart" class="fs-5"></iconify-icon>
+												</button>
 											</c:if>
-											<c:if test="${currentUser == null}">
-												<button class="btn btn-outline-primary p-2" type="submit"
-													disabled>
+											<c:if test="${!currentUser.pets.contains(pet)}">
+												<button class="btn btn-outline-primary p-2" type="submit">
 													<iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
 												</button>
 											</c:if>
-										</form>
-									</div>
-									<div class="card-body p-3">
-										<a href="" class="text-decoration-none">
-											<h3 class="card-title text-dark">
-												<c:out value="${pet.name}"></c:out>
-											</h3>
-										</a>
-										<h4 class="secondary-font text-primary">
-											<c:out value="${pet.breed}"></c:out>
-										</h4>
-										<div class="d-flex flex-wrap mt-3">
-											<a href="#"
-												class="btn btn-primary me-3 px-4 py-2 text-uppercase">
-												Lets cuddle </a>
-										</div>
+										</c:if>
+										<c:if test="${currentUser == null}">
+											<button class="btn btn-outline-primary p-2" type="submit"
+												disabled>
+												<iconify-icon icon="fluent:heart-28-filled" class="fs-5"
+													disabled></iconify-icon>
+											</button>
+										</c:if>
+									</form>
+								</div>
+								<div class="card-body p-3">
+									<a href="" class="text-decoration-none">
+										<h3 class="card-title text-dark">
+											<c:out value="${pet.name}"></c:out>
+										</h3>
+									</a>
+									<h4 class="secondary-font text-primary">
+										<c:out value="${pet.breed}"></c:out>
+									</h4>
+									<div class="d-flex flex-wrap mt-3">
+										<a href="/public/${pet.id}/details"
+											class="btn btn-primary me-3 px-4 py-2 text-uppercase">
+											Lets cuddle </a>
 									</div>
 								</div>
 							</div>
-						</c:if>
+						</div>
 					</c:if>
+					<%-- </c:if> --%>
 				</c:forEach>
 
 
 
 
 
-				<c:forEach var="pet" items="${pets}">
+				<%-- <c:forEach var="pet" items="${pets}">
 					<c:if test="${pet.status.equals('Unadopted')}">
 						<c:if test="${pet.type.equals('dog')}">
 							<div class="item dog col-md-4 col-lg-3 my-4">
@@ -687,10 +716,10 @@ f
 				</c:forEach>
 
 
+ --%>
 
 
-
-				<c:forEach var="pet" items="${pets}">
+				<%-- <c:forEach var="pet" items="${pets}">
 					<c:if test="${pet.status.equals('Unadopted')}">
 						<c:if test="${pet.type.equals('bird')}">
 							<div class="item bird col-md-4 col-lg-3 my-4">
@@ -746,7 +775,7 @@ f
 				</c:forEach>
 
 
-
+ --%>
 
 
 
@@ -898,8 +927,6 @@ f
 							</li>
 							<li class="menu-item"><a href="/aboutus" class="nav-link">About
 									us</a></li>
-							<li class="menu-item"><a href="/contact" class="nav-link">Conatct
-									Us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -913,9 +940,6 @@ f
 								</li>
 								<li class="menu-item"><a href="/contact" class="nav-link">Contact
 										Us</a></li>
-								<li class="menu-item"><a class="nav-link">Phone:
-										0560000000</a></li>
-
 							</ul>
 					</div>
 				</div>

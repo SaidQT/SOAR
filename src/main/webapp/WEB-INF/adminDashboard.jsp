@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>Admin Dashboard</title>
 <link rel="stylesheet" type="text/css" href="/css/button.css">
-		<script type="text/javascript" src="/js/button.js"></script>
+<script type="text/javascript" src="/js/button.js"></script>
 
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <script
@@ -23,26 +23,30 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
 </head>
 <body>
-			<button id="hamburger-btn">☰</button>
-
-	<div class="sidebar" id="sidebar">
- <img src="/images/logo.png" alt="logo"
-class="img-fluid">
-        <span class="soar">S.O.A.R</span>
-		<a href="/admin/dashboard"><i class="fas fa-tachometer-alt"></i>
-			Dashboard</a> <a href="/admin/home"><i class="fas fa-store"></i>
-			Shops</a> <a href="/admin/add"><i class="fas fa-plus-circle"></i> Add
-			a Shop</a> <a href="/logout"><i class="fas fa-sign-out-alt"></i>
-			Logout</a>
+	<nav class="navbar navbar-expand-xl navbar-light bg-light">
+		<div class="container-fluid">
+			<!-- <img src="images/logo.png" alt="logo" class="img-fluid1" />  -->
+			<a class="navbar-brand" href="/"> Home </a> <a class="navbar-brand"
+				href="/admin/dashboard"> Dashboard </a> <a class="navbar-brand"
+				href="/admin/home">Shops</a>
+			<div class="collapse navbar-collapse show" id="navbarBasic">
+				<ul class="navbar-nav me-auto mb-2 mb-xl-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/admin/home">Shops</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/add">Add
+							a shop</a></li>
+				</ul>
+			</div>
 		</div>
-	</div>
+	</nav>
 
-	<div class="main-content" id="main-content">
+	<div class="container mt-5">
 		<h1>Admin Dashboard</h1>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="card mb-4">
-					<div class="card-header" style="background-color: #DEAD6F;">Shops Overview</div>
+					<div class="card-header" style="background-color: #DEAD6F;">Shops
+						Overview</div>
 					<div class="card-body">
 						<p>
 							Total Shops:
@@ -51,42 +55,42 @@ class="img-fluid">
 					</div>
 				</div>
 			</div>
-		
+
 			<h2 class="mt-5">Shop Data Chart</h2>
-		<canvas id="shopChart" width="400" height="200"></canvas>
+			<canvas id="shopChart" width="400" height="200"></canvas>
 		</div>
 	</div>
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-<script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script>
 	
 	var shopData = {
         names: [

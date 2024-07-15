@@ -256,7 +256,7 @@
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
 								</a></li> -->
 							</ul>
-f
+							f
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -572,8 +572,6 @@ f
 							</li>
 							<li class="menu-item"><a href="/aboutus" class="nav-link">About
 									us</a></li>
-							<li class="menu-item"><a href="/contact" class="nav-link">Conatct
-									Us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -587,9 +585,6 @@ f
 								</li>
 								<li class="menu-item"><a href="/contact" class="nav-link">Contact
 										Us</a></li>
-								<li class="menu-item"><a class="nav-link">Phone:
-										0560000000</a></li>
-
 							</ul>
 					</div>
 				</div>
@@ -598,7 +593,6 @@ f
 			</div>
 		</div>
 	</footer>
-
 
 
 

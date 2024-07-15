@@ -212,7 +212,7 @@
 
 						<div class="col-sm-4 col-lg-3 text-center text-sm-start">
 							<div class="main-logo">
-								<a href=""> <img src="images/logo.png" alt="logo"
+								<a href="/home"> <img src="images/logo.png" alt="logo"
 									class="img-fluid1">
 								</a>
 							</div>
@@ -220,28 +220,28 @@
 
 						<div class="d-flex d-lg-none align-items-end mt-3">
 							<ul class="d-flex justify-content-end list-unstyled m-0">
-								<li><a href="account.html" class="mx-3"> <iconify-icon
+								<li><a href="/login" class="mx-3"> <iconify-icon
 											icon="healthicons:person" class="fs-4"></iconify-icon>
 								</a></li>
-								<li><a href="wishlist.html" class="mx-3"> <iconify-icon
+								<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 											icon="mdi:heart" class="fs-4"></iconify-icon>
 								</a></li>
 
-								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
+								<!-- <li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
 										<iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
 										<span
 										class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-											03 </span>
+											04 </span>
 								</a></li>
 
 								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasSearch"
 									aria-controls="offcanvasSearch"> <iconify-icon
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
-								</a></li>
+								</a></li> -->
 							</ul>
-
+							f
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -271,7 +271,7 @@
             </li> -->
 
 
-									<li class="nav-item"><a href="index.html" class="nav-link">Home</a>
+									<li class="nav-item"><a href="/home" class="nav-link">Home</a>
 									</li>
 
 
@@ -280,30 +280,30 @@
               </li> -->
 
 
-									<li class="nav-item"><a href="about.html" class="nav-link">About
+									<li class="nav-item"><a href="/aboutus" class="nav-link">About
 											Us</a></li>
 
 									<li class="nav-item dropdown"><a
 										class="nav-link dropdown-toggle" role="button" id="pages"
 										data-bs-toggle="dropdown" aria-expanded="false">Adoption</a>
 										<ul class="dropdown-menu" aria-labelledby="pages">
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Cats</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Dogs</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Birds</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Other</a></li>
 
 										</ul></li>
 
-									<li><a href="faqs.html" class="nav-link">FAQs</a></li>
-									<li><a href="single-post.html" class="nav-link">My
+									<li><a href="/faqs" class="nav-link">FAQs</a></li>
+									<li><a href="/contact" class="nav-link">Contact Us</a></li>
+									<li><a href="/user/besties" class="nav-link">My
 											Besties</a></li>
-									<li><a href="single-post.html" class="nav-link">Single
-											Post</a></li>
-									<li><a href="" class="nav-link">Partners</a></li>
+
+									<li><a href="/partners" class="nav-link">Partners</a></li>
 
 
 
@@ -312,21 +312,31 @@
 
 								<div class="d-none d-lg-flex align-items-end">
 									<ul class="d-flex justify-content-end list-unstyled m-0">
-										<li><a href="account.html" class="mx-3"> <iconify-icon
+										<li><a href="/login" class="mx-3"> <iconify-icon
 													icon="healthicons:person" class="fs-4"></iconify-icon>
 										</a></li>
-										<li><a href="wishlist.html" class="mx-3"> <iconify-icon
+										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
+										<li>
+											<form id="logoutForm" method="POST" action="/logout">
+												<input type="hidden" name="${_csrf.parameterName}"
+													value="${_csrf.token}" />
+												<button type="submit"
+													style="border: none; background: none;">
+													<iconify-icon icon="mdi:logout" class="fs-4"></iconify-icon>
+												</button>
+											</form>
 
-										<li class=""><a href="#" class="mx-3"
+										</li>
+										<!-- <li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
 											aria-controls="offcanvasCart"> <iconify-icon
-													icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
+													icon="mdi:bell" class="fs-4 position-relative"></iconify-icon>
 												<span
 												class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-													03 </span>
-										</a></li>
+													04 </span>
+										</a></li> -->
 									</ul>
 
 								</div>
@@ -342,17 +352,19 @@
 				</div>
 	</header>
 
-	<section id="banner" class="py-3" style="background: #F9F3EC;">
-		<div class="container">
-			<div class="hero-content py-5 my-3">
-				<h2 class="display-1 mt-3 mb-0">
-					Pet <span class="text-primary">Details</span>
-				</h2>
-				<nav class="breadcrumb">
-					<a class="breadcrumb-item nav-link" href="#">Home</a> <a
-						class="breadcrumb-item nav-link" href="#">Pages</a> <span
-						class="breadcrumb-item active" aria-current="page">pet info</span>
-				</nav>
+	<section id="banner" class="py-0" style="background: #F9F3EC;">
+		<div class="container p-0">
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<div class="hero-content py-0 my-0">
+						<h2 class="display-1 mt-3 mb-0">Account</h2>
+
+					</div>
+				</div>
+				<div class="col-md-6">
+					<img src="images/soar.png" class="img-fluid soarIm mt-3"
+						alt="About Us Image" style="max-width: 100%;">
+				</div>
 			</div>
 		</div>
 	</section>
@@ -362,150 +374,155 @@
 			<div class="row g-md-5">
 				<div class="col-lg-6">
 					<div class="row">
-            <div class="col-md-12">
-              <!-- product-large-slider -->
-              <div class="swiper product-large-slider">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <img src="images/blog-lg4.jpg" class="img-fluid" />
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="images/blog-lg2.jpg" class="img-fluid" />
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="images/blog-lg3.jpg" class="img-fluid" />
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="images/blog-lg1.jpg" class="img-fluid" />
-                  </div>
+						<div class="col-md-12">
+							<!-- product-large-slider -->
+							<div class="swiper product-large-slider">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<img src="${pet.imageUrl}" class="img-fluid" />
+									</div>
+									<div class="swiper-slide">
+										<img src="#" class="img-fluid" />
+									</div>
+									<div class="swiper-slide">
+										<img src="#" class="img-fluid" />
+									</div>
+									<div class="swiper-slide">
+										<img src="#" class="img-fluid" />
+									</div>
 
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12 mt-2">
-              <!-- product-thumbnail-slider -->
-              <div thumbsSlider="" class="swiper product-thumbnail-slider">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <img src="images/item8.jpg" class="img-fluid" />
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="images/item4.jpg" class="img-fluid" />
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="images/item7.jpg" class="img-fluid" />
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="images/item1.jpg" class="img-fluid" />
-                  </div>
-                </div>
-              </div>
-            </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 mt-2">
+							<!-- product-thumbnail-slider -->
+							<div thumbsSlider="" class="swiper product-thumbnail-slider">
 
-          </div>
+							</div>
+						</div>
+
+					</div>
 				</div>
 				<div class="col-lg-6 mt-5">
 					<div class="product-info">
 						<div class="element-header">
-							<h2 itemprop="name" class="display-6">{Golden Retriever}</h2>
-							
+							<h2 itemprop="name" class="display-6">
+								<c:out value="${pet.breed}"></c:out>
+							</h2>
+
 						</div>
-						<p>This adorable {pet breed} is looking for a loving
-							home! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-							laoreet dolor sed justo interdum, id blandit quam ultricies. Diam
-							ultrices maecenas consequat eu tortor orci, cras lectus mauris,
-							cras egestas quam venenatis neque.</p>
+						<p>
+							<c:out value="${pet.description}"></c:out>
+						</p>
 						<div class="cart-wrap">
 							<div class="color-options product-select">
 								<div class="color-toggle pt-2" data-option-index="0">
-									<h6 class="item-title fw-bold">Color:</h6>
+									<h6 class="item-title fw-bold">
+										<c:out value="${pet.breed}"></c:out>
+									</h6>
 									<ul class="select-list list-unstyled d-flex">
 										<li class="select-item pe-3" data-val="Golden" title="Golden">
-											<a href="#" class="btn btn-light active">{Golden}</a>
+											<a href="#" class="btn btn-light active"><c:out
+													value="${pet.name}"></c:out></a>
 										</li>
 									</ul>
 								</div>
 							</div>
-							<div class="swatch product-select pt-3" data-option-index="1">
-								<h6 class="item-title fw-bold">Gender:</h6>
-								<ul class="select-list list-unstyled d-flex">
-									<li data-value="Male" class="select-item pe-3"><a href="#"
-										class="btn btn-light active">Male</a></li>
-									<li data-value="Female" class="select-item"><a href="#"
-										class="btn btn-light">Female</a></li>
-								</ul>
-							</div>
+
 							<div class="product-quantity pt-2">
 								<!-- <div class="stock-number text-dark">
 									<em>1 available</em>
 								</div> -->
 								<div class="stock-button-wrap">
 									<div class="d-flex flex-wrap pt-4">
-										<a href="#" class="btn-cart me-3 px-4 pt-3 pb-3">
-											<h5 class="text-uppercase m-0">Adopt Now</h5>
+										<a href="#" class="btn-cart me-3 px-4 pt-3 pb-3"> <form:form
+												action="/user/details" method="post">
+												<input type="hidden" name="${_csrf.parameterName}"
+													value="${_csrf.token}" />
+												<input type="hidden" name="_method" value="patch">
+												<input type="hidden" name="petId" value="${pet.id}">
+
+												<button type="submit"
+													class="btn btn-primary me-3 px-4 py-2 text-uppercase">
+													Adopt now</button>
+											</form:form>
+
 										</a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="meta-product pt-4">
-							<div class="meta-item d-flex align-items-baseline">
-								<h6 class="item-title fw-bold no-margin pe-2">Age:</h6>
-								<ul class="select-list list-unstyled d-flex">
-									<li data-value="3 years" class="select-item">{3 years}</li>
-								</ul>
-							</div>
-							<div class="meta-item d-flex align-items-baseline">
-								<h6 class="item-title fw-bold no-margin pe-2">Breed:</h6>
-								<ul class="select-list list-unstyled d-flex">
-									<li data-value="Golden Retriever" class="select-item">{Golden
-										Retriever}</li>
-								</ul>
-							</div>
-							<div class="meta-item d-flex align-items-baseline">
-								<h6 class="item-title fw-bold no-margin pe-2">Location:</h6>
-								<ul class="select-list list-unstyled d-flex">
-									<li data-value="New York" class="select-item">{Ramallah}</li>
-								</ul>
-							</div>
+
+						<div class="meta-item d-flex align-items-baseline">
+							<h6 class="item-title fw-bold no-margin pe-2">Breed:</h6>
+							<ul class="select-list list-unstyled d-flex">
+								<li data-value="Golden Retriever" class="select-item"><c:out
+										value="${pet.breed}"></c:out></li>
+							</ul>
+						</div>
+						<div class="meta-item d-flex align-items-baseline">
+							<h6 class="item-title fw-bold no-margin pe-2">Location:</h6>
+							<ul class="select-list list-unstyled d-flex">
+								<li data-value="New York" class="select-item"><c:out
+										value="${pet.city}"></c:out></li>
+							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		</div>
 	</section>
 
 
 	<section class="product-info-tabs py-md-5">
-    <div class="container">
-        <div class="row">
-            <div class="d-flex flex-column flex-md-row align-items-start gap-5">
-                <div class="nav flex-row flex-wrap flex-md-column nav-pills me-3 col-lg-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <button class="nav-link fs-5 mb-2 text-start active" id="v-pills-description-tab" data-bs-toggle="pill" data-bs-target="#v-pills-description" type="button" role="tab" aria-controls="v-pills-description" aria-selected="true" tabindex="0">Description</button>
-                    <button class="nav-link fs-5 mb-2 text-start" id="v-pills-additional-tab" data-bs-toggle="pill" data-bs-target="#v-pills-additional" type="button" role="tab" aria-controls="v-pills-additional" aria-selected="false" tabindex="-1">Additional Information</button>
-                    <!-- <button class="nav-link fs-5 mb-2 text-start" id="v-pills-reviews-tab" data-bs-toggle="pill" data-bs-target="#v-pills-reviews" type="button" role="tab" aria-controls="v-pills-reviews" aria-selected="false" tabindex="-1">Customer Reviews</button> -->
-                </div>
-                <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade active show" id="v-pills-description" role="tabpanel" aria-labelledby="v-pills-description-tab">
-                        <h2>Adopting a Pet</h2>
-                        <p>Considering adopting a pet is a wonderful decision that can change both your life and theirs forever. Learn about the process, benefits, and how to prepare.</p>
-                        <ul style="list-style-type: disc;" class="list-unstyled ps-4">
-                            <li>Find a local shelter or rescue organization.</li>
-                            <li>Meet different pets and find the right match for your family.</li>
-                            <li>Understand the responsibilities and rewards of pet ownership.</li>
-                        </ul>
-                        <p>Explore our resources to make your adoption journey a success.</p>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-additional" role="tabpanel" aria-labelledby="v-pills-additional-tab" tabindex="-1">
-                        <h2>Additional Information</h2>
-                        <p>Discover more about how to prepare your home for a new pet, including tips on pet care, training, and health.</p>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+		<div class="container">
+			<div class="row">
+				<div class="d-flex flex-column flex-md-row align-items-start gap-5">
+					<div
+						class="nav flex-row flex-wrap flex-md-column nav-pills me-3 col-lg-3"
+						id="v-pills-tab" role="tablist" aria-orientation="vertical">
+						<button class="nav-link fs-5 mb-2 text-start active"
+							id="v-pills-description-tab" data-bs-toggle="pill"
+							data-bs-target="#v-pills-description" type="button" role="tab"
+							aria-controls="v-pills-description" aria-selected="true"
+							tabindex="0">Description</button>
+						<button class="nav-link fs-5 mb-2 text-start"
+							id="v-pills-additional-tab" data-bs-toggle="pill"
+							data-bs-target="#v-pills-additional" type="button" role="tab"
+							aria-controls="v-pills-additional" aria-selected="false"
+							tabindex="-1">Additional Information</button>
+						<!-- <button class="nav-link fs-5 mb-2 text-start" id="v-pills-reviews-tab" data-bs-toggle="pill" data-bs-target="#v-pills-reviews" type="button" role="tab" aria-controls="v-pills-reviews" aria-selected="false" tabindex="-1">Customer Reviews</button> -->
+					</div>
+					<div class="tab-content" id="v-pills-tabContent">
+						<div class="tab-pane fade active show" id="v-pills-description"
+							role="tabpanel" aria-labelledby="v-pills-description-tab">
+							<h2>Adopting a Pet</h2>
+							<p>Considering adopting a pet is a wonderful decision that
+								can change both your life and theirs forever. Learn about the
+								process, benefits, and how to prepare.</p>
+							<ul style="list-style-type: disc;" class="list-unstyled ps-4">
+								<li>Find a local shelter or rescue organization.</li>
+								<li>Meet different pets and find the right match for your
+									family.</li>
+								<li>Understand the responsibilities and rewards of pet
+									ownership.</li>
+							</ul>
+							<p>Explore our resources to make your adoption journey a
+								success.</p>
+						</div>
+						<div class="tab-pane fade" id="v-pills-additional" role="tabpanel"
+							aria-labelledby="v-pills-additional-tab" tabindex="-1">
+							<h2>Additional Information</h2>
+							<p>Discover more about how to prepare your home for a new
+								pet, including tips on pet care, training, and health.</p>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 
 	<section id="register"
@@ -552,8 +569,7 @@
 						</div>
 						<h3 class="card-title py-2 m-0">Free Delivery</h3>
 						<div class="card-text">
-							<p class="blog-paragraph fs-6">Lorem ipsum dolor sit amet,
-								consectetur adipi elit.</p>
+							<p class="blog-paragraph fs-6"></p>
 						</div>
 					</div>
 				</div>
@@ -565,8 +581,7 @@
 						</div>
 						<h3 class="card-title py-2 m-0">100% secure payment</h3>
 						<div class="card-text">
-							<p class="blog-paragraph fs-6">Lorem ipsum dolor sit amet,
-								consectetur adipi elit.</p>
+							<p class="blog-paragraph fs-6"></p>
 						</div>
 					</div>
 				</div>
@@ -577,8 +592,7 @@
 						</div>
 						<h3 class="card-title py-2 m-0">Daily Offer</h3>
 						<div class="card-text">
-							<p class="blog-paragraph fs-6">Lorem ipsum dolor sit amet,
-								consectetur adipi elit.</p>
+							<p class="blog-paragraph fs-6"></p>
 						</div>
 					</div>
 				</div>
@@ -589,8 +603,7 @@
 						</div>
 						<h3 class="card-title py-2 m-0">Quality guarantee</h3>
 						<div class="card-text">
-							<p class="blog-paragraph fs-6">Lorem ipsum dolor sit amet,
-								consectetur adipi elit.</p>
+							<p class="blog-paragraph fs-6"></p>
 						</div>
 					</div>
 				</div>
@@ -665,8 +678,8 @@
 
 				<div class="col-md-3">
 					<div class="footer-menu">
-						<img src="images/logo.png" alt="logo"
-							style="height: 50%; width: 50%">
+						<a href="/home"><img src="images/logo.png" alt="logo"
+							style="height: 50%; width: 50%"></a>
 
 					</div>
 				</div>
@@ -700,12 +713,10 @@
 					<div class="footer-menu">
 						<h3>Quick Links</h3>
 						<ul class="menu-list list-unstyled">
-							<li class="menu-item"><a href="#" class="nav-link">Home</a>
+							<li class="menu-item"><a href="/home" class="nav-link">Home</a>
 							</li>
-							<li class="menu-item"><a href="#" class="nav-link">About
+							<li class="menu-item"><a href="/aboutus" class="nav-link">About
 									us</a></li>
-							<li class="menu-item"><a href="#" class="nav-link">Conatct
-									Us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -715,13 +726,10 @@
 							Help Center
 							</h5>
 							<ul class="menu-list list-unstyled">
-								<li class="menu-item"><a href="#" class="nav-link">FAQs</a>
+								<li class="menu-item"><a href="/faqs" class="nav-link">FAQs</a>
 								</li>
-								<li class="menu-item"><a href="#" class="nav-link">Contact
+								<li class="menu-item"><a href="/contact" class="nav-link">Contact
 										Us</a></li>
-								<li class="menu-item"><a href="#" class="nav-link">Phone:
-										0560000000</a></li>
-
 							</ul>
 					</div>
 				</div>
@@ -730,7 +738,6 @@
 			</div>
 		</div>
 	</footer>
-
 
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/swiper.js"></script>

@@ -240,7 +240,7 @@
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
 								</a></li> -->
 							</ul>
-f
+							f
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -602,12 +602,10 @@ f
 					<div class="footer-menu">
 						<h3>Quick Links</h3>
 						<ul class="menu-list list-unstyled">
-							<li class="menu-item"><a href="#" class="nav-link">Home</a>
+							<li class="menu-item"><a href="/home" class="nav-link">Home</a>
 							</li>
-							<li class="menu-item"><a href="#" class="nav-link">About
+							<li class="menu-item"><a href="/aboutus" class="nav-link">About
 									us</a></li>
-							<li class="menu-item"><a href="#" class="nav-link">Conatct
-									Us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -617,13 +615,10 @@ f
 							Help Center
 							</h5>
 							<ul class="menu-list list-unstyled">
-								<li class="menu-item"><a href="#" class="nav-link">FAQs</a>
+								<li class="menu-item"><a href="/faqs" class="nav-link">FAQs</a>
 								</li>
-								<li class="menu-item"><a href="#" class="nav-link">Contact
+								<li class="menu-item"><a href="/contact" class="nav-link">Contact
 										Us</a></li>
-								<li class="menu-item"><a href="#" class="nav-link">Phone:
-										0560000000</a></li>
-
 							</ul>
 					</div>
 				</div>
@@ -632,7 +627,7 @@ f
 			</div>
 		</div>
 	</footer>
-
+	
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/swiper.js"></script>
 	<script src="js/bootstrap.bundle.js"></script>

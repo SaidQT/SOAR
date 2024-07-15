@@ -246,7 +246,7 @@
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
 								</a></li> -->
 							</ul>
-f
+							f
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -362,11 +362,6 @@ f
 		<div class="container">
 			<div class="hero-content py-5 my-3">
 				<h2 class="display-1 mt-3 mb-0">Contact</h2>
-				<nav class="breadcrumb">
-					<a class="breadcrumb-item nav-link" href="#">Home</a> <a
-						class="breadcrumb-item nav-link" href="#">Pages</a> <span
-						class="breadcrumb-item active" aria-current="page">Contact</span>
-				</nav>
 			</div>
 		</div>
 	</section>
@@ -506,15 +501,15 @@ f
 		</div>
 	</section>
 
-	<footer id="footer" class="my-5">
+	<footer id="footer" class="my-5" style="border-top: 1px solid #ccc">
 		<div class="container py-5 my-5">
 			<div class="row"
 				style="align-items: center; justify-content: space-between;">
 
 				<div class="col-md-3">
 					<div class="footer-menu">
-						<img src="images/logo.png" alt="logo"
-							style="height: 50%; width: 50%">
+						<a href="/home"><img src="images/logo.png" alt="logo"
+							style="height: 50%; width: 50%"></a>
 
 					</div>
 				</div>
@@ -548,12 +543,10 @@ f
 					<div class="footer-menu">
 						<h3>Quick Links</h3>
 						<ul class="menu-list list-unstyled">
-							<li class="menu-item"><a href="#" class="nav-link">Home</a>
+							<li class="menu-item"><a href="/home" class="nav-link">Home</a>
 							</li>
-							<li class="menu-item"><a href="#" class="nav-link">About
+							<li class="menu-item"><a href="/aboutus" class="nav-link">About
 									us</a></li>
-							<li class="menu-item"><a href="#" class="nav-link">Conatct
-									Us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -563,13 +556,10 @@ f
 							Help Center
 							</h5>
 							<ul class="menu-list list-unstyled">
-								<li class="menu-item"><a href="#" class="nav-link">FAQs</a>
+								<li class="menu-item"><a href="/faqs" class="nav-link">FAQs</a>
 								</li>
-								<li class="menu-item"><a href="#" class="nav-link">Contact
+								<li class="menu-item"><a href="/contact" class="nav-link">Contact
 										Us</a></li>
-								<li class="menu-item"><a href="#" class="nav-link">Phone:
-										0560000000</a></li>
-
 							</ul>
 					</div>
 				</div>
@@ -578,7 +568,6 @@ f
 			</div>
 		</div>
 	</footer>
-
 
 
 

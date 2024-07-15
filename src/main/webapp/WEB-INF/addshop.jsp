@@ -14,16 +14,12 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-xl navbar-light bg-light">
+<nav class="navbar navbar-expand-xl navbar-light bg-light">
 		<div class="container-fluid">
-			<img src="<spring:url value='/images/cat.png' />" alt="Cat"> <a
+			<!-- <img src="images/logo.png" alt="logo" class="img-fluid1" />  -->
+			<a
 				class="navbar-brand" href="/"> Home </a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarBasic"
-				aria-controls="navbarBasic" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+			<a class="navbar-brand" href="/admin/dashboard"> Dashboard </a>
 			<div class="collapse navbar-collapse show" id="navbarBasic">
 				<ul class="navbar-nav me-auto mb-2 mb-xl-0">
 					<li class="nav-item"><a class="nav-link active"
