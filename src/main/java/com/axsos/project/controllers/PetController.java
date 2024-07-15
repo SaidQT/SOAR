@@ -2,6 +2,8 @@ package com.axsos.project.controllers;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import com.axsos.project.services.PetService;
 import com.axsos.project.services.ShopService;
 import com.axsos.project.services.UserService;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -141,7 +144,8 @@ public class PetController {
 		return "requests.jsp";
 	}
 
-	// Accept request --> The shop owner can accept the adoption request {update the pet status to
+	// Accept request --> The shop owner can accept the adoption request {update the
+	// pet status to
 	// adopted}
 	// ID here is for pet and shopid for shop
 	@GetMapping("/shop/{id}/{shopId}/accept")
@@ -153,7 +157,8 @@ public class PetController {
 		return "redirect:/shop/" + shopId + "/requests";
 	}
 
-	// Refuse request -->The shop owner can refuse the adoption request {update the pet status to
+	// Refuse request -->The shop owner can refuse the adoption request {update the
+	// pet status to
 	// unadopted}
 	// ID here is for pet and shopid for shop
 	@GetMapping("/shop/{id}/{shopId}/destroy")
@@ -166,4 +171,86 @@ public class PetController {
 		petService.createPet(pet);
 		return "redirect:/shop/" + shopId + "/requests";
 	}
+
+	@GetMapping("/details")
+	public String showDetail(Model model, HttpSession session) {
+
+		if (session.getAttribute("id") != null) {
+			Long id = (Long) session.getAttribute("id");
+			Pet pet = petService.findPet(id);
+			model.addAttribute("pet", pet);
+		}
+		return "details.jsp";
+	}
+
+	@GetMapping("/pet/{id}/detail")
+	public String showPet(@PathVariable("id") Long id, HttpSession session) {
+		session.setAttribute("id", id);
+		return "redirect:/details";
+	}
+
+	@GetMapping("/cat")
+	public String showCats(HttpSession session, Model model, Principal principal) {
+		List<Pet> pets = petService.allPets();
+		model.addAttribute("pets", pets);
+		String activeFilter = (String) session.getAttribute("activeFilter");
+		if (activeFilter == null) {
+			activeFilter = "all"; // Default filter
+		}
+		model.addAttribute("activeFilter", activeFilter);
+		if (principal != null) {
+			String username = principal.getName();
+			User currentUser = userService.findByUsername(username);
+			model.addAttribute("currentUser", currentUser);
+
+			// Check if each pet is favorited by the current user
+			Set<Long> favoritePetIds = currentUser.getPets().stream().map(Pet::getId).collect(Collectors.toSet());
+			model.addAttribute("favoritePetIds", favoritePetIds);
+		}
+
+		return "cat.jsp";
+	}
+
+	@GetMapping("/dog")
+	public String showDogs(HttpSession session, Model model, Principal principal) {
+		List<Pet> pets = petService.allPets();
+		model.addAttribute("pets", pets);
+		String activeFilter = (String) session.getAttribute("activeFilter");
+		if (activeFilter == null) {
+			activeFilter = "all"; // Default filter
+		}
+		model.addAttribute("activeFilter", activeFilter);
+		if (principal != null) {
+			String username = principal.getName();
+			User currentUser = userService.findByUsername(username);
+			model.addAttribute("currentUser", currentUser);
+
+			// Check if each pet is favorited by the current user
+			Set<Long> favoritePetIds = currentUser.getPets().stream().map(Pet::getId).collect(Collectors.toSet());
+			model.addAttribute("favoritePetIds", favoritePetIds);
+		}
+		return "dog.jsp";
+	}
+
+	@GetMapping("/bird")
+	public String showBirds(HttpSession session, Model model, Principal principal) {
+		List<Pet> pets = petService.allPets();
+		model.addAttribute("pets", pets);
+		String activeFilter = (String) session.getAttribute("activeFilter");
+		if (activeFilter == null) {
+			activeFilter = "all"; // Default filter
+		}
+		model.addAttribute("activeFilter", activeFilter);
+		if (principal != null) {
+			String username = principal.getName();
+			User currentUser = userService.findByUsername(username);
+			model.addAttribute("currentUser", currentUser);
+
+			// Check if each pet is favorited by the current user
+			Set<Long> favoritePetIds = currentUser.getPets().stream().map(Pet::getId).collect(Collectors.toSet());
+			model.addAttribute("favoritePetIds", favoritePetIds);
+		}
+		return "bird.jsp";
+	}
+
 }

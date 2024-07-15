@@ -60,8 +60,8 @@
 					<td><c:out value="${pet.type}"></c:out></td>
 					<td><c:out value="${pet.city}"></c:out></td>
 					<td><c:out value="${pet.status}"></c:out></td>
-					<td id="buttons"><a href="/shop/${pet.id}/edit">Edit</a> | <a
-						href="/shop/${pet.id}/delete">Delete</a></td>
+					<td id="buttons"><a href="/pet/${pet.id}/edit">Edit</a> | <a
+						href="/pet/${pet.id}/delete">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

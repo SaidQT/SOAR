@@ -87,7 +87,7 @@
 			</p>
 			<p>
 
-				<form:input type="password" path="password" required="true"
+				<form:input path="password" required="true"
 					placeholder="password" />
 			</p>
 			<p>

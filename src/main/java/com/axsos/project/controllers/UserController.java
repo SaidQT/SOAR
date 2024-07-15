@@ -2,6 +2,8 @@ package com.axsos.project.controllers;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -88,7 +90,7 @@ public class UserController {
 
 	// ****************************** R from {CRUD} ******************************
 	// Function to render the home page
-	@GetMapping({ "/", "/home", "/user/home" })
+	@GetMapping({ "/", "/home" })
 	public String home(Principal principal, Model model) {
 		String username = principal.getName();
 
@@ -99,52 +101,60 @@ public class UserController {
 	// ****************************** R from {CRUD} ******************************
 	// Function to render a page that show all pets
 	// To Do: Add filtering to pets according to type
-	@GetMapping("/public/cart")
+	@GetMapping("/cart") // public/cart
 	public String showPets(Model model, Principal principal, HttpSession session) {
 		List<Pet> pets = petService.allPets();
 		model.addAttribute("pets", pets);
-
+		String activeFilter = (String) session.getAttribute("activeFilter");
+		if (activeFilter == null) {
+			activeFilter = "all"; // Default filter
+		}
+		model.addAttribute("activeFilter", activeFilter);
 		if (principal != null) {
 			String username = principal.getName();
-			model.addAttribute("currentUser", userService.findByUsername(username));
+			User currentUser = userService.findByUsername(username);
+			model.addAttribute("currentUser", currentUser);
+
+			// Check if each pet is favorited by the current user
+			Set<Long> favoritePetIds = currentUser.getPets().stream().map(Pet::getId).collect(Collectors.toSet());
+			model.addAttribute("favoritePetIds", favoritePetIds);
 		}
-		// We use flag variable in order to check if this
-		if (session.getAttribute("flag") != null) {
-			boolean flag = (boolean) session.getAttribute("flag");
-			model.addAttribute("flag", flag);
-		}
+
 		return "cart.jsp";
 	}
 
-	// ****************************** R from {CRUD} ******************************
-	// To Do:Changed
 	@PostMapping("/public/cart/add")
 	public String addPetToUserCart(@RequestParam(name = "petId") Long petId, @RequestParam("location") String location,
 			Principal principal, HttpSession session) {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		Pet pet = petService.findPet(petId);
-		System.out.print(user.getRoles().get(0).getName());
-		boolean flag = user.getPets().contains(pet);
-		session.setAttribute("flag", flag);
-		if (user != null && pet != null && !user.getPets().contains(pet)) { // checks if there is a principal, and if
-			// the user has favorited this pet
-			pet.getUsers().add(user);
-			petService.createPet(pet);
 
-			return "redirect:/public/cart";
-
-		} else if (user != null && pet != null && user.getPets().contains(pet)) {
-			pet.getUsers().remove(user);
-			petService.createPet(pet);
-			if (location.equals("cart")) { // checks if the current user is on the favorites page or the public page
-				return "redirect:/public/cart";
+		if (user != null && pet != null) {
+			if (!user.getPets().contains(pet)) {
+				user.getPets().add(pet);
+			} else {
+				user.getPets().remove(pet);
 			}
-			if (location.equals("favorite")) {
-				return "redirect:/user/favorites";
-			}
+			userService.saveUser(user); // Save changes to the user
+			session.setAttribute("flag", user.getPets().contains(pet));
 		}
-		return "redirect:/public/cart";
+
+		if ("wishlist".equals(location)) {
+			return "redirect:/wishlist";
+		}
+		return "redirect:/cart";
+	}
+
+	@GetMapping("/wishlist") // user/wishlist
+	public String showWishlist(Model model, Principal principal) {
+		if (principal != null) {
+			String username = principal.getName();
+			User user = userService.findByUsername(username); // Fetch the current user
+			model.addAttribute("currentUser", user); // Add the current user to the model
+			model.addAttribute("favorites", user.getPets()); // Add the user's favorite pets to the model
+		}
+		return "wishlist.jsp"; // Return the name of the wishlist JSP view
 	}
 
 	@GetMapping("/user/favorites")

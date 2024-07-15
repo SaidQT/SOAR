@@ -56,6 +56,9 @@
 				<form:input path="city" required="true" placeholder="City" />
 			</p>
 			<p>
+				<form:input path="breed" required="true" placeholder="Breed" />
+			</p>
+			<p>
 
 				<form:textarea path="imageUrl" placeholder="Image URL"
 					required="true" />
@@ -73,6 +76,9 @@
 			</p>
 			<p>
 				<form:errors path="city" />
+			</p>
+			<p>
+				<form:errors path="breed" />
 			</p>
 			<p>
 				<form:errors path="imageUrl" />

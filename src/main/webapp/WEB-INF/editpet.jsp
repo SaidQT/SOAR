@@ -36,8 +36,8 @@
 	</nav>
 	<div class="form-container">
 		<h1>Edit Pet Information</h1>
-		<form:form action="/shop/${pet.id}" method="post" modelAttribute="pet">
-			<input type="hidden" name="_method" value="patch">
+		<form:form action="/pet/${pet.id}" method="post" modelAttribute="pet">
+			<input type="hidden" name="_method" value="put">
 			<p>
 				<form:label path="name">Name</form:label>
 				<form:input path="name" required="true" />

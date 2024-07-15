@@ -34,6 +34,20 @@ public class Pet {
 	@NotNull
 	@Size(min = 2, max = 200, message = "Pet type must be at least 2 characters")
 	private String type;
+	
+	@NotNull
+	@Size(min = 2, max = 200, message = "Pet breed must be at least 2 characters")
+	private String breed;
+	
+	public String getBreed() {
+		return breed;
+	}
+
+	public void setBreed(String breed) {
+		this.breed = breed;
+	}
+	
+	
 	@NotNull
 	@Size(min = 2, max = 200, message = "City name must be at least 2 characters")
 	private String city;

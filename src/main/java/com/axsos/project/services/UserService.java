@@ -76,5 +76,10 @@ public class UserService {
 			userRepository.save(shopOwner);
 			return shopOwner;
 		}
+
+	}
+
+	public void saveUser(User user) {
+		userRepository.save(user);
 	}
 }
