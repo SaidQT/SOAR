@@ -212,7 +212,7 @@
 
 						<div class="col-sm-4 col-lg-3 text-center text-sm-start">
 							<div class="main-logo">
-								<a href=""> <img src="images/logo.png" alt="logo"
+								<a href="/home"> <img src="images/logo.png" alt="logo"
 									class="img-fluid1">
 								</a>
 							</div>
@@ -220,28 +220,28 @@
 
 						<div class="d-flex d-lg-none align-items-end mt-3">
 							<ul class="d-flex justify-content-end list-unstyled m-0">
-								<li><a href="account.html" class="mx-3"> <iconify-icon
+								<li><a href="/login" class="mx-3"> <iconify-icon
 											icon="healthicons:person" class="fs-4"></iconify-icon>
 								</a></li>
-								<li><a href="wishlist.html" class="mx-3"> <iconify-icon
+								<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 											icon="mdi:heart" class="fs-4"></iconify-icon>
 								</a></li>
 
-								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
+								<!-- <li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
 										<iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
 										<span
 										class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-											03 </span>
+											04 </span>
 								</a></li>
 
 								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasSearch"
 									aria-controls="offcanvasSearch"> <iconify-icon
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
-								</a></li>
+								</a></li> -->
 							</ul>
-
+							f
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -271,7 +271,7 @@
             </li> -->
 
 
-									<li class="nav-item"><a href="index.html" class="nav-link">Home</a>
+									<li class="nav-item"><a href="/home" class="nav-link">Home</a>
 									</li>
 
 
@@ -280,30 +280,30 @@
               </li> -->
 
 
-									<li class="nav-item"><a href="about.html" class="nav-link">About
+									<li class="nav-item"><a href="/aboutus" class="nav-link">About
 											Us</a></li>
 
 									<li class="nav-item dropdown"><a
 										class="nav-link dropdown-toggle" role="button" id="pages"
 										data-bs-toggle="dropdown" aria-expanded="false">Adoption</a>
 										<ul class="dropdown-menu" aria-labelledby="pages">
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart/cat"
 												class="dropdown-item">Cats</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart/dog"
 												class="dropdown-item">Dogs</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
-											<li class="nav-item"><a href="cart.html"
+											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Other</a></li>
 
 										</ul></li>
 
-									<li><a href="faqs.html" class="nav-link">FAQs</a></li>
-									<li><a href="single-post.html" class="nav-link">My
+									<li><a href="/faqs" class="nav-link">FAQs</a></li>
+									<li><a href="/contact" class="nav-link">Contact Us</a></li>
+									<li><a href="/user/besties" class="nav-link">My
 											Besties</a></li>
-									<li><a href="single-post.html" class="nav-link">Single
-											Post</a></li>
-									<li><a href="" class="nav-link">Partners</a></li>
+
+									<li><a href="/partners" class="nav-link">Partners</a></li>
 
 
 
@@ -312,21 +312,31 @@
 
 								<div class="d-none d-lg-flex align-items-end">
 									<ul class="d-flex justify-content-end list-unstyled m-0">
-										<li><a href="account.html" class="mx-3"> <iconify-icon
+										<li><a href="/login" class="mx-3"> <iconify-icon
 													icon="healthicons:person" class="fs-4"></iconify-icon>
 										</a></li>
-										<li><a href="wishlist.html" class="mx-3"> <iconify-icon
+										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
+										<li>
+											<form id="logoutForm" method="POST" action="/logout">
+												<input type="hidden" name="${_csrf.parameterName}"
+													value="${_csrf.token}" />
+												<button type="submit"
+													style="border: none; background: none;">
+													<iconify-icon icon="mdi:logout" class="fs-4"></iconify-icon>
+												</button>
+											</form>
 
-										<li class=""><a href="#" class="mx-3"
+										</li>
+										<!-- <li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
 											aria-controls="offcanvasCart"> <iconify-icon
-													icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
+													icon="mdi:bell" class="fs-4 position-relative"></iconify-icon>
 												<span
 												class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-													03 </span>
-										</a></li>
+													04 </span>
+										</a></li> -->
 									</ul>
 
 								</div>
@@ -341,102 +351,114 @@
 
 				</div>
 	</header>
+	<section id="banner" class="py-3" style="background: #F9F3EC;">
+		<div class="container">
+			<div class="hero-content py-5 my-3">
+				<h2 class="display-1 mt-3 mb-0">
+					Single <span class="text-primary">Post</span>
+				</h2>
+				<nav class="breadcrumb">
+					<a class="breadcrumb-item nav-link" href="#">Home</a> <a
+						class="breadcrumb-item nav-link" href="#">Pages</a> <span
+						class="breadcrumb-item active" aria-current="page">Single
+						Post</span>
+				</nav>
+			</div>
+		</div>
+	</section>
 
-  <section id="banner" class="py-3" style="background: #F9F3EC;">
-    <div class="container">
-      <div class="hero-content py-5 my-3">
-        <h2 class="display-1 mt-3 mb-0">Single <span class="text-primary">Post</span> </h2>
-        <nav class="breadcrumb">
-          <a class="breadcrumb-item nav-link" href="#">Home</a>
-          <a class="breadcrumb-item nav-link" href="#">Pages</a>
-          <span class="breadcrumb-item active" aria-current="page">Single Post</span>
-        </nav>
-      </div>
-    </div>
-  </section>
+	<section class="py-5">
+		<div class="container">
+			<div class="mt-5">
+				<div class="post-meta">
+					<span class="post-category">Pets</span> / <span class="meta-date">Jul
+						13, 2024</span>
+				</div>
+				<h1 class="page-title">Why You Should Consider Adopting a Pet</h1>
+			</div>
+		</div>
+	</section>
 
-<section class="py-5">
-  <div class="container">
-    <div class="mt-5">
-      <div class="post-meta">
-        <span class="post-category">Pets</span> / <span class="meta-date">Jul 13, 2024</span>
-      </div>
-      <h1 class="page-title">Why You Should Consider Adopting a Pet</h1>
-    </div>
-  </div>
-</section>
+	<div>
+		<div class="container">
+			<div class="row">
+				<main class="post-grid">
+					<div class="row">
+						<article class="post-item">
+							<div class="post-content">
+								<div class="post-thumbnail mb-5">
+									<img src="images/blog-large.jpg" alt="single-post"
+										class="img-fluid">
+								</div>
+								<div class="post-description py-4">
+									<p>
+										<strong>Adopting a pet is a wonderful way to bring
+											joy and companionship into your life. Pets offer
+											unconditional love and can improve your overall well-being.</strong>
+									</p>
+									<p>Many animals in shelters are looking for loving homes.
+										By adopting, you are giving an animal a second chance at life
+										and freeing up space for other animals in need.</p>
+									<blockquote>“Saving one animal won't change the
+										world, but it will change the world for that one animal.”</blockquote>
 
-<div>
-  <div class="container">
-    <div class="row">
-      <main class="post-grid">
-        <div class="row">
-          <article class="post-item">
-            <div class="post-content">
-              <div class="post-thumbnail mb-5">
-               <img src="images/blog-large.jpg" alt="single-post" class="img-fluid">
-              </div>
-              <div class="post-description py-4">
-                <p>
-                  <strong>Adopting a pet is a wonderful way to bring joy and companionship into your life. Pets offer
-                    unconditional love and can improve your overall well-being.</strong>
-                </p>
-                <p>Many animals in shelters are looking for loving homes. By adopting, you are giving an animal a second
-                  chance at life and freeing up space for other animals in need.</p>
-                <blockquote>“Saving one animal won't change the world, but it will change the world for that one
-                  animal.”</blockquote>
+									<div class="row align-items-center mb-5">
+										<div class="col-12 col-md-6">
+											<p>
+												<strong>Benefits of Adopting a Pet</strong>
+											</p>
+											<ul style="list-style-type: disc;" class="inner-list">
+												<li>You'll save a life.</li>
+												<li>Adopting helps reduce the number of homeless
+													animals.</li>
+												<li>Shelter pets are often already vaccinated and
+													spayed/neutered.</li>
+												<li>Adopting a pet is more affordable than buying one.</li>
+												<li>You can find a pet that fits your lifestyle and
+													personality.</li>
+											</ul>
+										</div>
+										<div class="col-12 col-md-6">
+											<img src="images/blog3.jpg" alt="post-image"
+												class="img-fluid">
+										</div>
+									</div>
 
-                <div class="row align-items-center mb-5">
-                  <div class="col-12 col-md-6">
-                    <p>
-                      <strong>Benefits of Adopting a Pet</strong>
-                    </p>
-                    <ul style="list-style-type:disc;" class="inner-list">
-                      <li>You'll save a life.</li>
-                      <li>Adopting helps reduce the number of homeless animals.</li>
-                      <li>Shelter pets are often already vaccinated and spayed/neutered.</li>
-                      <li>Adopting a pet is more affordable than buying one.</li>
-                      <li>You can find a pet that fits your lifestyle and personality.</li>
-                    </ul>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <img src="images/blog3.jpg" alt="post-image" class="img-fluid">
-                  </div>
-                </div>
+									<p>Adopting a pet can also provide a sense of purpose and
+										routine, helping to alleviate stress and loneliness. Pets are
+										known to provide emotional support and can even improve your
+										physical health.</p>
+									<div class="d-none d-xl-flex justify-content-between my-5">
+										<img src="images/insta1.jpg" alt="post-image"
+											class="img-fluid"> <img src="images/insta2.jpg"
+											alt="post-image" class="img-fluid"> <img
+											src="images/insta3.jpg" alt="post-image" class="img-fluid">
+										<img src="images/insta4.jpg" alt="post-image"
+											class="img-fluid">
+									</div>
+									<p>
+										<strong>Get Involved</strong>
+									</p>
+									<p>If you're not ready to adopt, consider volunteering at
+										your local shelter or donating to support their efforts. Every
+										bit of help counts and makes a difference.</p>
 
-                <p>Adopting a pet can also provide a sense of purpose and routine, helping to alleviate stress and
-                  loneliness. Pets are known to provide emotional support and can even improve your physical health.</p>
-                <div class="d-none d-xl-flex justify-content-between my-5">
-                  <img src="images/insta1.jpg" alt="post-image" class="img-fluid">
-                  <img src="images/insta2.jpg" alt="post-image" class="img-fluid">
-                  <img src="images/insta3.jpg" alt="post-image" class="img-fluid">
-                  <img src="images/insta4.jpg" alt="post-image" class="img-fluid">
-                </div>
-                <p>
-                  <strong>Get Involved</strong>
-                </p>
-                <p>If you're not ready to adopt, consider volunteering at your local shelter or donating to support their
-                  efforts. Every bit of help counts and makes a difference.</p>
+									<div class="post-tags mt-5">
+										<div class="block-tag col-md-12">
+											<ul class="list-unstyled d-flex">
+												<li class="pe-3"><a href="#"
+													class="btn btn-dark fs-6 py-2 px-3">Adopt</a></li>
+												<li class="pe-3"><a href="#"
+													class="btn btn-dark fs-6 py-2 px-3">Volunteer</a></li>
+												<li class="pe-3"><a href="#"
+													class="btn btn-dark fs-6 py-2 px-3">Donate</a></li>
+											</ul>
+										</div>
+									</div>
 
-                <div class="post-tags mt-5">
-                  <div class="block-tag col-md-12">
-                    <ul class="list-unstyled d-flex">
-                      <li class="pe-3">
-                        <a href="#" class="btn btn-dark fs-6 py-2 px-3">Adopt</a>
-                      </li>
-                      <li class="pe-3">
-                        <a href="#" class="btn btn-dark fs-6 py-2 px-3">Volunteer</a>
-                      </li>
-                      <li class="pe-3">
-                        <a href="#" class="btn btn-dark fs-6 py-2 px-3">Donate</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+								</div>
 
-              </div>
-
-<!--               <div id="single-post-navigation" class="my-5">
+								<!--               <div id="single-post-navigation" class="my-5">
                 <div class="post-navigation d-flex flex-wrap align-items-center justify-content-between">
                   <a itemprop="url" class="post-prev d-flex flex-column text-decoration-none" href="#"
                     title="Previous Post">
@@ -451,71 +473,83 @@
                 </div>
               </div> -->
 
-            </div>
-          </article>
+							</div>
+						</article>
 
-          <!-- comments -->
-      
-<section id="post-comment">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="comments-wrap">
-                    <h2 class="display-6 fw-normal text-dark my-5">
-                        <span class="count" th:text="${comments.size()}"></span> Comments
-                    </h2>
-                    <div class="comment-list padding-small">
-                        <div th:each="comment : ${comments}">
-                            <article class="comment-item d-flex flex-wrap mb-3">
-                                <div class="col-lg-1 col-sm-3 me-4 mb-3">
-                                    <img th:src="${comment.user.profileImageUrl}" alt="default" class="img-fluid rounded-circle">
-                                </div>
-                                <div class="col-lg-10 col-sm-9 author-wrap">
-                                    <div class="author-post">
-                                        <div class="comment-meta d-flex">
-                                            <h4 class="author-name text-dark pe-1" th:text="${comment.user.username}">Username</h4>
-                                            <span class="meta-date text-muted" th:text="${#temporals.format(comment.createdAt, 'MMM d')}">Date</span>
-                                        </div>
-                                        <p class="no-margin" th:text="${comment.message}">Comment message</p>
-                                        <div class="comments-reply">
-                                            <a href="#" class="text-decoration-underline text-dark">Reply Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment-respond pt-3 mt-5">
-                    <h2 class="display-6 fw-normal text-dark my-5">Leave a Comment</h2>
-                    <form action="#" th:action="@{/comments}" th:object="${new Comment()}" method="post" class="form-group flex-wrap">
-                        <div class="col-lg-12 mb-3">
-                            <textarea name="message" placeholder="Write Your Message Here*" class="form-control ps-3" rows="8"></textarea>
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-        </div>
-      </main>
-    </div>
-  </div>
-</div>
+						<!-- comments -->
+
+						<section id="post-comment">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="comments-wrap">
+											<h2 class="display-6 fw-normal text-dark my-5">
+												<span class="count" th:text="${comments.size()}"></span>
+												Comments
+											</h2>
+											<div class="comment-list padding-small">
+												<div th:each="comment : ${comments}">
+													<article class="comment-item d-flex flex-wrap mb-3">
+														<div class="col-lg-1 col-sm-3 me-4 mb-3">
+															<img th:src="${comment.user.profileImageUrl}"
+																alt="default" class="img-fluid rounded-circle">
+														</div>
+														<div class="col-lg-10 col-sm-9 author-wrap">
+															<div class="author-post">
+																<div class="comment-meta d-flex">
+																	<h4 class="author-name text-dark pe-1"
+																		th:text="${comment.user.username}">Username</h4>
+																	<span class="meta-date text-muted"
+																		th:text="${#temporals.format(comment.createdAt, 'MMM d')}">Date</span>
+																</div>
+																<p class="no-margin" th:text="${comment.message}">Comment
+																	message</p>
+																<div class="comments-reply">
+																	<a href="#" class="text-decoration-underline text-dark">Reply
+																		Now</a>
+																</div>
+															</div>
+														</div>
+													</article>
+												</div>
+											</div>
+										</div>
+										<div class="comment-respond pt-3 mt-5">
+											<h2 class="display-6 fw-normal text-dark my-5">Leave a
+												Comment</h2>
+											<form action="#" th:action="@{/comments}"
+												th:object="${new Comment()}" method="post"
+												class="form-group flex-wrap">
+												<div class="col-lg-12 mb-3">
+													<textarea name="message"
+														placeholder="Write Your Message Here*"
+														class="form-control ps-3" rows="8"></textarea>
+												</div>
+												<div class="d-grid">
+													<button type="submit"
+														class="btn btn-arrow btn-primary btn-lg btn-pill btn-dark fs-6">Submit</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</main>
+			</div>
+		</div>
+	</div>
 
 	</footer>
 
 
-  <script src="js/jquery-1.11.0.min.js"></script>
-  <script src="js/swiper.js"></script>
-  <script src="js/bootstrap.bundle.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/iconify.js"></script>
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/swiper.js"></script>
+	<script src="js/bootstrap.bundle.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/iconify.js"></script>
 </body>
 
 </html>

@@ -54,7 +54,16 @@ height
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -62,7 +71,16 @@ height
 
 
 
+
+
+
 300px
+
+
+
+
+
+
 
 
 
@@ -77,7 +95,16 @@ object-fit
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -85,7 +112,16 @@ object-fit
 
 
 
+
+
+
 cover
+
+
+
+
+
+
 
 
 
@@ -388,11 +424,11 @@ cover
 										class="nav-link dropdown-toggle" role="button" id="pages"
 										data-bs-toggle="dropdown" aria-expanded="false">Adoption</a>
 										<ul class="dropdown-menu" aria-labelledby="pages">
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/cat"
 												class="dropdown-item">Cats</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/dog"
 												class="dropdown-item">Dogs</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
 											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Other</a></li>
@@ -457,7 +493,7 @@ cover
 			<div class="row align-items-center">
 				<div class="col-md-6">
 					<div class="hero-content py-0 my-0">
-						<h2 class="display-1 mt-3 mb-0">Account</h2>
+						<h2 class="display-1 mt-3 mb-0">Our Pets</h2>
 
 					</div>
 				</div>
@@ -581,10 +617,18 @@ cover
 				<h2 class="display-3 fw-normal">Pets</h2>
 				<div class="mb-4 mb-md-0">
 					<p class="m-0">
-						<button class="filter-button me-4  active" data-filter="*">ALL</button>
-						<button class="filter-button me-4 " data-filter=".cat">CAT</button>
-						<button class="filter-button me-4 " data-filter=".dog">DOG</button>
-						<button class="filter-button me-4 " data-filter=".bird">BIRD</button>
+						<button
+							class="filter-button me-4 ${activeFilter == null ? 'active' : ''}"
+							data-filter="*">ALL</button>
+						<button
+							class="filter-button me-4 ${'cat'.equals(activeFilter) ? 'active' : ''}"
+							data-filter="cat">CAT</button>
+						<button
+							class="filter-button me-4 ${'dog'.equals(activeFilter) ? 'active' : ''}"
+							data-filter="dog">DOG</button>
+						<button
+							class="filter-button me-4 ${'bird'.equals(activeFilter) ? 'active' : ''}"
+							data-filter="bird">BIRD</button>
 					</p>
 				</div>
 				<div>
@@ -601,66 +645,66 @@ cover
 
 				<c:forEach var="pet" items="${pets}">
 					<c:if test="${pet.status.equals('Unadopted')}">
-						<%-- 	<c:if test="${pet.type.equals('cat')}"> --%>
-						<div class="item cat col-md-4 col-lg-3 my-4">
-							<div
-								class="card position-relative border-0 rounded-4 overflow-hidden">
-								<div class="position-relative">
-									<img src="${pet.imageUrl}" class="card-img-top fixed-size-img"
-										alt="image">
-									<form action="/public/cart/add" method="post"
-										class="position-absolute top-0 end-0 m-2">
-										<input type="hidden" name="petId" value="${pet.id}"> <input
-											type="hidden" name="${_csrf.parameterName}"
-											value="${_csrf.token}"> <input type="hidden"
-											name="location" value="cart">
-										<c:if test="${currentUser != null}">
-											<c:if test="${currentUser.pets.contains(pet)}">
-												<button class="btn btn-outline-danger p-2" type="submit">
-													<iconify-icon icon="emojione-v1:broken-heart" class="fs-5"></iconify-icon>
+						<c:if test="${pet.type.equals('cat')}">
+							<div class="item cat col-md-4 col-lg-3 my-4">
+								<div
+									class="card position-relative border-0 rounded-4 overflow-hidden">
+									<div class="position-relative">
+										<img src="${pet.imageUrl}" class="card-img-top fixed-size-img"
+											alt="image">
+										<form action="/public/cart/add" method="post"
+											class="position-absolute top-0 end-0 m-2">
+											<input type="hidden" name="petId" value="${pet.id}">
+											<input type="hidden" name="${_csrf.parameterName}"
+												value="${_csrf.token}"> <input type="hidden"
+												name="location" value="cart">
+											<c:if test="${currentUser != null}">
+												<c:if test="${currentUser.pets.contains(pet)}">
+													<button class="btn btn-outline-danger p-2" type="submit">
+														<iconify-icon icon="emojione-v1:broken-heart" class="fs-5"></iconify-icon>
+													</button>
+												</c:if>
+												<c:if test="${!currentUser.pets.contains(pet)}">
+													<button class="btn btn-outline-primary p-2" type="submit">
+														<iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
+													</button>
+												</c:if>
+											</c:if>
+											<c:if test="${currentUser == null}">
+												<button class="btn btn-outline-primary p-2" type="submit"
+													disabled>
+													<iconify-icon icon="fluent:heart-28-filled" class="fs-5"
+														disabled></iconify-icon>
 												</button>
 											</c:if>
-											<c:if test="${!currentUser.pets.contains(pet)}">
-												<button class="btn btn-outline-primary p-2" type="submit">
-													<iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
-												</button>
-											</c:if>
-										</c:if>
-										<c:if test="${currentUser == null}">
-											<button class="btn btn-outline-primary p-2" type="submit"
-												disabled>
-												<iconify-icon icon="fluent:heart-28-filled" class="fs-5"
-													disabled></iconify-icon>
-											</button>
-										</c:if>
-									</form>
-								</div>
-								<div class="card-body p-3">
-									<a href="" class="text-decoration-none">
-										<h3 class="card-title text-dark">
-											<c:out value="${pet.name}"></c:out>
-										</h3>
-									</a>
-									<h4 class="secondary-font text-primary">
-										<c:out value="${pet.breed}"></c:out>
-									</h4>
-									<div class="d-flex flex-wrap mt-3">
-										<a href="/public/${pet.id}/details"
-											class="btn btn-primary me-3 px-4 py-2 text-uppercase">
-											Lets cuddle </a>
+										</form>
+									</div>
+									<div class="card-body p-3">
+										<a href="" class="text-decoration-none">
+											<h3 class="card-title text-dark">
+												<c:out value="${pet.name}"></c:out>
+											</h3>
+										</a>
+										<h4 class="secondary-font text-primary">
+											<c:out value="${pet.breed}"></c:out>
+										</h4>
+										<div class="d-flex flex-wrap mt-3">
+											<a href="/public/${pet.id}/details"
+												class="btn btn-primary me-3 px-4 py-2 text-uppercase">
+												Lets cuddle </a>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</c:if>
 					</c:if>
-					<%-- </c:if> --%>
 				</c:forEach>
 
 
 
 
 
-				<%-- <c:forEach var="pet" items="${pets}">
+				<c:forEach var="pet" items="${pets}">
 					<c:if test="${pet.status.equals('Unadopted')}">
 						<c:if test="${pet.type.equals('dog')}">
 							<div class="item dog col-md-4 col-lg-3 my-4">
@@ -716,10 +760,10 @@ cover
 				</c:forEach>
 
 
- --%>
 
 
-				<%-- <c:forEach var="pet" items="${pets}">
+
+				<c:forEach var="pet" items="${pets}">
 					<c:if test="${pet.status.equals('Unadopted')}">
 						<c:if test="${pet.type.equals('bird')}">
 							<div class="item bird col-md-4 col-lg-3 my-4">
@@ -773,13 +817,6 @@ cover
 						</c:if>
 					</c:if>
 				</c:forEach>
-
-
- --%>
-
-
-
-
 			</div>
 
 

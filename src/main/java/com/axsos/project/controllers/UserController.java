@@ -1,9 +1,9 @@
 package com.axsos.project.controllers;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -103,6 +103,13 @@ public class UserController {
 	@GetMapping("/cart")
 	public String showPets(Model model, Principal principal, HttpSession session) {
 		List<Pet> pets = petService.allPets();
+		String activeFilter = (String) session.getAttribute("activeFilter");
+
+		if (activeFilter != null) {
+			pets = pets.stream().filter(pet -> pet.getType().equalsIgnoreCase(activeFilter))
+					.collect(Collectors.toList());
+		}
+
 		model.addAttribute("pets", pets);
 		if (principal != null) {
 			String username = principal.getName();
@@ -110,7 +117,36 @@ public class UserController {
 			model.addAttribute("currentUser", user);
 		}
 
+		model.addAttribute("activeFilter", activeFilter);
 		return "cart.jsp";
+	}
+
+	// This one is for cats
+	@GetMapping("/cart/cat")
+	public String showCats(HttpSession session) {
+		session.setAttribute("activeFilter", "cat");
+		return "redirect:/cart";
+	}
+
+	// This one is for dogs
+	@GetMapping("/cart/dog")
+	public String showDogs(HttpSession session) {
+		session.setAttribute("activeFilter", "dog");
+		return "redirect:/cart";
+	}
+
+	// This one is for birds
+	@GetMapping("/cart/bird")
+	public String showBirds(HttpSession session) {
+		session.setAttribute("activeFilter", "bird");
+		return "redirect:/cart";
+	}
+
+	// This one is for all pets
+	@GetMapping("/cart/all")
+	public String showAll(HttpSession session) {
+		session.removeAttribute("activeFilter");
+		return "redirect:/cart";
 	}
 
 	@PostMapping("/public/cart/add")
@@ -178,6 +214,7 @@ public class UserController {
 		}
 		return "besties.jsp";
 	}
+
 	@GetMapping("/user/besties")
 	public String userBesties(Principal principal, Model model) {
 		String username = principal.getName();
