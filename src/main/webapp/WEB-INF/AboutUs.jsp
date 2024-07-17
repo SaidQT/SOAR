@@ -149,7 +149,11 @@ padding
 
 
 
+
+
  
+
+
 
 
 
@@ -163,6 +167,8 @@ padding
 
 
 
+
+
  
 
 
@@ -170,7 +176,13 @@ padding
 
 
 
+
+
 20px
+
+
+
+
 
 
 
@@ -198,7 +210,11 @@ background
 
 
 
+
+
  
+
+
 
 
 
@@ -212,13 +228,21 @@ background
 
 
 
+
+
  
 
 
 
 
 
+
+
 rgba
+
+
+
+
 
 
 
@@ -241,6 +265,10 @@ rgba
 
 
 
+
+
+
+
 0
 ,
 0
@@ -248,6 +276,10 @@ rgba
 0
 ,
 0
+
+
+
+
 
 
 
@@ -271,7 +303,15 @@ rgba
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -293,7 +333,13 @@ border-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -305,7 +351,13 @@ border-radius
 
 
 
+
+
 10px
+
+
+
+
 
 
 
@@ -337,9 +389,17 @@ border-radius
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -362,6 +422,10 @@ transform
 
 
 
+
+
+
+
 translateX
 
 
@@ -372,7 +436,15 @@ translateX
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -395,7 +467,15 @@ translateX
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -407,6 +487,10 @@ translateX
 ;
 }
 100
+
+
+
+
 
 
 
@@ -429,7 +513,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -450,7 +542,15 @@ translateX
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -473,7 +573,15 @@ translateX
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -603,7 +711,6 @@ translateX
 											icon="mdi:heart" class="fs-4"></iconify-icon>
 								</a></li>
 
-
 								<!-- <li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
 										<iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
@@ -611,7 +718,6 @@ translateX
 										class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
 											04 </span>
 								</a></li>
-
 
 								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasSearch"
@@ -665,11 +771,11 @@ translateX
 										class="nav-link dropdown-toggle" role="button" id="pages"
 										data-bs-toggle="dropdown" aria-expanded="false">Adoption</a>
 										<ul class="dropdown-menu" aria-labelledby="pages">
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/cat"
 												class="dropdown-item">Cats</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/dog"
 												class="dropdown-item">Dogs</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
 											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Other</a></li>
@@ -710,10 +816,8 @@ translateX
 										<!-- <li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
 											aria-controls="offcanvasCart"> <iconify-icon
-
 													icon="mdi:bell" class="fs-4 position-relative"></iconify-icon>
 												<span
-
 												class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
 													04 </span>
 										</a></li> -->
@@ -731,20 +835,23 @@ translateX
 
 				</div>
 	</header>
-	<section id="banner" class="py-3" style="background: #F9F3EC;">
-		<div class="container">
-			<div class="hero-content py-5 my-3">
-				<h2 class="display-1 mt-3 mb-0">
-					About <span class="text-primary">Us</span>
-				</h2>
-				<nav class="breadcrumb">
-					<a class="breadcrumb-item nav-link" href="#">Home</a> <a
-						class="breadcrumb-item nav-link" href="#">Pages</a> <span
-						class="breadcrumb-item active" aria-current="page">About Us</span>
-				</nav>
+	<section id="banner" class="py-0" style="background: #F9F3EC;">
+		<div class="container p-0">
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<div class="hero-content py-0 my-0">
+						<h2 class="display-1 mt-3 mb-0">About Us</h2>
+
+					</div>
+				</div>
+				<div class="col-md-6">
+					<img src="images/soar.png" class="img-fluid soarIm mt-3"
+						alt="About Us Image" style="max-width: 100%;">
+				</div>
 			</div>
 		</div>
 	</section>
+
 
 
 	<div class="my-5 py-5">

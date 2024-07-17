@@ -228,7 +228,6 @@
 											icon="mdi:heart" class="fs-4"></iconify-icon>
 								</a></li>
 
-
 								<!-- <li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
 										<iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
@@ -237,17 +236,19 @@
 											04 </span>
 								</a></li>
 
-
 								<li><a href="#" class="mx-3" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasSearch"
 									aria-controls="offcanvasSearch"> <iconify-icon
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
 								</a></li> -->
 							</ul>
-
+							f
 						</div>
 
-
+						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
 
 						<div class="offcanvas offcanvas-end" tabindex="-1"
 							id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -287,12 +288,11 @@
 										class="nav-link dropdown-toggle" role="button" id="pages"
 										data-bs-toggle="dropdown" aria-expanded="false">Adoption</a>
 										<ul class="dropdown-menu" aria-labelledby="pages">
-
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/cat"
 												class="dropdown-item">Cats</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/dog"
 												class="dropdown-item">Dogs</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
 											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Other</a></li>
@@ -301,12 +301,10 @@
 
 									<li><a href="/faqs" class="nav-link">FAQs</a></li>
 									<li><a href="/contact" class="nav-link">Contact Us</a></li>
-
 									<li><a href="/user/besties" class="nav-link">My
 											Besties</a></li>
 
 									<li><a href="/partners" class="nav-link">Partners</a></li>
-
 
 
 
@@ -318,7 +316,6 @@
 										<li><a href="/login" class="mx-3"> <iconify-icon
 													icon="healthicons:person" class="fs-4"></iconify-icon>
 										</a></li>
-
 										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
@@ -336,13 +333,11 @@
 										<!-- <li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
 											aria-controls="offcanvasCart"> <iconify-icon
-
 													icon="mdi:bell" class="fs-4 position-relative"></iconify-icon>
 												<span
 												class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
 													04 </span>
 										</a></li> -->
-
 									</ul>
 
 								</div>
@@ -352,6 +347,8 @@
 						</div>
 
 					</nav>
+
+
 
 				</div>
 	</header>

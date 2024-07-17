@@ -301,11 +301,11 @@
 										class="nav-link dropdown-toggle" role="button" id="pages"
 										data-bs-toggle="dropdown" aria-expanded="false">Adoption</a>
 										<ul class="dropdown-menu" aria-labelledby="pages">
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/cat"
 												class="dropdown-item">Cats</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/dog"
 												class="dropdown-item">Dogs</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
 											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Other</a></li>

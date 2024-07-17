@@ -149,7 +149,13 @@ padding
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -163,7 +169,13 @@ padding
 
 
 
+
+
 20px
+
+
+
+
 
 
 
@@ -190,7 +202,13 @@ background
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -204,7 +222,13 @@ background
 
 
 
+
+
 rgba
+
+
+
+
 
 
 
@@ -230,6 +254,10 @@ rgba
 
 
 
+
+
+
+
 0
 ,
 0
@@ -237,6 +265,10 @@ rgba
 0
 ,
 0
+
+
+
+
 
 
 
@@ -262,7 +294,15 @@ rgba
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -289,7 +329,13 @@ border-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -303,7 +349,13 @@ border-radius
 
 
 
+
+
 10px
+
+
+
+
 
 
 
@@ -337,9 +389,17 @@ border-radius
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -365,6 +425,10 @@ transform
 
 
 
+
+
+
+
 translateX
 
 
@@ -376,7 +440,15 @@ translateX
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -402,7 +474,15 @@ translateX
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -416,6 +496,10 @@ translateX
 ;
 }
 100
+
+
+
+
 
 
 
@@ -443,7 +527,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -467,7 +559,15 @@ translateX
 
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -493,7 +593,15 @@ translateX
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 
@@ -685,11 +793,11 @@ translateX
 										class="nav-link dropdown-toggle" role="button" id="pages"
 										data-bs-toggle="dropdown" aria-expanded="false">Adoption</a>
 										<ul class="dropdown-menu" aria-labelledby="pages">
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/cat"
 												class="dropdown-item">Cats</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/dog"
 												class="dropdown-item">Dogs</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
 											<li class="nav-item"><a href="/cart"
 												class="dropdown-item">Other</a></li>
@@ -777,25 +885,25 @@ translateX
 		<div class="container my-3 py-5">
 			<div class="row my-5">
 				<div class="col text-center">
-					<a href="/cart" class="categories-item"> <img
+					<a href="/cart/dog" class="categories-item"> <img
 						class="category-image" src="images/moningDog5.jpg" alt="Dog">
 						<h5>Dog</h5>
 					</a>
 				</div>
 				<div class="col text-center">
-					<a href="/cart" class="categories-item"> <img
+					<a href="/cart/cat" class="categories-item"> <img
 						class="category-image" src="images/moningcat4.jpg" alt="Cat">
 						<h5>Cat</h5>
 					</a>
 				</div>
 				<div class="col text-center">
-					<a href="/cart" class="categories-item"> <img
+					<a href="/cart/bird" class="categories-item"> <img
 						class="category-image" src="images/moningbird4.jpg" alt="Bird">
 						<h5>Bird</h5>
 					</a>
 				</div>
 				<div class="col text-center">
-					<a href="/cart" class="categories-item"> <img
+					<a href="/cart/all" class="categories-item"> <img
 						class="category-image" src="images/paw6.jpg" alt="All">
 						<h5>All</h5>
 					</a>
@@ -803,7 +911,6 @@ translateX
 			</div>
 		</div>
 	</section>
-
 
 
 
