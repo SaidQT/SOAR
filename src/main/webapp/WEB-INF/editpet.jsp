@@ -36,8 +36,11 @@
 	</nav>
 	<div class="form-container">
 		<h1>Edit Pet Information</h1>
-		<form:form action="/pet/${pet.id}" method="post" modelAttribute="pet">
-			<input type="hidden" name="_method" value="put">
+		<form:form action="/shop/${pet.id}" method="post" modelAttribute="pet">
+			<input type="hidden" name="_method" value="patch">
+			<form:input type="hidden" path="shop" value="${pet.shop.id}" />
+			
+			<form:input type="hidden" path="user" value="${pet.user}" />
 			<p>
 				<form:label path="name">Name</form:label>
 				<form:input path="name" required="true" />
@@ -54,6 +57,10 @@
 			<p>
 				<form:label path="city">City</form:label>
 				<form:input path="city" required="true" />
+			</p>
+			<p>
+				<form:label path="breed">Breed</form:label>
+				<form:input path="breed" required="true" />
 			</p>
 			<p>
 				<form:label path="imageUrl">Image URL</form:label>

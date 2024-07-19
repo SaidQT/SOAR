@@ -46,7 +46,6 @@ public class Pet {
 		this.breed = breed;
 	}
 
-
 	@NotNull
 	@Size(min = 2, max = 200, message = "City name must be at least 2 characters")
 	private String city;
@@ -67,12 +66,22 @@ public class Pet {
 	private List<User> users;
 
 	@ManyToOne(fetch = FetchType.LAZY) // this relationship is for adopting pets
+
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	@ManyToMany
+	@JoinTable(name = "requests", joinColumns = @JoinColumn(name = "pet_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private List<User> request;
+	
+	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY) // this relationship is for shops and pets
 	@JoinColumn(name = "shop_id")
 	private Shop shop;
+
+	public List<User> getRequest() {
+		return request;
+	}
 
 	public User getUser() {
 		return user;
@@ -80,6 +89,10 @@ public class Pet {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public void setRequest(List<User> request) {
+		this.request = request;
 	}
 
 	public Shop getShop() {

@@ -292,7 +292,7 @@
 												class="dropdown-item">Dogs</a></li>
 											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/all"
 												class="dropdown-item">Other</a></li>
 
 										</ul></li>

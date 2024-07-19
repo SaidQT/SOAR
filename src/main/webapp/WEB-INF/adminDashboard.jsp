@@ -27,8 +27,7 @@
 		<div class="container-fluid">
 			<!-- <img src="images/logo.png" alt="logo" class="img-fluid1" />  -->
 			<a class="navbar-brand" href="/"> Home </a> <a class="navbar-brand"
-				href="/admin/dashboard"> Dashboard </a> <a class="navbar-brand"
-				href="/admin/home">Shops</a>
+				href="/admin/dashboard"> Dashboard </a> 
 			<div class="collapse navbar-collapse show" id="navbarBasic">
 				<ul class="navbar-nav me-auto mb-2 mb-xl-0">
 					<li class="nav-item"><a class="nav-link active"

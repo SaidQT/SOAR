@@ -307,7 +307,8 @@
 												class="dropdown-item">Dogs</a></li>
 											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/all
+									"
 												class="dropdown-item">Other</a></li>
 
 										</ul></li>
@@ -394,7 +395,7 @@
 
 			<div class="row">
 
-
+				<h2>Adopted Pets</h2>
 				<c:forEach var="pet" items="${requestPets}">
 					<div class="col-md-4 col-lg-3 my-4">
 						<div class="card position-relative">
@@ -416,7 +417,29 @@
 						</div>
 					</div>
 				</c:forEach>
-
+				<hr>
+				<h2>Pending Requests</h2>
+				<c:forEach var="pet" items="${pending}">
+					<div class="col-md-4 col-lg-3 my-4">
+						<div class="card position-relative">
+							<img src="${pet.imageUrl}" class="rounded-4 fixed-size-img"
+								alt="image">
+							<div class="card-body p-0">
+								<a href="single-product.html">
+									<h3 class="card-title pt-4 m-0">
+										<c:out value="${pet.name}"></c:out>
+									</h3>
+								</a>
+								<div class="card-text">
+									<h3 class="secondary-font text-primary">
+										<c:out value="${pet.breed}"></c:out>
+									</h3>
+									<div class="d-flex flex-wrap mt-3"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 	</section>

@@ -242,7 +242,7 @@
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
 								</a></li> -->
 							</ul>
-							f
+
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -294,7 +294,7 @@
 												class="dropdown-item">Dogs</a></li>
 											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/all"
 												class="dropdown-item">Other</a></li>
 
 										</ul></li>
