@@ -41,13 +41,14 @@ public class PetController {
 	}
 
 	@PostMapping("/shop/new")
-	public String createShop(@Valid @ModelAttribute("pet") Pet pet, BindingResult result, Principal principal) {
+	public String createShop(@Valid @ModelAttribute("pet") Pet pet, BindingResult result, Principal principal, Model model) {
 		// Principal here is the shop owner
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		Shop shop = user.getShop();
-
+		model.addAttribute("shop", shop);
 		if (result.hasErrors()) {
+			System.out.println(result);
 			return "addpet.jsp";
 		} else {
 			// To add new pet to the shop:
@@ -55,7 +56,6 @@ public class PetController {
 			// *) Add relationship with shop(1 shop --have-- M pets)
 			// *) Save the pet
 			pet.setStatus("Unadopted");
-			pet.setShop(shop);
 			petService.createPet(pet);
 			return "redirect:/shop/home";
 		}
@@ -85,11 +85,14 @@ public class PetController {
 	}
 
 	@PatchMapping("/shop/{id}")
-	public String editInfo(@Valid @ModelAttribute("pet") Pet pet, BindingResult result, Model model) {
+	public String editInfo(@PathVariable("id") Long id, @Valid @ModelAttribute("pet") Pet pet, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute("pet", pet);
+			System.out.println(result);
 			return "editpet.jsp";
 		} else {
+			Pet updatePet =petService.findPet(id);
+			pet.setRequest(updatePet.getRequest());
 			petService.updatePet(pet);
 			return "redirect:/shop/home";
 		}
@@ -121,7 +124,6 @@ public class PetController {
 	@GetMapping("/public/{id}/details")
 	public String show(@PathVariable("id") Long id, Model model, HttpSession session) {
 		session.setAttribute("id", id);
-
 		return "redirect:/details";
 	}
 
@@ -131,7 +133,7 @@ public class PetController {
 		Pet pet = petService.findPet(id);
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
-		pet.setUser(user);
+		pet.getRequest().add(user); // add the current user to the list who request
 		pet.setStatus("Pending");
 		petService.createPet(pet);
 		return "redirect:/user/besties";
@@ -150,35 +152,38 @@ public class PetController {
 		model.addAttribute("pets", pets);
 		return "requests.jsp";
 	}
-
-	@GetMapping("/shop/{id}/{shopId}/accept")
-	public String accept(@PathVariable("id") Long id, @PathVariable("shopId") Long shopId, Principal principal) {
+	
+	//This function is for accepting adoption request and automatically refusing the others
+	@GetMapping("/shop/{id}/{shopId}/{userId}/accept")
+	public String accept(@PathVariable("id") Long id, @PathVariable("shopId") Long shopId, @PathVariable("userId") Long userId, Principal principal) {
 		String username = principal.getName();
 		User x = userService.findByUsername(username);
 		if (id != x.getShop().getId()) {
 			return "accessDenied.jsp";
 		}
+		User acceptedUser= userService.findById(userId);
 		Pet pet = petService.findPet(shopId);
 		pet.setStatus("Adopted");
-		User user = pet.getUser();
-		user.addAdoptedPet(pet);
-		userService.updateUser(user);
+		pet.setUser(acceptedUser);
+		//When the user is accepted, the list of requests becomes empty
+		pet.setRequest(null);
 		petService.createPet(pet);
 		return "redirect:/shop/" + id + "/requests";
 	}
 
-	@GetMapping("/shop/{id}/{shopId}/destroy")
-	public String destroy(@PathVariable("id") Long id, @PathVariable("shopId") Long shopId, Principal principal) {
+	@GetMapping("/shop/{id}/{shopId}/{userId}/destroy")
+	public String destroy(@PathVariable("id") Long id, @PathVariable("shopId") Long shopId,@PathVariable("userId") Long userId, Principal principal) {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		if (id != user.getShop().getId()) {
 			return "accessDenied.jsp";
 		}
+		//first we bring the user we want to refuse
+		User refusedUser= userService.findById(userId);
 		Pet pet = petService.findPet(shopId);
-		pet.setStatus("Unadopted");
-		pet.setUser(null);
+		/* pet.setStatus("Unadopted"); */
+		pet.getRequest().remove(refusedUser);
 		petService.createPet(pet);
 		return "redirect:/shop/" + shopId + "/requests";
 	}
-
 }

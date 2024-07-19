@@ -57,17 +57,19 @@
 			<c:forEach var="pet" items="${pets}">
 				<tr>
 					<c:if test="${pet.status.equals('Pending')}">
-						<td><c:out value="${pet.name}"></c:out></td>
-						<td><c:out value="${pet.type}"></c:out></td>
-						<%-- 	<td><c:out value="${pet.breed}"></c:out></td> --%>
-						<td><c:out value="${pet.user.username}"></c:out></td>
-						<td><c:out value="${pet.user.email}"></c:out></td>
-						<td id="buttons"><a
-							href="/shop/${pet.shop.id}/${pet.id}/accept">Accept</a> | <a
-							href="/shop/${pet.shop.id}/${pet.id}/destroy">Refuse</a></td>
-					</c:if>
-
+						<c:forEach var="user" items="${pet.request}">
+							<td><c:out value="${pet.name}"></c:out></td>
+							<td><c:out value="${pet.type}"></c:out></td>
+							<td><c:out value="${user.username}"></c:out></td>
+							<td><c:out value="${user.email}"></c:out></td>
+							<td id="buttons"><a
+								href="/shop/${pet.shop.id}/${pet.id}/${user.id}/accept">Accept</a>
+								| <a href="/shop/${pet.shop.id}/${pet.id}/${user.id}/destroy">Refuse</a></td>
 				</tr>
+			</c:forEach>
+			</c:if>
+
+
 			</c:forEach>
 		</tbody>
 	</table>

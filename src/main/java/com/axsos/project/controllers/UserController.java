@@ -1,8 +1,10 @@
 package com.axsos.project.controllers;
 
 import java.security.Principal;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.axsos.project.models.LoginUser;
 import com.axsos.project.models.Pet;
@@ -121,21 +123,21 @@ public class UserController {
 		return "cart.jsp";
 	}
 
-	// This one is for cats
+	// This one is to filter cats
 	@GetMapping("/cart/cat")
 	public String showCats(HttpSession session) {
 		session.setAttribute("activeFilter", "cat");
 		return "redirect:/cart";
 	}
 
-	// This one is for dogs
+	// This one is to filter dogs
 	@GetMapping("/cart/dog")
 	public String showDogs(HttpSession session) {
 		session.setAttribute("activeFilter", "dog");
 		return "redirect:/cart";
 	}
 
-	// This one is for birds
+	// This one is to filter birds
 	@GetMapping("/cart/bird")
 	public String showBirds(HttpSession session) {
 		session.setAttribute("activeFilter", "bird");
@@ -150,30 +152,32 @@ public class UserController {
 	}
 
 	@PostMapping("/public/cart/add")
-	public String addPetToUserCart(@RequestParam(name = "petId") Long petId, @RequestParam("location") String location,
-			Principal principal, HttpSession session) {
+	@ResponseBody
+	public Map<String, String> addPetToUserCart(@RequestParam(name = "petId") Long petId,
+			@RequestParam("location") String location, Principal principal) {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		Pet pet = petService.findPet(petId);
-		System.out.print(user.getRoles().get(0).getName());
 
-		if (user != null && pet != null && !user.getPets().contains(pet)) { // checks if there is a principal, and if
-			// the user has favorited this pet
-			pet.getUsers().add(user);
-			petService.createPet(pet);
-			return "redirect:/cart";
+		Map<String, String> response = new HashMap<>();
 
-		} else if (user != null && pet != null && user.getPets().contains(pet)) {
-			pet.getUsers().remove(user);
-			petService.createPet(pet);
-			if (location.equals("cart")) { // checks if the current user is on the favorites page or the public page
-				return "redirect:/cart";
+		if (user != null && pet != null) {
+			if (user.getPets().contains(pet)) {
+				pet.getUsers().remove(user);
+				petService.createPet(pet);
+				response.put("action", "removed");
+			} else {
+				pet.getUsers().add(user);
+				petService.createPet(pet);
+				response.put("action", "added");
 			}
-			if (location.equals("wishlist")) {
-				return "redirect:/user/favorites";
-			}
+
+			response.put("redirect", location.equals("cart") ? "/cart" : "/user/favorites");
+		} else {
+			response.put("action", "error");
 		}
-		return "redirect:/cart";
+
+		return response;
 	}
 
 	@GetMapping("/wish")
@@ -198,20 +202,18 @@ public class UserController {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		List<Pet> requestPets = user.getAdoptedPets();
+		List<Pet> pendingPet = user.getRequestedPets();
 		// List<Pet> resfuedPets = user.getRefusedPets();
 		// List<Pet> pets = user.getAdoptedPets();
 		// List<Pet> userPets = new ArrayList<>();
 		// Pet tempPet = new Pet();
-		if (requestPets != null) {
-			Iterator<Pet> iterator = requestPets.iterator();
-			while (iterator.hasNext()) {
-				Pet pet = iterator.next();
-				if (pet.getStatus().equals("Pending")) {
-					iterator.remove();
-				}
-			}
-			model.addAttribute("requestPets", requestPets);
-		}
+		/*
+		 * if (requestPets != null) { Iterator<Pet> iterator = requestPets.iterator();
+		 * while (iterator.hasNext()) { Pet pet = iterator.next(); if
+		 * (pet.getStatus().equals("Pending")) { iterator.remove(); } }
+		 */
+		model.addAttribute("requestPets", requestPets);
+		model.addAttribute("pending", pendingPet);
 		return "besties.jsp";
 	}
 
@@ -239,18 +241,14 @@ public class UserController {
 
 	// ****************************** U from {CRUD} ******************************
 	// Function to canaling adoption request while request still pending
-	@PatchMapping("/user/cancel")
-	public String cancelRequest(@RequestParam(name = "petId") Long petId, Principal principal) {
-		Pet pet = petService.findPet(petId);
-		String username = principal.getName();
-		User user = userService.findByUsername(username);
-		pet.setUser(null);
-		pet.setStatus("Unadopted");
-		petService.createPet(pet);
-		user.removeAdoptedPet(pet);
-		// user.addRefusedPets(pet);
-		userService.updateUser(user);
-		return "redirect:/user/besties";
-	}
+	/*
+	 * @PatchMapping("/user/cancel") public String cancelRequest(@RequestParam(name
+	 * = "petId") Long petId, Principal principal) { Pet pet =
+	 * petService.findPet(petId); String username = principal.getName(); User user =
+	 * userService.findByUsername(username); pet.setUser(null);
+	 * pet.setStatus("Unadopted"); petService.createPet(pet);
+	 * user.removeAdoptedPet(pet); // user.addRefusedPets(pet);
+	 * userService.updateUser(user); return "redirect:/user/besties"; }
+	 */
 
 }

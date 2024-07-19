@@ -307,7 +307,7 @@
 												class="dropdown-item">Dogs</a></li>
 											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/all"
 												class="dropdown-item">Other</a></li>
 
 										</ul></li>
@@ -398,7 +398,7 @@
 				</c:if>
 				<c:if test="${not empty favorite}">
 					<c:forEach var="pet" items="${favorite}">
-						<div class="col-md-4 col-lg-3 my-4">
+						<div class="col-md-4 col-lg-3 my-4 pet-item">
 							<div class="card position-relative">
 								<img src="${pet.imageUrl}" class="rounded-4 fixed-size-img"
 									alt="image">
@@ -416,12 +416,14 @@
 											<a href="#" class="btn-cart me-3 px-4 pt-3 pb-3">
 												<h5 class="text-uppercase m-0">lets cuddle</h5>
 											</a>
-											<form action="/public/cart/add" method="post">
+											<form action="/public/cart/add" method="post"
+												class="remove-favorite-form position-absolute top-0 end-0 m-2">
 												<input type="hidden" name="petId" value="${pet.id}">
 												<input type="hidden" name="${_csrf.parameterName}"
-													value="${_csrf.token}" /> <input type="hidden"
-													name="location" value="wishlist">
-												<button class="btn-wishlist px-4 pt-3 " type="submit">
+													value="${_csrf.token}"> <input type="hidden"
+													name="location" value="favorites">
+												<!-- Location can be adjusted -->
+												<button class="btn btn-outline-danger p-2" type="submit">
 													<iconify-icon icon="emojione-v1:broken-heart" class="fs-5"></iconify-icon>
 												</button>
 											</form>
@@ -431,6 +433,7 @@
 							</div>
 						</div>
 					</c:forEach>
+
 				</c:if>
 			</div>
 		</div>
@@ -615,7 +618,38 @@
 	</footer>
 
 
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Attach submit event handler to all forms with class 'remove-favorite-form'
+        $(document).on('submit', '.remove-favorite-form', function(event) {
+            event.preventDefault(); // Prevent the default form submission
 
+            var $form = $(this);
+            var formData = $form.serialize(); // Serialize the form data
+
+            $.ajax({
+                url: $form.attr('action'),
+                type: 'POST',
+                data: formData,
+                dataType: 'json', // Expect a JSON response
+                success: function(response) {
+                    console.log('AJAX response:', response); // Log the response to verify its contents
+
+                    if (response.action === 'removed') {
+                        // Remove the entire parent <div> of the form
+                        $form.closest('.pet-item').remove();
+                    } else if (response.action === 'error') {
+                        console.error('An error occurred. Please try again.'); // Log errors in console
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX error:', status, error); // Log errors for debugging
+                }
+            });
+        });
+    });
+</script>
 
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/swiper.js"></script>

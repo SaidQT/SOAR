@@ -55,12 +55,16 @@ public class User {
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
 
-	@ManyToMany
+	@ManyToMany //This relationship is established for users who wish to like the pet. 
 	@JoinTable(name = "user_pet", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
 	private List<Pet> pets;
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)//This relationship is established for users who adopt the pet.
 	private List<Pet> adoptedPets;
+
+	@ManyToMany //This relationship is established for users who wants to request adopting the pet
+	@JoinTable(name = "requests", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
+	private List<Pet> requestedPets;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "shop_id")
@@ -76,6 +80,14 @@ public class User {
 
 	public Long getId() {
 		return id;
+	}
+
+	public List<Pet> getRequestedPets() {
+		return requestedPets;
+	}
+
+	public void setRequestedPets(List<Pet> requestedPets) {
+		this.requestedPets = requestedPets;
 	}
 
 	public void setId(Long id) {

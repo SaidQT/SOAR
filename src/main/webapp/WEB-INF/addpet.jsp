@@ -44,7 +44,7 @@
 
 			</p>
 			<p>
-
+				
 				<form:select path="type">
 					<form:option value="dog">Dog</form:option>
 					<form:option value="cat">Cat</form:option>
