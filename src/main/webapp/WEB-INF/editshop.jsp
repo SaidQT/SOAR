@@ -9,70 +9,100 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Edit Shop</title>
-<link rel="stylesheet" type="text/css" href="/css/forms.css">
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-
+<link rel="stylesheet" type="text/css" href="/css/admin.css">
+<link rel="stylesheet" type="text/css" href="/css/adminform.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-xl navbar-light bg-light">
-		<div class="container-fluid">
-			<!-- <img src="images/logo.png" alt="logo" class="img-fluid1" />  -->
-			<a
-				class="navbar-brand" href="/"> Home </a>
-			<a class="navbar-brand" href="/admin/dashboard"> Dashboard </a>
-			<a class="navbar-brand" href="/admin/home">Shops</a>
-			<div class="collapse navbar-collapse show" id="navbarBasic">
-				<ul class="navbar-nav me-auto mb-2 mb-xl-0">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/admin/home">Shops</a></li>
-					<li class="nav-item"><a class="nav-link" href="/admin/add">Add
-							a shop</a></li>
-				</ul>
+	<!-- =============== Navigation ================ -->
+	<div class="container1">
+		<div class="navigation">
+			<ul>
+				<li><img src="/images/logo1.png" alt="logo" id="logo"> <span
+					class="title" id="soar">S.O.A.R</span></li>
+				<li><a href="/admin/dashboard"> <span class="icon">
+							<ion-icon name="home-outline"></ion-icon>
+					</span> <span class="title">Dashboard</span>
+				</a></li>
+				<li><a href="/admin/home"> <span class="icon"> <ion-icon
+								name="list-outline"></ion-icon>
+					</span> <span class="title">Tables</span>
+				</a></li>
+				<li><a href="/admin/add"> <span class="icon"> <ion-icon
+								name="person-add-outline"></ion-icon>
+					</span> <span class="title">Add Shop</span>
+				</a></li>
+				<li>
+					<form id="logoutForm" method="POST" action="/logout">
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+						<button type="submit" class="logout-button">
+							<span class="icon"> <ion-icon name="log-out-outline"></ion-icon>
+							</span> <span class="title">Sign Out</span>
+						</button>
+					</form>
+				</li>
+			</ul>
+			<img src="/images/n.png" id="footer-image">
+		</div>
+	</div>
+	<!-- ========================= Main ==================== -->
+	<div class="main">
+		<div class="topbar">
+			<div class="toggle">
+				<ion-icon name="menu-outline"></ion-icon>
+			</div>
+			<div>
+				<h1 id="page">Edit Shop Information</h1>
 			</div>
 		</div>
-	</nav>
-	<div class="form-container">
-		<h1>Edit Shop Information</h1>
-		<form:form action="/admin/${shop.id}" method="post"
-			modelAttribute="shop">
-			<input type="hidden" name="_method" value="patch">
-			<p>
-				<form:label path="name">Name</form:label>
-				<form:input path="name" required="true" />
-			</p>
-			<p>
-				<form:label path="city">City</form:label>
-				<form:input path="city" required="true" />
-			</p>
-			<p>
-				<form:label path="maxCapacity">Maximum capacity</form:label>
-				<form:input type="number" path="maxCapacity" required="true" />
-			</p>
-			<p>
-				<form:label path="currentSize">Current size</form:label>
-				<form:input type="number" path="currentSize" required="true" />
-			</p>
-			<p>
-				<form:label path="phoneNumber">Phone number</form:label>
-				<form:input path="phoneNumber" required="true" />
-			</p>
-			<p>
-				<form:errors path="name" />
-			</p>
-			<p>
-				<form:errors path="city" />
-			</p>
-			<p>
-				<form:errors path="maxCapacity" />
-			</p>
-			<p>
-				<form:errors path="currentSize" />
-			</p>
-			<p>
-				<form:errors path="phoneNumber" />
-			</p>
-			<input type="submit" value="Edit Shop" />
-		</form:form>
-	</div>
+
+		<div class="form-container">
+			<h2>Edit Shop</h2>
+			<form:form action="/admin/${shop.id}" method="post"
+				modelAttribute="shop">
+				<input type="hidden" name="_method" value="patch">
+				<p>
+					<form:input path="name" required="true" placeholder="Shop Name" />
+				</p>
+				<p class="form-errors">
+					<form:errors path="name" />
+				</p>
+				<p>
+					<form:input path="city" required="true" placeholder="Shop City" />
+				</p>
+				<p class="form-errors">
+					<form:errors path="city" />
+				</p>
+				<p>
+					<form:input type="number" path="maxCapacity" required="true"
+						min="0" placeholder="Maximum Capacity" />
+				</p>
+				<p class="form-errors">
+					<form:errors path="maxCapacity" />
+				</p>
+				<p>
+					<form:input type="number" path="currentSize" required="true"
+						min="0" placeholder="Total Pet Count" />
+				</p>
+				<p class="form-errors">
+					<form:errors path="currentSize" />
+				</p>
+				<p>
+					<form:input path="phoneNumber" required="true"
+						placeholder="Phone Number" />
+				</p>
+				<p class="form-errors">
+					<form:errors path="phoneNumber" />
+				</p>
+				<input type="submit" value="Edit Shop" />
+			</form:form>
+		</div>
+		<!-- =========== Scripts =========  -->
+	<script type="text/javascript" src="/js/admin.js" defer></script>
+	<!-- ====== ionicons ======= -->
+	<script type="module"
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

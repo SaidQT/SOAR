@@ -1,6 +1,5 @@
 package com.axsos.project.validator;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -11,14 +10,11 @@ import com.axsos.project.repositories.UserRepository;
 
 @Component
 public class UserValidator implements Validator {
-
-	private final UserRepository userRepository;
-
+	// ******************* Attributes *******************
 	@Autowired
-	public UserValidator(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
+	UserRepository userRepository;
 
+	// ******************* Functions *******************
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return User.class.equals(clazz);
@@ -27,13 +23,15 @@ public class UserValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		User user = (User) target;
-
+		// Add validation to check if the password matches confirm password
 		if (user.getPasswordConfirmation() == null) {
-			errors.rejectValue("passwordConfirmation", "Null.user.passwordConfirmation", "Password confirmation cannot be null");
+			errors.rejectValue("passwordConfirmation", "Null.user.passwordConfirmation",
+					"Password confirmation cannot be null");
 		} else if (!user.getPassword().equals(user.getPasswordConfirmation())) {
 			errors.rejectValue("passwordConfirmation", "Match.user.passwordConfirmation", "Passwords do not match");
 		}
 
+		// Add validation for check if the user exist or not
 		if (userRepository.existsByUsername(user.getUsername())) {
 			errors.rejectValue("username", "Duplicate.user.username", "Username is already in use");
 		}

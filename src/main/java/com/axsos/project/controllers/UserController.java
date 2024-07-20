@@ -55,9 +55,6 @@ public class UserController {
 		if (error != null) {
 			model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
 		}
-		// if (logout != null) {
-		// model.addAttribute("logoutMessage", "Logout Successful!");
-		// }
 		model.addAttribute("activeTab", "login");
 		return "login.jsp";
 	}
@@ -99,9 +96,7 @@ public class UserController {
 		return "home.jsp";
 	}
 
-	// ****************************** R from {CRUD} ******************************
 	// Function to render a page that show all pets
-	// To Do: Add filtering to pets according to type
 	@GetMapping("/cart")
 	public String showPets(Model model, Principal principal, HttpSession session) {
 		List<Pet> pets = petService.allPets();
@@ -151,10 +146,10 @@ public class UserController {
 		return "redirect:/cart";
 	}
 
+	// Function for users to add/remove pets for favorite {using Ajax}
 	@PostMapping("/public/cart/add")
 	@ResponseBody
-	public Map<String, String> addPetToUserCart(@RequestParam(name = "petId") Long petId,
-			@RequestParam("location") String location, Principal principal) {
+	public Map<String, String> addPetToUserCart(@RequestParam(name = "petId") Long petId, Principal principal) {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		Pet pet = petService.findPet(petId);
@@ -171,15 +166,13 @@ public class UserController {
 				petService.createPet(pet);
 				response.put("action", "added");
 			}
-
-			response.put("redirect", location.equals("cart") ? "/cart" : "/user/favorites");
 		} else {
 			response.put("action", "error");
 		}
-
 		return response;
 	}
 
+	// Function to get user favorite list
 	@GetMapping("/wish")
 	public String favoritePage(Principal principal, Model model) {
 		String username = principal.getName();
@@ -194,24 +187,13 @@ public class UserController {
 		return "redirect:/wish";
 	}
 
-	// ****************************** R from {CRUD} ******************************
-	// Function to render the page that contains user adoption request and their
-	// status
+	// Function to render the page that contains user adoption request and their status
 	@GetMapping("/besties")
 	public String besties(Principal principal, Model model) {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		List<Pet> requestPets = user.getAdoptedPets();
 		List<Pet> pendingPet = user.getRequestedPets();
-		// List<Pet> resfuedPets = user.getRefusedPets();
-		// List<Pet> pets = user.getAdoptedPets();
-		// List<Pet> userPets = new ArrayList<>();
-		// Pet tempPet = new Pet();
-		/*
-		 * if (requestPets != null) { Iterator<Pet> iterator = requestPets.iterator();
-		 * while (iterator.hasNext()) { Pet pet = iterator.next(); if
-		 * (pet.getStatus().equals("Pending")) { iterator.remove(); } }
-		 */
 		model.addAttribute("requestPets", requestPets);
 		model.addAttribute("pending", pendingPet);
 		return "besties.jsp";
@@ -222,10 +204,6 @@ public class UserController {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		List<Pet> requestPets = user.getAdoptedPets();
-		// List<Pet> resfuedPets = user.getRefusedPets();
-		// List<Pet> pets = user.getAdoptedPets();
-		// List<Pet> userPets = new ArrayList<>();
-		// Pet tempPet = new Pet();
 		if (requestPets != null) {
 			Iterator<Pet> iterator = requestPets.iterator();
 			while (iterator.hasNext()) {

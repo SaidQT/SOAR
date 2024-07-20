@@ -4,128 +4,153 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page isErrorPage="true"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Admin Dashboard</title>
-<link rel="stylesheet" type="text/css" href="/css/button.css">
-<script type="text/javascript" src="/js/button.js"></script>
-
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-<script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/admin.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-xl navbar-light bg-light">
-		<div class="container-fluid">
-			<!-- <img src="images/logo.png" alt="logo" class="img-fluid1" />  -->
-			<a class="navbar-brand" href="/"> Home </a> <a class="navbar-brand"
-				href="/admin/dashboard"> Dashboard </a> 
-			<div class="collapse navbar-collapse show" id="navbarBasic">
-				<ul class="navbar-nav me-auto mb-2 mb-xl-0">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/admin/home">Shops</a></li>
-					<li class="nav-item"><a class="nav-link" href="/admin/add">Add
-							a shop</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-	<div class="container mt-5">
-		<h1>Admin Dashboard</h1>
-		<div class="row">
-			<div class="col-md-6">
-				<div class="card mb-4">
-					<div class="card-header" style="background-color: #DEAD6F;">Shops
-						Overview</div>
-					<div class="card-body">
-						<p>
-							Total Shops:
-							<c:out value="${totalShops}" />
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<h2 class="mt-5">Shop Data Chart</h2>
-			<canvas id="shopChart" width="400" height="200"></canvas>
+	<!-- =============== Navigation ================ -->
+	<div class="container1">
+		<div class="navigation">
+			<ul>
+				<li><img src="/images/logo1.png" alt="logo" id="logo"> <span
+					class="title" id="soar">S.O.A.R</span></li>
+				<li><a href="/admin/dashboard"> <span class="icon">
+							<ion-icon name="home-outline"></ion-icon>
+					</span> <span class="title">Dashboard</span>
+				</a></li>
+				<li><a href="/admin/home"> <span class="icon"> <ion-icon
+								name="list-outline"></ion-icon>
+					</span> <span class="title">Tables</span>
+				</a></li>
+				<li><a href="/admin/add"> <span class="icon"> <ion-icon
+								name="person-add-outline"></ion-icon>
+					</span> <span class="title">Add Shop</span>
+				</a></li>
+				<li>
+					<form id="logoutForm" method="POST" action="/logout">
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+						<button type="submit" class="logout-button">
+							<span class="icon"> <ion-icon name="log-out-outline"></ion-icon>
+							</span> <span class="title">Sign Out</span>
+						</button>
+					</form>
+				</li>
+			</ul>
+			<img src="/images/n.png" id="footer-image">
 		</div>
 	</div>
 
 
+	<!-- ========================= Main ==================== -->
+	<div class="main">
+		<div class="topbar">
+			<div class="toggle">
+				<ion-icon name="menu-outline"></ion-icon>
+			</div>
+			<div>
+				<h1 id="page">Admin Dashboard</h1>
+			</div>
+		</div>
+
+		<!-- ======================= Cards ================== -->
+		<div class="cardBox">
+			<div class="card">
+				<div>
+					<div class="numbers">${totalShops}</div>
+					<div class="cardName">Partners</div>
+				</div>
+				<div class="iconBx">
+					<ion-icon name="people-circle-outline"></ion-icon>
+				</div>
+			</div>
+
+			<div class="card">
+				<div>
+					<div class="numbers">${adoptedPetCount}</div>
+					<div class="cardName">Adopted Pets</div>
+				</div>
+				<div class="iconBx">
+					<ion-icon name="heart"></ion-icon>
+				</div>
+			</div>
+
+			<div class="card">
+				<div>
+					<div class="numbers">${unadoptedPetCount}</div>
+					<div class="cardName">Unadopted Pets</div>
+				</div>
+				<div class="iconBx">
+					<ion-icon name="paw"></ion-icon>
+				</div>
+			</div>
+
+			<div class="card">
+				<div>
+					<div class="numbers">$0</div>
+					<div class="cardName">Donations</div>
+				</div>
+				<div class="iconBx">
+					<ion-icon name="wallet"></ion-icon>
+				</div>
+			</div>
+		</div>
+
+		<!-- ================ Statistical Analysis ================= -->
+		<div class="details">
+			<div class="recentOrders">
+				<div class="cardHeader">
+					<h2>Distribution of Shops Across Cities</h2>
+				</div>
+				<br>
+				<!-- Chart for Shops per City -->
+				<canvas id="shopsPerCityChart"></canvas>
+			</div>
+
+			<!-- ================= New Partners ================ -->
+			<div class="recentCustomers">
+				<div class="cardHeader">
+					<h2>Recent Partners</h2>
+					<a href="/admin/home" class="btn">View All</a>
+				</div>
+				<table>
+					<c:forEach var="shop" items="${lastFiveShops}">
+						<tr>
+							<td>
+								<h4>
+									${shop.name} <br> <span>${shop.city}</span>
+								</h4>
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
 
 
+			<!-- =========== Scripts =========  -->
+			<!-- Chart data as JSON object -->
+			<script type="text/javascript">
+                    var chartData = {
+                        labels: [<c:forEach var="entry" items="${shopsPerCity}">
+                            "${entry.key}",</c:forEach>],
+                        data: [<c:forEach var="entry" items="${shopsPerCity}">
+                            ${entry.value},</c:forEach>]
+                    };
+                </script>
+			<script type="text/javascript" src="/js/admin.js" defer></script>
+			<script type="text/javascript" src="/js/chart.js" defer></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<script>
-	
-	var shopData = {
-        names: [
-            <c:forEach var="shop" items="${shops}" varStatus="loop">
-                "${shop.name}"${!loop.last ? ',' : ''}
-            </c:forEach>
-        ],
-        capacities: [
-            <c:forEach var="shop" items="${shops}" varStatus="loop">
-                ${shop.maxCapacity}${!loop.last ? ',' : ''}
-            </c:forEach>
-        ]
-    };
-
-    // Initialize Chart.js
-    var ctx = document.getElementById('shopChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar', // Use 'bar', 'line', 'pie', etc. based on your preference
-        data: {
-            labels: shopData.names, // Names of the shops
-            datasets: [{
-                label: 'Max Capacity', // Label for the dataset
-                data: shopData.capacities, // Max capacities for each shop
-                backgroundColor: '#dead6f', // Bar color
-                borderColor: '#dead6f', // Border color
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true // Start y-axis from zero
-                }
-            }
-        }
-    });
-    </script>
+			<!-- ====== ionicons ======= -->
+			<script type="module"
+				src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+			<script nomodule
+				src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+		</div>
+	</div>
 </body>
 </html>

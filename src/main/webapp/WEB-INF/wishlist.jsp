@@ -420,8 +420,7 @@
 												class="remove-favorite-form position-absolute top-0 end-0 m-2">
 												<input type="hidden" name="petId" value="${pet.id}">
 												<input type="hidden" name="${_csrf.parameterName}"
-													value="${_csrf.token}"> <input type="hidden"
-													name="location" value="favorites">
+													value="${_csrf.token}"> 
 												<!-- Location can be adjusted -->
 												<button class="btn btn-outline-danger p-2" type="submit">
 													<iconify-icon icon="emojione-v1:broken-heart" class="fs-5"></iconify-icon>

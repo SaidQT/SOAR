@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -55,7 +56,7 @@ public class User {
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
 
-	@ManyToMany //This relationship is established for users who wish to like the pet. 
+	@ManyToMany //This relationship is established for users who wish to like the pet.
 	@JoinTable(name = "user_pet", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
 	private List<Pet> pets;
 
@@ -66,7 +67,7 @@ public class User {
 	@JoinTable(name = "requests", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
 	private List<Pet> requestedPets;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "shop_id")
 	private Shop shop;
 

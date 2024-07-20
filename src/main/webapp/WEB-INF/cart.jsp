@@ -76,7 +76,10 @@ height
 
 
 
+
+
 :
+
 
 
 
@@ -106,7 +109,10 @@ height
 
 
 
+
 300px
+
+
 
 
 
@@ -165,7 +171,10 @@ object-fit
 
 
 
+
+
 :
+
 
 
 
@@ -195,7 +204,10 @@ object-fit
 
 
 
+
 cover
+
+
 
 
 
@@ -526,7 +538,7 @@ cover
 												class="dropdown-item">Dogs</a></li>
 											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
-											<li class="nav-item"><a href="/cart"
+											<li class="nav-item"><a href="/cart/all"
 												class="dropdown-item">Other</a></li>
 
 										</ul></li>
@@ -719,13 +731,13 @@ cover
 							data-filter="*">ALL</button>
 						<button
 							class="filter-button me-4 ${'cat'.equals(activeFilter) ? 'active' : ''}"
-							data-filter="cat">CAT</button>
+							data-filter=".cat">CAT</button>
 						<button
 							class="filter-button me-4 ${'dog'.equals(activeFilter) ? 'active' : ''}"
-							data-filter="dog">DOG</button>
+							data-filter=".dog">DOG</button>
 						<button
 							class="filter-button me-4 ${'bird'.equals(activeFilter) ? 'active' : ''}"
-							data-filter="bird">BIRD</button>
+							data-filter=".bird">BIRD</button>
 					</p>
 				</div>
 				<div>
@@ -743,180 +755,60 @@ cover
 				<c:forEach var="pet" items="${pets}">
 					<c:if
 						test="${pet.status.equals('Unadopted') || pet.status.equals('Pending')}">
-						<c:choose>
-							<c:when test="${pet.type.equals('cat')}">
-								<div class="item cat col-md-4 col-lg-3 my-4">
-									<div
-										class="card position-relative border-0 rounded-4 overflow-hidden">
-										<div class="position-relative">
-											<img src="${pet.imageUrl}"
-												class="card-img-top fixed-size-img" alt="image">
-											<form action="/public/cart/add" method="post"
-												class="position-absolute top-0 end-0 m-2 ajax">
-												<input type="hidden" name="petId" value="${pet.id}">
-												<input type="hidden" name="${_csrf.parameterName}"
-													value="${_csrf.token}"> <input type="hidden"
-													name="location" value="cart">
-												<c:if test="${currentUser != null}">
-													<c:if test="${currentUser.pets.contains(pet)}">
-														<button id="cart-button"
-															class="btn btn-outline-danger p-2" type="submit">
-															<iconify-icon icon="emojione-v1:broken-heart"
-																class="fs-5"></iconify-icon>
-														</button>
-													</c:if>
-													<c:if test="${!currentUser.pets.contains(pet)}">
-														<button id="cart-button"
-															class="btn btn-outline-primary p-2" type="submit">
-															<iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
-														</button>
-													</c:if>
-												</c:if>
-												<c:if test="${currentUser == null}">
-													<button id="cart-button"
-														class="btn btn-outline-primary p-2" type="submit" disabled>
-														<iconify-icon icon="fluent:heart-28-filled" class="fs-5"
-															disabled></iconify-icon>
-													</button>
-												</c:if>
-											</form>
-										</div>
-										<div class="card-body p-3">
-											<a href="" class="text-decoration-none">
-												<h3 class="card-title text-dark">
-													<c:out value="${pet.name}"></c:out>
-												</h3>
-											</a>
-											<h4 class="secondary-font text-primary">
-												<c:out value="${pet.breed}"></c:out>
-											</h4>
-											<div class="d-flex flex-wrap mt-3">
-												<a href="/public/${pet.id}/details"
-													class="btn btn-primary me-3 px-4 py-2 text-uppercase">
-													Let's cuddle </a>
-											</div>
-										</div>
+						<div class="item ${pet.type} col-md-4 col-lg-3 my-4">
+							<div
+								class="card position-relative border-0 rounded-4 overflow-hidden">
+								<div class="position-relative">
+									<img src="${pet.imageUrl}" class="card-img-top fixed-size-img"
+										alt="image">
+									<form action="/public/cart/add" method="post"
+										class="position-absolute top-0 end-0 m-2 ajax">
+										<input type="hidden" name="petId" value="${pet.id}"> <input
+											type="hidden" name="${_csrf.parameterName}"
+											value="${_csrf.token}">
+										<c:if test="${currentUser != null}">
+											<c:if test="${currentUser.pets.contains(pet)}">
+												<button id="cart-button" class="btn btn-outline-danger p-2"
+													type="submit">
+													<iconify-icon icon="emojione-v1:broken-heart" class="fs-5"></iconify-icon>
+												</button>
+											</c:if>
+											<c:if test="${!currentUser.pets.contains(pet)}">
+												<button id="cart-button" class="btn btn-outline-primary p-2"
+													type="submit">
+													<iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
+												</button>
+											</c:if>
+										</c:if>
+										<c:if test="${currentUser == null}">
+											<button id="cart-button" class="btn btn-outline-primary p-2"
+												type="submit" disabled>
+												<iconify-icon icon="fluent:heart-28-filled" class="fs-5"
+													disabled></iconify-icon>
+											</button>
+										</c:if>
+									</form>
+								</div>
+								<div class="card-body p-3">
+									<a href="" class="text-decoration-none">
+										<h3 class="card-title text-dark">
+											<c:out value="${pet.name}"></c:out>
+										</h3>
+									</a>
+									<h4 class="secondary-font text-primary">
+										<c:out value="${pet.breed}"></c:out>
+									</h4>
+									<div class="d-flex flex-wrap mt-3">
+										<a href="/public/${pet.id}/details"
+											class="btn btn-primary me-3 px-4 py-2 text-uppercase">
+											Let's cuddle </a>
 									</div>
 								</div>
-							</c:when>
-							<c:when test="${pet.type.equals('dog')}">
-								<div class="item cat col-md-4 col-lg-3 my-4">
-									<div
-										class="card position-relative border-0 rounded-4 overflow-hidden">
-										<div class="position-relative">
-											<img src="${pet.imageUrl}"
-												class="card-img-top fixed-size-img" alt="image">
-											<form action="/public/cart/add" method="post"
-												class="position-absolute top-0 end-0 m-2 ajax">
-												<input type="hidden" name="petId" value="${pet.id}">
-												<input type="hidden" name="${_csrf.parameterName}"
-													value="${_csrf.token}"> <input type="hidden"
-													name="location" value="cart">
-												<c:if test="${currentUser != null}">
-													<c:if test="${currentUser.pets.contains(pet)}">
-														<button id="cart-button"
-															class="btn btn-outline-danger p-2" type="submit">
-															<iconify-icon icon="emojione-v1:broken-heart"
-																class="fs-5"></iconify-icon>
-														</button>
-													</c:if>
-													<c:if test="${!currentUser.pets.contains(pet)}">
-														<button id="cart-button"
-															class="btn btn-outline-primary p-2" type="submit">
-															<iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
-														</button>
-													</c:if>
-												</c:if>
-												<c:if test="${currentUser == null}">
-													<button id="cart-button"
-														class="btn btn-outline-primary p-2" type="submit" disabled>
-														<iconify-icon icon="fluent:heart-28-filled" class="fs-5"
-															disabled></iconify-icon>
-													</button>
-												</c:if>
-											</form>
-										</div>
-										<div class="card-body p-3">
-											<a href="" class="text-decoration-none">
-												<h3 class="card-title text-dark">
-													<c:out value="${pet.name}"></c:out>
-												</h3>
-											</a>
-											<h4 class="secondary-font text-primary">
-												<c:out value="${pet.breed}"></c:out>
-											</h4>
-											<div class="d-flex flex-wrap mt-3">
-												<a href="/public/${pet.id}/details"
-													class="btn btn-primary me-3 px-4 py-2 text-uppercase">
-													Let's cuddle </a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</c:when>
-							<c:when test="${pet.type.equals('bird')}">
-								<div class="item cat col-md-4 col-lg-3 my-4">
-									<div
-										class="card position-relative border-0 rounded-4 overflow-hidden">
-										<div class="position-relative">
-											<img src="${pet.imageUrl}"
-												class="card-img-top fixed-size-img" alt="image">
-											<form action="/public/cart/add" method="post"
-												class="position-absolute top-0 end-0 m-2 ajax">
-												<input type="hidden" name="petId" value="${pet.id}">
-												<input type="hidden" name="${_csrf.parameterName}"
-													value="${_csrf.token}"> <input type="hidden"
-													name="location" value="cart">
-												<c:if test="${currentUser != null}">
-													<c:if test="${currentUser.pets.contains(pet)}">
-														<button id="cart-button"
-															class="btn btn-outline-danger p-2" type="submit">
-															<iconify-icon icon="emojione-v1:broken-heart"
-																class="fs-5"></iconify-icon>
-														</button>
-													</c:if>
-													<c:if test="${!currentUser.pets.contains(pet)}">
-														<button id="cart-button"
-															class="btn btn-outline-primary p-2" type="submit">
-															<iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
-														</button>
-													</c:if>
-												</c:if>
-												<c:if test="${currentUser == null}">
-													<button id="cart-button"
-														class="btn btn-outline-primary p-2" type="submit" disabled>
-														<iconify-icon icon="fluent:heart-28-filled" class="fs-5"
-															disabled></iconify-icon>
-													</button>
-												</c:if>
-											</form>
-										</div>
-										<div class="card-body p-3">
-											<a href="" class="text-decoration-none">
-												<h3 class="card-title text-dark">
-													<c:out value="${pet.name}"></c:out>
-												</h3>
-											</a>
-											<h4 class="secondary-font text-primary">
-												<c:out value="${pet.breed}"></c:out>
-											</h4>
-											<div class="d-flex flex-wrap mt-3">
-												<a href="/public/${pet.id}/details"
-													class="btn btn-primary me-3 px-4 py-2 text-uppercase">
-													Let's cuddle </a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</c:when>
-						</c:choose>
+							</div>
+						</div>
 					</c:if>
 				</c:forEach>
-
-
 			</div>
-
-
 		</div>
 	</section>
 
@@ -952,9 +844,6 @@ cover
 			</div>
 		</div>
 	</section>
-
-
-
 
 	<section id="insta" class="my-5">
 		<div class="row g-0 py-5">
@@ -1170,6 +1059,7 @@ cover
 	<script src="js/plugins.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/iconify.js"></script>
+
 
 
 </body>
