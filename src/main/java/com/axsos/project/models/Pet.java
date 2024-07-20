@@ -18,18 +18,22 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "pets")
 public class Pet {
+	// ******************* Attributes *******************
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	@NotNull
 	@Size(min = 2, max = 200, message = "Pet name must be at least 2 characters")
 	private String name;
+
 	@NotNull
 	@Size(min = 2, max = 200, message = "Pet type must be at least 2 characters")
 	private String type;
@@ -38,17 +42,14 @@ public class Pet {
 	@Size(min = 2, max = 200, message = "Pet breed must be at least 2 characters")
 	private String breed;
 
-	public String getBreed() {
-		return breed;
-	}
-
-	public void setBreed(String breed) {
-		this.breed = breed;
-	}
-
 	@NotNull
 	@Size(min = 2, max = 200, message = "City name must be at least 2 characters")
 	private String city;
+
+	//	@NotNull
+	@Min(0)
+	private Float age;
+
 	@NotNull(message = "Image URL is required")
 	@Size(min = 2, message = "Image URL must be at least 2 characters")
 	@Column(columnDefinition = "TEXT")
@@ -61,26 +62,45 @@ public class Pet {
 
 	@Size(min = 3)
 	private String status;
+
+	@Column(updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date createdAt;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date updatedAt;
+
 	@ManyToMany // this relationship is for favorites
 	@JoinTable(name = "user_pet", joinColumns = @JoinColumn(name = "pet_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> users;
 
 	@ManyToOne(fetch = FetchType.LAZY) // this relationship is for adopting pets
-
 	@JoinColumn(name = "user_id")
 	private User user;
 
 	@ManyToMany
 	@JoinTable(name = "requests", joinColumns = @JoinColumn(name = "pet_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> request;
-	
-	@NotNull
+
 	@ManyToOne(fetch = FetchType.LAZY) // this relationship is for shops and pets
 	@JoinColumn(name = "shop_id")
 	private Shop shop;
 
+	// ******************* Constructor *******************
+	public Pet() {
+	}
+
+	// ******************* Setters and Getters *******************
 	public List<User> getRequest() {
 		return request;
+	}
+
+	public Float getAge() {
+		return age;
+	}
+
+	public void setAge(Float age) {
+		this.age = age;
 	}
 
 	public User getUser() {
@@ -103,20 +123,12 @@ public class Pet {
 		this.shop = shop;
 	}
 
-	@Column(updatable = false)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date createdAt;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date updatedAt;
-
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
+	public String getBreed() {
+		return breed;
 	}
 
-	@PreUpdate
-	protected void onUpdate() {
-		this.updatedAt = new Date();
+	public void setBreed(String breed) {
+		this.breed = breed;
 	}
 
 	public Long getId() {
@@ -183,7 +195,14 @@ public class Pet {
 		this.users = users;
 	}
 
-	public Pet() {
+	// ******************* For create and update *******************
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
 
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
 	}
 }

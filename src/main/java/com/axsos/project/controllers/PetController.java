@@ -56,6 +56,7 @@ public class PetController {
 			// *) Add relationship with shop(1 shop --have-- M pets)
 			// *) Save the pet
 			pet.setStatus("Unadopted");
+			pet.setShop(shop);
 			petService.createPet(pet);
 			return "redirect:/shop/home";
 		}
@@ -152,7 +153,7 @@ public class PetController {
 		model.addAttribute("pets", pets);
 		return "requests.jsp";
 	}
-	
+
 	//This function is for accepting adoption request and automatically refusing the others
 	@GetMapping("/shop/{id}/{shopId}/{userId}/accept")
 	public String accept(@PathVariable("id") Long id, @PathVariable("shopId") Long shopId, @PathVariable("userId") Long userId, Principal principal) {
