@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,9 +50,13 @@ public class UserController {
 	@RequestMapping("/login")
 	public String loginAndRegisterForm(@ModelAttribute("user") User user, Model model,
 			@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout) {
+			@RequestParam(value = "logout", required = false) String logout, Principal principal) {
 		model.addAttribute("newLogin", new LoginUser());
-
+		if (principal != null) {
+			String username = principal.getName();
+			User loggin = userService.findByUsername(username);
+			model.addAttribute("currentUser", loggin);
+		}
 		if (error != null) {
 			model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
 		}
@@ -91,8 +96,12 @@ public class UserController {
 	// ****************************** R from {CRUD} ******************************
 	// Function to render the home page
 	@GetMapping({ "/", "/home" })
-	public String home() {
-
+	public String home(Principal principal, Model model) {
+		if (principal != null) {
+			String username = principal.getName();
+			User user = userService.findByUsername(username);
+			model.addAttribute("currentUser", user);
+		}
 		return "home.jsp";
 	}
 
@@ -187,7 +196,8 @@ public class UserController {
 		return "redirect:/wish";
 	}
 
-	// Function to render the page that contains user adoption request and their status
+	// Function to render the page that contains user adoption request and their
+	// status
 	@GetMapping("/besties")
 	public String besties(Principal principal, Model model) {
 		String username = principal.getName();
@@ -218,6 +228,42 @@ public class UserController {
 	}
 
 	// ****************************** U from {CRUD} ******************************
+	// Function to change user informations
+	@GetMapping("/edit")
+	public String userEdit(Model model, Principal principal) {
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		user.setPassword("");
+		model.addAttribute("user", user);
+		return "editUser.jsp";
+	}
+
+	/*
+	 * @GetMapping("/user/edit") public String editUser(@ModelAttribute("user") User
+	 * user, Principal principal) { String username = principal.getName(); user =
+	 * userService.findByUsername(username); return "redirect:/edit"; }
+	 */
+
+	@PatchMapping("/edit")
+	public String editUserInfo(@Valid @ModelAttribute("user") User user, BindingResult result, Model model,
+			Principal principal) {
+		userValidator.validate(user, result);
+		if (result.hasErrors()) {
+			model.addAttribute("user", user);
+			System.out.println(result);
+			return "editUser.jsp";
+		} else {
+			String username = principal.getName();
+			User editUser = userService.findByUsername(username);
+			editUser.setUsername(user.getUsername());
+			editUser.setEmail(user.getEmail());
+			editUser.setPassword(user.getPassword());
+			editUser.setPasswordConfirmation(user.getPasswordConfirmation());
+			userService.updateUser(editUser);
+			return "redirect:/home";
+		}
+
+	}
 	// Function to canaling adoption request while request still pending
 	/*
 	 * @PatchMapping("/user/cancel") public String cancelRequest(@RequestParam(name

@@ -133,7 +133,10 @@ public class ShopController {
 			model.addAttribute("shop", shop);
 			return "editshop.jsp";
 		} else {
-			shopService.updateShop(shop);
+			Shop shopEdit= shopService.updateShop(shop, result);
+			if (shopEdit == null) { 
+				return "editshop.jsp";
+			}
 			return "redirect:/admin/home";
 		}
 	}

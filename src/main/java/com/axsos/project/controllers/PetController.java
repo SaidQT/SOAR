@@ -114,7 +114,12 @@ public class PetController {
 	// public
 	// ID here is for the pet
 	@GetMapping("/details")
-	public String showDetails(Model model, HttpSession session) {
+	public String showDetails(Model model, HttpSession session, Principal principal) {
+		if (principal != null) {
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		model.addAttribute("currentUser", user);
+		}
 		if (session.getAttribute("id") != null) {
 			Pet pet = petService.findPet((Long) session.getAttribute("id"));
 			model.addAttribute("pet", pet);

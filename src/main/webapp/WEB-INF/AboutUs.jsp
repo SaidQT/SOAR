@@ -151,7 +151,9 @@ padding
 
 
 
+
  
+
 
 
 
@@ -169,6 +171,7 @@ padding
 
 
 
+
  
 
 
@@ -178,7 +181,10 @@ padding
 
 
 
+
 20px
+
+
 
 
 
@@ -212,7 +218,9 @@ background
 
 
 
+
  
+
 
 
 
@@ -230,6 +238,7 @@ background
 
 
 
+
  
 
 
@@ -238,7 +247,10 @@ background
 
 
 
+
 rgba
+
+
 
 
 
@@ -269,6 +281,8 @@ rgba
 
 
 
+
+
 0
 ,
 0
@@ -276,6 +290,8 @@ rgba
 0
 ,
 0
+
+
 
 
 
@@ -307,7 +323,11 @@ rgba
 
 
 
+
+
 )
+
+
 
 
 
@@ -337,7 +357,10 @@ border-radius
 
 
 
+
+
 :
+
 
 
 
@@ -353,7 +376,10 @@ border-radius
 
 
 
+
 10px
+
+
 
 
 
@@ -393,9 +419,13 @@ border-radius
 
 
 
+
+
 %
 {
 transform
+
+
 
 
 
@@ -426,6 +456,8 @@ transform
 
 
 
+
+
 translateX
 
 
@@ -440,7 +472,11 @@ translateX
 
 
 
+
+
 (
+
+
 
 
 
@@ -471,7 +507,11 @@ translateX
 
 
 
+
+
 )
+
+
 
 
 
@@ -487,6 +527,8 @@ translateX
 ;
 }
 100
+
+
 
 
 
@@ -517,7 +559,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -546,7 +592,11 @@ translateX
 
 
 
+
+
 (
+
+
 
 
 
@@ -577,7 +627,11 @@ translateX
 
 
 
+
+
 )
+
+
 
 
 
@@ -802,17 +856,19 @@ translateX
 										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
-										<li>
-											<form id="logoutForm" method="POST" action="/logout">
-												<input type="hidden" name="${_csrf.parameterName}"
-													value="${_csrf.token}" />
-												<button type="submit"
-													style="border: none; background: none;">
-													<iconify-icon icon="mdi:logout" class="fs-4"></iconify-icon>
-												</button>
-											</form>
+										<c:if test="${currentUser != null}">
+											<li>
+												<form id="logoutForm" method="POST" action="/logout">
+													<input type="hidden" name="${_csrf.parameterName}"
+														value="${_csrf.token}" />
+													<button type="submit"
+														style="border: none; background: none;">
+														<iconify-icon icon="mdi:logout" class="fs-4"></iconify-icon>
+													</button>
+												</form>
 
-										</li>
+											</li>
+										</c:if>
 										<!-- <li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
 											aria-controls="offcanvasCart"> <iconify-icon
