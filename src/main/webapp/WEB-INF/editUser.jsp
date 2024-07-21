@@ -128,9 +128,12 @@
 
     </defs>
   </svg>
+
+
 	<div class="preloader-wrapper">
 		<div class="preloader"></div>
 	</div>
+
 
 	<div class="offcanvas offcanvas-end" data-bs-scroll="true"
 		tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
@@ -173,27 +176,26 @@
 		</div>
 	</div>
 
-	<div class="offcanvas offcanvas-end" data-bs-scroll="true"
-		tabindex="-1" id="offcanvasSearch" aria-labelledby="Search">
-		<div class="offcanvas-header justify-content-center">
-			<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-				aria-label="Close"></button>
-		</div>
-		<div class="offcanvas-body">
+	<%--   <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasSearch"
+    aria-labelledby="Search">
+    <div class="offcanvas-header justify-content-center">
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
 
-			<div class="order-md-last">
-				<h4 class="text-primary text-uppercase mb-3">Search</h4>
-				<div class="search-bar border rounded-2 border-dark-subtle">
-					<form id="search-form"
-						class="text-center d-flex align-items-center" action="" method="">
-						<input type="text" class="form-control border-0 bg-transparent"
-							placeholder="Search Here" />
-						<iconify-icon icon="tabler:search" class="fs-4 me-3"></iconify-icon>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+      <div class="order-md-last">
+        <h4 class="text-primary text-uppercase mb-3">
+          Search
+        </h4>
+        <div class="search-bar border rounded-2 border-dark-subtle">
+          <form id="search-form" class="text-center d-flex align-items-center" action="" method="">
+            <input type="text" class="form-control border-0 bg-transparent" placeholder="Search Here" />
+            <iconify-icon icon="tabler:search" class="fs-4 me-3"></iconify-icon>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> --%>
 
 	<header
 		style="position: sticky; top: 0; z-index: 1000; background-color: white;">
@@ -240,7 +242,7 @@
 											icon="tabler:search" class="fs-4"></iconify-icon> </span>
 								</a></li> -->
 							</ul>
-							f
+
 						</div>
 
 						<!--         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -317,7 +319,7 @@
 										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
-										<c:if test="${currentUser != null}">
+										<c:if test="${user != null}">
 											<li>
 												<form id="logoutForm" method="POST" action="/logout">
 													<input type="hidden" name="${_csrf.parameterName}"
@@ -352,13 +354,12 @@
 
 				</div>
 	</header>
-
 	<section id="banner" class="py-0" style="background: #F9F3EC;">
 		<div class="container p-0">
 			<div class="row align-items-center">
 				<div class="col-md-6">
 					<div class="hero-content py-0 my-0">
-						<h2 class="display-1 mt-3 mb-0">FAQS</h2>
+						<h2 class="display-1 mt-3 mb-0">Account</h2>
 
 					</div>
 				</div>
@@ -369,196 +370,131 @@
 			</div>
 		</div>
 	</section>
+	<section class="login-tabs padding-large">
+		<div class="container my-5 py-5">
+			<div class="row">
+				<div class="tabs-listing">
+					<nav>
+						<div
+							class="nav nav-tabs d-flex justify-content-center border-dark-subtle mb-3"
+							id="nav-tab" role="tablist">
+							<button
+								class="nav-link mx-3 fs-3 border-bottom border-dark-subtle border-0 text-uppercase ${activeTab == 'login' ? 'active' : ''}"
+								id="nav-sign-in-tab" data-bs-toggle="tab"
+								data-bs-target="#nav-sign-in" type="button" role="tab"
+								aria-controls="nav-sign-in"
+								aria-selected="${activeTab == 'login'}">Log In</button>
+							<button
+								class="nav-link mx-3 fs-3 border-bottom border-dark-subtle border-0 text-uppercase ${activeTab == 'register' ? 'active' : ''}"
+								id="nav-register-tab" data-bs-toggle="tab"
+								data-bs-target="#nav-register" type="button" role="tab"
+								aria-controls="nav-register"
+								aria-selected="${activeTab == 'register'}">Sign Up</button>
+						</div>
+					</nav>
+					<div class="tab-content" id="nav-tabContent">
+						<!-- Log In Form -->
 
-	<section class="faqs-wrap">
-		<div class="container py-5 my-5">
-			<div class="row my-4">
-				<main class="col-md-8 pe-5">
-					<h2 class="mb-3">Frequently Asked Questions about Pet Adoption</h2>
-					<p>If you're considering adopting a pet, here are some common
-						questions and answers to help you understand the process better.</p>
-					<div class="page-content my-5">
+						<!-- Register Form -->
+						<div class="tab-pane fade " id="nav-register" role="tabpanel"
+							aria-labelledby="nav-register-tab">
+							<div class="col-lg-8 offset-lg-2 mt-5">
+								<p class="mb-0">
+									Edit your information,
+									<c:out value="${user.username}"></c:out>
+								</p>
+								<hr class="my-1">
+								<form:form id="form1" class="form-group flex-wrap"
+									action="/edit" method="post" modelAttribute="user">
+									<input type="hidden" name="_method" value="patch">
+									<div class="form-input col-lg-12 my-4">
+										<%-- <form:input path="username" placeholder="Your full name"
+											class="form-control mb-3 p-4" />
+										<form:errors path="username" class="text-warning" /> --%>
 
-						<div class="accordion mb-5" id="accordionExample">
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingOne">
-									<button class="accordion-button collapsed" type="button"
-										data-bs-toggle="collapse" data-bs-target="#collapseOne"
-										aria-expanded="false" aria-controls="collapseOne">
-										<h5>How can I adopt a pet?</h5>
-									</button>
-								</h2>
-								<div id="collapseOne" class="accordion-collapse collapse"
-									aria-labelledby="headingOne">
-									<div class="accordion-body secondary-font">Adopting a pet
-										typically involves visiting a shelter, filling out an
-										application, meeting with potential pets, and completing an
-										adoption fee.</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingTwo">
-									<button class="accordion-button collapsed" type="button"
-										data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-										aria-expanded="false" aria-controls="collapseTwo">
-										<h5>What are the requirements for pet adoption?</h5>
-									</button>
-								</h2>
-								<div id="collapseTwo" class="accordion-collapse collapse"
-									aria-labelledby="headingTwo">
-									<div class="accordion-body secondary-font">Requirements
-										often include proof of identity, proof of residence, and
-										sometimes references from a veterinarian or landlord.</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingThree">
-									<button class="accordion-button collapsed" type="button"
-										data-bs-toggle="collapse" data-bs-target="#collapseThree"
-										aria-expanded="false" aria-controls="collapseThree">
-										<h5>Are the pets vaccinated and spayed/neutered before
-											adoption?</h5>
-									</button>
-								</h2>
-								<div id="collapseThree" class="accordion-collapse collapse"
-									aria-labelledby="headingThree">
-									<div class="accordion-body secondary-font">Yes, most pets
-										available for adoption are vaccinated and spayed/neutered.
-										This ensures their health and prevents overpopulation.</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingFour">
-									<button class="accordion-button collapsed" type="button"
-										data-bs-toggle="collapse" data-bs-target="#collapseFour"
-										aria-expanded="false" aria-controls="collapseFour">
-										<h5>How much does it cost to adopt a pet?</h5>
-									</button>
-								</h2>
-								<div id="collapseFour" class="accordion-collapse collapse"
-									aria-labelledby="headingFour">
-									<div class="accordion-body secondary-font">Adoption fees
-										vary but typically range from $50 to $200. These fees help
-										cover the costs of caring for the pet before adoption.</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingFive">
-									<button class="accordion-button collapsed" type="button"
-										data-bs-toggle="collapse" data-bs-target="#collapseFive"
-										aria-expanded="false" aria-controls="collapseFive">
-										<h5>What should I consider before adopting a pet?</h5>
-									</button>
-								</h2>
-								<div id="collapseFive" class="accordion-collapse collapse"
-									aria-labelledby="headingFive">
-									<div class="accordion-body secondary-font">Consider your
-										lifestyle, time commitment, and financial ability to care for
-										a pet. Ensure your home is pet-friendly and you have enough
-										space.</div>
-								</div>
-							</div>
-							<div class="accordion-item">
-								<h2 class="accordion-header" id="headingSix">
-									<button class="accordion-button collapsed" type="button"
-										data-bs-toggle="collapse" data-bs-target="#collapseSix"
-										aria-expanded="false" aria-controls="collapseSix">
-										<h5>Can I adopt if I live in an apartment?</h5>
-									</button>
-								</h2>
-								<div id="collapseSix" class="accordion-collapse collapse"
-									aria-labelledby="headingSix">
-									<div class="accordion-body secondary-font">Yes, many
-										shelters allow pet adoption for apartment dwellers. However,
-										some may have specific guidelines regarding pet size or breed.
+										<form:input type="email" path="email"
+											placeholder="Your email address"
+											class="form-control mb-3 p-4"/>
+										<form:errors path="email" class="text-warning" />
+
+										<form:input type="password" path="password"
+											placeholder="Set your password" class="form-control mb-3 p-4" />
+										<form:errors path="password" class="text-warning" />
+
+										<form:input type="password" path="passwordConfirmation"
+											placeholder="Retype your password"
+											class="form-control mb-3 p-4" />
+										<form:errors path="passwordConfirmation" class="text-warning" />
+
+										<div class="d-grid my-3">
+											<input type="submit" value="Sign Up"
+												class="btn btn-dark btn-lg rounded-1" />
+										</div>
 									</div>
-								</div>
+								</form:form>
 							</div>
 						</div>
-
 					</div>
-				</main>
-
-
-
-
-
-
-
-
-
-
-				<div class="inquiry-item col-md-4">
-					<h3 class="section-title mb-3">Contact Us</h3>
-					<p>Have more questions? Contact us for more information about
-						pet adoption.</p>
-					<%--          <form id="form" class="form-group flex-wrap">
-            <div class="form-input col-lg-12 d-flex mb-3">
-              <input type="text" name="name" placeholder="Your Name" class="form-control ps-3 me-3">
-              <input type="email" name="email" placeholder="Your Email" class="form-control ps-3">
-            </div>
-            <div class="col-lg-12 mb-3">
-              <input type="tel" name="phone" placeholder="Phone Number" class="form-control ps-3">
-            </div>
-            <div class="col-lg-12 mb-3">
-              <input type="text" name="subject" placeholder="Subject" class="form-control ps-3">
-            </div>
-            <div class="col-lg-12 mb-3">
-              <textarea placeholder="Your Message" class="form-control ps-3" rows="8"></textarea>
-            </div>
-            <div class="d-grid">
-              <button class="btn btn-primary btn-lg btn-block">Submit</button>
-            </div>
-          </form> --%>
-
-
-
-
-					<form:form method="post"
-						action="${pageContext.request.contextPath}/faqs"
-						modelAttribute="contact" id="form" class="form-group flex-wrap">
-
-						<div class="form-input col-lg-12 d-flex mb-3">
-							<form:input path="name" type="text" name="email"
-								placeholder="Write Your Name Here"
-								class="form-control ps-3 me-3" />
-							<form:errors path="name" cssClass="error" />
-
-							<form:input path="email" type="text" name="email"
-								placeholder="Write Your Email Here" class="form-control ps-3" />
-							<form:errors path="email" cssClass="error" />
-
-						</div>
-						<div class="col-lg-12 mb-3">
-							<form:input path="phone" type="text" name="email"
-								placeholder="Phone Number" class="form-control ps-3" />
-							<form:errors path="phone" cssClass="error" />
-						</div>
-
-						<div class="col-lg-12 mb-3">
-							<form:input path="subject" type="text" name="email"
-								placeholder="Write Your Subject Here" class="form-control ps-3" />
-							<form:errors path="subject" cssClass="error" />
-						</div>
-						<div class="col-lg-12 mb-3">
-							<form:textarea path="message"
-								placeholder="Write Your Message Here" class="form-control ps-3"
-								style="height:150px;" />
-							<form:errors path="message" cssClass="error" />
-						</div>
-						<div class="d-grid">
-							<button class="btn btn-primary btn-lg btn-block">Submit</button>
-						</div>
-
-						<c:if test="${not empty successMessage}">
-							<p>${successMessage}</p>
-						</c:if>
-					</form:form>
-
-
-
-
 				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="insta" class="my-5">
+		<div class="row g-0 py-5">
+			<div class="col instagram-item  text-center position-relative">
+				<div
+					class="icon-overlay d-flex justify-content-center position-absolute">
+					<iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
+				</div>
+				<a href="#"> <img src="images/insta1.jpg" alt="insta-img"
+					class="img-fluid rounded-3">
+				</a>
+			</div>
+			<div class="col instagram-item  text-center position-relative">
+				<div
+					class="icon-overlay d-flex justify-content-center position-absolute">
+					<iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
+				</div>
+				<a href="#"> <img src="images/insta2.jpg" alt="insta-img"
+					class="img-fluid rounded-3">
+				</a>
+			</div>
+			<div class="col instagram-item  text-center position-relative">
+				<div
+					class="icon-overlay d-flex justify-content-center position-absolute">
+					<iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
+				</div>
+				<a href="#"> <img src="images/insta3.jpg" alt="insta-img"
+					class="img-fluid rounded-3">
+				</a>
+			</div>
+			<div class="col instagram-item  text-center position-relative">
+				<div
+					class="icon-overlay d-flex justify-content-center position-absolute">
+					<iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
+				</div>
+				<a href="#"> <img src="images/insta4.jpg" alt="insta-img"
+					class="img-fluid rounded-3">
+				</a>
+			</div>
+			<div class="col instagram-item  text-center position-relative">
+				<div
+					class="icon-overlay d-flex justify-content-center position-absolute">
+					<iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
+				</div>
+				<a href="#"> <img src="images/insta5.jpg" alt="insta-img"
+					class="img-fluid rounded-3">
+				</a>
+			</div>
+			<div class="col instagram-item  text-center position-relative">
+				<div
+					class="icon-overlay d-flex justify-content-center position-absolute">
+					<iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
+				</div>
+				<a href="#"> <img src="images/insta6.jpg" alt="insta-img"
+					class="img-fluid rounded-3">
+				</a>
 			</div>
 		</div>
 	</section>

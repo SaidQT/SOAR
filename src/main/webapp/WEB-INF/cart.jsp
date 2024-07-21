@@ -78,7 +78,10 @@ height
 
 
 
+
+
 :
+
 
 
 
@@ -110,7 +113,10 @@ height
 
 
 
+
 300px
+
+
 
 
 
@@ -173,7 +179,10 @@ object-fit
 
 
 
+
+
 :
+
 
 
 
@@ -205,7 +214,10 @@ object-fit
 
 
 
+
 cover
+
+
 
 
 
@@ -563,17 +575,19 @@ cover
 										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
-										<li>
-											<form id="logoutForm" method="POST" action="/logout">
-												<input type="hidden" name="${_csrf.parameterName}"
-													value="${_csrf.token}" />
-												<button type="submit"
-													style="border: none; background: none;">
-													<iconify-icon icon="mdi:logout" class="fs-4"></iconify-icon>
-												</button>
-											</form>
+										<c:if test="${currentUser != null}">
+											<li>
+												<form id="logoutForm" method="POST" action="/logout">
+													<input type="hidden" name="${_csrf.parameterName}"
+														value="${_csrf.token}" />
+													<button type="submit"
+														style="border: none; background: none;">
+														<iconify-icon icon="mdi:logout" class="fs-4"></iconify-icon>
+													</button>
+												</form>
 
-										</li>
+											</li>
+										</c:if>
 										<!-- <li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
 											aria-controls="offcanvasCart"> <iconify-icon
@@ -613,111 +627,6 @@ cover
 			</div>
 		</div>
 	</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<%--  <section id="cartt" class="my-5 py-5">
-    <div class="container my-5 py-5">
-        <div class="section-header d-md-flex justify-content-between align-items-center">
-            <h2 class="display-3 fw-normal">Pets</h2>
-            <div class="mb-4 mb-md-0">
-                <button class="filter-button me-4 active" data-filter="*">ALL</button>
-                <button class="filter-button me-4" data-filter=".cat">CAT</button>
-                <button class="filter-button me-4" data-filter=".dog">DOG</button>
-                <button class="filter-button me-4" data-filter=".bird">BIRD</button>
-            </div>
-        </div>
-
-        <div class="isotope-container row">
-            <c:forEach var="pet" items="${pets}">
-                <c:if test="${pet.status.equals('Unadopted')}">
-                    <div class="item col-md-4 col-lg-3 my-4 ${pet.type.toLowerCase()}">
-                        <div class="card position-relative">
-                            <img src="images/item9.jpg" class="img-fluid rounded-4" alt="image">
-                            <div class="card-body p-0">
-                                <h3 class="card-title pt-4 m-0">${pet.name}</h3>
-                                <h3 class="secondary-font text-primary">${pet.breed}</h3>
-                                <div class="d-flex flex-wrap mt-3">
-                                    <form action="/public/cart/add" method="post">
-                                        <c:if test="${currentUser != null}">
-                                            <input type="hidden" name="petId" value="${pet.id}">
-                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                            <input type="hidden" name="location" value="cart">
-                                            <button type="submit" class="btn-cart me-3 px-4 pt-3 pb-3">
-                                                <h5 class="text-uppercase m-0">Let's cuddle</h5>
-                                            </button>
-                                            <button type="submit" class="btn-wishlist px-4 pt-3">
-                                                <iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
-                                            </button>
-                                        </c:if>
-                                        <c:if test="${currentUser == null}">
-                                            <button type="submit" class="btn-cart me-3 px-4 pt-3 pb-3" disabled>
-                                                <h5 class="text-uppercase m-0">Let's cuddle</h5>
-                                            </button>
-                                            <button type="submit" class="btn-wishlist px-4 pt-3" disabled>
-                                                <iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
-                                            </button>
-                                        </c:if>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:if>
-            </c:forEach>
-        </div>
-    </div>
-</section> --%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<section id="foodies" class="my-5">
 		<div class="container my-5 py-5">
 

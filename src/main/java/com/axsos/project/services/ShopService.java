@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import com.axsos.project.models.Shop;
 import com.axsos.project.repositories.ShopRepository;
@@ -46,7 +47,11 @@ public class ShopService {
 	}
 
 	// Function to update the shop information
-	public Shop updateShop(Shop b) {
+	public Shop updateShop(Shop b, BindingResult result) {
+		if (b.getCurrentSize() > b.getMaxCapacity()) {
+			result.rejectValue("currentSize", "Logical.user.maxCapacity", "Current capacity should be less than maximum capacity");
+			return null;
+		}
 		return shopRepository.save(b);
 	}
 

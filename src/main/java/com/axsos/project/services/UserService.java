@@ -32,6 +32,7 @@ public class UserService {
 
 	// Function to update the update information
 	public void updateUser(User user) {
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		userRepository.save(user);
 	}
 
@@ -73,7 +74,7 @@ public class UserService {
 		return shopOwner;
 	}
 
-	//	Function to upgrade user from user role to admin role
+	// Function to upgrade user from user role to admin role
 	public User upgradeUser(User user) {
 		user.setRoles(roleRepository.findByName("ROLE_ADMIN"));
 		return userRepository.save(user);

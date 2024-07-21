@@ -319,6 +319,7 @@
 										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
+										<c:if test="${currentUser != null}">
 										<li>
 											<form id="logoutForm" method="POST" action="/logout">
 												<input type="hidden" name="${_csrf.parameterName}"
@@ -330,6 +331,7 @@
 											</form>
 
 										</li>
+										</c:if>
 										<!-- <li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
 											aria-controls="offcanvasCart"> <iconify-icon
