@@ -24,7 +24,8 @@ p {
 	margin-bottom: 15px;
 }
 
-input[type="text"], input[type="number"], input[type="email"], input[type="password"]
+input[type="text"], input[type="number"], input[type="email"], input[type="password"],.form-container input[type="url"],
+	.form-container textarea, .form-container select, .form-container input[type="number"]
 	{
 	width: 90%;
 	margin: 0% auto;
