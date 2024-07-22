@@ -26,7 +26,7 @@
 								name="home-outline"></ion-icon>
 					</span> <span class="title">Dashboard</span>
 				</a></li>
-				<li><a href="/shop/"${shop.id}"/requests"> <span
+				<li><a href="/shop/${shop.id}/requests"> <span
 						class="icon"> <ion-icon name="document-text-outline"></ion-icon>
 					</span> <span class="title">Requests</span>
 				</a></li>
