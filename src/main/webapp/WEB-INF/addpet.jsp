@@ -69,17 +69,16 @@
 						<form:option value="dog">Dog</form:option>
 						<form:option value="cat">Cat</form:option>
 						<form:option value="bird">Bird</form:option>
-						<form:option value="other">Other</form:option>
 					</form:select>
 				</p>
 				<p class="form-errors">
 					<form:errors path="type" />
 				</p>
 				<p>
-					<form:input path="city" required="true" placeholder="City" />
+					<form:input path="age" required="true" placeholder="Age in years" />
 				</p>
 				<p class="form-errors">
-					<form:errors path="city" />
+					<form:errors path="age" />
 				</p>
 				<p>
 					<form:input path="breed" required="true" placeholder="Breed" />

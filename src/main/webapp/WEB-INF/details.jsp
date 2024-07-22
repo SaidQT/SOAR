@@ -408,36 +408,37 @@
 				<div class="col-lg-6 mt-5">
 					<div class="product-info">
 						<div class="element-header">
-							<h2 itemprop="name" class="display-6">
-								<c:out value="${pet.breed}"></c:out>
-							</h2>
+							<h1 itemprop="name" class="display-6">
+								<c:out value="${pet.name}"></c:out>
+							</h1>
 
 						</div>
-						<p>
+						<p style="font-size:larger;">
 							<c:out value="${pet.description}"></c:out>
 						</p>
 						<div class="cart-wrap">
-							<div class="color-options product-select">
-								<div class="color-toggle pt-2" data-option-index="0">
-									<h6 class="item-title fw-bold">
-										<c:out value="${pet.breed}"></c:out>
-									</h6>
-									<ul class="select-list list-unstyled d-flex">
-										<li class="select-item pe-3" data-val="Golden" title="Golden">
-											<a href="#" class="btn btn-light active"><c:out
-													value="${pet.name}"></c:out></a>
-										</li>
-									</ul>
-								</div>
-							</div>
 
+							<div class="meta-item d-flex align-items-baseline">
+								<h5 class="item-title fw-bold no-margin pe-2">Breed:</h5>
+								<ul class="select-list list-unstyled d-flex">
+									<li data-value="Golden Retriever" class="select-item"><h5><c:out
+											value="${pet.breed}"></c:out></h5></li>
+								</ul>
+							</div>
+							<div class="meta-item d-flex align-items-baseline">
+								<h5 class="item-title fw-bold no-margin pe-2">Age:</h5>
+								<ul class="select-list list-unstyled d-flex">
+									<h5><li data-value="New York" class="select-item"><c:out
+											value="${pet.age}"></c:out> years</h5></li>
+								</ul>
+							</div>
 							<div class="product-quantity pt-2">
 								<!-- <div class="stock-number text-dark">
 									<em>1 available</em>
 								</div> -->
 								<div class="stock-button-wrap">
 									<div class="d-flex flex-wrap pt-4">
-										<a href="#" class="btn-cart me-3 px-4 pt-3 pb-3"> <form:form
+										<a href="#" class="pt-1 pb-3"> <form:form
 												action="/user/details" method="post">
 												<input type="hidden" name="${_csrf.parameterName}"
 													value="${_csrf.token}" />
@@ -445,29 +446,14 @@
 												<input type="hidden" name="petId" value="${pet.id}">
 
 												<button type="submit"
-													class="btn btn-primary me-3 px-4 py-2 text-uppercase">
-													Adopt now</button>
+													class="btn btn-primary px-4 py-2"
+													style="border: none; font-size:larger;">Adopt now</button>
 											</form:form>
 
 										</a>
 									</div>
 								</div>
 							</div>
-						</div>
-
-						<div class="meta-item d-flex align-items-baseline">
-							<h6 class="item-title fw-bold no-margin pe-2">Breed:</h6>
-							<ul class="select-list list-unstyled d-flex">
-								<li data-value="Golden Retriever" class="select-item"><c:out
-										value="${pet.breed}"></c:out></li>
-							</ul>
-						</div>
-						<div class="meta-item d-flex align-items-baseline">
-							<h6 class="item-title fw-bold no-margin pe-2">Location:</h6>
-							<ul class="select-list list-unstyled d-flex">
-								<li data-value="New York" class="select-item"><c:out
-										value="${pet.city}"></c:out></li>
-							</ul>
 						</div>
 					</div>
 				</div>

@@ -541,7 +541,7 @@ translateX
 											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
 											<li class="nav-item"><a href="/cart/all"
-												class="dropdown-item">Other</a></li>
+												class="dropdown-item">All</a></li>
 
 										</ul></li>
 
@@ -559,9 +559,16 @@ translateX
 
 								<div class="d-none d-lg-flex align-items-end">
 									<ul class="d-flex justify-content-end list-unstyled m-0">
+									<c:if test="${currentUser != null}">
+										<li><a href="/edit" class="mx-3"> <iconify-icon
+													icon="healthicons:person" class="fs-4"></iconify-icon>
+										</a></li>
+										</c:if>
+										<c:if test="${currentUser == null}">
 										<li><a href="/login" class="mx-3"> <iconify-icon
 													icon="healthicons:person" class="fs-4"></iconify-icon>
 										</a></li>
+										</c:if>
 										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>

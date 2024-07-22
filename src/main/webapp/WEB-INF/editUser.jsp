@@ -295,7 +295,7 @@
 											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
 											<li class="nav-item"><a href="/cart/all"
-												class="dropdown-item">Other</a></li>
+												class="dropdown-item">All</a></li>
 
 										</ul></li>
 
@@ -359,7 +359,7 @@
 			<div class="row align-items-center">
 				<div class="col-md-6">
 					<div class="hero-content py-0 my-0">
-						<h2 class="display-1 mt-3 mb-0">Account</h2>
+						<h2 class="display-1 mt-3 mb-0">Edit Profile Information</h2>
 
 					</div>
 				</div>
@@ -372,70 +372,36 @@
 	</section>
 	<section class="login-tabs padding-large">
 		<div class="container my-5 py-5">
-			<div class="row">
-				<div class="tabs-listing">
-					<nav>
-						<div
-							class="nav nav-tabs d-flex justify-content-center border-dark-subtle mb-3"
-							id="nav-tab" role="tablist">
-							<button
-								class="nav-link mx-3 fs-3 border-bottom border-dark-subtle border-0 text-uppercase ${activeTab == 'login' ? 'active' : ''}"
-								id="nav-sign-in-tab" data-bs-toggle="tab"
-								data-bs-target="#nav-sign-in" type="button" role="tab"
-								aria-controls="nav-sign-in"
-								aria-selected="${activeTab == 'login'}">Log In</button>
-							<button
-								class="nav-link mx-3 fs-3 border-bottom border-dark-subtle border-0 text-uppercase ${activeTab == 'register' ? 'active' : ''}"
-								id="nav-register-tab" data-bs-toggle="tab"
-								data-bs-target="#nav-register" type="button" role="tab"
-								aria-controls="nav-register"
-								aria-selected="${activeTab == 'register'}">Sign Up</button>
-						</div>
-					</nav>
-					<div class="tab-content" id="nav-tabContent">
-						<!-- Log In Form -->
 
-						<!-- Register Form -->
-						<div class="tab-pane fade " id="nav-register" role="tabpanel"
-							aria-labelledby="nav-register-tab">
-							<div class="col-lg-8 offset-lg-2 mt-5">
-								<p class="mb-0">
-									Edit your information,
-									<c:out value="${user.username}"></c:out>
-								</p>
-								<hr class="my-1">
-								<form:form id="form1" class="form-group flex-wrap"
-									action="/edit" method="post" modelAttribute="user">
-									<input type="hidden" name="_method" value="patch">
-									<div class="form-input col-lg-12 my-4">
-										<%-- <form:input path="username" placeholder="Your full name"
-											class="form-control mb-3 p-4" />
-										<form:errors path="username" class="text-warning" /> --%>
 
-										<form:input type="email" path="email"
-											placeholder="Your email address"
-											class="form-control mb-3 p-4"/>
-										<form:errors path="email" class="text-warning" />
+			<div class="col-lg-8 offset-lg-2 mt-2">
+				<h2 class="mb-0">
+					Edit your information,
+					<c:out value="${user.username}"></c:out>
+				</h2>
+				<hr class="my-1">
+				<form:form id="form1" class="form-group flex-wrap" action="/edit"
+					method="post" modelAttribute="user">
+					<input type="hidden" name="_method" value="patch">
+					<div class="form-input col-lg-12 my-4">
+						<form:input type="email" path="email"
+							placeholder="Your email address" class="form-control mb-3 p-4" />
+						<form:errors path="email" class="text-warning" />
 
-										<form:input type="password" path="password"
-											placeholder="Set your password" class="form-control mb-3 p-4" />
-										<form:errors path="password" class="text-warning" />
+						<form:input type="password" path="password"
+							placeholder="Set your password" class="form-control mb-3 p-4" />
+						<form:errors path="password" class="text-warning" />
 
-										<form:input type="password" path="passwordConfirmation"
-											placeholder="Retype your password"
-											class="form-control mb-3 p-4" />
-										<form:errors path="passwordConfirmation" class="text-warning" />
+						<form:input type="password" path="passwordConfirmation"
+							placeholder="Retype your password" class="form-control mb-3 p-4" />
+						<form:errors path="passwordConfirmation" class="text-warning" />
 
-										<div class="d-grid my-3">
-											<input type="submit" value="Sign Up"
-												class="btn btn-dark btn-lg rounded-1" />
-										</div>
-									</div>
-								</form:form>
-							</div>
+						<div class="d-grid my-3">
+							<input type="submit" value="Submit"
+								class="btn btn-dark btn-lg rounded-1" />
 						</div>
 					</div>
-				</div>
+				</form:form>
 			</div>
 		</div>
 	</section>

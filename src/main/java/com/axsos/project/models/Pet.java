@@ -42,10 +42,6 @@ public class Pet {
 	@Size(min = 2, max = 200, message = "Pet breed must be at least 2 characters")
 	private String breed;
 
-	@NotNull
-	@Size(min = 2, max = 200, message = "City name must be at least 2 characters")
-	private String city;
-
 	//	@NotNull
 	@Min(0)
 	private Float age;
@@ -153,14 +149,6 @@ public class Pet {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
 	}
 
 	public String getImageUrl() {

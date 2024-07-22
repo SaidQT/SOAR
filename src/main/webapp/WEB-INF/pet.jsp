@@ -71,7 +71,7 @@
 					<tr>
 						<th>Name</th>
 						<th>Type</th>
-						<th>City</th>
+						<th>Age</th>
 						<th>Status</th>
 						<th>Actions</th>
 					</tr>
@@ -82,7 +82,7 @@
 						<tr>
 							<td><c:out value="${pet.name}"></c:out></td>
 							<td><c:out value="${pet.type}"></c:out></td>
-							<td><c:out value="${pet.city}"></c:out></td>
+							<td><c:out value="${pet.age}"></c:out></td>
 							<td><c:out value="${pet.status}"></c:out></td>
 							<td id="buttons"><a href="/shop/${pet.id}/edit">Edit</a> | <a
 								href="/shop/${pet.id}/delete" style="color: #dc3545">Delete</a></td>

@@ -309,7 +309,7 @@
 												class="dropdown-item">Birds</a></li>
 											<li class="nav-item"><a href="/cart/all
 									"
-												class="dropdown-item">Other</a></li>
+												class="dropdown-item">All</a></li>
 
 										</ul></li>
 
