@@ -19,8 +19,8 @@
 	<div class="container1">
 		<div class="navigation">
 			<ul>
-			
-			
+
+
 				<li><img src="/images/logo1.png" alt="logo" id="logo"> <span
 					class="title" id="soar">S.O.A.R</span></li>
 				<li><a href="/shop/home"> <span class="icon"> <ion-icon
@@ -30,7 +30,7 @@
 
 				<li><a href="/shop/add"> <span class="icon"> <ion-icon
 								name="paw-outline"></ion-icon>
-					</span> <span class="title">Add  Pet</span>
+					</span> <span class="title">Add Pet</span>
 				</a></li>
 				<li>
 					<form id="logoutForm" method="POST" action="/logout">
@@ -56,7 +56,7 @@
 
 
 		<div class="form-container">
-			<h1>Edit Pet Information</h1>
+			<h2>Edit Pet Information</h2>
 			<form:form action="/shop/${pet.id}" method="post"
 				modelAttribute="pet">
 				<input type="hidden" name="_method" value="patch">
@@ -64,11 +64,12 @@
 
 				<form:input type="hidden" path="user" value="${pet.user}" />
 				<p>
-					<form:label path="name">Name</form:label>
-					<form:input path="name" required="true" />
+					<form:input path="name" required="true" placeholder="Name" />
+				</p>
+				<p class="form-errors">
+					<form:errors path="name" />
 				</p>
 				<p>
-					<form:label path="type">Type</form:label>
 					<form:select path="type">
 						<form:option value="dog">Dog</form:option>
 						<form:option value="cat">Cat</form:option>
@@ -76,46 +77,43 @@
 						<form:option value="other">Other</form:option>
 					</form:select>
 				</p>
-				<p>
-					<form:label path="city">City</form:label>
-					<form:input path="city" required="true" />
+				<p class="form-errors">
+					<form:errors path="type" />
 				</p>
 				<p>
-					<form:label path="breed">Breed</form:label>
-					<form:input path="breed" required="true" />
+					<form:input path="age" required="true" placeholder="Age in years" />
+				</p>
+				<p class="form-errors">
+					<form:errors path="age" />
 				</p>
 				<p>
-					<form:label path="imageUrl">Image URL</form:label>
-					<form:textarea path="imageUrl" />
+					<form:input path="breed" required="true" placeholder="Breed" />
+				</p>
+				<p class="form-errors">
+					<form:errors path="breed" />
 				</p>
 				<p>
-					<form:label path="description">Description</form:label>
-					<form:textarea path="description" required="true" />
+					<form:textarea path="imageUrl" placeholder="Image URL" />
+				</p>
+				<p class="form-errors">
+					<form:errors path="imageUrl" />
 				</p>
 				<p>
-					<form:label path="status">Status</form:label>
+					<form:textarea path="description" required="true"
+						placeholder="
+				Description" />
+				</p>
+				<p class="form-errors">
+					<form:errors path="description" />
+				</p>
+				<p>
 					<form:select path="status">
 						<form:option value="Unadopted">Unadopted</form:option>
 						<form:option value="Pending">Pending</form:option>
 						<form:option value="Adopted">Adopted</form:option>
 					</form:select>
 				</p>
-				<p>
-					<form:errors path="name" />
-				</p>
-				<p>
-					<form:errors path="type" />
-				</p>
-				<p>
-					<form:errors path="city" />
-				</p>
-				<p>
-					<form:errors path="imageUrl" />
-				</p>
-				<p>
-					<form:errors path="description" />
-				</p>
-				<p>
+				<p class="form-errors">
 					<form:errors path="status" />
 				</p>
 

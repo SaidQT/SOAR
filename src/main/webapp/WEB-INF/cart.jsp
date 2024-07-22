@@ -551,7 +551,7 @@ cover
 											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
 											<li class="nav-item"><a href="/cart/all"
-												class="dropdown-item">Other</a></li>
+												class="dropdown-item">All</a></li>
 
 										</ul></li>
 
@@ -699,7 +699,7 @@ cover
 									</form>
 								</div>
 								<div class="card-body p-3">
-									<a href="" class="text-decoration-none">
+									<a href="/public/${pet.id}/details" class="text-decoration-none">
 										<h3 class="card-title text-dark">
 											<c:out value="${pet.name}"></c:out>
 										</h3>

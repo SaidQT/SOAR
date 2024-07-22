@@ -24,11 +24,6 @@
 <meta name="keywords" content="">
 <meta name="description" content="">
 
-
-
-
-
-
 <link rel="stylesheet" href="css/swiper.css" />
 <link rel="stylesheet" href="css/bootstrap.css" />
 
@@ -308,7 +303,7 @@
 											<li class="nav-item"><a href="/cart/bird"
 												class="dropdown-item">Birds</a></li>
 											<li class="nav-item"><a href="/cart/all"
-												class="dropdown-item">Other</a></li>
+												class="dropdown-item">All</a></li>
 
 										</ul></li>
 
@@ -370,7 +365,7 @@
 			<div class="row align-items-center">
 				<div class="col-md-6">
 					<div class="hero-content py-0 my-0">
-						<h2 class="display-1 mt-3 mb-0">Account</h2>
+						<h2 class="display-1 mt-3 mb-0">Favorites</h2>
 
 					</div>
 				</div>
@@ -403,7 +398,7 @@
 								<img src="${pet.imageUrl}" class="rounded-4 fixed-size-img"
 									alt="image">
 								<div class="card-body p-0">
-									<a href="single-product.html">
+									<a href="/public/${pet.id}/details">
 										<h3 class="card-title pt-4 m-0">
 											<c:out value="${pet.name}"></c:out>
 										</h3>
@@ -413,8 +408,8 @@
 											<c:out value="${pet.breed}"></c:out>
 										</h3>
 										<div class="d-flex flex-wrap mt-3">
-											<a href="#" class="btn-cart me-3 px-4 pt-3 pb-3">
-												<h5 class="text-uppercase m-0">lets cuddle</h5>
+											<a href="/public/${pet.id}/details" class="btn btn-primary me-3 px-4 py-2">
+												<h5>Let's cuddle</h5>
 											</a>
 											<form action="/public/cart/add" method="post"
 												class="remove-favorite-form position-absolute top-0 end-0 m-2">

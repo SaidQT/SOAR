@@ -190,6 +190,6 @@ public class PetController {
 		/* pet.setStatus("Unadopted"); */
 		pet.getRequest().remove(refusedUser);
 		petService.createPet(pet);
-		return "redirect:/shop/" + shopId + "/requests";
+		return "redirect:/shop/" + id + "/requests";
 	}
 }
