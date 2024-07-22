@@ -54,39 +54,123 @@ Support Our Adoption Rescue.
 ![JavaScript](https://img.shields.io/badge/JavaScript-valid-yellow?logo=javascript)
 ![MySQL](https://img.shields.io/badge/MySQL-valid-blue?logo=mysql)
 
+## Public Pages
+
+### Home Page
+![image](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Home%20page.png)
+Welcome to our  Here, you'll find easy access to important links, including our cart, as well as a warm introduction to our website. We aim to provide a welcoming experience and guide you through our offerings, making it simple to explore what we have to offer. The page is styled with custom CSS and includes JavaScript for interactive elements. Icons are used for visual enhancement, and external libraries are loaded for additional functionality.
+
+### Navbar Section
+
+- **Favourite Button**: Redirects users to their favourite pets or to the login/register page if no user is logged in. Implemented with AJAX for a seamless experience.
+- **Logout Button**: Visible only when a user is logged in.
+- **Profile Button**: Redirects to the login/register page if not logged in or to the profile update page if logged in.
+
+### Pet Filtering
+
+Data filtering is managed via AJAX in the navbar, icons on the home page, and the cart page. Clicking a filter updates the display to show relevant pets.
+
+### About Us Page
+
+Provides details about our brand, including information about rescued pets, successful adoptions, dedicated volunteers, and community events. Styled with custom CSS and JavaScript for interactivity. [Image of About Us Page](link-to-about-us-page-image).
+
+### Cart Page
+
+Displays pets available for adoption with a dynamic and user-friendly interface. Features include a banner, filterable gallery, donation section, and AJAX-managed favourite forms. [Image of Cart Page](link-to-cart-page-image).
+
+### FAQS Page
+
+Contains answers to frequently asked questions from the "Contact Us" form. [Image of FAQS Page](link-to-faqs-page-image).
+
+### Contact Us Page
+
+Offers a form for visitors to send us an email, requesting their name, email address, and message. [Image of Contact Us Page](link-to-contact-us-page-image).
+
+### Pet Details Page
+
+Provides comprehensive details about each pet, including their story, age, breed, and city. Users can request to adopt the pet. [Image of Pet Details Page](link-to-pet-details-page-image).
+
+### Partners Page
+
+Details about our partner shops, including names and locations. [Image of Partners Page](link-to-partners-page-image).
+
+## User Interfaces
+
+### Besties Page
+
+Displays the pets that the user has requested to adopt, organized into pending and accepted requests. [Image of Besties Page](link-to-besties-page-image).
+
+### Edit Profile Page
+
+Provides a form for users to update their account information, including email address and password. [Image of Edit Profile Page](link-to-edit-profile-page-image).
+
+### Favourites Page
+
+Shows pets liked by the user and provides options to request adoption or unlike a pet. Implemented with AJAX. [Image of Favourites Page](link-to-favourites-page-image).
+
+## Validations for the User
+
+- **Username**: Between 3 and 30 characters, must be unique.
+- **Email**: Required and in valid email format.
+- **Password**: Required, must be longer than 5 characters.
+- **Confirm Password**: Must match the password field.
+
+## Spring Security
+
+1. **Role-Based Access Control**: Differentiates access based on user roles (Admins, Users, Shop Owners).
+2. **Password Encoding**: Utilizes BCrypt hashing for secure password storage.
+3. **Custom Authentication Success Handling**: Redirects users based on their role after login.
+4. **Login and Logout Configuration**: Custom login page with role-based redirection and logout functionality.
+5. **Exception Handling**: Custom access denied page for unauthorized access attempts.
+
+## Shop Interface
+
+### Shop Home Page
+
+The shop dashboard for managing pets includes a navigation menu and a table of pets with options to edit or delete. [Image of Shop Home Page](link-to-shop-home-page-image).
+
+### Add Pet Page
+
+Form for adding new pets with validation for pet details. Styled with CSS and includes JavaScript for interactivity. [Image of Add Pet Page](link-to-add-pet-page-image).
+
+### Edit Pet Page
+
+Allows administrators to update pet details with validation and error messages. [Image of Edit Pet Page](link-to-edit-pet-page-image).
+
+### Request Page
+
+Displays a list of pet adoption requests with options to accept or refuse. Includes a button to add a new pet. [Image of Request Page](link-to-request-page-image).
+
+### Pet Validations
+
+Ensures pet data integrity with validations for name, type, breed, city, image URL, description, and age.
+
+## Admin Interface
+
+### Admin Dashboard Page
+
+Overview of key metrics including partners, adopted pets, unadopted pets, and donations. Features data visualizations with Chart.js. [Image of Admin Dashboard Page](link-to-admin-dashboard-page-image).
+
+### Tables Page
+
+Displays tables for shops and users with options to edit or delete entries. Includes Chart.js for visual data representations. [Image of Tables Page](link-to-tables-page-image).
+
+### Admin Add Shop Page
+
+Form for adding new shops, including validation for shop and user details. [Image of Admin Add Shop Page](link-to-admin-add-shop-page-image).
+
+### Edit Shop Page
+
+Allows administrators to update existing shop details with validation. [Image of Edit Shop Page](link-to-edit-shop-page-image).
+
+### Shop Validations
+
+Ensures shop data consistency with validations for name, city, maximum capacity, current pet count, and phone number.
+
+---
 
 
 
-### User Interface Design
-
-1. **Home Page**
-    - Quick links to search and browse pets.
-
-2. **Registration/Login Page**
-    - Simple and secure registration and login forms.
-
-3. **Category Page**
-    - Displays a list of all pets within a specific category, providing brief information without detailed descriptions. Each pet has a clickable link to view more detailed information on a separate page.
-
-4. **Pet Profile Page**
-    - Detailed information about each pet.
-    - Photos and descriptions.
-
-5. **User Dashboard**
-    - Favorites list.
-
-6. **Admin Dashboard**
-    - Admins have the ability to create, update, and delete shops.
-
-7. **Contact Us Page**
-    - Provides information about our organization.
-
-8. **About Us Page**
-    - Showcases a list of all available pets from our partner shops. Each shop is displayed with brief information.
-
-9. **Shop Owner Dashboard**
-    - Shop owners have the ability to create, update, and delete pets.
-    - Shop owners can see the user adoption requests.
 
 ## Architecture
 
@@ -142,10 +226,4 @@ Support Our Adoption Rescue.
 
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For any inquiries or support, please contact us at GitHub accounts.
