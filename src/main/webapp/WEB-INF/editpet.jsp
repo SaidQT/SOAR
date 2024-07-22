@@ -19,6 +19,8 @@
 	<div class="container1">
 		<div class="navigation">
 			<ul>
+			
+			
 				<li><img src="/images/logo1.png" alt="logo" id="logo"> <span
 					class="title" id="soar">S.O.A.R</span></li>
 				<li><a href="/shop/home"> <span class="icon"> <ion-icon
@@ -28,7 +30,7 @@
 
 				<li><a href="/shop/add"> <span class="icon"> <ion-icon
 								name="paw-outline"></ion-icon>
-					</span> <span class="title">Add Pet</span>
+					</span> <span class="title">Add  Pet</span>
 				</a></li>
 				<li>
 					<form id="logoutForm" method="POST" action="/logout">
