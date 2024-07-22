@@ -14,62 +14,89 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>All Shops</title>
+<title>Pets</title>
 <link rel="stylesheet" type="text/css" href="/css/table.css">
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/admin.css">
+
 </head>
 <body>
-	<nav class="navbar navbar-expand-xl navbar-light bg-light">
-		<div class="container-fluid">
-			 <a
-				class="navbar-brand" href="/">Home</a>
-				<a
-				class="navbar-brand" href="/shop/${shop.id}/requests">Requests</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarBasic"
-				aria-controls="navbarBasic" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse show" id="navbarBasic">
-				<ul class="navbar-nav me-auto mb-2 mb-xl-0">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/shop/home">Pets</a></li>
-					<li class="nav-item"><a class="nav-link" href="/shop/add">Add
-							a pet</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<h2>Our Pets</h2>
-	<br>
-	<br>
-	<table>
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Type</th>
-				<th>City</th>
-				<th>Status</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
 
-			<c:forEach var="pet" items="${pets}">
-				<tr>
-					<td><c:out value="${pet.name}"></c:out></td>
-					<td><c:out value="${pet.type}"></c:out></td>
-					<td><c:out value="${pet.city}"></c:out></td>
-					<td><c:out value="${pet.status}"></c:out></td>
-					<td id="buttons"><a href="/shop/${pet.id}/edit">Edit</a> | <a
-						href="/shop/${pet.id}/delete">Delete</a></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	<br>
-	<br>
-	<a class="btn btn-danger" href="/shop/add" id="add">+ Add a new Pet</a>
+	<div class="container1">
+		<div class="navigation">
+			<ul>
+				<li><img src="/images/logo1.png" alt="logo" id="logo"> <span
+					class="title" id="soar">S.O.A.R</span></li>
+				<li><a href="/shop/home"> <span class="icon">
+							<ion-icon name="home-outline"></ion-icon>
+					</span> <span class="title">Dashboard</span>
+				</a></li>
+				
+				<li><a href="/shop/add"> <span class="icon"> <ion-icon
+								name="person-add-outline"></ion-icon>
+					</span> <span class="title">Add Pet</span>
+				</a></li>
+				<li>
+					<form id="logoutForm" method="POST" action="/logout">
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+						<button type="submit" class="logout-button">
+							<span class="icon"> <ion-icon name="log-out-outline"></ion-icon>
+							</span> <span class="title">Sign Out</span>
+						</button>
+					</form>
+				</li>
+			</ul>
+			<img src="/images/n.png" id="footer-image">
+		</div>
+	</div>
+	<div class="main">
+		<div class="topbar">
+			<div class="toggle">
+				<ion-icon name="menu-outline"></ion-icon>
+			</div>
+			<h1 id="page">Shop dashboard</h1>
+		</div>
+		<div class="section1">
+			<div class="tableTitle">
+				<h2 id="page">Pets</h2>
+				<a class="btn btn-danger" href="/shop/add" id="add">+ Add a new
+					Pet</a>
+			</div>
+
+
+
+
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Type</th>
+						<th>City</th>
+						<th>Status</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<c:forEach var="pet" items="${pets}">
+						<tr>
+							<td><c:out value="${pet.name}"></c:out></td>
+							<td><c:out value="${pet.type}"></c:out></td>
+							<td><c:out value="${pet.city}"></c:out></td>
+							<td><c:out value="${pet.status}"></c:out></td>
+							<td id="buttons"><a href="/shop/${pet.id}/edit">Edit</a> | <a
+								href="/shop/${pet.id}/delete" style="color: #dc3545">Delete</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<br> <br>
+		</div>
+
+		<script type="module"
+			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+		<script nomodule
+			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+		<script type="text/javascript" src="/js/admin.js" defer></script>
 </body>
 </html>
