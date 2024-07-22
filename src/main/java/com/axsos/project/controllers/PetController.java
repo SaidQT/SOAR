@@ -40,7 +40,7 @@ public class PetController {
 		return "addpet.jsp";
 	}
 
-	@PostMapping("/shop/new")
+	@PostMapping("/shop/add")
 	public String createShop(@Valid @ModelAttribute("pet") Pet pet, BindingResult result, Principal principal, Model model) {
 		// Principal here is the shop owner
 		String username = principal.getName();
@@ -116,9 +116,9 @@ public class PetController {
 	@GetMapping("/details")
 	public String showDetails(Model model, HttpSession session, Principal principal) {
 		if (principal != null) {
-		String username = principal.getName();
-		User user = userService.findByUsername(username);
-		model.addAttribute("currentUser", user);
+			String username = principal.getName();
+			User user = userService.findByUsername(username);
+			model.addAttribute("currentUser", user);
 		}
 		if (session.getAttribute("id") != null) {
 			Pet pet = petService.findPet((Long) session.getAttribute("id"));
