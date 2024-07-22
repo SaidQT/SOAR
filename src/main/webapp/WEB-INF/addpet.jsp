@@ -14,34 +14,39 @@
 </head>
 <body>
 	<!-- =============== Navigation ================ -->
-<div class="container1">
-        <div class="navigation">
-            <ul>
-                <li><img src="/images/logo1.png" alt="logo" id="logo"> <span
-                    class="title" id="soar">S.O.A.R</span></li>
-                <li><a href="/shop/home"> <span class="icon"> <ion-icon
-                                name="home-outline"></ion-icon>
-                    </span> <span class="title">Dashboard</span>
-                </a></li>
+	<div class="container1">
+		<div class="navigation">
+			<ul>
+				<li><img src="/images/logo1.png" alt="logo" id="logo"> <span
+					class="title" id="soar">S.O.A.R</span></li>
+				<li><a href="/shop/home"> <span class="icon"> <ion-icon
+								name="home-outline"></ion-icon>
+					</span> <span class="title">Dashboard</span>
+				</a></li>
 
-                <li><a href="/shop/add"> <span class="icon"> <ion-icon
-                                name="paw-outline"></ion-icon>
-                    </span> <span class="title">Add Pet</span>
-                </a></li>
-                <li>
-                    <form id="logoutForm" method="POST" action="/logout">
-                        <input type="hidden" name="${_csrf.parameterName}"
-                            value="${_csrf.token}" />
-                        <button type="submit" class="logout-button">
-                            <span class="icon"> <ion-icon name="log-out-outline"></ion-icon>
-                            </span> <span class="title">Sign Out</span>
-                        </button>
-                    </form>
-                </li>
-            </ul>
-            <img src="/images/n.png" id="footer-image">
-        </div>
-    </div>
+
+				<li><a href="/shop/add"> <span class="icon"> <ion-icon
+								name="paw-outline"></ion-icon>
+					</span> <span class="title">Add Pet</span>
+				</a></li>
+				<li><a href="/shop/"${shop.id}"/requests"> <span
+						class="icon"> <ion-icon name="document-text-outline"></ion-icon>
+					</span> <span class="title">Requests</span>
+				</a></li>
+				<li>
+					<form id="logoutForm" method="POST" action="/logout">
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+						<button type="submit" class="logout-button">
+							<span class="icon"> <ion-icon name="log-out-outline"></ion-icon>
+							</span> <span class="title">Sign Out</span>
+						</button>
+					</form>
+				</li>
+			</ul>
+			<img src="/images/n.png" id="footer-image">
+		</div>
+	</div>
 	<!-- ========================= Main ==================== -->
 	<div class="main">
 		<div class="topbar">
