@@ -26,14 +26,18 @@
 			<ul>
 				<li><img src="/images/logo1.png" alt="logo" id="logo"> <span
 					class="title" id="soar">S.O.A.R</span></li>
-				<li><a href="/shop/home"> <span class="icon">
-							<ion-icon name="home-outline"></ion-icon>
+				<li><a href="/shop/home"> <span class="icon"> <ion-icon
+								name="home-outline"></ion-icon>
 					</span> <span class="title">Dashboard</span>
 				</a></li>
-				
+
 				<li><a href="/shop/add"> <span class="icon"> <ion-icon
 								name="person-add-outline"></ion-icon>
 					</span> <span class="title">Add Pet</span>
+				</a></li>
+				<li><a href="/shop/"${shop.id}"/requests"> <span
+						class="icon"> <ion-icon name="document-text-outline"></ion-icon>
+					</span> <span class="title">Requests</span>
 				</a></li>
 				<li>
 					<form id="logoutForm" method="POST" action="/logout">
