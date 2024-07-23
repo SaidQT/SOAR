@@ -31,7 +31,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+   
 	@Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters")
 	@Column(unique = true)
 	private String username;

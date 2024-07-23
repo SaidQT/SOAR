@@ -238,12 +238,6 @@ public class UserController {
 		return "editUser.jsp";
 	}
 
-	/*
-	 * @GetMapping("/user/edit") public String editUser(@ModelAttribute("user") User
-	 * user, Principal principal) { String username = principal.getName(); user =
-	 * userService.findByUsername(username); return "redirect:/edit"; }
-	 */
-
 	@PatchMapping("/edit")
 	public String editUserInfo(@Valid @ModelAttribute("user") User user, BindingResult result, Model model,
 			Principal principal) {
