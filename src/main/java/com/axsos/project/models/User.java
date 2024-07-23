@@ -30,7 +30,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+   
 	@Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters")
 	@NotEmpty(message = "Username is required!")
 	private String username;

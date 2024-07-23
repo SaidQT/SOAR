@@ -33,7 +33,7 @@ public class UserValidator implements Validator {
 
 		// Add validation for check if the user exist or not
 		if (userRepository.existsByUsername(user.getUsername())) {
-			errors.rejectValue("username", "Duplicate.user.username", "Username is already in use");
-		}
+			errors.rejectValue("username", "Duplicate.user.username", "Username is already in use");  
+		}   
 	}
 }
