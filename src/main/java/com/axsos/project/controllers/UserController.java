@@ -24,6 +24,7 @@ import com.axsos.project.models.Pet;
 import com.axsos.project.models.User;
 import com.axsos.project.services.PetService;
 import com.axsos.project.services.UserService;
+import com.axsos.project.validator.EditValidator;
 import com.axsos.project.validator.UserValidator;
 
 import jakarta.servlet.ServletException;
@@ -39,10 +40,12 @@ public class UserController {
 	@Autowired
 	private PetService petService;
 	private final UserValidator userValidator;
+	private final EditValidator editValidator;
 
 	// ****************************** Constructor ******************************
-	UserController(UserValidator userValidator) {
+	UserController(UserValidator userValidator,EditValidator editValidator) {
 		this.userValidator = userValidator;
+		this.editValidator = editValidator;
 	}
 
 	// ****************************** R from {CRUD} ******************************
@@ -233,7 +236,7 @@ public class UserController {
 	public String userEdit(Model model, Principal principal) {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
-		user.setPassword("");
+		/* user.setPassword(""); */
 		model.addAttribute("user", user);
 		return "editUser.jsp";
 	}
@@ -241,15 +244,16 @@ public class UserController {
 	@PatchMapping("/edit")
 	public String editUserInfo(@Valid @ModelAttribute("user") User user, BindingResult result, Model model,
 			Principal principal) {
-		userValidator.validate(user, result);
+		editValidator.validate(user, result);
 		if (result.hasErrors()) {
 			model.addAttribute("user", user);
+			model.addAttribute("result", result);
 			System.out.println(result);
 			return "editUser.jsp";
 		} else {
 			String username = principal.getName();
 			User editUser = userService.findByUsername(username);
-			editUser.setUsername(user.getUsername());
+			editUser.setUsername(editUser.getUsername());
 			editUser.setEmail(user.getEmail());
 			editUser.setPassword(user.getPassword());
 			editUser.setPasswordConfirmation(user.getPasswordConfirmation());
