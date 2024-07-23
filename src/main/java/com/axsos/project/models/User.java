@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -33,7 +32,7 @@ public class User {
 	private Long id;
 
 	@Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters")
-	@Column(unique = true)
+	@NotEmpty(message = "Username is required!")
 	private String username;
 
 	@NotEmpty(message = "Email is required!")

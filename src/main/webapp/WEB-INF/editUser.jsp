@@ -380,10 +380,36 @@
 					<c:out value="${user.username}"></c:out>
 				</h2>
 				<hr class="my-1">
-				<form:form id="form1" class="form-group flex-wrap" action="/edit"
+				<form action="/edit" method="post" class="form-group flex-wrap">
+					<input type="hidden" name="_csrf" value="${_csrf.token}"> <input
+						type="hidden" name="_method" value="patch">
+					<div class="form-input col-lg-12 my-4">
+						<input type="hidden" name="username" value="${user.username}">
+						<input type="email" name="email" value="${user.email}"
+							class="form-control mb-3 p-4">
+						<input type="password" name="password"
+							class="form-control mb-3 p-4"> <input type="password"
+							name="passwordConfirmation" class="form-control mb-3 p-4">
+						<c:if
+							test="${result != null && result.hasFieldErrors('passwordConfirmation')}">
+								<c:forEach items="${result.getFieldErrors('passwordConfirmation')}"
+									var="error">
+									<span class="form-errors">${error.defaultMessage}</span>
+								</c:forEach>
+							
+						</c:if>
+					</div>
+					<div class="d-grid my-3">
+						<input type="submit" value="Submit"
+							class="btn btn-dark btn-lg rounded-1" />
+					</div>
+				</form>
+
+				<%-- 	<form:form id="form1" class="form-group flex-wrap" action="/edit"
 					method="post" modelAttribute="user">
 					<input type="hidden" name="_method" value="patch">
 					<div class="form-input col-lg-12 my-4">
+						<form:input type="text" path="username" class="form-control mb-3 p-4"/>
 						<form:input type="email" path="email"
 							placeholder="Your email address" class="form-control mb-3 p-4" />
 						<form:errors path="email" class="text-warning" />
@@ -401,7 +427,7 @@
 								class="btn btn-dark btn-lg rounded-1" />
 						</div>
 					</div>
-				</form:form>
+				</form:form> --%>
 			</div>
 		</div>
 	</section>
