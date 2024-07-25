@@ -25,16 +25,15 @@ document.addEventListener('DOMContentLoaded', function () {
     console.error("Toggle element not found");
   }
 
-  // Highlight active link based on URL
-  let currentPath = window.location.pathname;
+  let currentPath = window.location.pathname.replace(/\/$/, ""); // Remove trailing slash
   console.log("Current Path:", currentPath);
 
   list.forEach((item) => {
     let link = item.querySelector('a');
     if (link) {
-      let href = link.getAttribute('href');
+      let href = link.getAttribute('href').replace(/\/$/, ""); // Remove trailing slash
       console.log("Checking link:", href);
-      if (href === currentPath) {
+      if (href === currentPath || currentPath.startsWith(href)) {
         console.log("Match found:", href);
         item.classList.add('hovered');
       }

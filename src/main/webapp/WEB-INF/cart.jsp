@@ -80,7 +80,16 @@ height
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -114,7 +123,16 @@ height
 
 
 
+
+
+
 300px
+
+
+
+
+
+
 
 
 
@@ -181,7 +199,16 @@ object-fit
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -215,7 +242,16 @@ object-fit
 
 
 
+
+
+
 cover
+
+
+
+
+
+
 
 
 
@@ -699,7 +735,8 @@ cover
 									</form>
 								</div>
 								<div class="card-body p-3">
-									<a href="/public/${pet.id}/details" class="text-decoration-none">
+									<a href="/public/${pet.id}/details"
+										class="text-decoration-none">
 										<h3 class="card-title text-dark">
 											<c:out value="${pet.name}"></c:out>
 										</h3>
@@ -883,6 +920,45 @@ cover
 
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- 	<script>
+	document.addEventListener('DOMContentLoaded', function () {
+  // Get all filter buttons
+  const filterButtons = document.querySelectorAll('.filter-button');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove 'active' class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Add 'active' class to the clicked button
+      this.classList.add('active');
+
+      // Get the filter value from the clicked button
+      const filter = this.getAttribute('data-filter');
+
+      // Update the URL to include the filter (e.g., /cart/cat)
+      let url = '/cart';
+      if (filter !== '*') {
+        // Determine the correct endpoint based on filter
+        url = `/cart${filter}`;
+      }
+
+      // Redirect to the new URL
+      window.location.href = url;
+    });
+  });
+
+  // Handle URL parameter to set the active filter on page load
+  const currentPath = window.location.pathname;
+  const activeFilter = currentPath.split('/').pop(); // Get the last part of the path
+
+  filterButtons.forEach(button => {
+    if (button.getAttribute('data-filter') === `.${activeFilter}`) {
+      button.classList.add('active');
+    }
+  });
+});
+	</script> -->
 	<script>
 		$(document)
 				.ready(

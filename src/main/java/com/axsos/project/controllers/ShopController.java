@@ -113,6 +113,7 @@ public class ShopController {
 		model.addAttribute("shopsPerCity", shopsPerCity);
 		model.addAttribute("adoptedPetCount", adoptedPetCount);
 		model.addAttribute("unadoptedPetCount", unadoptedPetCount);
+		model.addAttribute("totalDonations", User.getTotalDonations());
 		return "adminDashboard.jsp";
 	}
 

@@ -402,11 +402,11 @@
 							<img src="${pet.imageUrl}" class="rounded-4 fixed-size-img"
 								alt="image">
 							<div class="card-body p-0">
-								<a href="single-product.html">
-									<h3 class="card-title pt-4 m-0">
-										<c:out value="${pet.name}"></c:out>
-									</h3>
-								</a>
+
+								<h3 class="card-title pt-4 m-0">
+									<c:out value="${pet.name}"></c:out>
+								</h3>
+
 								<div class="card-text">
 									<h3 class="secondary-font text-primary">
 										<c:out value="${pet.breed}"></c:out>
@@ -425,15 +425,16 @@
 							<img src="${pet.imageUrl}" class="rounded-4 fixed-size-img"
 								alt="image">
 							<div class="card-body p-0">
-								<a href="single-product.html">
-									<h3 class="card-title pt-4 m-0">
-										<c:out value="${pet.name}"></c:out>
-									</h3>
-								</a>
+
+								<h3 class="card-title pt-4 m-0">
+									<c:out value="${pet.name}"></c:out>
+								</h3>
+
 								<div class="card-text">
 									<h3 class="secondary-font text-primary">
 										<c:out value="${pet.breed}"></c:out>
 									</h3>
+									<a href="/user/cancel/${pet.id}" class="btn btn-primary me-3 px-4 py-2 text-uppercase">Cancel request</a>
 									<div class="d-flex flex-wrap mt-3"></div>
 								</div>
 							</div>

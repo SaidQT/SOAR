@@ -30,7 +30,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-   
+
 	@Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters")
 	@NotEmpty(message = "Username is required!")
 	private String username;
@@ -47,6 +47,19 @@ public class User {
 	@NotEmpty(message = "Confirm Password is required!")
 	private String passwordConfirmation;
 
+	static Double totalDonations = 0.0;
+
+	public synchronized static void addDonation(Double amount) {
+		if (amount != null && amount > 0) {
+			totalDonations += amount;
+			System.out.println("Total: " + totalDonations); 
+		}
+	}
+
+	public static Double getTotalDonations() {
+		return totalDonations;
+	}
+
 	private Date createdAt;
 	private Date updatedAt;
 
@@ -54,18 +67,20 @@ public class User {
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
 
-	@ManyToMany //This relationship is established for users who wish to like the pet.
+	@ManyToMany // This relationship is established for users who wish to like the pet.
 	@JoinTable(name = "user_pet", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
 	private List<Pet> pets;
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)//This relationship is established for users who adopt the pet.
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY) // This relationship is established for users who adopt the
+															// pet.
 	private List<Pet> adoptedPets;
 
-	@ManyToMany //This relationship is established for users who wants to request adopting the pet
+	@ManyToMany // This relationship is established for users who wants to request adopting the
+				// pet
 	@JoinTable(name = "requests", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
 	private List<Pet> requestedPets;
 
-	@OneToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "shop_id")
 	private Shop shop;
 

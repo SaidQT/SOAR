@@ -399,7 +399,7 @@
 							id="nav-sign-in" role="tabpanel"
 							aria-labelledby="nav-sign-in-tab">
 							<div class="col-lg-8 offset-lg-2 mt-5">
-								<p class="mb-0">Log-In</p>
+								<p class="mb-0 fs-5" >Log-In</p>
 								<small class="text-danger"><c:out
 										value="${errorMessage}"></c:out></small>
 								<hr class="my-1">
@@ -431,28 +431,28 @@
 							id="nav-register" role="tabpanel"
 							aria-labelledby="nav-register-tab">
 							<div class="col-lg-8 offset-lg-2 mt-5">
-								<p class="mb-0">Sign-Up With Email</p>
+								<p class="mb-0 fs-5">Sign-Up With Email</p>
 								<hr class="my-1">
 								<form:form id="form1" class="form-group flex-wrap"
 									action="register" method="POST" modelAttribute="user">
 									<div class="form-input col-lg-12 my-4">
 										<form:input path="username" placeholder="Your full name"
 											class="form-control mb-3 p-4" />
-										<form:errors path="username" class="text-warning" />
+										<form:errors path="username" class="text-danger" />
 
 										<form:input type="email" path="email"
 											placeholder="Your email address"
 											class="form-control mb-3 p-4" />
-										<form:errors path="email" class="text-warning" />
+										<form:errors path="email" class="text-danger" />
 
 										<form:input type="password" path="password"
 											placeholder="Set your password" class="form-control mb-3 p-4" />
-										<form:errors path="password" class="text-warning" />
+										<form:errors path="password" class="text-danger" />
 
 										<form:input type="password" path="passwordConfirmation"
 											placeholder="Retype your password"
 											class="form-control mb-3 p-4" />
-										<form:errors path="passwordConfirmation" class="text-warning" />
+										<form:errors path="passwordConfirmation" class="text-danger" />
 
 										<div class="d-grid my-3">
 											<input type="submit" value="Sign Up"

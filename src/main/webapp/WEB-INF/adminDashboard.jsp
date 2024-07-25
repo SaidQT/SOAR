@@ -92,7 +92,7 @@
 
 			<div class="card">
 				<div>
-					<div class="numbers">$0</div>
+					<div class="numbers"><c:out value="${totalDonations}"></c:out> $</div>
 					<div class="cardName">Donations</div>
 				</div>
 				<div class="iconBx">

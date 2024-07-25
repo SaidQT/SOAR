@@ -139,22 +139,106 @@
 padding
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 20px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 background
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rgba
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 (
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 0
 ,
 0
@@ -162,22 +246,106 @@ background
 0
 ,
 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .5
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ; /* Semi-transparent background color for contrast */
 border-radius
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 10px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ;
@@ -191,25 +359,123 @@ border-radius
 50
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 %
 {
 transform
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 translateX
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 (
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 20px
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ;
@@ -217,9 +483,37 @@ translateX
 100
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 %
 {
 transform
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -265,6 +559,20 @@ transform
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 translateX
 
 
@@ -286,7 +594,35 @@ translateX
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -332,7 +668,35 @@ translateX
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -559,15 +923,15 @@ translateX
 
 								<div class="d-none d-lg-flex align-items-end">
 									<ul class="d-flex justify-content-end list-unstyled m-0">
-									<c:if test="${currentUser != null}">
-										<li><a href="/edit" class="mx-3"> <iconify-icon
-													icon="healthicons:person" class="fs-4"></iconify-icon>
-										</a></li>
+										<c:if test="${currentUser != null}">
+											<li><a href="/edit" class="mx-3"> <iconify-icon
+														icon="healthicons:person" class="fs-4"></iconify-icon>
+											</a></li>
 										</c:if>
 										<c:if test="${currentUser == null}">
-										<li><a href="/login" class="mx-3"> <iconify-icon
-													icon="healthicons:person" class="fs-4"></iconify-icon>
-										</a></li>
+											<li><a href="/login" class="mx-3"> <iconify-icon
+														icon="healthicons:person" class="fs-4"></iconify-icon>
+											</a></li>
 										</c:if>
 										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
@@ -733,7 +1097,7 @@ translateX
 								generosity not only impacts individual animals but also
 								strengthens the infrastructure needed to address broader issues
 								like animal welfare and advocacy.</p>
-							<p class="text-black">- Said Qt</p>
+							<p class="text-black">- Said Qtaish</p>
 						</div>
 					</div>
 				</div>
@@ -754,7 +1118,7 @@ translateX
 								present in each moment. In choosing adoption, you're not just
 								changing an animal's life; you're embracing a commitment to
 								kindness and making the world a more beautiful place</p>
-							<p class="text-black">- Rand Farhod</p>
+							<p class="text-black">- Rand Farhoud</p>
 						</div>
 					</div>
 				</div>
@@ -803,28 +1167,44 @@ translateX
 									Donate for Love <span class="text-primary">Spread love
 										with giving</span>
 								</h2>
-								<form>
+
+
+								<form:form action="/donate" method="post"
+									modelAttribute="donation">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" />
 
 
 									<div class="mb-3">
-										<input type="email" class="form-control form-control-lg"
-											name="email" id="email"
-											placeholder="Enter Your Email Address">
+										<form:input type="email" class="form-control form-control-lg"
+											path="email" id="email"
+											placeholder="Enter Your Email Address" />
+										<form:errors path="email" class="text-danger" />
+
 									</div>
+
 									<div class="mb-3">
-										<input type="number" class="form-control form-control-lg"
-											name="email" id="password1" placeholder="Donation Amount">
+										<form:input type="number" class="form-control form-control-lg"
+											path="visaNumber" placeholder="Visa" />
+										<form:errors path="visaNumber" class="text-danger" />
+
 									</div>
+
 									<div class="mb-3">
-										<input type="number" class="form-control form-control-lg"
-											name="email" id="password2" placeholder="Visa">
+										<form:input type="number" class="form-control form-control-lg"
+											path="amount" id="password2" placeholder="Amount" />
+										<form:errors path="amount" class="text-danger" />
+
 									</div>
 
 									<div class="d-grid gap-2">
 										<button type="submit" class="btn btn-dark btn-lg rounded-1">Donate
 											Now</button>
 									</div>
-								</form>
+									<c:if test="${not empty successMessage}">
+										<p class="p-3 mb-2 text-danger mt-2 fs-3">${successMessage}</p>
+									</c:if>
+								</form:form>
 							</div>
 						</div>
 					</div>

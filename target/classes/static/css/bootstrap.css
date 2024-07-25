@@ -8538,8 +8538,8 @@ textarea.form-control-lg {
 
 .text-danger {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
-}
+  color: hsl(1 64% 49% / 1) !important;
+} 
 
 .text-light {
   --bs-text-opacity: 1;
