@@ -14,11 +14,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.axsos.project.models.Donation;
 import com.axsos.project.models.LoginUser;
 import com.axsos.project.models.Pet;
 import com.axsos.project.models.User;
@@ -43,7 +46,7 @@ public class UserController {
 	private final EditValidator editValidator;
 
 	// ****************************** Constructor ******************************
-	UserController(UserValidator userValidator,EditValidator editValidator) {
+	UserController(UserValidator userValidator, EditValidator editValidator) {
 		this.userValidator = userValidator;
 		this.editValidator = editValidator;
 	}
@@ -99,7 +102,7 @@ public class UserController {
 	// ****************************** R from {CRUD} ******************************
 	// Function to render the home page
 	@GetMapping({ "/", "/home" })
-	public String home(Principal principal, Model model) {
+	public String home(Principal principal, Model model, @ModelAttribute("donation") Donation donation) {
 		if (principal != null) {
 			String username = principal.getName();
 			User user = userService.findByUsername(username);
@@ -109,7 +112,7 @@ public class UserController {
 	}
 
 	// Function to render a page that show all pets
-	@GetMapping("/cart")
+	@GetMapping("cart")
 	public String showPets(Model model, Principal principal, HttpSession session) {
 		List<Pet> pets = petService.allPets();
 		String activeFilter = (String) session.getAttribute("activeFilter");
@@ -263,14 +266,31 @@ public class UserController {
 
 	}
 	// Function to canaling adoption request while request still pending
-	/*
-	 * @PatchMapping("/user/cancel") public String cancelRequest(@RequestParam(name
-	 * = "petId") Long petId, Principal principal) { Pet pet =
-	 * petService.findPet(petId); String username = principal.getName(); User user =
-	 * userService.findByUsername(username); pet.setUser(null);
-	 * pet.setStatus("Unadopted"); petService.createPet(pet);
-	 * user.removeAdoptedPet(pet); // user.addRefusedPets(pet);
-	 * userService.updateUser(user); return "redirect:/user/besties"; }
-	 */
 
+	@GetMapping("/user/cancel/{petId}")
+	public String cancelRequest(@PathVariable(name = "petId") Long petId, Principal principal) {
+		Pet pet = petService.findPet(petId);
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		pet.getRequest().remove(user);
+		if (pet.getRequest().isEmpty()) {
+			pet.setStatus("Unadopted");
+		}
+		petService.createPet(pet);
+		return "redirect:/user/besties";
+	}
+
+	@PostMapping("/donate")
+	public String donate(@Valid @ModelAttribute("donation") Donation donation, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
+		if (result.hasErrors()) {
+			System.out.print("Amount: " + donation.getAmount());
+			System.out.print("Email: " + donation.getEmail());
+			System.out.print("Visanumber: " + donation.getVisaNumber());
+			return "home.jsp";
+		}
+	
+		User.addDonation(donation.getAmount());
+		redirectAttributes.addFlashAttribute("successMessage", "Thank you!");
+		return "redirect:/home";
+	}
 }

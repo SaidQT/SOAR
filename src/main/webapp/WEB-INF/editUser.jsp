@@ -384,12 +384,12 @@
 					<input type="hidden" name="_csrf" value="${_csrf.token}"> <input
 						type="hidden" name="_method" value="patch">
 					<div class="form-input col-lg-12 my-4">
-						<input type="hidden" name="username" value="${user.username}">
+						<input type="hidden" name="username" value="${user.username}" placeholder="Enter your email">
 						<input type="email" name="email" value="${user.email}"
 							class="form-control mb-3 p-4">
 						<input type="password" name="password"
-							class="form-control mb-3 p-4"> <input type="password"
-							name="passwordConfirmation" class="form-control mb-3 p-4">
+							class="form-control mb-3 p-4" placeholder="Enter your password"> <input type="password"
+							name="passwordConfirmation" class="form-control mb-3 p-4" placeholder="Confirm password">
 						<c:if
 							test="${result != null && result.hasFieldErrors('passwordConfirmation')}">
 								<c:forEach items="${result.getFieldErrors('passwordConfirmation')}"

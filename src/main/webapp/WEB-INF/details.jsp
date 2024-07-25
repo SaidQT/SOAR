@@ -359,7 +359,7 @@
 			<div class="row align-items-center">
 				<div class="col-md-6">
 					<div class="hero-content py-0 my-0">
-						<h2 class="display-1 mt-3 mb-0">Account</h2>
+						<h2 class="display-1 mt-3 mb-0">Pet Details</h2>
 
 					</div>
 				</div>

@@ -26,13 +26,17 @@
 								name="home-outline"></ion-icon>
 					</span> <span class="title">Dashboard</span>
 				</a></li>
-				<li><a href="/shop/${shop.id}/requests"> <span
-						class="icon"> <ion-icon name="document-text-outline"></ion-icon>
-					</span> <span class="title">Requests</span>
-				</a></li>
 				<li><a href="/shop/add"> <span class="icon"> <ion-icon
 								name="paw-outline"></ion-icon>
 					</span> <span class="title">Add Pet</span>
+				</a></li>
+				<li><a href="/shop/edit"> <span class="icon"> <ion-icon
+								name="person-outline"></ion-icon>
+					</span> <span class="title">Profile</span>
+				</a></li>
+				<li><a href="/shop/${shop.id}/requests"> <span class="icon">
+							<ion-icon name="document-text-outline"></ion-icon>
+					</span> <span class="title">Requests</span>
 				</a></li>
 				<li>
 					<form id="logoutForm" method="POST" action="/logout">
@@ -45,6 +49,9 @@
 					</form>
 				</li>
 			</ul>
+
+
+
 			<img src="/images/n.png" id="footer-image">
 		</div>
 	</div>
@@ -61,7 +68,7 @@
 		<div class="section1">
 			<div class="tableTitle">
 				<h2 id="page">Requests</h2>
-				
+
 			</div>
 			<table>
 				<thead>

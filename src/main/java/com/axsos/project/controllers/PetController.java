@@ -19,6 +19,8 @@ import com.axsos.project.models.User;
 import com.axsos.project.services.PetService;
 import com.axsos.project.services.ShopService;
 import com.axsos.project.services.UserService;
+import com.axsos.project.validator.EditValidator;
+import com.axsos.project.validator.UserValidator;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -32,6 +34,12 @@ public class PetController {
 	UserService userService;
 	@Autowired
 	ShopService shopService;
+	private final EditValidator editValidator;
+
+	// ****************************** Constructor ******************************
+	PetController(EditValidator editValidator) {
+		this.editValidator = editValidator;
+	}
 
 	// ****************************** C from {CRUD} ******************************
 	// Functions allow the shop owner to add new pet to their shop
@@ -202,4 +210,37 @@ public class PetController {
 		petService.createPet(pet);
 		return "redirect:/shop/" + id + "/requests";
 	}
+
+	@GetMapping("/shop/edit")
+	public String editPassword(Model model, Principal principal) {
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		Shop shop = user.getShop();
+		model.addAttribute("user", user);
+		model.addAttribute("shop", shop);
+		return "editShopUser.jsp";
+	}
+
+	@PatchMapping("/shop/edit")
+	public String editPassword(@Valid @ModelAttribute("user") User user, BindingResult result, Model model,
+			Principal principal) {
+		editValidator.validate(user, result);
+		
+		if (result.hasErrors()) {
+			model.addAttribute("user", user);
+			model.addAttribute("result", result);
+			return "editShopUser.jsp";
+		} else {
+			String username = principal.getName();
+			User editUser = userService.findByUsername(username);
+			editUser.setUsername(editUser.getUsername()); // Ensure this field exists in your User model
+			editUser.setShop(editUser.getShop());
+			editUser.setEmail(user.getEmail());
+			editUser.setPassword(user.getPassword());
+			editUser.setPasswordConfirmation(user.getPasswordConfirmation());
+			userService.updateUser(editUser);
+			return "redirect:/shop/home";
+		}
+	}
+
 }
