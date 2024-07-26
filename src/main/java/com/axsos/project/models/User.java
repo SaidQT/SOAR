@@ -52,7 +52,7 @@ public class User {
 	public synchronized static void addDonation(Double amount) {
 		if (amount != null && amount > 0) {
 			totalDonations += amount;
-			System.out.println("Total: " + totalDonations); 
+			System.out.println("Total: " + totalDonations);
 		}
 	}
 
@@ -71,13 +71,11 @@ public class User {
 	@JoinTable(name = "user_pet", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
 	private List<Pet> pets;
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY) // This relationship is established for users who adopt the
-															// pet.
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY) // This relationship is established for users who adopt the pet.
 	private List<Pet> adoptedPets;
 
-	@ManyToMany // This relationship is established for users who wants to request adopting the
-				// pet
-	@JoinTable(name = "requests", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
+	// This relationship is established for users who wants to request adopting the pet
+	@ManyToMany(mappedBy = "request")
 	private List<Pet> requestedPets;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

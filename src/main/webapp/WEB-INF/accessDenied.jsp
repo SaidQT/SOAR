@@ -5,9 +5,18 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Access Denied</title>
+<link rel="stylesheet" type="text/css" href="/css/access.css">
+
 </head>
 <body>
-	<h1>Access Denied</h1>
-	<p>You do not have permission to access this page.</p>
+	<div class="wrapper">
+		<div class="box">
+			<h1>403</h1>
+			<p>Sorry, it's not allowed to go beyond this point!</p>
+			<p>
+				<a href="/home">Please, go back this way.</a>
+			</p>
+		</div>
+	</div>
 </body>
 </html>

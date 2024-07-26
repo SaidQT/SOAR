@@ -850,9 +850,16 @@ translateX
 
 								<div class="d-none d-lg-flex align-items-end">
 									<ul class="d-flex justify-content-end list-unstyled m-0">
-										<li><a href="/login" class="mx-3"> <iconify-icon
-													icon="healthicons:person" class="fs-4"></iconify-icon>
-										</a></li>
+									<c:if test="${currentUser != null}">
+											<li><a href="/edit" class="mx-3"> <iconify-icon
+														icon="healthicons:person" class="fs-4"></iconify-icon>
+											</a></li>
+										</c:if>
+										<c:if test="${currentUser == null}">
+											<li><a href="/login" class="mx-3"> <iconify-icon
+														icon="healthicons:person" class="fs-4"></iconify-icon>
+											</a></li>
+										</c:if>
 										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>

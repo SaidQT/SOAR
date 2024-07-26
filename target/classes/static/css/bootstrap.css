@@ -8513,7 +8513,7 @@ textarea.form-control-lg {
 /* rtl:end:remove */
 .text-primary {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+  color:rgb(175 121 31) !important;
 }
 
 .text-secondary {
@@ -8523,7 +8523,7 @@ textarea.form-control-lg {
 
 .text-success {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-success-rgb), var(--bs-text-opacity)) !important;
+  color: hsl(160, 70%, 33%) !important;
 }
 
 .text-info {

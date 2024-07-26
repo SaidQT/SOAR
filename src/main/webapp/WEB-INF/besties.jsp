@@ -24,20 +24,12 @@
 <meta name="keywords" content="">
 <meta name="description" content="">
 
-
-
-
-
-
 <link rel="stylesheet" href="css/swiper.css" />
 <link rel="stylesheet" href="css/bootstrap.css" />
 
 
 <link rel="stylesheet" type="text/css" href="css/vendor.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
-
-
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -327,7 +319,7 @@
 
 								<div class="d-none d-lg-flex align-items-end">
 									<ul class="d-flex justify-content-end list-unstyled m-0">
-										<li><a href="/login" class="mx-3"> <iconify-icon
+										<li><a href="/edit" class="mx-3"> <iconify-icon
 													icon="healthicons:person" class="fs-4"></iconify-icon>
 										</a></li>
 										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
@@ -392,7 +384,21 @@
 				class="section-header d-md-flex justify-content-between align-items-center">
 				<h2 class="display-3 fw-normal">My Besties</h2>
 			</div>
-
+			<!-- Display success or error messages -->
+			<c:if test="${successMessage != null}">
+				<div>
+					<p class="alert alert-success col-6">
+						<c:out value="${successMessage}" />
+					</p>
+				</div>
+			</c:if>
+			<c:if test="${errorMessage != null}">
+				<div>
+					<p class="alert alert-danger col-6">
+						<c:out value="${errorMessage}" />
+					</p>
+				</div>
+			</c:if>
 			<div class="row">
 
 				<h2>Adopted Pets</h2>
@@ -434,7 +440,9 @@
 									<h3 class="secondary-font text-primary">
 										<c:out value="${pet.breed}"></c:out>
 									</h3>
-									<a href="/user/cancel/${pet.id}" class="btn btn-primary me-3 px-4 py-2 text-uppercase">Cancel request</a>
+									<a href="/user/cancel/${pet.id}"
+										class="btn btn-primary me-3 px-4 py-2 text-uppercase">Cancel
+										request</a>
 									<div class="d-flex flex-wrap mt-3"></div>
 								</div>
 							</div>
@@ -444,58 +452,6 @@
 			</div>
 		</div>
 	</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<section id="register"
-		style="background: url('images/background-img.png') no-repeat;">
-		<div class="container ">
-			<div class="row my-5 py-5">
-				<div class="offset-md-3 col-md-6 my-5 ">
-					<h2 class="display-3 fw-normal text-center">
-						Donate for Love <span class="text-primary">Spread love with
-							giving</span>
-					</h2>
-					<form>
-						<div class="mb-3">
-							<input type="email" class="form-control form-control-lg"
-								name="email" id="email" placeholder="Enter Your Email Address">
-						</div>
-						<div class="mb-3">
-							<input type="number" class="form-control form-control-lg"
-								name="email" id="password1" placeholder="Donation Amount">
-						</div>
-						<div class="mb-3">
-							<input type="number" class="form-control form-control-lg"
-								name="email" id="password2" placeholder="Visa">
-						</div>
-
-						<div class="d-grid gap-2">
-							<button type="submit" class="btn btn-dark btn-lg rounded-1">Donate
-								Now</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-
-
 	<section id="insta" class="my-5">
 		<div class="row g-0 py-5">
 			<div class="col instagram-item  text-center position-relative">

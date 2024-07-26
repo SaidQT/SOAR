@@ -41,6 +41,7 @@ public class ShopForm {
 	// private String passwordConfirmation;
 
 	public ShopForm() {
+		this.currentSize = 0;
 	}
 
 	public String getShopName() {

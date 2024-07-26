@@ -394,7 +394,7 @@
 							test="${result != null && result.hasFieldErrors('passwordConfirmation')}">
 								<c:forEach items="${result.getFieldErrors('passwordConfirmation')}"
 									var="error">
-									<span class="form-errors">${error.defaultMessage}</span>
+									<span class="text-danger">${error.defaultMessage}</span>
 								</c:forEach>
 							
 						</c:if>
@@ -404,30 +404,6 @@
 							class="btn btn-dark btn-lg rounded-1" />
 					</div>
 				</form>
-
-				<%-- 	<form:form id="form1" class="form-group flex-wrap" action="/edit"
-					method="post" modelAttribute="user">
-					<input type="hidden" name="_method" value="patch">
-					<div class="form-input col-lg-12 my-4">
-						<form:input type="text" path="username" class="form-control mb-3 p-4"/>
-						<form:input type="email" path="email"
-							placeholder="Your email address" class="form-control mb-3 p-4" />
-						<form:errors path="email" class="text-warning" />
-
-						<form:input type="password" path="password"
-							placeholder="Set your password" class="form-control mb-3 p-4" />
-						<form:errors path="password" class="text-warning" />
-
-						<form:input type="password" path="passwordConfirmation"
-							placeholder="Retype your password" class="form-control mb-3 p-4" />
-						<form:errors path="passwordConfirmation" class="text-warning" />
-
-						<div class="d-grid my-3">
-							<input type="submit" value="Submit"
-								class="btn btn-dark btn-lg rounded-1" />
-						</div>
-					</div>
-				</form:form> --%>
 			</div>
 		</div>
 	</section>

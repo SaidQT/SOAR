@@ -313,24 +313,31 @@
 
 								<div class="d-none d-lg-flex align-items-end">
 									<ul class="d-flex justify-content-end list-unstyled m-0">
-										<li><a href="/login" class="mx-3"> <iconify-icon
-													icon="healthicons:person" class="fs-4"></iconify-icon>
-										</a></li>
+										<c:if test="${currentUser != null}">
+											<li><a href="/edit" class="mx-3"> <iconify-icon
+														icon="healthicons:person" class="fs-4"></iconify-icon>
+											</a></li>
+										</c:if>
+										<c:if test="${currentUser == null}">
+											<li><a href="/login" class="mx-3"> <iconify-icon
+														icon="healthicons:person" class="fs-4"></iconify-icon>
+											</a></li>
+										</c:if>
 										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
 										<c:if test="${currentUser != null}">
-										<li>
-											<form id="logoutForm" method="POST" action="/logout">
-												<input type="hidden" name="${_csrf.parameterName}"
-													value="${_csrf.token}" />
-												<button type="submit"
-													style="border: none; background: none;">
-													<iconify-icon icon="mdi:logout" class="fs-4"></iconify-icon>
-												</button>
-											</form>
+											<li>
+												<form id="logoutForm" method="POST" action="/logout">
+													<input type="hidden" name="${_csrf.parameterName}"
+														value="${_csrf.token}" />
+													<button type="submit"
+														style="border: none; background: none;">
+														<iconify-icon icon="mdi:logout" class="fs-4"></iconify-icon>
+													</button>
+												</form>
 
-										</li>
+											</li>
 										</c:if>
 										<!-- <li class=""><a href="#" class="mx-3"
 											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
@@ -399,7 +406,7 @@
 							id="nav-sign-in" role="tabpanel"
 							aria-labelledby="nav-sign-in-tab">
 							<div class="col-lg-8 offset-lg-2 mt-5">
-								<p class="mb-0 fs-5" >Log-In</p>
+								<p class="mb-0 fs-5">Log-In</p>
 								<small class="text-danger"><c:out
 										value="${errorMessage}"></c:out></small>
 								<hr class="my-1">

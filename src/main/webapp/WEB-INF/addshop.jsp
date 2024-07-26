@@ -81,13 +81,13 @@
 					<p class="form-errors">
 						<form:errors path="maxCapacity" />
 					</p>
-					<p>
+<%-- 					<p>
 						<form:input type="number" path="currentSize" required="true"
 							min="0" placeholder="Total Pet Count" />
 					</p>
 					<p class="form-errors">
 						<form:errors path="currentSize" />
-					</p>
+					</p> --%>
 					<p>
 						<form:input path="phoneNumber" required="true"
 							placeholder="Phone Number" />
