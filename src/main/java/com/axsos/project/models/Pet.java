@@ -18,6 +18,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -42,7 +43,7 @@ public class Pet {
 	@Size(min = 2, max = 200, message = "Pet breed must be at least 2 characters")
 	private String breed;
 
-	//	@NotNull
+	// @NotNull
 	@Min(0)
 	private Float age;
 
@@ -75,7 +76,12 @@ public class Pet {
 	private User user;
 
 	@ManyToMany
-	@JoinTable(name = "requests", joinColumns = @JoinColumn(name = "pet_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	@JoinTable(
+			name = "request",
+			joinColumns = @JoinColumn(name = "pet_id"),
+			inverseJoinColumns = @JoinColumn(name = "user_id"),
+			uniqueConstraints = @UniqueConstraint(columnNames = {"pet_id", "user_id"})
+			)
 	private List<User> request;
 
 	@ManyToOne(fetch = FetchType.LAZY) // this relationship is for shops and pets

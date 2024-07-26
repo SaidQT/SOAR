@@ -24,11 +24,6 @@
 <meta name="keywords" content="">
 <meta name="description" content="">
 
-
-
-
-
-
 <link rel="stylesheet" href="css/swiper.css" />
 <link rel="stylesheet" href="css/bootstrap.css" />
 
@@ -48,6 +43,10 @@
 /* .fixed-size-img {
 	width: 250px; /* Set desired width percentage */
 height
+
+
+
+
 
 
 
@@ -106,6 +105,8 @@ height
 
 
 
+
+
  
 
 
@@ -126,7 +127,13 @@ height
 
 
 
+
+
 300px
+
+
+
+
 
 
 
@@ -205,7 +212,13 @@ object-fit
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -245,7 +258,13 @@ object-fit
 
 
 
+
+
 cover
+
+
+
+
 
 
 
@@ -605,9 +624,16 @@ cover
 
 								<div class="d-none d-lg-flex align-items-end">
 									<ul class="d-flex justify-content-end list-unstyled m-0">
-										<li><a href="/login" class="mx-3"> <iconify-icon
-													icon="healthicons:person" class="fs-4"></iconify-icon>
-										</a></li>
+									<c:if test="${currentUser != null}">
+											<li><a href="/edit" class="mx-3"> <iconify-icon
+														icon="healthicons:person" class="fs-4"></iconify-icon>
+											</a></li>
+										</c:if>
+										<c:if test="${currentUser == null}">
+											<li><a href="/login" class="mx-3"> <iconify-icon
+														icon="healthicons:person" class="fs-4"></iconify-icon>
+											</a></li>
+										</c:if>
 										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 													icon="mdi:heart" class="fs-4"></iconify-icon>
 										</a></li>
@@ -711,25 +737,16 @@ cover
 										<input type="hidden" name="petId" value="${pet.id}"> <input
 											type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}">
-										<c:if test="${currentUser != null}">
-											<c:if test="${currentUser.pets.contains(pet)}">
-												<button id="cart-button" class="btn btn-outline-danger p-2"
-													type="submit">
-													<iconify-icon icon="emojione-v1:broken-heart" class="fs-5"></iconify-icon>
-												</button>
-											</c:if>
-											<c:if test="${!currentUser.pets.contains(pet)}">
-												<button id="cart-button" class="btn btn-outline-primary p-2"
-													type="submit">
-													<iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
-												</button>
-											</c:if>
+										<c:if test="${currentUser.pets.contains(pet)}">
+											<button id="cart-button" class="btn btn-outline-danger p-2"
+												type="submit">
+												<iconify-icon icon="emojione-v1:broken-heart" class="fs-5"></iconify-icon>
+											</button>
 										</c:if>
-										<c:if test="${currentUser == null}">
+										<c:if test="${!currentUser.pets.contains(pet)}">
 											<button id="cart-button" class="btn btn-outline-primary p-2"
-												type="submit" disabled>
-												<iconify-icon icon="fluent:heart-28-filled" class="fs-5"
-													disabled></iconify-icon>
+												type="submit">
+												<iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
 											</button>
 										</c:if>
 									</form>
@@ -920,7 +937,7 @@ cover
 
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- 	<script>
+	<!-- 	<script>
 	document.addEventListener('DOMContentLoaded', function () {
   // Get all filter buttons
   const filterButtons = document.querySelectorAll('.filter-button');
@@ -1017,8 +1034,7 @@ cover
 																			.addClass(
 																					'btn-outline-primary');
 																} else if (response.action === 'error') {
-																	console
-																			.error('An error occurred. Please try again.'); // Log errors in console
+																	window.location.href = '/login'; // Redirect to the login page
 																}
 															},
 															error : function(

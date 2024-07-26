@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.axsos.project.models.Pet;
 import com.axsos.project.models.Shop;
@@ -20,7 +21,6 @@ import com.axsos.project.services.PetService;
 import com.axsos.project.services.ShopService;
 import com.axsos.project.services.UserService;
 import com.axsos.project.validator.EditValidator;
-import com.axsos.project.validator.UserValidator;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -49,6 +49,12 @@ public class PetController {
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		Shop shop = user.getShop();
+		// We need to check if the shop has a space for a new pet
+		boolean space = true;
+		if (shop.getCurrentSize() == shop.getMaxCapacity()) {
+			space = false;
+		}
+		model.addAttribute("space", space);
 		model.addAttribute("shop", shop);
 		return "addpet.jsp";
 	}
@@ -68,9 +74,11 @@ public class PetController {
 			// To add new pet to the shop:
 			// *) Set status to unadopted (by default)
 			// *) Add relationship with shop(1 shop --have-- M pets)
+			// *) Increment the number of pets in this shop
 			// *) Save the pet
 			pet.setStatus("Unadopted");
 			pet.setShop(shop);
+			shop.setCurrentSize(shop.getCurrentSize()+1);
 			petService.createPet(pet);
 			return "redirect:/shop/home";
 		}
@@ -84,7 +92,7 @@ public class PetController {
 		User user = userService.findByUsername(username);
 		Shop shop = user.getShop();
 		model.addAttribute("shop", shop);
-		List<Pet> pets = petService.allPets();
+		List<Pet> pets = shop.getPets();
 		model.addAttribute("pets", pets);
 		return "pet.jsp";
 	}
@@ -149,15 +157,25 @@ public class PetController {
 	}
 
 	@PatchMapping("/user/details")
-	public String requestAdoption(HttpSession session, Principal principal) {
+	public String requestAdoption(HttpSession session, Principal principal, RedirectAttributes redirectAttributes) {
 		Long id = (Long) session.getAttribute("id");
 		Pet pet = petService.findPet(id);
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
-		pet.getRequest().add(user); // add the current user to the list who request
+
+		// Check if the request already exists
+		if (pet.getRequest().contains(user)) {
+			redirectAttributes.addFlashAttribute("errorMessage", "You have already submitted a request for this pet.");
+			return "redirect:/besties";  // Redirect to the same page with an error message
+		}
+
+		// Add the user to the pet's request list
+		pet.getRequest().add(user);
 		pet.setStatus("Pending");
 		petService.createPet(pet);
-		return "redirect:/user/besties";
+
+		redirectAttributes.addFlashAttribute("successMessage", "Adoption request submitted successfully.");
+		return "redirect:/besties";  // Redirect to the same page with a success message
 	}
 
 	@GetMapping("/shop/{id}/requests")
@@ -188,6 +206,8 @@ public class PetController {
 		Pet pet = petService.findPet(shopId);
 		pet.setStatus("Adopted");
 		pet.setUser(acceptedUser);
+		Shop shop = x.getShop();
+		shop.setCurrentSize(shop.getCurrentSize()-1);
 		// When the user is accepted, the list of requests becomes empty
 		pet.setRequest(null);
 		petService.createPet(pet);
@@ -225,7 +245,7 @@ public class PetController {
 	public String editPassword(@Valid @ModelAttribute("user") User user, BindingResult result, Model model,
 			Principal principal) {
 		editValidator.validate(user, result);
-		
+
 		if (result.hasErrors()) {
 			model.addAttribute("user", user);
 			model.addAttribute("result", result);
@@ -242,5 +262,4 @@ public class PetController {
 			return "redirect:/shop/home";
 		}
 	}
-
 }

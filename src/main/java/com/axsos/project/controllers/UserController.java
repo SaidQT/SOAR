@@ -165,13 +165,13 @@ public class UserController {
 	@PostMapping("/public/cart/add")
 	@ResponseBody
 	public Map<String, String> addPetToUserCart(@RequestParam(name = "petId") Long petId, Principal principal) {
-		String username = principal.getName();
-		User user = userService.findByUsername(username);
 		Pet pet = petService.findPet(petId);
 
 		Map<String, String> response = new HashMap<>();
 
-		if (user != null && pet != null) {
+		if (principal != null && pet != null) {
+			String username = principal.getName();
+			User user = userService.findByUsername(username);
 			if (user.getPets().contains(pet)) {
 				pet.getUsers().remove(user);
 				petService.createPet(pet);
@@ -266,7 +266,6 @@ public class UserController {
 
 	}
 	// Function to canaling adoption request while request still pending
-
 	@GetMapping("/user/cancel/{petId}")
 	public String cancelRequest(@PathVariable(name = "petId") Long petId, Principal principal) {
 		Pet pet = petService.findPet(petId);
@@ -288,7 +287,7 @@ public class UserController {
 			System.out.print("Visanumber: " + donation.getVisaNumber());
 			return "home.jsp";
 		}
-	
+
 		User.addDonation(donation.getAmount());
 		redirectAttributes.addFlashAttribute("successMessage", "Thank you!");
 		return "redirect:/home";

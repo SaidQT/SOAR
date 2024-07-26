@@ -220,9 +220,16 @@
 
 						<div class="d-flex d-lg-none align-items-end mt-3">
 							<ul class="d-flex justify-content-end list-unstyled m-0">
-								<li><a href="/login" class="mx-3"> <iconify-icon
-											icon="healthicons:person" class="fs-4"></iconify-icon>
-								</a></li>
+								<c:if test="${currentUser != null}">
+									<li><a href="/edit" class="mx-3"> <iconify-icon
+												icon="healthicons:person" class="fs-4"></iconify-icon>
+									</a></li>
+								</c:if>
+								<c:if test="${currentUser == null}">
+									<li><a href="/login" class="mx-3"> <iconify-icon
+												icon="healthicons:person" class="fs-4"></iconify-icon>
+									</a></li>
+								</c:if>
 								<li><a href="/user/favorites" class="mx-3"> <iconify-icon
 											icon="mdi:heart" class="fs-4"></iconify-icon>
 								</a></li>
@@ -413,7 +420,7 @@
 							</h1>
 
 						</div>
-						<p style="font-size:larger;">
+						<p style="font-size: larger;">
 							<c:out value="${pet.description}"></c:out>
 						</p>
 						<div class="cart-wrap">
@@ -421,15 +428,19 @@
 							<div class="meta-item d-flex align-items-baseline">
 								<h5 class="item-title fw-bold no-margin pe-2">Breed:</h5>
 								<ul class="select-list list-unstyled d-flex">
-									<li data-value="Golden Retriever" class="select-item"><h5><c:out
-											value="${pet.breed}"></c:out></h5></li>
+									<li data-value="Golden Retriever" class="select-item"><h5>
+											<c:out value="${pet.breed}"></c:out>
+										</h5></li>
 								</ul>
 							</div>
 							<div class="meta-item d-flex align-items-baseline">
 								<h5 class="item-title fw-bold no-margin pe-2">Age:</h5>
 								<ul class="select-list list-unstyled d-flex">
-									<h5><li data-value="New York" class="select-item"><c:out
-											value="${pet.age}"></c:out> years</h5></li>
+									<h5>
+										<li data-value="New York" class="select-item"><c:out
+												value="${pet.age}"></c:out> years
+									</h5>
+									</li>
 								</ul>
 							</div>
 							<div class="product-quantity pt-2">
@@ -438,19 +449,15 @@
 								</div> -->
 								<div class="stock-button-wrap">
 									<div class="d-flex flex-wrap pt-4">
-										<a href="#" class="pt-1 pb-3"> <form:form
-												action="/user/details" method="post">
-												<input type="hidden" name="${_csrf.parameterName}"
-													value="${_csrf.token}" />
-												<input type="hidden" name="_method" value="patch">
-												<input type="hidden" name="petId" value="${pet.id}">
+										<form:form action="/user/details" method="post">
+											<input type="hidden" name="${_csrf.parameterName}"
+												value="${_csrf.token}" />
+											<input type="hidden" name="_method" value="patch">
+											<input type="hidden" name="petId" value="${pet.id}">
 
-												<button type="submit"
-													class="btn btn-primary px-4 py-2"
-													style="border: none; font-size:larger;">Adopt now</button>
-											</form:form>
-
-										</a>
+											<button type="submit" class="btn btn-primary px-4 py-2"
+												style="border: none; font-size: larger;">Adopt now</button>
+										</form:form>
 									</div>
 								</div>
 							</div>
@@ -513,92 +520,7 @@
 	</section>
 
 
-	<section id="register"
-		style="background: url('images/background-img.png') no-repeat;"
-		class="my-5">
-		<div class="container my-5 ">
-			<div class="row my-5 py-5">
-				<div class="offset-md-3 col-md-6 my-5 ">
-					<h2 class="display-3 fw-normal text-center">
-						Get 20% Off on <span class="text-primary">first Purchase</span>
-					</h2>
-					<form>
-						<div class="mb-3">
-							<input type="email" class="form-control form-control-lg"
-								name="email" id="email" placeholder="Enter Your Email Address">
-						</div>
-						<div class="mb-3">
-							<input type="password" class="form-control form-control-lg"
-								name="email" id="password1" placeholder="Create Password">
-						</div>
-						<div class="mb-3">
-							<input type="password" class="form-control form-control-lg"
-								name="email" id="password2" placeholder="Repeat Password">
-						</div>
-
-						<div class="d-grid gap-2">
-							<button type="submit" class="btn btn-dark btn-lg rounded-1">Register
-								it now</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section id="service" class="mt-5 pt-2">
-		<div class="container py-5 my-5">
-			<div class="row g-md-5 pt-4">
-				<div class="col-md-3 my-3">
-					<div class="card">
-						<div>
-							<iconify-icon class="service-icon text-primary"
-								icon="la:shopping-cart"></iconify-icon>
-						</div>
-						<h3 class="card-title py-2 m-0">Free Delivery</h3>
-						<div class="card-text">
-							<p class="blog-paragraph fs-6"></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 my-3">
-					<div class="card">
-						<div>
-							<iconify-icon class="service-icon text-primary"
-								icon="la:user-check"></iconify-icon>
-						</div>
-						<h3 class="card-title py-2 m-0">100% secure payment</h3>
-						<div class="card-text">
-							<p class="blog-paragraph fs-6"></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 my-3">
-					<div class="card">
-						<div>
-							<iconify-icon class="service-icon text-primary" icon="la:tag"></iconify-icon>
-						</div>
-						<h3 class="card-title py-2 m-0">Daily Offer</h3>
-						<div class="card-text">
-							<p class="blog-paragraph fs-6"></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 my-3">
-					<div class="card">
-						<div>
-							<iconify-icon class="service-icon text-primary" icon="la:award"></iconify-icon>
-						</div>
-						<h3 class="card-title py-2 m-0">Quality guarantee</h3>
-						<div class="card-text">
-							<p class="blog-paragraph fs-6"></p>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</section>
+	
 
 	<section id="insta" class="my-3">
 		<div class="row g-0 py-5">

@@ -102,7 +102,7 @@
 }
 
 .text-background {
-	background: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+	background: rgb(255 255 255 / 42%); /* Semi-transparent background */
 	backdrop-filter: blur(10px); /* Blur effect */
 	padding: 20px;
 	border-radius: 10px;

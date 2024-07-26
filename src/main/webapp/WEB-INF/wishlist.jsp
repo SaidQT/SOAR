@@ -321,7 +321,7 @@
 
 								<div class="d-none d-lg-flex align-items-end">
 									<ul class="d-flex justify-content-end list-unstyled m-0">
-										<li><a href="/login" class="mx-3"> <iconify-icon
+										<li><a href="/edit" class="mx-3"> <iconify-icon
 													icon="healthicons:person" class="fs-4"></iconify-icon>
 										</a></li>
 										<li><a href="/user/favorites" class="mx-3"> <iconify-icon
@@ -336,24 +336,11 @@
 													<iconify-icon icon="mdi:logout" class="fs-4"></iconify-icon>
 												</button>
 											</form>
-
 										</li>
-										<!-- <li class=""><a href="#" class="mx-3"
-											data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
-											aria-controls="offcanvasCart"> <iconify-icon
-													icon="mdi:bell" class="fs-4 position-relative"></iconify-icon>
-												<span
-												class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-													04 </span>
-										</a></li> -->
 									</ul>
-
 								</div>
-
 							</div>
-
 						</div>
-
 					</nav>
 
 
@@ -408,14 +395,15 @@
 											<c:out value="${pet.breed}"></c:out>
 										</h3>
 										<div class="d-flex flex-wrap mt-3">
-											<a href="/public/${pet.id}/details" class="btn btn-primary me-3 px-4 py-2">
+											<a href="/public/${pet.id}/details"
+												class="btn btn-primary me-3 px-4 py-2">
 												<h5>Let's cuddle</h5>
 											</a>
 											<form action="/public/cart/add" method="post"
 												class="remove-favorite-form position-absolute top-0 end-0 m-2">
 												<input type="hidden" name="petId" value="${pet.id}">
 												<input type="hidden" name="${_csrf.parameterName}"
-													value="${_csrf.token}"> 
+													value="${_csrf.token}">
 												<!-- Location can be adjusted -->
 												<button class="btn btn-outline-danger p-2" type="submit">
 													<iconify-icon icon="emojione-v1:broken-heart" class="fs-5"></iconify-icon>
@@ -613,37 +601,61 @@
 
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        // Attach submit event handler to all forms with class 'remove-favorite-form'
-        $(document).on('submit', '.remove-favorite-form', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+	<script>
+		$(document)
+				.ready(
+						function() {
+							// Attach submit event handler to all forms with class 'remove-favorite-form'
+							$(document)
+									.on(
+											'submit',
+											'.remove-favorite-form',
+											function(event) {
+												event.preventDefault(); // Prevent the default form submission
 
-            var $form = $(this);
-            var formData = $form.serialize(); // Serialize the form data
+												var $form = $(this);
+												var formData = $form
+														.serialize(); // Serialize the form data
 
-            $.ajax({
-                url: $form.attr('action'),
-                type: 'POST',
-                data: formData,
-                dataType: 'json', // Expect a JSON response
-                success: function(response) {
-                    console.log('AJAX response:', response); // Log the response to verify its contents
+												$
+														.ajax({
+															url : $form
+																	.attr('action'),
+															type : 'POST',
+															data : formData,
+															dataType : 'json', // Expect a JSON response
+															success : function(
+																	response) {
+																console
+																		.log(
+																				'AJAX response:',
+																				response); // Log the response to verify its contents
 
-                    if (response.action === 'removed') {
-                        // Remove the entire parent <div> of the form
-                        $form.closest('.pet-item').remove();
-                    } else if (response.action === 'error') {
-                        console.error('An error occurred. Please try again.'); // Log errors in console
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error('AJAX error:', status, error); // Log errors for debugging
-                }
-            });
-        });
-    });
-</script>
+																if (response.action === 'removed') {
+																	// Remove the entire parent <div> of the form
+																	$form
+																			.closest(
+																					'.pet-item')
+																			.remove();
+																} else if (response.action === 'error') {
+																	console
+																			.error('An error occurred. Please try again.'); // Log errors in console
+																}
+															},
+															error : function(
+																	xhr,
+																	status,
+																	error) {
+																console
+																		.error(
+																				'AJAX error:',
+																				status,
+																				error); // Log errors for debugging
+															}
+														});
+											});
+						});
+	</script>
 
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/swiper.js"></script>

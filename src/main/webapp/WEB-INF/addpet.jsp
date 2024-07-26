@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- Formatting (dates) -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!-- form:form -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!-- for rendering errors on PUT routes -->
 <%@ page isErrorPage="true"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
@@ -47,8 +52,8 @@
 				</li>
 			</ul>
 
-		<img src="/images/n.png" id="footer-image">
-	</div>
+			<img src="/images/n.png" id="footer-image">
+		</div>
 	</div>
 	<!-- ========================= Main ==================== -->
 	<div class="main">
@@ -96,19 +101,21 @@
 				</p>
 				<p>
 					<form:textarea path="imageUrl" placeholder="Image URL"
-						required="true" rows="2" cols="50"/>
+						required="true" rows="2" cols="50" />
 				</p>
 				<p class="form-errors">
 					<form:errors path="imageUrl" />
 				</p>
 				<p>
 					<form:textarea path="description" required="true"
-						placeholder="Description" rows="12" cols="50"/>
+						placeholder="Description" rows="12" cols="50" />
 				</p>
 				<p class="form-errors">
 					<form:errors path="description" />
 				</p>
-				<input type="submit" value="Add Pet" />
+				<input type="submit" value="Add Pet"
+					${space ? "" : "disabled title='Cannot add more pets, space is full'"}
+					class="${space ? '' : 'disabled-button'}" />
 			</form:form>
 		</div>
 	</div>

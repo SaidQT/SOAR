@@ -1,5 +1,7 @@
 /* =========== Google Fonts ============ */
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import
+	url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap')
+	;
 /* =============== Globals ============== */
 * {
 	font-family: "Lato";
@@ -27,13 +29,13 @@ body {
 }
 
 .tableTitle {
-	display:flex;
+	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
 .section1 {
-	width:80%;
+	width: 80%;
 	margin: 2% auto;
 }
 /* =============== Navigation ================ */
@@ -145,7 +147,6 @@ body {
 	white-space: nowrap;
 }
 
-
 .logout-button:hover, .logout-button:focus {
 	background-color: var(--white);
 	color: #cc852f;
@@ -153,16 +154,17 @@ body {
 }
 
 #footer-image {
-    position: absolute;
-    bottom: 10px; /* Adjust as necessary */
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 80%; /* Adjust as necessary */
-    padding: 10px;
+	position: absolute;
+	bottom: 10px; /* Adjust as necessary */
+	left: 50%;
+	transform: translateX(-50%);
+	max-width: 80%; /* Adjust as necessary */
+	padding: 10px;
 }
 
 /* --------- curve outside ---------- */
-.navigation ul li:hover a::before, .navigation ul li.hovered a::before,.logout-button:hover::before {
+.navigation ul li:hover a::before, .navigation ul li.hovered a::before,
+	.logout-button:hover::before {
 	content: "";
 	position: absolute;
 	right: 0;
@@ -175,7 +177,8 @@ body {
 	pointer-events: none;
 }
 
-.navigation ul li:hover a::after, .navigation ul li.hovered a::after,.logout-button:hover::after {
+.navigation ul li:hover a::after, .navigation ul li.hovered a::after,
+	.logout-button:hover::after {
 	content: "";
 	position: absolute;
 	right: 0;
@@ -410,4 +413,13 @@ body {
 		right: 0;
 		left: initial;
 	}
+}
+/* For add pet */
+.disabled-button {
+	background-color: gray;
+	cursor: not-allowed;
+}
+
+.disabled-button:hover {
+	cursor: not-allowed;
 }

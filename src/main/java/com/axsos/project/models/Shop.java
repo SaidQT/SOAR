@@ -59,6 +59,7 @@ public class Shop {
 	// ******************* Constructor *******************
 	public Shop() {
 		this.pets = new ArrayList<Pet>();
+		this.currentSize = 0;
 	}
 
 	// ******************* Setters and Getters *******************
