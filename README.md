@@ -75,7 +75,6 @@ Displays pets available for adoption with a dynamic and user-friendly interface.
 Contains answers to frequently asked questions from the "Contact Us" form. 
 
 ### Contact Us Page
-![Image of Contact Us Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Contact%20us%20page.png).
 Offers a form for visitors to send us an email, requesting their name, email address, and message. 
 ![sample image](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/email.png)
 ### Pet Details Page
@@ -85,8 +84,9 @@ Provides comprehensive details about each pet, including their story, age, breed
 Details about our partner shops, including names and locations. 
 
 ## User Interfaces
-
-[Watch the video](https://github.com/SaidQT/SOAR/blob/master/User%20Interfaces.mp4)
+<video width="600" controls>
+  <source src="https://github.com/SaidQT/SOAR/blob/master/User%20Interfaces.mp4" type="video/mp4">
+</video>
 ### Besties Page
 Displays the pets that the user has requested to adopt, organized into pending and accepted requests. 
 
