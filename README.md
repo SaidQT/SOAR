@@ -51,32 +51,27 @@ S.O.A.R (Support Our Adoption Rescue) is a user-friendly website dedicated to fa
 ![JavaScript](https://img.shields.io/badge/JavaScript-valid-yellow?logo=javascript)
 ![MySQL](https://img.shields.io/badge/MySQL-valid-blue?logo=mysql)
 
+
 ## Public Pages
 
 ### Home Page
-![image](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Home%20page.png)
 Welcome to our home page. Here, you'll find easy access to important links, including our cart, as well as a warm introduction to our website. We aim to provide a welcoming experience and guide you through our offerings, making it simple to explore what we have to offer. The page is styled with custom CSS and includes JavaScript for interactive elements. Icons are used for visual enhancement, and external libraries are loaded for additional functionality.
 
 ### Navbar Section
-![image](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Navbar%20for%20user%20interfaces.jpg)
 - **Favourite Button**: Redirects users to their favourite pets or to the login/register page if no user is logged in. Implemented with AJAX for a seamless experience.
 - **Logout Button**: Visible only when a user is logged in.
 - **Profile Button**: Redirects to the login/register page if not logged in or to the profile update page if logged in.
 
 ### Pet Filtering
-![image](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Pet%20filltering.jpg)
 Data filtering is managed via AJAX in the navbar, icons on the home page, and the cart page. Clicking a filter updates the display to show relevant pets.
 
 ### About Us Page
-![image](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/About%20us%20page.png)
 Provides details about our brand, including information about rescued pets, successful adoptions, dedicated volunteers, and community events. Styled with custom CSS and JavaScript for interactivity.
 
 ### Cart Page
-![Image of Cart Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Cart%20page.png).
 Displays pets available for adoption with a dynamic and user-friendly interface. Features include a banner, filterable gallery, donation section, and AJAX-managed favourite forms. 
 
 ### FAQS Page
-![Image of FAQS Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/FAQs%20page.png).
 Contains answers to frequently asked questions from the "Contact Us" form. 
 
 ### Contact Us Page
@@ -84,25 +79,21 @@ Contains answers to frequently asked questions from the "Contact Us" form.
 Offers a form for visitors to send us an email, requesting their name, email address, and message. 
 ![sample image](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/email.png)
 ### Pet Details Page
-![Image of Pet Details Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Details%20page.png).
 Provides comprehensive details about each pet, including their story, age, breed, and city. Users can request to adopt the pet. 
 
 ### Partners Page
-![Image of Partners Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Partners%20page.png)
 Details about our partner shops, including names and locations. 
 
 ## User Interfaces
 
+[Watch the video](https://github.com/SaidQT/SOAR/blob/master/User%20Interfaces.mp4)
 ### Besties Page
-![Image of Besties Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/My%20besties%20page.png)
 Displays the pets that the user has requested to adopt, organized into pending and accepted requests. 
 
 ### Edit Profile Page
-![Image of Edit Profile Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Edit%20profile%20page.png)
 Provides a form for users to update their account information, including email address and password. 
 
 ### Favourites Page
-![Image of Favourites Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Favoirte%20list%20page.png)
 Shows pets liked by the user and provides options to request adoption or unlike a pet. Implemented with AJAX. 
 
 ## Validations for the User
@@ -123,19 +114,15 @@ Shows pets liked by the user and provides options to request adoption or unlike 
 ## Shop Interface
 
 ### Shop Home Page
-![Image of Shop Home Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/shophome.png)
 The shop dashboard for managing pets includes a navigation menu and a table of pets with options to edit or delete. 
 
 ### Add Pet Page
-![Image of Add Pet Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/addpet.png)
 Form for adding new pets with validation for pet details. Styled with CSS and includes JavaScript for interactivity. 
 
 ### Edit Pet Page
-![Image of Edit Pet Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/editpet.png)
 Allows Shop owners to update pet details with validation and error messages. .
 
 ### Request Page
-![Image of Request Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Request%20page.png)
 Displays a list of pet adoption requests with options to accept or refuse. Includes a button to add a new pet. .
 
 ### Pet Validations
@@ -145,19 +132,15 @@ Ensures pet data integrity with validations for name, type, breed, city, image U
 ## Admin Interface
 
 ### Admin Dashboard Page
-![Image of Admin Dashboard Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Admin%20dashboard%20page.png)
 Overview of key metrics including partners, adopted pets, unadopted pets, and donations. Features data visualizations with Chart.js. 
 
 ### Tables Page
-![Image of Tables Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Admin%20tables%20page.png)
 Displays tables for shops and users with options to edit or delete entries. Includes Chart.js for visual data representations. 
 
 ### Admin Add Shop Page
-![Image of Admin Add Shop Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Admin%20add%20shop%20page.png)
 Form for adding new shops, including validation for shop and user details. 
 
 ### Edit Shop Page
-![Image of Edit Shop Page](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/Admin%20edit%20shop%20page.png)
 Allows administrators to update existing shop details with validation. 
 
 ### Shop Validations
