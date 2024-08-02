@@ -113,7 +113,8 @@ Shows pets liked by the user and provides options to request adoption or unlike 
 
 ## Shop Interface
 
-<iframe src="https://player.vimeo.com/video/994019537?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Admin interfaces"></iframe>
+[![Admin interfaces](https://raw.githubusercontent.com/SaidQT/SOAR/main/path/to/thumbnail.jpg)](https://player.vimeo.com/video/994019537?badge=0&autopause=0&player_id=0&app_id=58479 "Admin interfaces")
+
 
 ### Shop Home Page
 The shop dashboard for managing pets includes a navigation menu and a table of pets with options to edit or delete. 
