@@ -84,9 +84,11 @@ Provides comprehensive details about each pet, including their story, age, breed
 Details about our partner shops, including names and locations. 
 
 ## User Interfaces
+
 <div align="center">
-  <img src="User-journey.gif" alt="Introduction" >
+  <img src= "User-journey.gif" alt="Introduction" >
 </div>
+
 ### Besties Page
 Displays the pets that the user has requested to adopt, organized into pending and accepted requests. 
 
