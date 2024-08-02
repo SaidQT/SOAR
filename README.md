@@ -9,6 +9,9 @@ S.O.A.R (Support Our Adoption Rescue) is a user-friendly website dedicated to fa
   <img src= "proj-intro.gif" alt="Introduction" >
 </div>
 
+## Deployment
+The project is deployed on AWS. [You can access it here](http://51.20.116.249/login)
+
 ## Objectives
 
 - **Pet Adoption Facilitation:** Enable users to browse profiles of pets available for adoption, including detailed descriptions and images to facilitate informed decisions.
@@ -66,53 +69,21 @@ Our website offers a welcoming experience with easy access to important links, i
 
 
 ## Shop Interface
+
+The shop dashboard for managing pets features a navigation menu and a table with options to edit or delete pets. The Add Pet Page provides a form with validation for pet details, styled with CSS and enhanced with JavaScript for interactivity. The Edit Pet Page allows shop owners to update pet details, including validation and error messages. The Request Page displays a list of pet adoption requests with options to accept or refuse, and includes a button to add a new pet. Pet validations ensure data integrity for name, type, breed, city, image URL, description, and age.
+
 <div align="center">
   <img src="Shop.gif" alt="Introduction" >
 </div>
 
 
-### Shop Home Page
-The shop dashboard for managing pets includes a navigation menu and a table of pets with options to edit or delete. 
-
-### Add Pet Page
-Form for adding new pets with validation for pet details. Styled with CSS and includes JavaScript for interactivity. 
-
-### Edit Pet Page
-Allows Shop owners to update pet details with validation and error messages. .
-
-### Request Page
-Displays a list of pet adoption requests with options to accept or refuse. Includes a button to add a new pet. .
-
-### Pet Validations
-
-Ensures pet data integrity with validations for name, type, breed, city, image URL, description, and age.
-
 ## Admin Interface
+
+The Admin Dashboard Page provides an overview of key metrics such as partners, adopted and unadopted pets, and donations, featuring data visualizations created with Chart.js. The Tables Page displays editable tables for shops and users, incorporating Chart.js for visual data representations. The Admin Add Shop Page includes a form for adding new shops with validation for shop and user details, while the Edit Shop Page allows administrators to update existing shop details, also with validation. Shop validations ensure data consistency for name, city, maximum capacity, current pet count, and phone number.
 
 <div align="center">
   <img src="Admin.gif" alt="Introduction" >
 </div>
-
-### Admin Dashboard Page
-Overview of key metrics including partners, adopted pets, unadopted pets, and donations. Features data visualizations with Chart.js. 
-
-### Tables Page
-Displays tables for shops and users with options to edit or delete entries. Includes Chart.js for visual data representations. 
-
-### Admin Add Shop Page
-Form for adding new shops, including validation for shop and user details. 
-
-### Edit Shop Page
-Allows administrators to update existing shop details with validation. 
-
-### Shop Validations
-
-Ensures shop data consistency with validations for name, city, maximum capacity, current pet count, and phone number.
-
----
-
-
-
 
 ## Architecture
 
