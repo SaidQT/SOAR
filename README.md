@@ -112,8 +112,9 @@ Shows pets liked by the user and provides options to request adoption or unlike 
 5. **Exception Handling**: Custom access denied page for unauthorized access attempts.
 
 ## Shop Interface
-
-[![Admin interfaces](https://raw.githubusercontent.com/SaidQT/SOAR/main/path/to/thumbnail.jpg)](https://player.vimeo.com/video/994019537?badge=0&autopause=0&player_id=0&app_id=58479 "Admin interfaces")
+<div align="center">
+  <img src="Shop.gif" alt="Introduction" >
+</div>
 
 
 ### Shop Home Page
@@ -133,6 +134,10 @@ Displays a list of pet adoption requests with options to accept or refuse. Inclu
 Ensures pet data integrity with validations for name, type, breed, city, image URL, description, and age.
 
 ## Admin Interface
+
+<div align="center">
+  <img src="Admin.gif" alt="Introduction" >
+</div>
 
 ### Admin Dashboard Page
 Overview of key metrics including partners, adopted pets, unadopted pets, and donations. Features data visualizations with Chart.js. 
