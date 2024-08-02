@@ -86,7 +86,7 @@ Details about our partner shops, including names and locations.
 ## User Interfaces
 
 <div align="center">
-  <img src= "user.gif" alt="Introduction" >
+  <img src= "User journey.gif" alt="Introduction" >
 </div>
 
 ### Besties Page
