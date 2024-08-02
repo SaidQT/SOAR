@@ -82,7 +82,7 @@ The shop dashboard for managing pets features a navigation menu and a table with
 The Admin Dashboard Page provides an overview of key metrics such as partners, adopted and unadopted pets, and donations, featuring data visualizations created with Chart.js. The Tables Page displays editable tables for shops and users, incorporating Chart.js for visual data representations. The Admin Add Shop Page includes a form for adding new shops with validation for shop and user details, while the Edit Shop Page allows administrators to update existing shop details, also with validation. Shop validations ensure data consistency for name, city, maximum capacity, current pet count, and phone number.
 
 <div align="center">
-  <img src="Admin.gif" alt="Introduction" >
+  <img src="adminn.gif" alt="Introduction" >
 </div>
 
 ## Architecture
