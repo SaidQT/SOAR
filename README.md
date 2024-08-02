@@ -12,7 +12,6 @@ S.O.A.R (Support Our Adoption Rescue) is a user-friendly website dedicated to fa
 ## Objectives
 
 - **Pet Adoption Facilitation:** Enable users to browse profiles of pets available for adoption, including detailed descriptions and images to facilitate informed decisions.
-- **Educational Resources:** Provide resources and information on pet care, adoption processes, and responsible pet ownership to support potential adopters.
 - **User-Friendly Interface:** Design an intuitive interface that enhances the user experience, making it easy for visitors to navigate and interact with the website.
 
 ## Requirements
@@ -56,66 +55,15 @@ S.O.A.R (Support Our Adoption Rescue) is a user-friendly website dedicated to fa
 ![MySQL](https://img.shields.io/badge/MySQL-valid-blue?logo=mysql)
 
 
-## Public Pages
-
-### Home Page
-Welcome to our home page. Here, you'll find easy access to important links, including our cart, as well as a warm introduction to our website. We aim to provide a welcoming experience and guide you through our offerings, making it simple to explore what we have to offer. The page is styled with custom CSS and includes JavaScript for interactive elements. Icons are used for visual enhancement, and external libraries are loaded for additional functionality.
-
-### Navbar Section
-- **Favourite Button**: Redirects users to their favourite pets or to the login/register page if no user is logged in. Implemented with AJAX for a seamless experience.
-- **Logout Button**: Visible only when a user is logged in.
-- **Profile Button**: Redirects to the login/register page if not logged in or to the profile update page if logged in.
-
-### Pet Filtering
-Data filtering is managed via AJAX in the navbar, icons on the home page, and the cart page. Clicking a filter updates the display to show relevant pets.
-
-### About Us Page
-Provides details about our brand, including information about rescued pets, successful adoptions, dedicated volunteers, and community events. Styled with custom CSS and JavaScript for interactivity.
-
-### Cart Page
-Displays pets available for adoption with a dynamic and user-friendly interface. Features include a banner, filterable gallery, donation section, and AJAX-managed favourite forms. 
-
-### FAQS Page
-Contains answers to frequently asked questions from the "Contact Us" form. 
-
-### Contact Us Page
-Offers a form for visitors to send us an email, requesting their name, email address, and message. 
-![sample image](https://github.com/SaidQT/SOAR/blob/master/src/main/resources/static/read/email.png)
-### Pet Details Page
-Provides comprehensive details about each pet, including their story, age, breed, and city. Users can request to adopt the pet. 
-
-### Partners Page
-Details about our partner shops, including names and locations. 
 
 ## User Interfaces
+
+Our website offers a welcoming experience with easy access to important links, including a cart and AJAX-managed pet filtering. The navbar features buttons for favourites, logout, and profile, ensuring seamless navigation. The home page, cart page, and About Us page are styled with custom CSS and JavaScript for enhanced interactivity. Users can explore detailed pet profiles, request adoptions, and learn about our partners. The site includes a FAQ section, a contact form, and various user interfaces such as the Besties Page for adoption requests, Edit Profile Page, and Favourites Page. User validations ensure secure account management, and Spring Security provides robust protection with role-based access control, password encoding, custom authentication handling, and exception management for unauthorized access attempts.
 
 <div align="center">
   <img src= "User journey.gif" alt="Introduction" >
 </div>
 
-### Besties Page
-Displays the pets that the user has requested to adopt, organized into pending and accepted requests. 
-
-### Edit Profile Page
-Provides a form for users to update their account information, including email address and password. 
-
-### Favourites Page
-Shows pets liked by the user and provides options to request adoption or unlike a pet. Implemented with AJAX. 
-
-## Validations for the User
-
-- **Username**: Between 3 and 30 characters, must be unique.
-- **Email**: Required and in valid email format.
-- **Password**: Required, must be longer than 5 characters.
-- **Confirm Password**: Must match the password field.
-
-## Spring Security
-
-1. **Role-Based Access Control**: Differentiates access based on user roles (Admins, Users, Shop Owners).
-2. **Password Encoding**: Utilizes BCrypt hashing for secure password storage.
-3. **Custom Authentication Success Handling**: Redirects users based on their role after login.
-4. **Login and Logout Configuration**: Custom login page with role-based redirection and logout functionality.
-5. **Exception Handling**: Custom access denied page for unauthorized access attempts.
 
 ## Shop Interface
 <div align="center">
