@@ -84,9 +84,9 @@ Provides comprehensive details about each pet, including their story, age, breed
 Details about our partner shops, including names and locations. 
 
 ## User Interfaces
-<video width="600" controls>
-  <source src="https://github.com/SaidQT/SOAR/blob/master/User%20Interfaces.mp4" type="video/mp4">
-</video>
+<div align="center">
+  <img src="User-journey.gif" alt="Introduction" >
+</div>
 ### Besties Page
 Displays the pets that the user has requested to adopt, organized into pending and accepted requests. 
 
